@@ -81,7 +81,7 @@ void CAudio::Delete()
 		{
 			m_AudioData[i]->m_pSFXSubmixVoice->DestroyVoice();
 		}
-}
+	}
 	
 	//オーディオベクター破棄
 	m_AudioData.clear();
