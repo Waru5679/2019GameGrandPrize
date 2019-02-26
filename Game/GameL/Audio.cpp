@@ -50,12 +50,18 @@ void CAudio::Init(int max_audio)
 			m_AudioData[i]->m_pSourceVoice[j]=nullptr;
 		}
 
-		//ミックスボイス作成
-		m_pXAudio2->CreateSubmixVoice(&m_AudioData[i]->m_pSFXSubmixVoice,1,44100,0,0,0,0);
+		if (m_pMasteringVoice != nullptr)
+		{
+			//ミックスボイス作成
+			m_pXAudio2->CreateSubmixVoice(&m_AudioData[i]->m_pSFXSubmixVoice, 1, 44100, 0, 0, 0, 0);
+		}
 	}
 
 	//マスターボリューム
-	m_pMasteringVoice->SetVolume(1.0f,0);
+	if (m_pMasteringVoice != nullptr)
+	{
+		m_pMasteringVoice->SetVolume(1.0f, 0);
+	}
 }
 
 //クラス破棄
@@ -65,23 +71,27 @@ void CAudio::Delete()
 	DeleteAudio();
 
 	//サウンドメモリ破棄
-	for(int i=0 ; i < m_aud_max ; i++ )
+	for (int i = 0; i < m_aud_max; i++)
 	{
 		//サウンドインターフェース破棄
-		delete [] m_AudioData[i]->m_pSourceVoice;
+		delete[] m_AudioData[i]->m_pSourceVoice;
 
 		//ミックスサウンド破棄
-		m_AudioData[i]->m_pSFXSubmixVoice->DestroyVoice();
-	}
+		if (m_AudioData[i]->pWave!=nullptr)
+		{
+			m_AudioData[i]->m_pSFXSubmixVoice->DestroyVoice();
+		}
+}
 	
 	//オーディオベクター破棄
 	m_AudioData.clear();
 	m_AudioData.shrink_to_fit();
 
-
 	//マスターボイス　・XAudio2破棄
-	m_pMasteringVoice->DestroyVoice();
-	
+	if (m_pMasteringVoice != nullptr)
+	{
+		m_pMasteringVoice->DestroyVoice();
+	}
 	m_pXAudio2->Release();
 }
 
