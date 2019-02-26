@@ -1,3 +1,4 @@
+//テスト
 #include "Audio.h"
 
 #define SCENE_AUDIO_EFFCT_MAX	(16)					//効果音の同時出力最大数
