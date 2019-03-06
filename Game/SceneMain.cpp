@@ -1,8 +1,8 @@
 #include "SceneMain.h"
 #include "GameL/DrawTexture.h"
-#include "BackGround.h"
 #include "GameHead.h"
 #include "main.h"
+#include "GameL/UserData.h"
 
 //初期化
 void CSceneMain::InitScene()
@@ -10,13 +10,35 @@ void CSceneMain::InitScene()
 	//テクスチャ読み込み
 	LoadTexture();
 
+	//マップ情報読み込み
+	//LoadMap(L"Map/TestMap.csv");
+
+	//TestMap
+	int map[10][10]
+	{
+		{0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0},
+		{0,0,1,0,2,0,3,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0},
+		{0,0,4,0,5,0,6,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0},
+		{0,0,7,0,8,0,9,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0},
+	};
+
 	//背景オブジェクト1
 	m_pBack1 = new CBackGround(0.0f, 0.0f, SIDE);
-	Objs::InsertObj(m_pBack1, OBJ_BACK_GROUND, 100);
+	Objs::InsertObj(m_pBack1, OBJ_BACK_GROUND, 1);
 
 	//背景オブジェクト2
 	m_pBack2 = new CBackGround(WINDOW_SIZE_W, 0.0f, SIDE);
-	Objs::InsertObj(m_pBack2, OBJ_BACK_GROUND, 100);
+	Objs::InsertObj(m_pBack2, OBJ_BACK_GROUND, 1);
+
+	//マップオブジェクト
+	CMap* pMap = new CMap(map/*m_Map*/);
+	Objs::InsertObj(pMap, OBJ_MAP, 100);
 
 	//カウンタ初期化
 	m_Count = 0;
@@ -60,5 +82,33 @@ void CSceneMain::Scene()
 //テクスチャ読み込み
 void CSceneMain::LoadTexture()
 {
-	Draw::LoadImageW(L"Texture/BackGround.jpg", OBJ_BACK_GROUND, TEX_SIZE_256);	//背景
+	//背景
+	Draw::LoadImageW(L"Texture/BackGround.jpg", OBJ_BACK_GROUND, TEX_SIZE_256);	
+	//穴
+	Draw::LoadImageW(L"Texture/Hole.jpg", OBJ_HOLE, TEX_SIZE_256);	
+
+}
+
+//マップ読み込み
+void CSceneMain::LoadMap(const wchar_t* Name)
+{
+	//unique_ptr<wchar_t>p;//ポインター
+	//int size;            //サイズ
+
+	////データ読み込み
+	//p = Save::ExternalDataOpen(L"Map/TestMap.csv", &size);
+
+	//int count = 1;	//読み込み用カウンタ
+	//int num = 0;	//数値
+
+	////数値コピー
+	//for (int i = 0; i < MAX_Y; i++)
+	//{
+	//	for (int j = 0; j < MAX_X; j++)
+	//	{
+	//		swscanf_s(&p.get()[count], L"%d", &num);
+	//		m_Map[i][j] = num;
+	//		count += 2;
+	//	}
+	//}
 }

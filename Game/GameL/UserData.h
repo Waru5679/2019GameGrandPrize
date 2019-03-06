@@ -21,7 +21,7 @@ namespace GameL
 			//ユーザーデータ以外の外部データ読み込み
 			//全データ(文字列情報)を取得したメモリが返される
 			//テキストエディタでUnicode指定　BOMチェック有りにしてください。
-			static unique_ptr<wchar_t> ExternalDataOpen(wchar_t* file_name,int* size);
+			static unique_ptr<wchar_t> ExternalDataOpen(const wchar_t* file_name,int* size);
 		private:
 			static void* m_data;		//ユーザー情報
 			static int   m_data_size;	//ユーザー情報サイズ

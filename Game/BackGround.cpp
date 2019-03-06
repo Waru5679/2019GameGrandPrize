@@ -53,9 +53,8 @@ void CBackGround::Action()
 //•`‰æ
 void CBackGround::Draw()
 {
-	RECT_F src, dst;
-
 	//Ø‚èæ‚èˆÊ’uİ’è
+	RECT_F src, dst;
 	RectSet(&src, 0.0f, 0.0f, 256.0f, 256.0f);
 
 	//•`‰æˆÊ’uİ’è

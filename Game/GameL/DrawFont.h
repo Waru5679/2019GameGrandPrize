@@ -36,9 +36,9 @@ namespace GameL
 		public:
 			static void Init(ID3D11Device* p_device,ID3D11DeviceContext* p_device_context);	//初期化
 			static void Delete();														//クラス削除
-			static void SetStrTex(wchar_t* init_str);									//事前予約文字リスト作成
+			static void SetStrTex(const wchar_t* init_str);									//事前予約文字リスト作成
 			static void ListDelete();													//文字リスト削除
-			static void StrDraw(wchar_t* str,float x,float y,float size,float color[4]);	//文字列描画
+			static void StrDraw(const wchar_t* str,float x,float y,float size,float color[4]);	//文字列描画
 
 		private:
 			static list< unique_ptr<CFontCharTex>>::iterator SetChar(wchar_t c);		//フォントリスト追加メソッド
