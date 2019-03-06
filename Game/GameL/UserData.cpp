@@ -49,7 +49,7 @@ void CUserData::Seve()
 
 }
 
-unique_ptr<wchar_t> CUserData::ExternalDataOpen(wchar_t* file_name,int* size)
+unique_ptr<wchar_t> CUserData::ExternalDataOpen(const wchar_t* file_name,int* size)
 {
 	
 	int  s=0;
@@ -74,6 +74,7 @@ unique_ptr<wchar_t> CUserData::ExternalDataOpen(wchar_t* file_name,int* size)
 		
 	}while(1);
 
+	//ファイルサイズ0
 	if(s==0)
 	{
 		fclose(fp);
@@ -81,6 +82,7 @@ unique_ptr<wchar_t> CUserData::ExternalDataOpen(wchar_t* file_name,int* size)
 	}
 
 	fseek(fp,0, SEEK_SET);
+
 	//ファイル情報の大きさ
 	str.reset(new wchar_t[s+1]);
 	fread(str.get(),sizeof(wchar_t)*s,1,fp);
