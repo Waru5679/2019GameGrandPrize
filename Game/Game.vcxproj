@@ -146,8 +146,6 @@
     <ClInclude Include="GameL\WinInputs.h" />
     <ClInclude Include="Hole.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="SceneMain.h" />
     <ClInclude Include="ObjMainChara.h" />
     <ClInclude Include="SceneMain.h" />
   </ItemGroup>
@@ -166,11 +164,6 @@
     <ClCompile Include="GameL\SetWindow.cpp" />
     <ClCompile Include="GameL\UserData.cpp" />
     <ClCompile Include="GameL\WinInputs.cpp" />
-    <ClCompile Include="Hole.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="SceneMain.cpp" />
-    <ClCompile Include="ObjMainChara.cpp" />
-    <ClCompile Include="SceneMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="GameL\Draw2DTex.hlsl">
