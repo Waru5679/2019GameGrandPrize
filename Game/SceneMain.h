@@ -13,12 +13,10 @@ public:
 	void Scene();		//実行中
 private:
 	void LoadTexture();	//テクスチャ読み込み
-	void LoadMap(const wchar_t* Name);		//マップ読み込み
-
 	int m_Count;	//タイムカウンタ
 
-	//マップ
-	int m_Map[MAX_Y][MAX_X];
+	//マップポインタ
+	int* m_pMap;
 
 	//背景ポインタ
 	CBackGround* m_pBack1;

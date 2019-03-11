@@ -4,10 +4,10 @@
 
 
 //コンストラクタ
-CMap::CMap(int map[MAX_Y][MAX_X])
+CMap::CMap(int* pMap)
 {
 	//マップデータコピー
-	memcpy(m_Map, map, sizeof(int)*(MAX_Y * MAX_X));
+	memcpy(m_Map, pMap, sizeof(int)*(MAX_Y * MAX_X));
 }
 
 //初期化

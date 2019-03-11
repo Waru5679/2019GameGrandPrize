@@ -8,7 +8,7 @@ using namespace GameL;
 class CMap :public CObj
 {
 public:
-	CMap(int map[MAX_Y][MAX_X]);
+	CMap(int* pMap);
 	void Init();	//‰Šú‰»
 	void Action();	//XV
 	void Draw();	//•`‰æ
