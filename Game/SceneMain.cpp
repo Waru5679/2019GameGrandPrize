@@ -11,22 +11,7 @@ void CSceneMain::InitScene()
 	LoadTexture();
 
 	//マップ情報読み込み
-	//LoadMap(L"Map/TestMap.csv");
-
-	//TestMap
-	int map[10][10]
-	{
-		{0,0,0,0,0,0,0,0,0,0},
-		{0,0,0,0,0,0,0,0,0,0},
-		{0,0,1,0,2,0,3,0,0,0},
-		{0,0,0,0,0,0,0,0,0,0},
-		{0,0,4,0,5,0,6,0,0,0},
-		{0,0,0,0,0,0,0,0,0,0},
-		{0,0,7,0,8,0,9,0,0,0},
-		{0,0,0,0,0,0,0,0,0,0},
-		{0,0,0,0,0,0,0,0,0,0},
-		{0,0,0,0,0,0,0,0,0,0},
-	};
+	LoadMap(L"Map/TestMap.csv");
 
 	//背景オブジェクト1
 	m_pBack1 = new CBackGround(0.0f, 0.0f, SIDE);
@@ -37,7 +22,7 @@ void CSceneMain::InitScene()
 	Objs::InsertObj(m_pBack2, OBJ_BACK_GROUND, 1);
 
 	//マップオブジェクト
-	CMap* pMap = new CMap(map/*m_Map*/);
+	CMap* pMap = new CMap(m_Map);
 	Objs::InsertObj(pMap, OBJ_MAP, 100);
 
 	//カウンタ初期化
@@ -92,23 +77,23 @@ void CSceneMain::LoadTexture()
 //マップ読み込み
 void CSceneMain::LoadMap(const wchar_t* Name)
 {
-	//unique_ptr<wchar_t>p;//ポインター
-	//int size;            //サイズ
+	unique_ptr<wchar_t>p;//ポインター
+	int size;            //サイズ
 
-	////データ読み込み
-	//p = Save::ExternalDataOpen(L"Map/TestMap.csv", &size);
+	//データ読み込み
+	p = Save::ExternalDataOpen(Name, &size);
 
-	//int count = 1;	//読み込み用カウンタ
-	//int num = 0;	//数値
+	int count = 1;	//読み込み用カウンタ
+	int num = 0;	//数値
 
-	////数値コピー
-	//for (int i = 0; i < MAX_Y; i++)
-	//{
-	//	for (int j = 0; j < MAX_X; j++)
-	//	{
-	//		swscanf_s(&p.get()[count], L"%d", &num);
-	//		m_Map[i][j] = num;
-	//		count += 2;
-	//	}
-	//}
+	//数値コピー
+	for (int i = 0; i < MAX_Y; i++)
+	{
+		for (int j = 0; j < MAX_X; j++)
+		{
+			swscanf_s(&p.get()[count], L"%d", &num);
+			m_Map[i][j] = num;
+			count += 2;
+		}
+	}
 }

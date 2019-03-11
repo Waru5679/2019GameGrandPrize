@@ -72,7 +72,6 @@ enum MAP_NUM
 #include "BackGround.h"
 #include "Map.h"
 #include "Hole.h"
-#include "ObjMainChara.h"
 #include "SceneMain.h"
 //------------------------------------------------
 

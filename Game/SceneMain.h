@@ -26,6 +26,4 @@ private:
 
 	//ƒXƒNƒ[ƒ‹•ûŒü
 	bool m_bScroll;
-
-
 };
