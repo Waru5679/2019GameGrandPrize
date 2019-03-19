@@ -60,7 +60,7 @@ void CObjMainChara::Draw()
 	//ï\é¶à íuÇÃê›íË
 	dst.m_top	= 0.0f + m_fpy;
 	dst.m_left	= (64.0f * m_fposture)+m_fpx;
-	dst.m_right	= (64 - 64.0f * m_fposture)+m_fpx;
+	dst.m_right	= (64.0f - 64.0f * m_fposture)+m_fpx;
 	dst.m_bottom= 128.0f + m_fpy;
 
 	//ï`âÊ
