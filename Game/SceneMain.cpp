@@ -11,6 +11,9 @@ void CSceneMain::InitScene()
 	//テクスチャ読み込み
 	LoadTexture();
 
+	//グラフィック読み込み
+	Draw::LoadImageW(L"player.png", 0, TEX_SIZE_1024);
+
 	//マップ情報読み込み
 	m_pMap=CCsv::LoadCsv("Map/TestMap.csv",MAX_X,MAX_Y);
 
@@ -25,6 +28,10 @@ void CSceneMain::InitScene()
 	//マップオブジェクト
 	CMap* pMap = new CMap(m_pMap);
 	Objs::InsertObj(pMap, OBJ_MAP, 100);
+
+	//キャラクターオブジェクト
+	CObjMainChara* chara = new CObjMainChara();
+	Objs::InsertObj(chara, OBJ_CHARA, 10);
 
 	//カウンタ初期化
 	m_Count = 0;

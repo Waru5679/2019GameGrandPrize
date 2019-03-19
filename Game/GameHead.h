@@ -73,6 +73,7 @@ enum MAP_NUM
 #include "Map.h"
 #include "Hole.h"
 #include "SceneMain.h"
+#include "ObjMainChara.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
