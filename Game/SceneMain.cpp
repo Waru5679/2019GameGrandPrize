@@ -11,8 +11,7 @@ void CSceneMain::InitScene()
 	//テクスチャ読み込み
 	LoadTexture();
 
-	//グラフィック読み込み
-	Draw::LoadImageW(L"player.png", 0, TEX_SIZE_1024);
+	
 
 	//マップ情報読み込み
 	m_pMap=CCsv::LoadCsv("Map/TestMap.csv",MAX_X,MAX_Y);
@@ -79,5 +78,7 @@ void CSceneMain::LoadTexture()
 	Draw::LoadImageW(L"Texture/BackGround.jpg", OBJ_BACK_GROUND, TEX_SIZE_256);	
 	//穴
 	Draw::LoadImageW(L"Texture/Hole.jpg", OBJ_HOLE, TEX_SIZE_256);	
-
+	//主人公
+	Draw::LoadImageW(L"Texture/Player.png", 0, TEX_SIZE_1024);
+	
 }
