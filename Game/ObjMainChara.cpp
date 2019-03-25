@@ -64,5 +64,5 @@ void CObjMainChara::Draw()
 	dst.m_bottom= 128.0f + m_fpy;
 
 	//•`‰æ
-	Draw::Draw(0, &src, &dst, m_fColor, 0.0f);
+	Draw::Draw(OBJ_CHARA, &src, &dst, m_fColor, 0.0f);
 }

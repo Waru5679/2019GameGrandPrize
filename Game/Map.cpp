@@ -42,13 +42,22 @@ void CMap::Create()
 				//ŒŠ
 				case MAP_HOLE:
 				{
-					CHole* pHole = new CHole(y, x);
+					CHole* pHole = new CHole(x, y);
 					Objs::InsertObj(pHole, OBJ_HOLE, 10);
 
 					//¶¬‚ªI‚í‚ê‚Î‹ó”’‚É
 					m_Map[y][x] = MAP_NONE;
 					break;
+				}
+				//“G
+				case MAP_ENEMY:
+				{
+					CEnemy* pEnemy = new CEnemy(x, y);
+					Objs::InsertObj(pEnemy, OBJ_ENEMY, 10);
 
+					//¶¬‚ªI‚í‚ê‚Î‹ó”’‚É
+					m_Map[y][x] = MAP_NONE;
+					break;
 				}
 			}
 		}

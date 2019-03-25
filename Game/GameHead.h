@@ -6,10 +6,11 @@ enum OBJ_NAME
 	//ゲームで使うオブジェクトの名前
 	//OBJ_○○と表記
 	OBJ_NO_NAME,	//オブジェクト名無し(禁止)
-	OBJ_BACK_GROUND,	//背景
-	OBJ_MAP,			//マップ
-	OBJ_HOLE,			//穴
-	OBJ_CHARA,
+	OBJ_BACK_GROUND,//背景
+	OBJ_MAP,		//マップ
+	OBJ_HOLE,		//穴
+	OBJ_CHARA,		//キャラクタ
+	OBJ_ENEMY,		//敵
 };
 //------------------------------------------------
 
@@ -44,6 +45,13 @@ struct UserData
 
 //ゲーム内で使用されるグローバル変数・定数・列挙--
 
+//ベクトル構造体
+struct Vector
+{
+	float x;
+	float y;
+};
+
 //スクロール
 #define SIDE true		//横
 #define VERTICAL false	//縦
@@ -52,15 +60,20 @@ struct UserData
 #define MAX_X 10
 #define MAX_Y 10
 
+
+
 //マップ数値
 enum MAP_NUM
 {
 	MAP_NONE,	//何もない
 	MAP_HOLE,	//穴
+	MAP_ENEMY,	//敵
 };
 
 //オブジェクトサイズ
-#define HoleSize 32.0f
+#define OBJ_SIZE	32.0f
+#define HOLE_SIZE	32.0f
+#define ENEMY_SIZE	32.0f
 
 //------------------------------------------------
 //ゲーム内で使用するクラスヘッダ------------------
@@ -74,6 +87,7 @@ enum MAP_NUM
 #include "Hole.h"
 #include "SceneMain.h"
 #include "ObjMainChara.h"
+#include "Enemy.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

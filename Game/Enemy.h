@@ -1,24 +1,17 @@
 #pragma once
-
 #include "GameL/SceneObjManager.h"
-
+#include "GameHead.h"
 using namespace GameL;
 
-//穴クラス
-class CHole :public CObj
+//敵クラス
+class CEnemy :public CObj
 {
 public:
-	CHole(int x, int y);
+	CEnemy(int x, int y) ;
 	void Init();	//初期化
 	void Action();	//更新
 	void Draw();	//描画
 private:
-	
-	//描画色
 	float m_fColor[4];
-
-	//背景の位置
-	float m_fPos_x;
-	float m_fPos_y;
-
+	Vector m_vPos;
 };

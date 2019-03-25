@@ -6,8 +6,8 @@
 //コンストラクタ
 CHole::CHole(int y, int x)
 {
-	m_fPos_x = (float)x * HoleSize;
-	m_fPos_y = (float)y * HoleSize;
+	m_fPos_x = (float)x * OBJ_SIZE;
+	m_fPos_y = (float)y * OBJ_SIZE;
 
 }
 
@@ -34,7 +34,7 @@ void CHole::Draw()
 	RectSet(&src, 0.0f, 0.0f, 256.0f, 256.0f);
 
 	//描画位置
-	RectSet(&dst, m_fPos_y, m_fPos_x, HoleSize, HoleSize);
+	RectSet(&dst, m_fPos_y, m_fPos_x, HOLE_SIZE, HOLE_SIZE);
 	
 	//描画
 	Draw::Draw(OBJ_HOLE, &src, &dst, m_fColor, 0.0f);
