@@ -11,6 +11,7 @@ enum OBJ_NAME
 	OBJ_HOLE,		//穴
 	OBJ_CHARA,		//キャラクタ
 	OBJ_ENEMY,		//敵
+	OBJ_ENEMY_BULLET,//敵の弾
 };
 //------------------------------------------------
 
@@ -45,12 +46,6 @@ struct UserData
 
 //ゲーム内で使用されるグローバル変数・定数・列挙--
 
-//ベクトル構造体
-struct Vector
-{
-	float x;
-	float y;
-};
 
 //スクロール
 #define SIDE true		//横
@@ -74,6 +69,7 @@ enum MAP_NUM
 #define OBJ_SIZE	32.0f
 #define HOLE_SIZE	32.0f
 #define ENEMY_SIZE	32.0f
+#define BULLET_SIZE 32.0f
 
 //------------------------------------------------
 //ゲーム内で使用するクラスヘッダ------------------
@@ -88,6 +84,7 @@ enum MAP_NUM
 #include "SceneMain.h"
 #include "ObjMainChara.h"
 #include "Enemy.h"
+#include "EnemyBullet.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

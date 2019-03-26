@@ -1,7 +1,9 @@
 #pragma once
 #include "GameL/SceneObjManager.h"
-#include "GameHead.h"
+#include "Vector.h"
 using namespace GameL;
+
+#define SHOT_TIME 60
 
 //敵クラス
 class CEnemy :public CObj
@@ -12,6 +14,7 @@ public:
 	void Action();	//更新
 	void Draw();	//描画
 private:
-	float m_fColor[4];
-	Vector m_vPos;
+	float m_fColor[4];	//描画色
+	Vector m_vPos;		//位置
+	int m_Count;		//カウンタ
 };

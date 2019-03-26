@@ -82,5 +82,7 @@ void CSceneMain::LoadTexture()
 	Draw::LoadImageW(L"Texture/Player.png", OBJ_CHARA, TEX_SIZE_1024);
 	//“G
 	Draw::LoadImageW(L"Texture/Enemy.png", OBJ_ENEMY, TEX_SIZE_128);
-	
+	//“G’eŠÛ
+	Draw::LoadImageW(L"Texture/EnemyBullet.png", OBJ_ENEMY_BULLET, TEX_SIZE_128);
+
 }

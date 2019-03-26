@@ -133,6 +133,7 @@
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Csv.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyBullet.h" />
     <ClInclude Include="Function.h" />
     <ClInclude Include="GameHead.h" />
     <ClInclude Include="GameL\Audio.h" />
@@ -151,11 +152,13 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="ObjMainChara.h" />
     <ClInclude Include="SceneMain.h" />
+    <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Csv.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyBullet.cpp" />
     <ClCompile Include="Function.cpp" />
     <ClCompile Include="GameL\Audio.cpp" />
     <ClCompile Include="GameL\DirectXDevice.cpp" />
@@ -173,6 +176,7 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="ObjMainChara.cpp" />
     <ClCompile Include="SceneMain.cpp" />
+    <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="GameL\Draw2DTex.hlsl">

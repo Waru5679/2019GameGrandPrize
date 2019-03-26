@@ -16,8 +16,8 @@ void CObjMainChara::Init()
 	//描画カラーセット
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 
-	m_fpx = 0.0f;		//位置
-	m_fpy = 0.0f;
+	m_vPos.x = 0.0f;		//位置
+	m_vPos.y = 0.0f;
 	m_fvx = 0.0f;		//移動ベクトル
 	m_fvy = 0.0f;
 	m_fposture = 1.0f;//右向き0.0f 左向き1.0f
@@ -45,8 +45,8 @@ void CObjMainChara::Action()
 	}
 
 	//位置の更新
-	m_fpx += m_fvx;
-	m_fpy += m_fpy;
+	m_vPos.x += m_fvx;
+	m_vPos.y += m_fvy;
 }
 
 //ドロー
@@ -58,10 +58,10 @@ void CObjMainChara::Draw()
 	RectSet(&src, 0.0f, 0.0f, 65.0f, 90.0f);
 
 	//表示位置の設定
-	dst.m_top	= 0.0f + m_fpy;
-	dst.m_left	= (64.0f * m_fposture)+m_fpx;
-	dst.m_right	= (64.0f - 64.0f * m_fposture)+m_fpx;
-	dst.m_bottom= 128.0f + m_fpy;
+	dst.m_top	= 0.0f + m_vPos.y;
+	dst.m_left	= (64.0f * m_fposture)+m_vPos.x;
+	dst.m_right	= (64.0f - 64.0f * m_fposture)+m_vPos.x;
+	dst.m_bottom= 128.0f + m_vPos.y;
 
 	//描画
 	Draw::Draw(OBJ_CHARA, &src, &dst, m_fColor, 0.0f);

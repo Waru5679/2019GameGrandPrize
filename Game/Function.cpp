@@ -21,6 +21,20 @@ void ColorSet(float r, float g, float b, float a, float color[4])
 	color[1] = g;
 	color[2] = b;
 	color[3] = a;
+}
 
+//画面内かのチェック
+bool WindowInCheck(Vector vPos,Vector vSize)
+{
+	if (vPos.x + vSize.x < 0.0f)
+		return false;
+	if (vPos.y + vSize.y < 0.0f)
+		return false;
+	if (vPos.y > WINDOW_SIZE_H)
+		return false;
+	if (vPos.x > WINDOW_SIZE_W)
+		return false;
+
+	return true;
 }
 

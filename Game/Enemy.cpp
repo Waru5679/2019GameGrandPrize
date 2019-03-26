@@ -15,15 +15,35 @@ void CEnemy::Init()
 {
 	//色
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
+	
+	//カウンタ
+	m_Count = 0;
 }
 
 //更新
 void CEnemy::Action()
 {
-	//キャラクタのポインタ
-	CObjMainChara* pChara = dynamic_cast<CObjMainChara*>(Objs::GetObj(OBJ_CHARA));
+	//カウンタ更新
+	m_Count++;
+	if (m_Count > 10000)
+		m_Count = 0;
+
+	if (m_Count % SHOT_TIME == 0)
+	{
+		//キャラクタのポインタ
+		CObjMainChara* pChara = dynamic_cast<CObjMainChara*>(Objs::GetObj(OBJ_CHARA));
+
+		//キャラクタの位置を取得
+		if (pChara != nullptr)
+		{
+			Vector vCharaPos = pChara->GetPos();
 
 
+			//弾生成
+			CEnemyBullet* pBullet = new CEnemyBullet(m_vPos, CVector::Create(1.0f, 0.0f));
+			Objs::InsertObj(pBullet, OBJ_ENEMY_BULLET, 10);
+		}
+	}
 }
 
 //描画
