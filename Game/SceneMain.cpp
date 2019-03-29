@@ -84,5 +84,7 @@ void CSceneMain::LoadTexture()
 	Draw::LoadImageW(L"Texture/Enemy.png", OBJ_ENEMY, TEX_SIZE_128);
 	//ìGíeä€
 	Draw::LoadImageW(L"Texture/EnemyBullet.png", OBJ_ENEMY_BULLET, TEX_SIZE_128);
+	//éÂêlåˆíeä€
+	Draw::LoadImageW(L"Texture/EnemyBullet.png", OBJ_CHARA_BULLET, TEX_SIZE_128);
 
 }

@@ -15,13 +15,17 @@ public:
 	void Action();	//アクション
 	void Draw();	//ドロー
 	Vector GetPos() { return m_vPos; }
+	void Move();//移動
+
 private:
 	Vector m_vPos;//位置
-	//float m_fpx;	//位置
-	//float m_fpy;
 	float m_fvx;	//移動ベクトル
 	float m_fvy;
-	float m_fposture;	//向き
+	float m_fPosture;	//向き
+	float m_fGravity;	//重力
+	bool m_bScroll;		//スクロールの向き
+	bool m_bHitGround;	
+	bool m_bBullet_FireIs;//弾丸制御
 
 	//描画色
 	float m_fColor[4];

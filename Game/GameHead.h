@@ -12,6 +12,7 @@ enum OBJ_NAME
 	OBJ_CHARA,		//キャラクタ
 	OBJ_ENEMY,		//敵
 	OBJ_ENEMY_BULLET,//敵の弾
+	OBJ_CHARA_BULLET,//主人公の弾
 };
 //------------------------------------------------
 
@@ -85,6 +86,7 @@ enum MAP_NUM
 #include "ObjMainChara.h"
 #include "Enemy.h"
 #include "EnemyBullet.h"
+#include "CharaBullet.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

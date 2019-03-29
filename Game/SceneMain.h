@@ -11,6 +11,8 @@ class CSceneMain:public CScene
 public:
 	void InitScene();	//初期化
 	void Scene();		//実行中
+
+	bool GetScroll() { return m_bScroll; }
 private:
 	void LoadTexture();	//テクスチャ読み込み
 	int m_Count;	//タイムカウンタ
