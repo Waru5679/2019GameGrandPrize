@@ -34,7 +34,7 @@ void CBackGround::Action()
 
 		//背景の右端が画面左に行くと戻す
 		if (m_fPos_x + WINDOW_SIZE_W < 0.0f)
-			m_fPos_x = WINDOW_SIZE_W;
+			m_fPos_x = WINDOW_SIZE_W-5.0f;
 	}
 
 	//縦スクロール
@@ -46,7 +46,7 @@ void CBackGround::Action()
 
 		//背景の下端が画面上に行くと戻す
 		if (m_fPos_y + WINDOW_SIZE_H < 0.0f )
-			m_fPos_y = WINDOW_SIZE_H;
+			m_fPos_y = WINDOW_SIZE_H -5.0f;
 	}
 }
 
@@ -55,7 +55,7 @@ void CBackGround::Draw()
 {
 	//切り取り位置設定
 	RECT_F src, dst;
-	RectSet(&src, 0.0f, 0.0f, 256.0f, 256.0f);
+	RectSet(&src, 0.0f, 0.0f, 512.0f, 512.0f);
 
 	//描画位置設定
 	RectSet(&dst, m_fPos_y,m_fPos_x, WINDOW_SIZE_W, WINDOW_SIZE_H);

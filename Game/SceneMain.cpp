@@ -45,8 +45,8 @@ void CSceneMain::Scene()
 	//カウンタ更新
 	m_Count++;
 
-	//debug用100回でスクロールの向きを変える
-	if (m_Count > 100)
+	//debug用1000回でスクロールの向きを変える
+	if (m_Count > 1000)
 	{
 		m_Count = 0;
 
@@ -75,7 +75,11 @@ void CSceneMain::Scene()
 void CSceneMain::LoadTexture()
 {
 	//背景
-	Draw::LoadImageW(L"Texture/BackGround.jpg", OBJ_BACK_GROUND, TEX_SIZE_256);	
+	//Draw::LoadImageW(L"Texture/BackGround.png", OBJ_BACK_GROUND, TEX_SIZE_512);	
+
+	//Debug背景のスクロールチェック用
+	Draw::LoadImageW(L"Texture/Test1.png", OBJ_BACK_GROUND, TEX_SIZE_512);
+
 	//穴
 	Draw::LoadImageW(L"Texture/Hole.jpg", OBJ_HOLE, TEX_SIZE_256);	
 	//主人公
