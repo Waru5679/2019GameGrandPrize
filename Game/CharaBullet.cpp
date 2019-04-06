@@ -1,3 +1,5 @@
+#include "GameL/HitBoxManager.h"
+
 #include "CharaBullet.h"
 #include "Function.h"
 #include "GameHead.h"
@@ -23,6 +25,9 @@ void CCharaBullet::Init()
 
 	//‰æ–Ê“à
 	m_bInWindow = true;
+
+	//“–‚½‚è”»’è—pHitBoxì¬
+	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, ENEMY_SIZE, ENEMY_SIZE, ELEMENT_CHARA_BULLET, OBJ_CHARA_BULLET,1);
 }
 
 //XV
@@ -34,11 +39,27 @@ void CCharaBullet::Action()
 	//‰æ–Ê“à‚©’²‚×‚é
 	m_bInWindow = WindowInCheck(m_vPos, CVector::Create(BULLET_SIZE, BULLET_SIZE));
 
+	//“–‚½‚è”»’è------------------------------------------------
+
+	//HitBoxXV
+	CHitBox* hit_b = Hits::GetHitBox(this);
+	hit_b->SetPos(m_vPos.x+15.0f, m_vPos.y);
+
+	//“G‚É“–‚½‚é‚ÆÁ–Å
+	if (hit_b->CheckElementHit(ELEMENT_ENEMY) == true)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}
+
 	//‰æ–ÊŠO‚È‚çÁ‚·
 	if (m_bInWindow == false)
 	{
 		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
 	}
+
+	//----------------------------------------------------------
 }
 
 //•`‰æ
@@ -50,7 +71,7 @@ void CCharaBullet::Draw()
 	RectSet(&src, 0.0f, 0.0f, 128.0f, 128.0f);
 
 	//•`‰æˆÊ’u
-	RectSet(&dst, m_vPos.y, m_vPos.x, ENEMY_SIZE, ENEMY_SIZE);
+	RectSet(&dst, m_vPos.y, m_vPos.x+15.0f, ENEMY_SIZE, ENEMY_SIZE);
 
 	//•`‰æ
 	Draw::Draw(OBJ_CHARA_BULLET, &src, &dst, m_fColor, m_fRot);

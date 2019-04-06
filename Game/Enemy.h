@@ -17,4 +17,6 @@ private:
 	float m_fColor[4];	//描画色
 	Vector m_vPos;		//位置
 	int m_Count;		//カウンタ
+	Vector m_fChara;	//キャラの位置取得用
+	Vector m_fSpeed;	//速度
 };

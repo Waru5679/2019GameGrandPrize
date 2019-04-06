@@ -2,6 +2,7 @@
 #include "GameL/DrawTexture.h"
 #include "GameL/WinInputs.h"
 #include "GameL/SceneManager.h"
+#include "GameL/HitBoxManager.h"
 
 #include "GameHead.h"
 #include "ObjMainChara.h"
@@ -29,6 +30,9 @@ void CObjMainChara::Init()
 	//スクロールの状態取得
 	CSceneMain* m_pScene = new CSceneMain();
 	m_bScroll = m_pScene->GetScroll();
+
+	//当たり判定用HitBox作成
+	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, 64.0f, 128.0f, ELEMENT_PLAYER, OBJ_CHARA, 1);
 }
 
 //アクション
@@ -38,27 +42,29 @@ void CObjMainChara::Action()
 	Move(); //移動呼び出し
 
 	//ジャンプ
-	if (Input::GetVKey('C') == true)
+	if (m_bScroll == VERTICAL)
 	{
-		if (m_bHitGround == true)
+		if (Input::GetVKey('C') == true)
 		{
-			m_fvy = -15.0f;
-			m_bHitGround = false;
+			if (m_bHitGround == true)
+			{
+				m_fvy = -15.0f;
+				m_bHitGround = false;
+			}
 		}
-	}
 
+		//自由落下
+		if (m_vPos.y < 600.0f - 150.0f)
+		{
+			m_fvy += 9.8f / (16.0f);
+		}
+		else
+		{
+			m_vPos.y = 600.0f - 150.0f;
+			m_bHitGround = true;
+		}
 
-	//自由落下
-	if (m_vPos.y < 600.0f - 150.0f)
-	{
-		m_fvy += 9.8f / (16.0f);
 	}
-	else
-	{
-		m_vPos.y = 600.0f - 150.0f;
-		m_bHitGround = true;
-	}
-
 
 	//位置の更新
 	m_vPos.x += m_fvx;
@@ -80,7 +86,13 @@ void CObjMainChara::Action()
 	{
 		m_bBullet_FireIs = true;
 	}
+	//当たり判定--------------------------------------------------
 
+	//HitBox更新
+	CHitBox* hit_b = Hits::GetHitBox(this);
+	hit_b->SetPos(m_vPos.x, m_vPos.y);
+
+	//------------------------------------------------------------
 }
 
 //ドロー
@@ -89,7 +101,7 @@ void CObjMainChara::Draw()
 	RECT_F src, dst;
 
 	//切り取り位置の設定
-	RectSet(&src, 0.0f, 0.0f, 65.0f, 90.0f);
+	RectSet(&src, 0.0f, 0.0f,64.0f, 90.0f);
 
 	//表示位置の設定
 	dst.m_top	= 0.0f + m_vPos.y;
@@ -108,14 +120,14 @@ void CObjMainChara::Move()
 	//キー入力　右
 	if (Input::GetVKey(VK_RIGHT) == true)
 	{
-		m_fvx += 1.0f;
+		m_fvx += 0.3f;
 		m_fPosture = 1.0f;
 	}
 
 	//キー入力　左
 	if (Input::GetVKey(VK_LEFT) == true)
 	{
-		m_fvx -= 1.0f;
+		m_fvx -= 0.3f;
 		m_fPosture = 0.0f;
 	}
 
@@ -126,36 +138,31 @@ void CObjMainChara::Move()
 		//キー入力　上
 		if (Input::GetVKey(VK_UP) == true)
 		{
-			m_fvy = -5.0f;
+			m_fvy = -3.0f;
 		}
 
 		//キー入力　下
 		if (Input::GetVKey(VK_DOWN) == true)
 		{
-			m_fvy = +5.0f;
+			m_fvy = +3.0f;
 		}
 		
 		m_fvy += -(m_fvy * 0.098); //摩擦　縦
 	}
-	//横スクロール時のみ有効
-	else
+
+	//移動範囲制御------------------------------
+	if (m_vPos.x > 740.0f)
 	{
-		//キー入力　右
-		if (Input::GetVKey(VK_RIGHT) == true)
-		{
-			m_fvx = +1.0f;
-			m_fPosture = 1.0f;
-		}
-
-		//キー入力　左
-		if (Input::GetVKey(VK_LEFT) == true)
-		{
-			m_fvx = -1.0f;
-			m_fPosture = 0.0f;
-		}
-
+		m_vPos.x = 740.0f;
 	}
-
+	if (m_vPos.x < 0.0f)
+	{
+		m_vPos.x = 0.0f;
+	}
+	if (m_vPos.y < 0.0f)
+	{
+		m_vPos.y = 0.0f;
+	}
 	//摩擦
 	m_fvx += -(m_fvx * 0.098); //摩擦　横
 	//----------------------------------------------
