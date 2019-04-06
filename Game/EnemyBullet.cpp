@@ -41,27 +41,30 @@ void CEnemyBullet::Action()
 
 	if (m_bShot == true)
 	{
-		/*CObjMainChara* obj_chara = new CObjMainChara();
+		//CObjMainChara* obj_chara = new CObjMainChara();
+		CObjMainChara* obj_chara = dynamic_cast<CObjMainChara*>(Objs::GetObj(OBJ_CHARA));
 
-		float x = obj_chara->GetPos.x - m_vPos.x;
-		float y = obj_chara->GetPos.y - m_vPos.y;
-		float ar = GetAtan2Angle(x, -y);
+		Vector xy = obj_chara->GetPos();
+		xy.x = xy.x - m_vPos.x;
+		xy.y = xy.y - m_vPos.y;
+		//float y = obj_chara->GetPos.y() - m_vPos.y;
+		float ar = GetAtan2Angle(xy.x, -xy.y);
 
-		float br = GetAtan2Angle(m_vMove.x, m_vMove.y);
+		float br = GetAtan2Angle(m_vMove.x, -m_vMove.y);
 
 		float r = 3.14f / 180.0f;
 
 		if (ar < br)
 		{
 			m_vMove.x = m_vMove.x * cos(r) - m_vMove.y * sin(r);
-			m_vMove.y = m_vMove.y * cos(r) - m_vMove.x * sin(r);
+			m_vMove.y = m_vMove.y * cos(r) + m_vMove.x * sin(r);
 		}
 		else
 		{
-			m_vMove.x = m_vMove.x * cos(r) - m_vMove.y * sin(r);
-			m_vMove.y = m_vMove.y * cos(r) - m_vMove.x * sin(r);
+			m_vMove.x = m_vMove.x * cos(-r) - m_vMove.y * sin(-r);
+			m_vMove.y = m_vMove.y * cos(-r) + m_vMove.x * sin(-r);
 		}
-		UnitVec(&m_vMove.x, &m_vMove.y);*/
+		UnitVec(&m_vMove.x, &m_vMove.y);
 
 	}
 
