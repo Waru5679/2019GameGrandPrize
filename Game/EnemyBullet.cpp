@@ -38,14 +38,6 @@ void CEnemyBullet::Init()
 //çXêV
 void CEnemyBullet::Action()
 {
-	//à⁄ìÆ
-	m_fShotTime++;
-
-	//if (m_fShotTime > 10)
-	//{
-	//	m_bShot = false;
-	//}
-
 	if (m_bShot == true)
 	{
 		CObjMainChara* obj_chara = dynamic_cast<CObjMainChara*>(Objs::GetObj(OBJ_CHARA));
@@ -72,8 +64,8 @@ void CEnemyBullet::Action()
 		}
 		else
 		{
-			m_vMove.x = m_vMove.x * cos(-r) - m_vMove.y * sin(-r);
-			m_vMove.y = m_vMove.y * cos( r) + m_vMove.x * sin( r);
+			m_vMove.x = m_vMove.x * cos( r) - m_vMove.y * sin( r);
+			m_vMove.y = m_vMove.y * cos(-r) + m_vMove.x * sin(-r);
 		}
 
 		//ê≥ãKâª

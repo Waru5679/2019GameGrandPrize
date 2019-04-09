@@ -22,6 +22,10 @@ void CEnemy::Init()
 	//カウンタ
 	m_Count = 0;
 
+	//移動
+	//m_fvx = 1.0f;
+	//m_fvy = 0.0f;
+
 	//弾丸用速度
 	m_fSpeed.x = 1.0f;
 	m_fSpeed.y = 1.0f;
@@ -37,6 +41,8 @@ void CEnemy::Init()
 //更新
 void CEnemy::Action()
 {
+	
+	//攻撃-----------------------------------------------------------
 	//カウンタ更新
 	m_Count++;
 	if (m_Count > 10000)
@@ -58,6 +64,7 @@ void CEnemy::Action()
 			Objs::InsertObj(pBullet, OBJ_ENEMY_BULLET, 10);
 		}
 	}
+	//---------------------------------------------------------------
 
 	//当たり判定-----------------------------------------------------
 
@@ -72,6 +79,12 @@ void CEnemy::Action()
 		Hits::DeleteHitBox(this);
 	}
 	//--------------------------------------------------------------
+	//画面外なら消す
+	if (m_bInWindow == false)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}
 }
 
 //描画
