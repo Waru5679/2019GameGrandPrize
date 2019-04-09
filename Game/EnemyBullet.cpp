@@ -29,6 +29,7 @@ void CEnemyBullet::Init()
 	m_bInWindow=true;
 
 	m_bShot = true;
+	m_fShotTime = 0;
 
 	//当たり判定用HitBox作成
 	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, 32.0f, 32.0f, ELEMENT_ENEMY_BULLET, OBJ_ENEMY_BULLET, 1);
@@ -38,22 +39,32 @@ void CEnemyBullet::Init()
 void CEnemyBullet::Action()
 {
 	//移動
+	m_fShotTime++;
+
+	//if (m_fShotTime > 10)
+	//{
+	//	m_bShot = false;
+	//}
 
 	if (m_bShot == true)
 	{
-		//CObjMainChara* obj_chara = new CObjMainChara();
 		CObjMainChara* obj_chara = dynamic_cast<CObjMainChara*>(Objs::GetObj(OBJ_CHARA));
 
-		Vector xy = obj_chara->GetPos();
-		xy.x = xy.x - m_vPos.x;
-		xy.y = xy.y - m_vPos.y;
-		//float y = obj_chara->GetPos.y() - m_vPos.y;
-		float ar = GetAtan2Angle(xy.x, -xy.y);
+		//主人公のポジションセット
+		Vector m_vPos_Chara = obj_chara->GetPos();
+		m_vPos_Chara.x = m_vPos_Chara.x - m_vPos.x;
+		m_vPos_Chara.y = m_vPos_Chara.y - m_vPos.y;
 
+		//主人公の角度と弾丸の角度を取る
+		float ar = GetAtan2Angle(m_vPos_Chara.x, -m_vPos_Chara.y);
 		float br = GetAtan2Angle(m_vMove.x, -m_vMove.y);
 
+
+		//角度1°
 		float r = 3.14f / 180.0f;
 
+		//arよりbrが低い場合移動方向に+1°加える
+		//違う場合移動方向に-1°加える
 		if (ar < br)
 		{
 			m_vMove.x = m_vMove.x * cos(r) - m_vMove.y * sin(r);
@@ -62,10 +73,12 @@ void CEnemyBullet::Action()
 		else
 		{
 			m_vMove.x = m_vMove.x * cos(-r) - m_vMove.y * sin(-r);
-			m_vMove.y = m_vMove.y * cos(-r) + m_vMove.x * sin(-r);
+			m_vMove.y = m_vMove.y * cos( r) + m_vMove.x * sin( r);
 		}
-		UnitVec(&m_vMove.x, &m_vMove.y);
 
+		//正規化
+		UnitVec(&m_vMove.x, &m_vMove.y);	
+		m_bShot = false;
 	}
 
 	m_vPos = CVector::Add(m_vPos, m_vMove);

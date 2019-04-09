@@ -27,10 +27,6 @@ void CObjMainChara::Init()
 
 	m_fGravity = 0.98f;
 
-	//スクロールの状態取得
-	CSceneMain* m_pScene = new CSceneMain();
-	m_bScroll = m_pScene->GetScroll();
-
 	//当たり判定用HitBox作成
 	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, 64.0f, 128.0f, ELEMENT_PLAYER, OBJ_CHARA, 1);
 }
@@ -39,7 +35,12 @@ void CObjMainChara::Init()
 void CObjMainChara::Action()
 {
 
-	Move(); //移動呼び出し
+	//スクロールの状態取得
+	CSceneMain* m_pScene = new CSceneMain();
+	m_bScroll = m_pScene->GetScroll();
+
+	//移動呼び出し
+	Move(); 
 
 	//ジャンプ
 	if (m_bScroll == VERTICAL)
@@ -117,24 +118,23 @@ void CObjMainChara::Draw()
 //移動
 void CObjMainChara::Move()
 {
-	//キー入力　右
-	if (Input::GetVKey(VK_RIGHT) == true)
-	{
-		m_fvx += 0.3f;
-		m_fPosture = 1.0f;
-	}
-
-	//キー入力　左
-	if (Input::GetVKey(VK_LEFT) == true)
-	{
-		m_fvx -= 0.3f;
-		m_fPosture = 0.0f;
-	}
-
-	//縦スクロール時のみ有効
+	//縦スクロール時のみ有効-----------------------
 	if (m_bScroll == SIDE)
 	{
 
+		//キー入力　右
+		if (Input::GetVKey(VK_RIGHT) == true)
+		{
+			m_fvx += 0.3f;
+			m_fPosture = 1.0f;
+		}
+
+		//キー入力　左
+		if (Input::GetVKey(VK_LEFT) == true)
+		{
+			m_fvx -= 0.3f;
+			m_fPosture = 0.0f;
+		}
 		//キー入力　上
 		if (Input::GetVKey(VK_UP) == true)
 		{
@@ -147,8 +147,26 @@ void CObjMainChara::Move()
 			m_fvy = +3.0f;
 		}
 		
-		m_fvy += -(m_fvy * 0.098); //摩擦　縦
+		m_fvy += -(m_fvy * 0.098f); //摩擦　縦
 	}
+	//横スクロール時のみ有効----------------------
+	else
+	{
+		//キー入力　右
+		if (Input::GetVKey(VK_RIGHT) == true)
+		{
+			m_fvx += 0.3f;
+			m_fPosture = 1.0f;
+		}
+
+		//キー入力　左
+		if (Input::GetVKey(VK_LEFT) == true)
+		{
+			m_fvx -= 0.3f;
+			m_fPosture = 0.0f;
+		}
+	}
+	//-------------------------------------------	
 
 	//移動範囲制御------------------------------
 	if (m_vPos.x > 740.0f)
@@ -164,6 +182,6 @@ void CObjMainChara::Move()
 		m_vPos.y = 0.0f;
 	}
 	//摩擦
-	m_fvx += -(m_fvx * 0.098); //摩擦　横
+	m_fvx += -(m_fvx * 0.098f); //摩擦　横
 	//----------------------------------------------
 }

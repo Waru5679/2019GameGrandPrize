@@ -54,7 +54,7 @@ void CEnemy::Action()
 
 
 			//íeê∂ê¨
-			CEnemyBullet* pBullet = new CEnemyBullet(m_vPos, CVector::Create(1.0f , 0.0f));
+			CEnemyBullet* pBullet = new CEnemyBullet(m_vPos, CVector::Create(vCharaPos.x-100.0f , vCharaPos.y));
 			Objs::InsertObj(pBullet, OBJ_ENEMY_BULLET, 10);
 		}
 	}

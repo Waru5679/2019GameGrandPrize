@@ -18,6 +18,5 @@ private:
 	float m_fRot;		//‰ñ“]
 	bool m_bInWindow;	//‰æ–Ê“à‚©‚Ç‚¤‚©
 	bool m_bShot;		//”­ËŠÇ—
-	float m_fvx;
-	float m_fvy;
+	float m_fShotTime;	
 };
