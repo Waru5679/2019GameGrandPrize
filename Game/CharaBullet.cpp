@@ -27,7 +27,7 @@ void CCharaBullet::Init()
 	m_bInWindow = true;
 
 	//当たり判定用HitBox作成
-	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, ENEMY_SIZE, ENEMY_SIZE, ELEMENT_CHARA_BULLET, OBJ_CHARA_BULLET,1);
+	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, BULLET_SIZE, BULLET_SIZE, ELEMENT_CHARA_BULLET, OBJ_CHARA_BULLET,1);
 }
 
 //更新
@@ -71,7 +71,7 @@ void CCharaBullet::Draw()
 	RectSet(&src, 0.0f, 0.0f, 128.0f, 128.0f);
 
 	//描画位置
-	RectSet(&dst, m_vPos.y, m_vPos.x+15.0f, ENEMY_SIZE, ENEMY_SIZE);
+	RectSet(&dst, m_vPos.y, m_vPos.x+15.0f, BULLET_SIZE, BULLET_SIZE);
 
 	//描画
 	Draw::Draw(OBJ_CHARA_BULLET, &src, &dst, m_fColor, m_fRot);
