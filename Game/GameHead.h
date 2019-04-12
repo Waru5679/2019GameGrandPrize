@@ -71,7 +71,7 @@ enum MAP_NUM
 //オブジェクトサイズ
 #define OBJ_SIZE	32.0f
 #define HOLE_SIZE	32.0f
-#define ENEMY_SIZE	32.0f
+#define ENEMY_SIZE	64.0f
 #define BULLET_SIZE 32.0f
 
 //------------------------------------------------

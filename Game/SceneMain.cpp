@@ -75,21 +75,21 @@ void CSceneMain::Scene()
 void CSceneMain::LoadTexture()
 {
 	//îwåi
-	//Draw::LoadImageW(L"Texture/BackGround.png", OBJ_BACK_GROUND, TEX_SIZE_512);	
-
-	//DebugîwåiÇÃÉXÉNÉçÅ[ÉãÉ`ÉFÉbÉNóp
-	Draw::LoadImageW(L"Texture/Test1.png", OBJ_BACK_GROUND, TEX_SIZE_512);
+	Draw::LoadImageW(L"Texture/BackGround.png", OBJ_BACK_GROUND, TEX_SIZE_512);
 
 	//åä
-	Draw::LoadImageW(L"Texture/Hole.jpg", OBJ_HOLE, TEX_SIZE_256);	
+	Draw::LoadImageW(L"Texture/BlackHole.png", OBJ_HOLE, TEX_SIZE_128);
+
 	//éÂêlåˆ
 	//Draw::LoadImageW(L"Texture/Player.png", OBJ_CHARA, TEX_SIZE_1024);
 	Draw::LoadImageW(L"Texture/MainCharacter.png",OBJ_CHARA, TEX_SIZE_128);
 	//ìG
-	Draw::LoadImageW(L"Texture/Enemy.png", OBJ_ENEMY, TEX_SIZE_128);
+	Draw::LoadImageW(L"Texture/Enemy.png", OBJ_ENEMY, TEX_SIZE_256);
+
 	//ìGíeä€
 	Draw::LoadImageW(L"Texture/EnemyBullet.png", OBJ_ENEMY_BULLET, TEX_SIZE_128);
+
 	//éÂêlåˆíeä€
-	Draw::LoadImageW(L"Texture/EnemyBullet.png", OBJ_CHARA_BULLET, TEX_SIZE_128);
+	Draw::LoadImageW(L"Texture/PlayerBullet.png", OBJ_CHARA_BULLET, TEX_SIZE_128);
 
 }

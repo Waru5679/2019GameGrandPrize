@@ -103,7 +103,7 @@ void CEnemyBullet::Draw()
 	RectSet(&src, 0.0f, 0.0f, 128.0f, 128.0f);
 
 	//•`‰æˆÊ’u
-	RectSet(&dst, m_vPos.y, m_vPos.x, ENEMY_SIZE, ENEMY_SIZE);
+	RectSet(&dst, m_vPos.y, m_vPos.x, BULLET_SIZE, BULLET_SIZE);
 
 	//•`‰æ
 	Draw::Draw(OBJ_ENEMY_BULLET, &src, &dst, m_fColor, m_fRot);

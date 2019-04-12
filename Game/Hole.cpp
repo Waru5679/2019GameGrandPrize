@@ -31,7 +31,7 @@ void CHole::Draw()
 	RECT_F src, dst;
 
 	//Ø‚èæ‚èˆÊ’u
-	RectSet(&src, 0.0f, 0.0f, 256.0f, 256.0f);
+	RectSet(&src, 0.0f, 0.0f, 128.0f, 128.0f);
 
 	//•`‰æˆÊ’u
 	RectSet(&dst, m_fPos_y, m_fPos_x, HOLE_SIZE, HOLE_SIZE);

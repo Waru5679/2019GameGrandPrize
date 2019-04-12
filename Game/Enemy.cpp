@@ -58,7 +58,6 @@ void CEnemy::Action()
 		{
 			Vector vCharaPos = pChara->GetPos();
 
-
 			//íeê∂ê¨
 			CEnemyBullet* pBullet = new CEnemyBullet(m_vPos, CVector::Create(vCharaPos.x-100.0f , vCharaPos.y));
 			Objs::InsertObj(pBullet, OBJ_ENEMY_BULLET, 10);
@@ -93,7 +92,7 @@ void CEnemy::Draw()
 	RECT_F src, dst;
 
 	//êÿÇËéÊÇËà íu
-	RectSet(&src, 0.0f, 0.0f, 128.0f, 128.0f);
+	RectSet(&src, 0.0f, 0.0f, 256.0f, 256.0f);
 
 	//ï`âÊà íu
 	RectSet(&dst, m_vPos.y, m_vPos.x,ENEMY_SIZE ,ENEMY_SIZE);
