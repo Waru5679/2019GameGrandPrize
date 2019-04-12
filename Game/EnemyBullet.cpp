@@ -4,7 +4,6 @@
 #include "EnemyBullet.h"
 #include "Function.h"
 #include "GameHead.h"
-#include "Function.h"
 
 //コンストラクタ
 CEnemyBullet::CEnemyBullet(Vector vPos,Vector vMove)
@@ -29,7 +28,7 @@ void CEnemyBullet::Init()
 	m_bInWindow=true;
 
 	m_bShot = true;
-	m_fShotTime = 0;
+	m_fShotTime = 0.0f;
 
 	//当たり判定用HitBox作成
 	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, 32.0f, 32.0f, ELEMENT_ENEMY_BULLET, OBJ_ENEMY_BULLET, 1);
@@ -47,9 +46,10 @@ void CEnemyBullet::Action()
 		m_vPos_Chara.x = m_vPos_Chara.x - m_vPos.x;
 		m_vPos_Chara.y = m_vPos_Chara.y - m_vPos.y;
 
-		//主人公の角度と弾丸の角度を取る
-		float ar = GetAtan2Angle(m_vPos_Chara.x, -m_vPos_Chara.y);
-		float br = GetAtan2Angle(m_vMove.x, -m_vMove.y);
+		//主人公の角度を取る
+		float m_fAngle_Chara = GetAtan2Angle(m_vPos_Chara.x, -m_vPos_Chara.y);
+		//自分の弾(EnemyBullet)の角度を取る
+		float m_fAngle_Bullet = GetAtan2Angle(m_vMove.x, -m_vMove.y);
 
 
 		//角度1°
@@ -57,7 +57,7 @@ void CEnemyBullet::Action()
 
 		//arよりbrが低い場合移動方向に+1°加える
 		//違う場合移動方向に-1°加える
-		if (ar < br)
+		if (m_fAngle_Chara < m_fAngle_Bullet)
 		{
 			m_vMove.x = m_vMove.x * cos(r) - m_vMove.y * sin(r);
 			m_vMove.y = m_vMove.y * cos(r) + m_vMove.x * sin(r);
@@ -84,7 +84,7 @@ void CEnemyBullet::Action()
 	CHitBox* hit_b = Hits::GetHitBox(this);
 	hit_b->SetPos(m_vPos.x, m_vPos.y);
 
-	//画面内なら消す
+	//画面外なら消す
 	if (m_bInWindow == false)
 	{
 		this->SetStatus(false);

@@ -21,7 +21,8 @@ private:
 	Vector m_vPos;//位置
 	float m_fvx;	//移動ベクトル
 	float m_fvy;
-	float m_fPosture;	//向き
+	float m_fDirection;	//向き
+	bool m_bDirection;	//向き 右向き:false 左向き:true
 	float m_fGravity;	//重力
 	bool m_bScroll;		//スクロールの向き
 	bool m_bHitGround;	

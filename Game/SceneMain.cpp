@@ -83,7 +83,8 @@ void CSceneMain::LoadTexture()
 	//åä
 	Draw::LoadImageW(L"Texture/Hole.jpg", OBJ_HOLE, TEX_SIZE_256);	
 	//éÂêlåˆ
-	Draw::LoadImageW(L"Texture/Player.png", OBJ_CHARA, TEX_SIZE_1024);
+	//Draw::LoadImageW(L"Texture/Player.png", OBJ_CHARA, TEX_SIZE_1024);
+	Draw::LoadImageW(L"Texture/MainCharacter.png",OBJ_CHARA, TEX_SIZE_128);
 	//ìG
 	Draw::LoadImageW(L"Texture/Enemy.png", OBJ_ENEMY, TEX_SIZE_128);
 	//ìGíeä€

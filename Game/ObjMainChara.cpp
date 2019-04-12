@@ -21,14 +21,14 @@ void CObjMainChara::Init()
 	m_vPos.y = 0.0f;
 	m_fvx = 0.0f;		//移動ベクトル
 	m_fvy = 0.0f;
-	m_fPosture = 1.0f;//右向き0.0f 左向き1.0f
+	m_bDirection = false;
 	m_bHitGround = false;
 	m_bBullet_FireIs = true;
 
 	m_fGravity = 0.98f;
 
 	//当たり判定用HitBox作成
-	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, 64.0f, 128.0f, ELEMENT_PLAYER, OBJ_CHARA, 1);
+	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, 64.0f, 64.0f, ELEMENT_PLAYER, OBJ_CHARA, 1);
 }
 
 //アクション
@@ -55,13 +55,13 @@ void CObjMainChara::Action()
 		}
 
 		//自由落下
-		if (m_vPos.y < 600.0f - 150.0f)
+		if (m_vPos.y <= 580.0f - 64.0f)
 		{
 			m_fvy += 9.8f / (16.0f);
 		}
 		else
 		{
-			m_vPos.y = 600.0f - 150.0f;
+			m_vPos.y = 580.0f - 64.0f;
 			m_bHitGround = true;
 		}
 
@@ -70,6 +70,7 @@ void CObjMainChara::Action()
 	//位置の更新
 	m_vPos.x += m_fvx;
 	m_vPos.y += m_fvy;
+
 
 	//攻撃
 	if (Input::GetVKey('X') == true)
@@ -102,13 +103,23 @@ void CObjMainChara::Draw()
 	RECT_F src, dst;
 
 	//切り取り位置の設定
-	RectSet(&src, 0.0f, 0.0f,64.0f, 90.0f);
+	RectSet(&src, 64.0f, 2.0f, 32.0f, 32.0f);
 
 	//表示位置の設定
 	dst.m_top	= 0.0f + m_vPos.y;
-	dst.m_left	= (64.0f * m_fPosture)+m_vPos.x;
-	dst.m_right	= (64.0f - 64.0f * m_fPosture)+m_vPos.x;
-	dst.m_bottom= 128.0f + m_vPos.y;
+
+	//向きが左なら画像を反転する
+	if (m_bDirection == false)
+	{
+		dst.m_left = 0.0f + m_vPos.x;
+		dst.m_right = 64.0f + m_vPos.x;
+	}
+	else
+	{
+		dst.m_left = (64.0f * 1.0f) + m_vPos.x;
+		dst.m_right = (64.0f - 64.0f * 1.0f) + m_vPos.x;
+	}
+	dst.m_bottom= 64.0f + m_vPos.y;
 
 	//描画
 	Draw::Draw(OBJ_CHARA, &src, &dst, m_fColor, 0.0f);
@@ -126,14 +137,14 @@ void CObjMainChara::Move()
 		if (Input::GetVKey(VK_RIGHT) == true)
 		{
 			m_fvx += 0.3f;
-			m_fPosture = 1.0f;
+			m_bDirection = false;
 		}
 
 		//キー入力　左
 		if (Input::GetVKey(VK_LEFT) == true)
 		{
 			m_fvx -= 0.3f;
-			m_fPosture = 0.0f;
+			m_bDirection = true;
 		}
 		//キー入力　上
 		if (Input::GetVKey(VK_UP) == true)
@@ -156,14 +167,14 @@ void CObjMainChara::Move()
 		if (Input::GetVKey(VK_RIGHT) == true)
 		{
 			m_fvx += 0.3f;
-			m_fPosture = 1.0f;
+			m_bDirection = false;
 		}
 
 		//キー入力　左
 		if (Input::GetVKey(VK_LEFT) == true)
 		{
 			m_fvx -= 0.3f;
-			m_fPosture = 0.0f;
+			m_bDirection = true;
 		}
 	}
 	//-------------------------------------------	
