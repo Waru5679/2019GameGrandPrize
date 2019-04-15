@@ -75,6 +75,7 @@ enum MAP_NUM
 #define HOLE_SIZE	32.0f
 #define ENEMY_SIZE	64.0f
 #define BULLET_SIZE 32.0f
+#define CHARA_SIZE 64.0f
 #define STAR_SIZE	128.0f
 
 //------------------------------------------------
