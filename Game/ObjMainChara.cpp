@@ -17,7 +17,7 @@ void CObjMainChara::Init()
 	//描画カラーセット
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 
-	m_vPos.x = 0.0f;		//位置
+	m_vPos.x = 0.0f;	//位置
 	m_vPos.y = 0.0f;
 	m_fvx = 0.0f;		//移動ベクトル
 	m_fvy = 0.0f;
@@ -28,7 +28,7 @@ void CObjMainChara::Init()
 	m_fGravity = 0.98f;
 
 	//当たり判定用HitBox作成
-	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, 64.0f, 64.0f, ELEMENT_PLAYER, OBJ_CHARA, 1);
+	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CHARA_SIZE, CHARA_SIZE, ELEMENT_PLAYER, OBJ_CHARA, 1);
 }
 
 //アクション
@@ -55,10 +55,12 @@ void CObjMainChara::Action()
 		}
 
 		//自由落下
-		if (m_vPos.y <= 580.0f - 64.0f)
+
+		if (m_vPos.y <= WINDOW_SIZE_H - CHARA_SIZE)
 		{
 			m_fvy += 9.8f / (16.0f);
 		}
+
 		else
 		{
 			m_vPos.y = 580.0f - 64.0f;
@@ -70,7 +72,6 @@ void CObjMainChara::Action()
 	//位置の更新
 	m_vPos.x += m_fvx;
 	m_vPos.y += m_fvy;
-
 
 	//攻撃
 	if (Input::GetVKey('X') == true)
@@ -105,20 +106,20 @@ void CObjMainChara::Draw()
 	RectSet(&src, 64.0f, 2.0f, 32.0f, 32.0f);
 
 	//表示位置の設定
-	dst.m_top	= 0.0f + m_vPos.y;
+	dst.m_top	=  m_vPos.y;
 
 	//向きが左なら画像を反転する
 	if (m_bDirection == false)
 	{
-		dst.m_left = 0.0f + m_vPos.x;
-		dst.m_right = 64.0f + m_vPos.x;
+		dst.m_left = m_vPos.x;
+		dst.m_right = m_vPos.x + CHARA_SIZE;
 	}
 	else
 	{
 		dst.m_left = (64.0f * 1.0f) + m_vPos.x;
 		dst.m_right = (64.0f - 64.0f * 1.0f) + m_vPos.x;
 	}
-	dst.m_bottom= 64.0f + m_vPos.y;
+	dst.m_bottom= CHARA_SIZE + m_vPos.y;
 
 	//描画
 	Draw::Draw(OBJ_CHARA, &src, &dst, m_fColor, 0.0f);
@@ -157,7 +158,6 @@ void CObjMainChara::Move()
 			m_fvy = +3.0f;
 		}
 		
-		m_fvy -= (m_fvy * 0.098f); //摩擦　縦
 	}
 	//横スクロール時のみ有効----------------------
 	else
@@ -165,16 +165,20 @@ void CObjMainChara::Move()
 		//キー入力　右
 		if (Input::GetVKey(VK_RIGHT) == true)
 		{
-			m_fvx += 0.3f;
+			m_fvx = 3.0f;
 			m_bDirection = false;
 		}
-
 		//キー入力　左
-		if (Input::GetVKey(VK_LEFT) == true)
+		else if (Input::GetVKey(VK_LEFT) == true)
 		{
-			m_fvx -= 0.3f;
+			m_fvx = -3.0f;
 			m_bDirection = true;
 		}
+		else
+		{
+			m_fvx = 0.0f;
+		}
+		
 	}
 	//-------------------------------------------	
 
@@ -191,7 +195,5 @@ void CObjMainChara::Move()
 	{
 		m_vPos.y = 0.0f;
 	}
-	//摩擦
-	m_fvx -= (m_fvx * 0.098f); //摩擦　横
 	//----------------------------------------------
 }
