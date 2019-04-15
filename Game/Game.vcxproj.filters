@@ -28,6 +28,9 @@
     <Filter Include="ソース ファイル\主人公">
       <UniqueIdentifier>{3abf9876-ceaa-47b1-bcad-e1a7d6d8e5af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\オブジェクト">
+      <UniqueIdentifier>{f011419b-23f4-4b97-bdc4-02816fafe725}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameHead.h">
@@ -102,6 +105,12 @@
     <ClInclude Include="CharaBullet.h">
       <Filter>ソース ファイル\主人公</Filter>
     </ClInclude>
+    <ClInclude Include="ObjStar.h">
+      <Filter>ソース ファイル\オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>ソース ファイル\オブジェクト</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameL\Audio.cpp">
@@ -172,6 +181,12 @@
     </ClCompile>
     <ClCompile Include="CharaBullet.cpp">
       <Filter>ソース ファイル\主人公</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjStar.cpp">
+      <Filter>ソース ファイル\オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="Score.cpp">
+      <Filter>ソース ファイル\オブジェクト</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

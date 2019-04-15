@@ -24,7 +24,7 @@ void CEnemyBullet::Init()
 	//回転
 	m_fRot = 0.0f;
 
-	//画面内
+	//画面外
 	m_bInWindow=true;
 
 	m_bShot = true;
@@ -75,10 +75,10 @@ void CEnemyBullet::Action()
 
 	m_vPos = CVector::Add(m_vPos, m_vMove);
 
-	//画面内か調べる
+	//画面外か調べる
 	m_bInWindow = WindowInCheck(m_vPos, CVector::Create(BULLET_SIZE, BULLET_SIZE));
 
-	//当たり判定----------------------------------------------
+	//当たり判定
 
 	//Hitbox更新
 	CHitBox* hit_b = Hits::GetHitBox(this);
@@ -91,7 +91,6 @@ void CEnemyBullet::Action()
 		Hits::DeleteHitBox(this);
 	}
 
-	//---------------------------------------------------------
 }
 
 //描画

@@ -94,7 +94,6 @@ void CObjMainChara::Action()
 	CHitBox* hit_b = Hits::GetHitBox(this);
 	hit_b->SetPos(m_vPos.x, m_vPos.y);
 
-	//------------------------------------------------------------
 }
 
 //ドロー
@@ -158,7 +157,7 @@ void CObjMainChara::Move()
 			m_fvy = +3.0f;
 		}
 		
-		m_fvy += -(m_fvy * 0.098f); //摩擦　縦
+		m_fvy -= (m_fvy * 0.098f); //摩擦　縦
 	}
 	//横スクロール時のみ有効----------------------
 	else
@@ -193,6 +192,6 @@ void CObjMainChara::Move()
 		m_vPos.y = 0.0f;
 	}
 	//摩擦
-	m_fvx += -(m_fvx * 0.098f); //摩擦　横
+	m_fvx -= (m_fvx * 0.098f); //摩擦　横
 	//----------------------------------------------
 }
