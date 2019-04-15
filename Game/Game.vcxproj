@@ -152,7 +152,9 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="ObjMainChara.h" />
-    <ClInclude Include="ObjStar.h" />
+    <ClInclude Include="ObjStar.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="SceneMain.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="Vector.h" />
@@ -179,7 +181,9 @@
     <ClCompile Include="Hole.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="ObjMainChara.cpp" />
-    <ClCompile Include="ObjStar.cpp" />
+    <ClCompile Include="ObjStar.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="SceneMain.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="Vector.cpp" />

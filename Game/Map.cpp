@@ -59,6 +59,16 @@ void CMap::Create()
 					m_Map[y][x] = MAP_NONE;
 					break;
 				}
+				//¯
+				case MAP_STAR:
+				{
+					CStar* pStar = new CStar(x, y);
+					Objs::InsertObj(pStar, OBJ_STAR, 10);
+
+					//¶¬‚ªI‚í‚ê‚Î‹ó”’‚É
+					m_Map[y][x] = MAP_NONE;
+					break;
+				}
 			}
 		}
 	}

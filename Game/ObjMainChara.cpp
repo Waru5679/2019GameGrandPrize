@@ -45,8 +45,10 @@ void CObjMainChara::Action()
 	//ƒWƒƒƒ“ƒv
 	if (m_bScroll == VERTICAL)
 	{
+
 		if (Input::GetVKey('C') == true)
 		{
+
 			if (m_bHitGround == true)
 			{
 				m_fvy = -15.0f;
@@ -55,10 +57,12 @@ void CObjMainChara::Action()
 		}
 
 		//Ž©—R—Ž‰º
+
 		if (m_vPos.y <= 580.0f - 64.0f)
 		{
 			m_fvy += 9.8f / (16.0f);
 		}
+
 		else
 		{
 			m_vPos.y = 580.0f - 64.0f;
@@ -73,8 +77,10 @@ void CObjMainChara::Action()
 
 
 	//UŒ‚
+
 	if (Input::GetVKey('X') == true)
 	{
+
 		if (m_bBullet_FireIs == true)
 		{
 			//’e¶¬

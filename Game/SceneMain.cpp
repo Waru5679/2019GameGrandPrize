@@ -92,4 +92,7 @@ void CSceneMain::LoadTexture()
 	//ålŒö’eŠÛ
 	Draw::LoadImageW(L"Texture/PlayerBullet.png", OBJ_CHARA_BULLET, TEX_SIZE_128);
 
+	//¯
+	Draw::LoadImageW(L"Texture/CrumblePlanet.png", OBJ_STAR, TEX_SIZE_128);
+
 }

@@ -13,6 +13,7 @@ enum OBJ_NAME
 	OBJ_ENEMY,		//敵
 	OBJ_ENEMY_BULLET,//敵の弾
 	OBJ_CHARA_BULLET,//主人公の弾
+	OBJ_STAR		 //星オブジェクト
 };
 //------------------------------------------------
 
@@ -66,6 +67,7 @@ enum MAP_NUM
 	MAP_NONE,	//何もない
 	MAP_HOLE,	//穴
 	MAP_ENEMY,	//敵
+	MAP_STAR,	//星
 };
 
 //オブジェクトサイズ
@@ -73,6 +75,7 @@ enum MAP_NUM
 #define HOLE_SIZE	32.0f
 #define ENEMY_SIZE	64.0f
 #define BULLET_SIZE 32.0f
+#define STAR_SIZE	128.0f
 
 //------------------------------------------------
 //ゲーム内で使用するクラスヘッダ------------------
@@ -89,6 +92,7 @@ enum MAP_NUM
 #include "Enemy.h"
 #include "EnemyBullet.h"
 #include "CharaBullet.h"
+#include "ObjStar.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
