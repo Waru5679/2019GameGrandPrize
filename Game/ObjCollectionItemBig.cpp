@@ -1,29 +1,31 @@
 #include "GameL/DrawTexture.h"
 #include "GameL/HitBoxManager.h"
 
-#include "ObjCollectionItem.h"
+#include "ObjCollectionItemBig.h"
 #include "GameHead.h"
 #include "Function.h"
 
 
 //コンストラクタ
-CCollectionItem::CCollectionItem(int x, int y)
+CCollectionItemBig::CCollectionItemBig(int x, int y)
 {
 	m_fPos_x = (float)x * OBJ_SIZE;
 	m_fPos_y = (float)y * OBJ_SIZE;
 }
 
 //初期化
-void CCollectionItem::Init()
+void CCollectionItemBig::Init()
 {
 	//色セット
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
+	
 
 	//当たり判定用HitBox作成
-	Hits::SetHitBox(this, m_fPos_x, m_fPos_y, ITEM_SIZE, ITEM_SIZE, ELEMENT_STAR, OBJ_STAR, 1);
+	Hits::SetHitBox(this, m_fPos_x, m_fPos_y, ITEM_BIG_SIZE, ITEM_BIG_SIZE, ELEMENT_ITEM_BIG, OBJ_ITEM_BIG, 1);
+
 }
 
-void CCollectionItem::Action()
+void CCollectionItemBig::Action()
 {
 	//HitBox更新
 	CHitBox* hit_b = Hits::GetHitBox(this);
@@ -39,7 +41,7 @@ void CCollectionItem::Action()
 }
 
 //描画
-void CCollectionItem::Draw()
+void CCollectionItemBig::Draw()
 {
 	RECT_F src, dst;
 
@@ -47,8 +49,8 @@ void CCollectionItem::Draw()
 	RectSet(&src, 0.0f, 0.0f, 128.0f, 128.0f);
 
 	//描画位置
-	RectSet(&dst, m_fPos_y, m_fPos_x, ITEM_SIZE, ITEM_SIZE);
+	RectSet(&dst, m_fPos_y, m_fPos_x, ITEM_BIG_SIZE, ITEM_BIG_SIZE);
 
 	//描画
-	Draw::Draw(OBJ_ITEM, &src, &dst, m_fColor, 0.0f);
+	Draw::Draw(OBJ_ITEM_BIG, &src, &dst, m_fColor, 0.0f);
 }

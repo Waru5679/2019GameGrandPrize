@@ -105,8 +105,8 @@ void CSceneMain::LoadTexture()
 	Draw::LoadImageW(L"Texture/Planet.png", OBJ_STAR, TEX_SIZE_128);
 
 	//収集アイテム
-	Draw::LoadImageW(L"Texture/Collection.png", OBJ_ITEM, TEX_SIZE_128);
-
+	Draw::LoadImageW(L"Texture/Collection.png", OBJ_ITEM_BIG, TEX_SIZE_128);
+	Draw::LoadImageW(L"Texture/Collection.png", OBJ_ITEM_SMALL, TEX_SIZE_128);
 }
 
 //音楽読み込み

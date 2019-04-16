@@ -108,11 +108,14 @@
     <ClInclude Include="ObjStar.h">
       <Filter>ソース ファイル\オブジェクト</Filter>
     </ClInclude>
-    <ClInclude Include="ObjCollectionItem.h">
-      <Filter>ソース ファイル\オブジェクト</Filter>
-    </ClInclude>
     <ClInclude Include="Score.h">
       <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjCollectionItemBig.h">
+      <Filter>ソース ファイル\オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjCollectionItemSmall.h">
+      <Filter>ソース ファイル\オブジェクト</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -188,11 +191,14 @@
     <ClCompile Include="ObjStar.cpp">
       <Filter>ソース ファイル\オブジェクト</Filter>
     </ClCompile>
-    <ClCompile Include="ObjCollectionItem.cpp">
-      <Filter>ソース ファイル\オブジェクト</Filter>
-    </ClCompile>
     <ClCompile Include="Score.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjCollectionItemBig.cpp">
+      <Filter>ソース ファイル\オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjCollectionItemSmall.cpp">
+      <Filter>ソース ファイル\オブジェクト</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
