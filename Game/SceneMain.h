@@ -15,6 +15,7 @@ public:
 	bool GetScroll() { return m_bScroll; }
 private:
 	void LoadTexture();	//テクスチャ読み込み
+	void LoadAudio();	//音楽読み込み
 	int m_Count;	//タイムカウンタ
 
 	//マップポインタ

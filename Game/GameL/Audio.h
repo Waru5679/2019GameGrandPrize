@@ -44,7 +44,7 @@ namespace GameL
 		public:
 			static void Init(int max_audio);			//初期化
 			static void Delete();						//クラス破棄
-			static void LoadAudio(int id,wchar_t* name,SOUND_TYPE type);	//サウンドボイスデータ登録
+			static void LoadAudio(int id,const wchar_t* name,SOUND_TYPE type);	//サウンドボイスデータ登録
 			static void DeleteAudio();					//サウンド情報破棄
 			static void Start(int id);					//スタート	
 			static void Stop(int id);					//ストップ
