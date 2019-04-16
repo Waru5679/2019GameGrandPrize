@@ -202,7 +202,7 @@ void CAudio::Stop(int id)
 }
 
 //サウンドボイスデータ登録
-void CAudio::LoadAudio(int id ,wchar_t* name,SOUND_TYPE type)
+void CAudio::LoadAudio(int id ,const wchar_t* name,SOUND_TYPE type)
 {
 	if(id<0)		 return ;
 	if(id>m_aud_max) return ;

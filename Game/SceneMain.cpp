@@ -4,12 +4,16 @@
 #include "main.h"
 #include "GameL/UserData.h"
 #include "Csv.h"
+#include "GameL/Audio.h"
 
 //初期化
 void CSceneMain::InitScene()
 {
 	//テクスチャ読み込み
 	LoadTexture();
+
+	//音楽読み込み
+	LoadAudio();
 
 	//マップ情報読み込み
 	m_pMap=CCsv::LoadCsv("Map/TestMap.csv",MAX_X,MAX_Y);
@@ -35,6 +39,12 @@ void CSceneMain::InitScene()
 
 	//スクロール方向
 	m_bScroll = SIDE;
+
+	//ボリューム調整
+	Audio::Volume(-0.8f, 0);
+	
+	//スタート
+	Audio::Start(0);
 
 }
 
@@ -97,4 +107,11 @@ void CSceneMain::LoadTexture()
 	//収集アイテム
 	Draw::LoadImageW(L"Texture/Collection.png", OBJ_ITEM, TEX_SIZE_128);
 
+}
+
+//音楽読み込み
+void CSceneMain::LoadAudio()
+{
+	//BGMtest
+	Audio::LoadAudio(0, L"Audio/Test2.wav", BACK_MUSIC);
 }
