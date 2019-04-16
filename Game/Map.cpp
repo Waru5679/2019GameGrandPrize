@@ -69,10 +69,21 @@ void CMap::Create()
 					m_Map[y][x] = MAP_NONE;
 					break;
 				}
+				//アイテム
 				case MAP_ITEM:
 				{
 					CCollectionItem* pCollection = new  CCollectionItem(x, y);
 					Objs::InsertObj(pCollection, OBJ_ITEM, 10);
+
+					//生成が終われば空白に
+					m_Map[y][x] = MAP_NONE;
+					break;
+				}
+				//スクロールチェンジ
+				case MAP_SCROLL_CHANGE:
+				{
+					CScrollChange* pScrollChange = new  CScrollChange(x, y);
+					Objs::InsertObj(pScrollChange, OBJ_SCROLL_CHANGE, 10);
 
 					//生成が終われば空白に
 					m_Map[y][x] = MAP_NONE;

@@ -111,6 +111,9 @@
     <ClInclude Include="ObjCollectionItem.h">
       <Filter>ソース ファイル\オブジェクト</Filter>
     </ClInclude>
+    <ClInclude Include="ScrollChange.h">
+      <Filter>ソース ファイル\オブジェクト</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameL\Audio.cpp">
@@ -186,6 +189,9 @@
       <Filter>ソース ファイル\オブジェクト</Filter>
     </ClCompile>
     <ClCompile Include="ObjCollectionItem.cpp">
+      <Filter>ソース ファイル\オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrollChange.cpp">
       <Filter>ソース ファイル\オブジェクト</Filter>
     </ClCompile>
   </ItemGroup>

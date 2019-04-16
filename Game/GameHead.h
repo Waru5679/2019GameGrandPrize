@@ -15,6 +15,7 @@ enum OBJ_NAME
 	OBJ_CHARA_BULLET,//主人公の弾
 	OBJ_STAR,		 //星オブジェクト
 	OBJ_ITEM,		 //収集アイテムオブジェクト
+	OBJ_SCROLL_CHANGE,//スクロールの切り変えオブジェクト
 };
 //------------------------------------------------
 
@@ -62,7 +63,6 @@ struct UserData
 #define MAX_Y 10
 
 
-
 //マップ数値
 enum MAP_NUM
 {
@@ -71,6 +71,7 @@ enum MAP_NUM
 	MAP_ENEMY,	//敵
 	MAP_STAR,	//星
 	MAP_ITEM,	//収集アイテム
+	MAP_SCROLL_CHANGE,//スクロールの切り替え
 };
 
 //オブジェクトサイズ
@@ -81,6 +82,7 @@ enum MAP_NUM
 #define CHARA_SIZE	64.0f
 #define STAR_SIZE	64.0f
 #define ITEM_SIZE	64.0f
+#define SCROLL_CHANGE_SIZE 64.0f
 
 //------------------------------------------------
 //ゲーム内で使用するクラスヘッダ------------------
@@ -99,6 +101,7 @@ enum MAP_NUM
 #include "CharaBullet.h"
 #include "ObjStar.h"
 #include "ObjCollectionItem.h"
+#include "ScrollChange.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

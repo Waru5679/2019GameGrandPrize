@@ -157,9 +157,11 @@
     </ClInclude>
     <ClInclude Include="SceneMain.h" />
     <ClInclude Include="ObjCollectionItem.h" />
+    <ClInclude Include="ScrollChange.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ScrollChange.cpp" />
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="CharaBullet.cpp" />
     <ClCompile Include="Csv.cpp" />
