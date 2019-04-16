@@ -19,8 +19,8 @@ void CObjMainChara::Init()
 
 	m_vPos.x = 0.0f;	//位置
 	m_vPos.y = 0.0f;
-	m_fvx = 0.0f;		//移動ベクトル
-	m_fvy = 0.0f;
+	m_vMove.x = 0.0f;	//移動ベクトル
+	m_vMove.y = 0.0f;
 	m_bDirection = false;
 	m_bHitGround = false;
 	m_bBullet_FireIs = true;
@@ -39,44 +39,163 @@ void CObjMainChara::Action()
 	CSceneMain* m_pScene = new CSceneMain();
 	m_bScroll = m_pScene->GetScroll();
 
-	//移動呼び出し
-	Move(); 
-
-	//ジャンプ
+	//縦
 	if (m_bScroll == VERTICAL)
 	{
+		VarticalMove();
+	}
+	//横
+	else
+	{
+		SideMove();
+	}
+			
+	//移動範囲制御------------------------------
+	if (m_vPos.x > 740.0f)
+	{
+		m_vPos.x = 740.0f;
+	}
+	if (m_vPos.x < 0.0f)
+	{
+		m_vPos.x = 0.0f;
+	}
+	if (m_vPos.y < 0.0f)
+	{
+		m_vPos.y = 0.0f;
+	}
+	//----------------------------------------------
 
-		if (Input::GetVKey('C') == true)
-		{
+	//HitBox更新
+	CHitBox* hit_b = Hits::GetHitBox(this);
+	hit_b->SetPos(m_vPos.x, m_vPos.y);
 
-			if (m_bHitGround == true)
-			{
-				m_fvy = -15.0f;
-				m_bHitGround = false;
-			}
-		}
+}
 
-		//自由落下
+//ドロー
+void CObjMainChara::Draw()
+{
+	RECT_F src, dst;
 
-		if (m_vPos.y <= WINDOW_SIZE_H - CHARA_SIZE)
-		{
-			m_fvy += 9.8f / (16.0f);
-		}
+	//切り取り位置の設定
+	RectSet(&src, 64.0f, 2.0f, 32.0f, 32.0f);
 
-		else
-		{
-			m_vPos.y = 580.0f - 64.0f;
-			m_bHitGround = true;
-		}
+	//表示位置の設定
+	dst.m_top = m_vPos.y;
 
+	//向きが左なら画像を反転する
+	if (m_bDirection == false)
+	{
+		dst.m_left = m_vPos.x;
+		dst.m_right = m_vPos.x + CHARA_SIZE;
+	}
+	else
+	{
+		dst.m_left = (64.0f * 1.0f) + m_vPos.x;
+		dst.m_right = (64.0f - 64.0f * 1.0f) + m_vPos.x;
+	}
+	dst.m_bottom = CHARA_SIZE + m_vPos.y;
+
+	//描画
+	Draw::Draw(OBJ_CHARA, &src, &dst, m_fColor, 0.0f);
+}
+
+
+//移動横
+void CObjMainChara::SideMove()
+{
+	//入力
+	VarticalInput();
+	
+	//位置の更新
+	m_vPos.x += m_vMove.x;
+	m_vPos.y += m_vMove.y;
+
+}
+
+//移動縦
+void CObjMainChara::VarticalMove()
+{
+	//入力
+	SideInput();
+
+	//自由落下
+	if (m_vPos.y <= WINDOW_SIZE_H - CHARA_SIZE)
+	{
+		m_vMove.y += 9.8f / (16.0f);
+	}
+	else
+	{
+		m_vPos.y = 580.0f - 64.0f;
+		m_bHitGround = true;
+	}
+	
+	//位置の更新
+	m_vPos.x += m_vMove.x;
+	m_vPos.y += m_vMove.y;
+
+}
+
+//横の入力
+void CObjMainChara::SideInput()
+{
+	//キー入力　右
+	if (Input::GetVKey(VK_RIGHT) == true)
+	{
+		m_vMove.x = 3.0f;
+		m_bDirection = false;
+	}
+	//キー入力　左
+	else if (Input::GetVKey(VK_LEFT) == true)
+	{
+		m_vMove.x = -3.0f;
+		m_bDirection = true;
+	}
+	else
+	{
+		m_vMove.x = 0.0f;
 	}
 
-	//位置の更新
-	m_vPos.x += m_fvx;
-	m_vPos.y += m_fvy;
+	//ジャンプ
+	if (Input::GetVKey('C') == true)
+	{
+
+		if (m_bHitGround == true)
+		{
+			m_vMove.y = -15.0f;
+			m_bHitGround = false;
+		}
+	}
+}
+
+//縦の入力
+void CObjMainChara::VarticalInput()
+{
+	//キー入力　右
+	if (Input::GetVKey(VK_RIGHT) == true)
+	{
+		m_vMove.x += 0.3f;
+		m_bDirection = false;
+	}
+
+	//キー入力　左
+	if (Input::GetVKey(VK_LEFT) == true)
+	{
+		m_vMove.x -= 0.3f;
+		m_bDirection = true;
+	}
+	//キー入力　上
+	if (Input::GetVKey(VK_UP) == true)
+	{
+		m_vMove.y = -3.0f;
+	}
+
+	//キー入力　下
+	if (Input::GetVKey(VK_DOWN) == true)
+	{
+		m_vMove.y = +3.0f;
+	}
 
 	//攻撃
-
 	if (Input::GetVKey('X') == true)
 	{
 
@@ -93,111 +212,4 @@ void CObjMainChara::Action()
 	{
 		m_bBullet_FireIs = true;
 	}
-	//当たり判定--------------------------------------------------
-
-	//HitBox更新
-	CHitBox* hit_b = Hits::GetHitBox(this);
-	hit_b->SetPos(m_vPos.x, m_vPos.y);
-
-}
-
-//ドロー
-void CObjMainChara::Draw()
-{	
-	RECT_F src, dst;
-
-	//切り取り位置の設定
-	RectSet(&src, 64.0f, 2.0f, 32.0f, 32.0f);
-
-	//表示位置の設定
-	dst.m_top	=  m_vPos.y;
-
-	//向きが左なら画像を反転する
-	if (m_bDirection == false)
-	{
-		dst.m_left = m_vPos.x;
-		dst.m_right = m_vPos.x + CHARA_SIZE;
-	}
-	else
-	{
-		dst.m_left = (64.0f * 1.0f) + m_vPos.x;
-		dst.m_right = (64.0f - 64.0f * 1.0f) + m_vPos.x;
-	}
-	dst.m_bottom= CHARA_SIZE + m_vPos.y;
-
-	//描画
-	Draw::Draw(OBJ_CHARA, &src, &dst, m_fColor, 0.0f);
-}
-
-
-//移動
-void CObjMainChara::Move()
-{
-	//縦スクロール時のみ有効-----------------------
-	if (m_bScroll == SIDE)
-	{
-
-		//キー入力　右
-		if (Input::GetVKey(VK_RIGHT) == true)
-		{
-			m_fvx += 0.3f;
-			m_bDirection = false;
-		}
-
-		//キー入力　左
-		if (Input::GetVKey(VK_LEFT) == true)
-		{
-			m_fvx -= 0.3f;
-			m_bDirection = true;
-		}
-		//キー入力　上
-		if (Input::GetVKey(VK_UP) == true)
-		{
-			m_fvy = -3.0f;
-		}
-
-		//キー入力　下
-		if (Input::GetVKey(VK_DOWN) == true)
-		{
-			m_fvy = +3.0f;
-		}
-		
-	}
-	//横スクロール時のみ有効----------------------
-	else
-	{
-		//キー入力　右
-		if (Input::GetVKey(VK_RIGHT) == true)
-		{
-			m_fvx = 3.0f;
-			m_bDirection = false;
-		}
-		//キー入力　左
-		else if (Input::GetVKey(VK_LEFT) == true)
-		{
-			m_fvx = -3.0f;
-			m_bDirection = true;
-		}
-		else
-		{
-			m_fvx = 0.0f;
-		}
-		
-	}
-	//-------------------------------------------	
-
-	//移動範囲制御------------------------------
-	if (m_vPos.x > 740.0f)
-	{
-		m_vPos.x = 740.0f;
-	}
-	if (m_vPos.x < 0.0f)
-	{
-		m_vPos.x = 0.0f;
-	}
-	if (m_vPos.y < 0.0f)
-	{
-		m_vPos.y = 0.0f;
-	}
-	//----------------------------------------------
 }
