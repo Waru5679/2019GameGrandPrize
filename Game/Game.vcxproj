@@ -157,6 +157,7 @@
     </ClInclude>
     <ClInclude Include="SceneMain.h" />
     <ClInclude Include="ObjCollectionItem.h" />
+    <ClInclude Include="Score.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +187,7 @@
     </ClCompile>
     <ClCompile Include="SceneMain.cpp" />
     <ClCompile Include="ObjCollectionItem.cpp" />
+    <ClCompile Include="Score.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -13,7 +13,7 @@ enum OBJ_NAME
 	OBJ_ENEMY,		//敵
 	OBJ_ENEMY_BULLET,//敵の弾
 	OBJ_CHARA_BULLET,//主人公の弾
-	OBJ_STAR,		 //星オブジェクト
+	OBJ_STAR,	 //星オブジェクト
 	OBJ_ITEM,		 //収集アイテムオブジェクト
 };
 //------------------------------------------------
@@ -29,11 +29,6 @@ enum HIT_ELEMENTS
 	ELEMENT_ITEM,
 	ELEMENT_MAGIC,
 	ELEMENT_FIELD,
-	ELEMENT_RED,
-	ELEMENT_GREEN,
-	ELEMENT_BLUE,
-	ELEMENT_BLACK,
-	ELEMENT_WHITE,
 	ELEMENT_CHARA_BULLET,
 	ELEMENT_ENEMY_BULLET,
 	ELEMENT_STAR,
@@ -66,11 +61,11 @@ struct UserData
 //マップ数値
 enum MAP_NUM
 {
-	MAP_NONE,	//何もない
-	MAP_HOLE,	//穴
-	MAP_ENEMY,	//敵
-	MAP_STAR,	//星
-	MAP_ITEM,	//収集アイテム
+	MAP_NONE,		//何もない
+	MAP_HOLE,		//穴
+	MAP_ENEMY,		//敵
+	MAP_STAR,		//星
+	MAP_ITEM,		//収集アイテム
 };
 
 //オブジェクトサイズ

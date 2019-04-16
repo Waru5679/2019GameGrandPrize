@@ -36,11 +36,11 @@ void CObjMainChara::Action()
 {
 
 	//ƒXƒNƒ[ƒ‹‚Ìó‘Ôæ“¾
-	CSceneMain* m_pScene = new CSceneMain();
+	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
 	m_bScroll = m_pScene->GetScroll();
 
 	//c
-	if (m_bScroll == VERTICAL)
+	if (m_bScroll != VERTICAL)
 	{
 		VarticalMove();
 	}
