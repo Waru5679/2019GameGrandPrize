@@ -18,7 +18,7 @@ void CObjMainChara::Init()
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 
 	m_vPos.x = 0.0f;	//位置
-	m_vPos.y = 0.0f;
+	m_vPos.y = WINDOW_SIZE_H - CHARA_SIZE;
 	m_vMove.x = 0.0f;	//移動ベクトル
 	m_vMove.y = 0.0f;
 	m_bDirection = false;
@@ -51,17 +51,25 @@ void CObjMainChara::Action()
 	}
 			
 	//移動範囲制御------------------------------
-	if (m_vPos.x > 740.0f)
+	//画面右端
+	if (m_vPos.x > WINDOW_SIZE_W - CHARA_SIZE)
 	{
-		m_vPos.x = 740.0f;
+		m_vPos.x = WINDOW_SIZE_W - CHARA_SIZE;
 	}
+	//画面左端
 	if (m_vPos.x < 0.0f)
 	{
 		m_vPos.x = 0.0f;
 	}
+	//画面上端
 	if (m_vPos.y < 0.0f)
 	{
 		m_vPos.y = 0.0f;
+	}
+	//画面下端(縦スクロール時のみ有効)
+	if (m_vPos.y > WINDOW_SIZE_H - CHARA_SIZE)
+	{
+		m_vPos.y = WINDOW_SIZE_H - CHARA_SIZE;
 	}
 	//----------------------------------------------
 
@@ -82,18 +90,19 @@ void CObjMainChara::Draw()
 	//表示位置の設定
 	dst.m_top = m_vPos.y;
 
-	//向きが左なら画像を反転する
+	//向きが右なら画像を反転する
 	if (m_bDirection == false)
 	{
 		dst.m_left = m_vPos.x;
 		dst.m_right = m_vPos.x + CHARA_SIZE;
 	}
+	//向きが左なら読み取った時の状態にする
 	else
 	{
 		dst.m_left = (64.0f * 1.0f) + m_vPos.x;
-		dst.m_right = (64.0f - 64.0f * 1.0f) + m_vPos.x;
+		dst.m_right =m_vPos.x;
 	}
-	dst.m_bottom = CHARA_SIZE + m_vPos.y;
+	dst.m_bottom =m_vPos.y + CHARA_SIZE;
 
 	//描画
 	Draw::Draw(OBJ_CHARA, &src, &dst, m_fColor, 0.0f);
@@ -118,14 +127,14 @@ void CObjMainChara::VarticalMove()
 	//入力
 	SideInput();
 
-	//自由落下
-	if (m_vPos.y <= WINDOW_SIZE_H - CHARA_SIZE)
+	//自由落下　地面についてないときは落下する
+	if (m_vPos.y <= 585.0f - CHARA_SIZE)
 	{
-		m_vMove.y += 9.8f / (16.0f);
+		m_vMove.y += 9.8f / 16.0f;
 	}
+	//地面についていればジャンプ用の判定(m_bHitGround)をtrueにする
 	else
 	{
-		m_vPos.y = 580.0f - 64.0f;
 		m_bHitGround = true;
 	}
 	
@@ -158,7 +167,7 @@ void CObjMainChara::SideInput()
 	//ジャンプ
 	if (Input::GetVKey('C') == true)
 	{
-
+		//地面に接地してるとき(m_bHitGround == true)の時のみ飛ぶ
 		if (m_bHitGround == true)
 		{
 			m_vMove.y = -15.0f;
@@ -173,26 +182,33 @@ void CObjMainChara::VarticalInput()
 	//キー入力　右
 	if (Input::GetVKey(VK_RIGHT) == true)
 	{
-		m_vMove.x += 0.3f;
+		m_vMove.x = 3.0f;
 		m_bDirection = false;
 	}
-
 	//キー入力　左
-	if (Input::GetVKey(VK_LEFT) == true)
+	else if (Input::GetVKey(VK_LEFT) == true)
 	{
-		m_vMove.x -= 0.3f;
+		m_vMove.x = -3.0f;
 		m_bDirection = true;
 	}
+	else
+	{
+		m_vMove.x = 0.0f;
+	}
+
 	//キー入力　上
 	if (Input::GetVKey(VK_UP) == true)
 	{
 		m_vMove.y = -3.0f;
 	}
-
 	//キー入力　下
-	if (Input::GetVKey(VK_DOWN) == true)
+	else if (Input::GetVKey(VK_DOWN) == true)
 	{
-		m_vMove.y = +3.0f;
+		m_vMove.y =  3.0f;
+	}
+	else
+	{
+		m_vMove.y = 0.0f;
 	}
 
 	//攻撃

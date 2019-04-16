@@ -69,6 +69,15 @@ void CMap::Create()
 					m_Map[y][x] = MAP_NONE;
 					break;
 				}
+				case MAP_ITEM:
+				{
+					CCollectionItem* pCollection = new  CCollectionItem(x, y);
+					Objs::InsertObj(pCollection, OBJ_ITEM, 10);
+
+					//ê∂ê¨Ç™èIÇÌÇÍÇŒãÛîíÇ…
+					m_Map[y][x] = MAP_NONE;
+					break;
+				}
 			}
 		}
 	}

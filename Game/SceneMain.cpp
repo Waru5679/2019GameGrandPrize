@@ -11,8 +11,6 @@ void CSceneMain::InitScene()
 	//テクスチャ読み込み
 	LoadTexture();
 
-	
-
 	//マップ情報読み込み
 	m_pMap=CCsv::LoadCsv("Map/TestMap.csv",MAX_X,MAX_Y);
 
@@ -37,6 +35,7 @@ void CSceneMain::InitScene()
 
 	//スクロール方向
 	m_bScroll = SIDE;
+
 }
 
 //実行中
@@ -94,5 +93,8 @@ void CSceneMain::LoadTexture()
 
 	//星
 	Draw::LoadImageW(L"Texture/Planet.png", OBJ_STAR, TEX_SIZE_128);
+
+	//収集アイテム
+	Draw::LoadImageW(L"Texture/Collection.png", OBJ_ITEM, TEX_SIZE_128);
 
 }

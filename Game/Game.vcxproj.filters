@@ -108,7 +108,7 @@
     <ClInclude Include="ObjStar.h">
       <Filter>ソース ファイル\オブジェクト</Filter>
     </ClInclude>
-    <ClInclude Include="Score.h">
+    <ClInclude Include="ObjCollectionItem.h">
       <Filter>ソース ファイル\オブジェクト</Filter>
     </ClInclude>
   </ItemGroup>
@@ -185,7 +185,7 @@
     <ClCompile Include="ObjStar.cpp">
       <Filter>ソース ファイル\オブジェクト</Filter>
     </ClCompile>
-    <ClCompile Include="Score.cpp">
+    <ClCompile Include="ObjCollectionItem.cpp">
       <Filter>ソース ファイル\オブジェクト</Filter>
     </ClCompile>
   </ItemGroup>
