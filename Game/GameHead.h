@@ -16,6 +16,7 @@ enum OBJ_NAME
 	OBJ_STAR,		 //星オブジェクト
 	OBJ_ITEM_BIG,	 //収集アイテムオブジェクト(大)
 	OBJ_ITEM_SMALL,	 //収集アイテムオブジェクト(小)
+	OBJ_SCORE,		 //スコア
 };
 //------------------------------------------------
 
@@ -39,8 +40,7 @@ enum HIT_ELEMENTS
 //セーブ＆ロードとシーン間のやり取りするデータ
 struct UserData
 {
-	int mSeveData;	//サンプルセーブデータ
-	
+	int m_iScore;	//スコア
 };
 //------------------------------------------------
 
@@ -67,6 +67,8 @@ enum MAP_NUM
 	MAP_STAR,		//星
 	MAP_ITEM_BIG,	//収集アイテム(大)
 	MAP_ITEM_SMALL,	//収集アイテム(小)
+	MAP_BIG,		//アイテム取得判別用(大)
+	MAP_SMALL,		//アイテム取得判別用(小)
 };
 
 //オブジェクトサイズ
@@ -78,6 +80,10 @@ enum MAP_NUM
 #define STAR_SIZE		64.0f
 #define ITEM_BIG_SIZE	64.0f
 #define ITEM_SMALL_SIZE	32.0f
+
+//スコア
+#define SCORE_BIG		1000;
+#define SCORE_SMALL		 500;
 
 //------------------------------------------------
 //ゲーム内で使用するクラスヘッダ------------------
@@ -97,6 +103,7 @@ enum MAP_NUM
 #include "ObjStar.h"
 #include "ObjCollectionItemBig.h"
 #include "ObjCollectionItemSmall.h"
+#include "Score.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

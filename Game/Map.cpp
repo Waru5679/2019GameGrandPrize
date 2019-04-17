@@ -75,7 +75,7 @@ void CMap::Create()
 					Objs::InsertObj(pCollection_big, OBJ_ITEM_BIG, 10);
 
 					//¶¬‚ªI‚í‚ê‚Î‹ó”’‚É
-					m_Map[y][x] = MAP_NONE;
+					m_Map[y][x] = MAP_BIG;
 					break;
 				}
 				case MAP_ITEM_SMALL:
@@ -84,7 +84,7 @@ void CMap::Create()
 					Objs::InsertObj(pCollection_small, OBJ_ITEM_SMALL, 10);
 
 					//¶¬‚ªI‚í‚ê‚Î‹ó”’‚É
-					m_Map[y][x] = MAP_NONE;
+					m_Map[y][x] = MAP_SMALL;
 					break;
 				}
 			}

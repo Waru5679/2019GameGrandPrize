@@ -40,7 +40,7 @@ void CObjMainChara::Action()
 	m_bScroll = m_pScene->GetScroll();
 
 	//èc
-	if (m_bScroll != VERTICAL)
+	if (m_bScroll == VERTICAL)
 	{
 		VarticalMove();
 	}

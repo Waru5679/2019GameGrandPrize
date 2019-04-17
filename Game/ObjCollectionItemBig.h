@@ -18,5 +18,7 @@ public:
 	//アイテムの位置
 	float m_fPos_x;
 	float m_fPos_y;
-	float Set_Name;
+
+	//スコア加算用変数
+	int m_iScore;
 };

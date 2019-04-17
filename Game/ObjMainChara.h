@@ -9,8 +9,6 @@ using namespace GameL;
 class CObjMainChara : public CObj
 {
 public:
-	CObjMainChara() {};
-	~CObjMainChara() {};
 
 	void Init();	//イニシャライズ
 
