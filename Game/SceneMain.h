@@ -13,6 +13,9 @@ public:
 	void Scene();		//実行中
 
 	bool GetScroll() { return m_bScroll; }
+
+	//スクロール切り替え
+	void ScrollChange();
 private:
 	void LoadTexture();	//テクスチャ読み込み
 	void LoadAudio();	//音楽読み込み

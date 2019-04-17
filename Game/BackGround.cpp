@@ -25,6 +25,7 @@ void CBackGround::Init()
 //更新
 void CBackGround::Action()
 {
+
 	//横スクロール
 	if (m_bScroll == SIDE)
 	{

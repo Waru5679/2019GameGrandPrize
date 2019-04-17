@@ -39,6 +39,16 @@ void CMap::Create()
 		{
 			switch (m_Map[y][x])
 			{
+				//’n–Ê
+				case MAP_PLANE:
+				{
+					CPlane* pPlane = new CPlane(x, y);
+					Objs::InsertObj(pPlane, OBJ_PLANE, 10);
+
+					//¶¬‚ªI‚í‚ê‚Î‹ó”’‚É
+					m_Map[y][x] = MAP_NONE;
+					break;
+				}
 				//ŒŠ
 				case MAP_HOLE:
 				{

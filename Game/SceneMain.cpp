@@ -34,6 +34,12 @@ void CSceneMain::InitScene()
 	CObjMainChara* chara = new CObjMainChara();
 	Objs::InsertObj(chara, OBJ_CHARA, 10);
 
+	//スクロールの切り替え
+	CScrollChange* pScrollChange = new  CScrollChange(5, 10);
+	Objs::InsertObj(pScrollChange, OBJ_SCROLL_CHANGE, 10);
+
+
+
 	//カウンタ初期化
 	m_Count = 0;
 
@@ -51,32 +57,30 @@ void CSceneMain::InitScene()
 //実行中
 void CSceneMain::Scene()
 {
-	//カウンタ更新
-	m_Count++;
+	
+}
 
-	//debug用1000回でスクロールの向きを変える
-	if (m_Count > 1000)
+
+//スクロール切り替え
+void CSceneMain::ScrollChange()
+{
+	//スクロール方向の切り替え
+	m_bScroll = !(m_bScroll);
+
+	//背景の位置とスクロール方向の変更
+
+	//横→縦に変更
+	if (m_bScroll == VERTICAL)
 	{
-		m_Count = 0;
+		m_pBack1->SetScroll(0.0f, 0.0f, VERTICAL);
+		m_pBack2->SetScroll(0.0f, WINDOW_SIZE_H, VERTICAL);
 
-		//スクロール方向の切り替え
-		m_bScroll = !(m_bScroll);
-
-		//背景の位置とスクロール方向の変更
-
-		//横→縦に変更
-		if (m_bScroll == VERTICAL)
-		{
-			m_pBack1->SetScroll(0.0f, 0.0f, VERTICAL);
-			m_pBack2->SetScroll(0.0f, WINDOW_SIZE_H, VERTICAL);
-
-		}
-		//縦→横に変更
-		else
-		{
-			m_pBack1->SetScroll(0.0f, 0.0f, SIDE);
-			m_pBack2->SetScroll(WINDOW_SIZE_W, 0.0f, SIDE);
-		}
+	}
+	//縦→横に変更
+	else
+	{
+		m_pBack1->SetScroll(0.0f, 0.0f, SIDE);
+		m_pBack2->SetScroll(WINDOW_SIZE_W, 0.0f, SIDE);
 	}
 }
 
@@ -110,6 +114,9 @@ void CSceneMain::LoadTexture()
 
 	//スクロールのチェンジ
 	Draw::LoadImageW(L"Texture/ScrollChange.png", OBJ_SCROLL_CHANGE, TEX_SIZE_128);
+
+	//床
+	Draw::LoadImageW(L"Texture/Plane.png", OBJ_PLANE, TEX_SIZE_128);
 
 }
 
