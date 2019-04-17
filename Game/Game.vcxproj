@@ -151,6 +151,7 @@
     <ClInclude Include="Hole.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="ObjCollectionItemSmall.h" />
     <ClInclude Include="ObjMainChara.h" />
     <ClInclude Include="ObjStar.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -182,12 +183,14 @@
     <ClCompile Include="GameL\WinInputs.cpp" />
     <ClCompile Include="Hole.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="ObjCollectionItemSmall.cpp" />
     <ClCompile Include="ObjMainChara.cpp" />
     <ClCompile Include="ObjStar.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="SceneMain.cpp" />
-    <ClCompile Include="ObjCollectionItem.cpp" />
+    <ClCompile Include="ObjCollectionItemBig.cpp" />
+    <ClCompile Include="Score.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>

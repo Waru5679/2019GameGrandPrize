@@ -26,7 +26,6 @@ void CStar::Init()
 //更新
 void CStar::Action()
 {
-
 	//HitBox更新
 	CHitBox* hit_b = Hits::GetHitBox(this);
 	//当たり判定の位置を星の中に収めるように移動

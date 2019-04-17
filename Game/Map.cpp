@@ -69,11 +69,19 @@ void CMap::Create()
 					m_Map[y][x] = MAP_NONE;
 					break;
 				}
-				//アイテム
-				case MAP_ITEM:
+				case MAP_ITEM_BIG:
 				{
-					CCollectionItem* pCollection = new  CCollectionItem(x, y);
-					Objs::InsertObj(pCollection, OBJ_ITEM, 10);
+					CCollectionItemBig* pCollection_big = new  CCollectionItemBig(x, y);
+					Objs::InsertObj(pCollection_big, OBJ_ITEM_BIG, 10);
+
+					//生成が終われば空白に
+					m_Map[y][x] = MAP_NONE;
+					break;
+				}
+				case MAP_ITEM_SMALL:
+				{
+					CCollectionItemSmall* pCollection_small = new  CCollectionItemSmall(x, y);
+					Objs::InsertObj(pCollection_small, OBJ_ITEM_SMALL, 10);
 
 					//生成が終われば空白に
 					m_Map[y][x] = MAP_NONE;

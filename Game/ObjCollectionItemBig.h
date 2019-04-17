@@ -4,10 +4,10 @@
 using namespace GameL;
 
 //収集アイテムクラス 以下アイテム
-class CCollectionItem : public CObj
+class CCollectionItemBig : public CObj
 {
 public:
-	CCollectionItem(int x, int y);
+	CCollectionItemBig(int x, int y);
 	void Init();	//初期化
 	void Action();	//更新
 	void Draw();	//描画
@@ -18,4 +18,5 @@ public:
 	//アイテムの位置
 	float m_fPos_x;
 	float m_fPos_y;
+	float Set_Name;
 };

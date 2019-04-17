@@ -14,7 +14,8 @@ enum OBJ_NAME
 	OBJ_ENEMY_BULLET,//敵の弾
 	OBJ_CHARA_BULLET,//主人公の弾
 	OBJ_STAR,		 //星オブジェクト
-	OBJ_ITEM,		 //収集アイテムオブジェクト
+	OBJ_ITEM_BIG,	 //収集アイテムオブジェクト(大)
+	OBJ_ITEM_SMALL,	 //収集アイテムオブジェクト(小)
 	OBJ_SCROLL_CHANGE,//スクロールの切り変えオブジェクト
 };
 //------------------------------------------------
@@ -27,14 +28,8 @@ enum HIT_ELEMENTS
 	//属性は追加可能だが、デバック時の色は初期設定分しか無い
 	ELEMENT_PLAYER,
 	ELEMENT_ENEMY,
-	ELEMENT_ITEM,
-	ELEMENT_MAGIC,
-	ELEMENT_FIELD,
-	ELEMENT_RED,
-	ELEMENT_GREEN,
-	ELEMENT_BLUE,
-	ELEMENT_BLACK,
-	ELEMENT_WHITE,
+	ELEMENT_ITEM_BIG,
+	ELEMENT_ITEM_SMALL,
 	ELEMENT_CHARA_BULLET,
 	ELEMENT_ENEMY_BULLET,
 	ELEMENT_STAR,
@@ -66,22 +61,24 @@ struct UserData
 //マップ数値
 enum MAP_NUM
 {
-	MAP_NONE,	//何もない
-	MAP_HOLE,	//穴
-	MAP_ENEMY,	//敵
-	MAP_STAR,	//星
-	MAP_ITEM,	//収集アイテム
+	MAP_NONE,		//何もない
+	MAP_HOLE,		//穴
+	MAP_ENEMY,		//敵
+	MAP_STAR,		//星
+	MAP_ITEM_BIG,	//収集アイテム(大)
+	MAP_ITEM_SMALL,	//収集アイテム(小)
 	MAP_SCROLL_CHANGE,//スクロールの切り替え
 };
 
 //オブジェクトサイズ
-#define OBJ_SIZE	32.0f
-#define HOLE_SIZE	32.0f
-#define ENEMY_SIZE	64.0f
-#define BULLET_SIZE 32.0f
-#define CHARA_SIZE	64.0f
-#define STAR_SIZE	64.0f
-#define ITEM_SIZE	64.0f
+#define OBJ_SIZE		32.0f
+#define HOLE_SIZE		32.0f
+#define ENEMY_SIZE		64.0f
+#define BULLET_SIZE		32.0f
+#define CHARA_SIZE		64.0f
+#define STAR_SIZE		64.0f
+#define ITEM_BIG_SIZE	64.0f
+#define ITEM_SMALL_SIZE	32.0f
 #define SCROLL_CHANGE_SIZE 64.0f
 
 //------------------------------------------------
@@ -100,7 +97,8 @@ enum MAP_NUM
 #include "EnemyBullet.h"
 #include "CharaBullet.h"
 #include "ObjStar.h"
-#include "ObjCollectionItem.h"
+#include "ObjCollectionItemBig.h"
+#include "ObjCollectionItemSmall.h"
 #include "ScrollChange.h"
 //------------------------------------------------
 
