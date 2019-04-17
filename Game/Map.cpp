@@ -85,7 +85,7 @@ void CMap::Create()
 					Objs::InsertObj(pCollection_big, OBJ_ITEM_BIG, 10);
 
 					//生成が終われば空白に
-					m_Map[y][x] = MAP_BIG;
+					m_Map[y][x] = MAP_NONE;
 					break;
 				}
 				case MAP_ITEM_SMALL:
@@ -94,7 +94,7 @@ void CMap::Create()
 					Objs::InsertObj(pCollection_small, OBJ_ITEM_SMALL, 10);
 
 					//生成が終われば空白に
-					m_Map[y][x] = MAP_SMALL;
+					m_Map[y][x] = MAP_NONE;
 					break;
 				}
 				//スクロールチェンジ

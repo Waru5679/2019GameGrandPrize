@@ -18,6 +18,7 @@ enum OBJ_NAME
 	OBJ_ITEM_SMALL,		//収集アイテムオブジェクト(小)
 	OBJ_SCROLL_CHANGE,	//スクロールの切り変えオブジェクト
 	OBJ_PLANE,			//地面
+	OBJ_SCORE,		//スコア
 };
 //------------------------------------------------
 
@@ -72,8 +73,6 @@ enum MAP_NUM
 	MAP_ITEM_BIG,	//収集アイテム(大)
 	MAP_ITEM_SMALL,	//収集アイテム(小)
 	MAP_SCROLL_CHANGE,//スクロールの切り替え
-	MAP_BIG,		//アイテム取得判別用(大)
-	MAP_SMALL,		//アイテム取得判別用(小)
 };
 
 //オブジェクトサイズ
