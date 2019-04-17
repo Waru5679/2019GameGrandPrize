@@ -111,6 +111,10 @@ void CSceneMain::LoadTexture()
 	//収集アイテム
 	Draw::LoadImageW(L"Texture/Collection.png", OBJ_ITEM_BIG, TEX_SIZE_128);
 	Draw::LoadImageW(L"Texture/Collection.png", OBJ_ITEM_SMALL, TEX_SIZE_128);
+
+	//スクロールのチェンジ
+	Draw::LoadImageW(L"Texture/ScrollChange.png", OBJ_SCROLL_CHANGE, TEX_SIZE_128);
+
 }
 
 //音楽読み込み

@@ -214,7 +214,6 @@ void CObjMainChara::VarticalInput()
 	//çUåÇ
 	if (Input::GetVKey('X') == true)
 	{
-
 		if (m_bBullet_FireIs == true)
 		{
 			//íeê∂ê¨

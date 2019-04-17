@@ -17,6 +17,7 @@ enum OBJ_NAME
 	OBJ_ITEM_BIG,	 //収集アイテムオブジェクト(大)
 	OBJ_ITEM_SMALL,	 //収集アイテムオブジェクト(小)
 	OBJ_SCORE,		 //スコア
+	OBJ_SCROLL_CHANGE,//スクロールの切り変えオブジェクト
 };
 //------------------------------------------------
 
@@ -57,7 +58,6 @@ struct UserData
 #define MAX_Y 10
 
 
-
 //マップ数値
 enum MAP_NUM
 {
@@ -67,6 +67,7 @@ enum MAP_NUM
 	MAP_STAR,		//星
 	MAP_ITEM_BIG,	//収集アイテム(大)
 	MAP_ITEM_SMALL,	//収集アイテム(小)
+	MAP_SCROLL_CHANGE,//スクロールの切り替え
 	MAP_BIG,		//アイテム取得判別用(大)
 	MAP_SMALL,		//アイテム取得判別用(小)
 };
@@ -80,6 +81,7 @@ enum MAP_NUM
 #define STAR_SIZE		64.0f
 #define ITEM_BIG_SIZE	64.0f
 #define ITEM_SMALL_SIZE	32.0f
+#define SCROLL_CHANGE_SIZE 64.0f
 
 //スコア
 #define SCORE_BIG		1000;
@@ -103,6 +105,7 @@ enum MAP_NUM
 #include "ObjStar.h"
 #include "ObjCollectionItemBig.h"
 #include "ObjCollectionItemSmall.h"
+#include "ScrollChange.h"
 #include "Score.h"
 //------------------------------------------------
 
