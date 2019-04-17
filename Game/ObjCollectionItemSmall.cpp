@@ -1,5 +1,6 @@
 #include "GameL/DrawTexture.h"
 #include "GameL/HitBoxManager.h"
+#include "GameL/UserData.h"
 
 #include "ObjCollectionItemSmall.h"
 #include "GameHead.h"
@@ -36,6 +37,9 @@ void CCollectionItemSmall::Action()
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
+
+		//ƒXƒRƒA‚É+500‚·‚é
+		((UserData*)Save::GetData())->m_iScore += SCORE_SMALL;
 	}
 
 }

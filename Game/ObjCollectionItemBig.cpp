@@ -1,9 +1,11 @@
 #include "GameL/DrawTexture.h"
 #include "GameL/HitBoxManager.h"
+#include "GameL/UserData.h"
 
 #include "ObjCollectionItemBig.h"
 #include "GameHead.h"
 #include "Function.h"
+#include "Map.h"
 
 
 //コンストラクタ
@@ -19,6 +21,8 @@ void CCollectionItemBig::Init()
 	//色セット
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 	
+	//スコア初期化
+	m_iScore = 0;
 
 	//当たり判定用HitBox作成
 	Hits::SetHitBox(this, m_fPos_x, m_fPos_y, ITEM_BIG_SIZE, ITEM_BIG_SIZE, ELEMENT_ITEM_BIG, OBJ_ITEM_BIG, 1);
@@ -36,6 +40,10 @@ void CCollectionItemBig::Action()
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
+
+		//スコアに+1000加算する
+		((UserData*)Save::GetData())->m_iScore += SCORE_BIG;
+
 	}
 
 }

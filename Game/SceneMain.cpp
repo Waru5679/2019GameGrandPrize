@@ -40,6 +40,10 @@ void CSceneMain::InitScene()
 
 
 
+	//スコア表示オブジェ
+	CScore* score = new CScore();
+	Objs::InsertObj(score, OBJ_SCORE, 10);
+
 	//カウンタ初期化
 	m_Count = 0;
 

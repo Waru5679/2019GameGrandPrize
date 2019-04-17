@@ -44,8 +44,7 @@ enum HIT_ELEMENTS
 //セーブ＆ロードとシーン間のやり取りするデータ
 struct UserData
 {
-	int mSeveData;	//サンプルセーブデータ
-	
+	int m_iScore;	//スコア
 };
 //------------------------------------------------
 
@@ -73,7 +72,8 @@ enum MAP_NUM
 	MAP_ITEM_BIG,	//収集アイテム(大)
 	MAP_ITEM_SMALL,	//収集アイテム(小)
 	MAP_SCROLL_CHANGE,//スクロールの切り替え
-	
+	MAP_BIG,		//アイテム取得判別用(大)
+	MAP_SMALL,		//アイテム取得判別用(小)
 };
 
 //オブジェクトサイズ
@@ -86,6 +86,10 @@ enum MAP_NUM
 #define ITEM_BIG_SIZE	64.0f
 #define ITEM_SMALL_SIZE	32.0f
 #define SCROLL_CHANGE_SIZE 64.0f
+
+//スコア
+#define SCORE_BIG		1000;
+#define SCORE_SMALL		 500;
 
 #define PLANE_WIDTH	32.0f
 #define PLANE_HEIGHT 6.0f
@@ -110,6 +114,7 @@ enum MAP_NUM
 #include "ObjCollectionItemSmall.h"
 #include "ScrollChange.h"
 #include "Plane.h"
+#include "Score.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
