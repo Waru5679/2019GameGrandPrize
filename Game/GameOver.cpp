@@ -20,7 +20,7 @@ void CGameOver::Init()
 void CGameOver::Action()
 {
 	//Enter‚Åƒ^ƒCƒgƒ‹‚Ö
-	if (Input::GetVKey(VK_RETURN) == true)
+	if (Input::GetTrrigerKey(VK_RETURN) == true)
 	{
 		Scene::SetScene(new CSceneTitle());
 		this->SetStatus(false);

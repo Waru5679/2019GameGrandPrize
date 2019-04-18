@@ -19,7 +19,7 @@ void CTitle::Init()
 void CTitle::Action()
 {
 	//Enter‚ÅƒƒCƒ“‚Ö
-	if (Input::GetVKey(VK_RETURN) == true)
+	if (Input::GetTrrigerKey(VK_RETURN) == true)
 	{
 		Scene::SetScene(new CSceneMain());
 		this->SetStatus(false);
