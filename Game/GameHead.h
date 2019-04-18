@@ -57,6 +57,8 @@ struct UserData
 #define MAX_X 10
 #define MAX_Y 10
 
+//最大アイテム数
+#define MAX_ITEM 4
 
 //マップ数値
 enum MAP_NUM
@@ -68,8 +70,13 @@ enum MAP_NUM
 	MAP_ITEM_BIG,	//収集アイテム(大)
 	MAP_ITEM_SMALL,	//収集アイテム(小)
 	MAP_SCROLL_CHANGE,//スクロールの切り替え
-	MAP_BIG,		//アイテム取得判別用(大)
-	MAP_SMALL,		//アイテム取得判別用(小)
+};
+
+//アイテム用数値
+enum ITEM_NUM
+{
+	ITEM_BIG,		//アイテム(大)
+	ITEM_SMALL,		//アイテム(小)
 };
 
 //オブジェクトサイズ
@@ -86,6 +93,7 @@ enum MAP_NUM
 //スコア
 #define SCORE_BIG		1000;
 #define SCORE_SMALL		 500;
+#define SCORE_BONUS		 250;
 
 //------------------------------------------------
 //ゲーム内で使用するクラスヘッダ------------------

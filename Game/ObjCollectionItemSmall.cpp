@@ -8,10 +8,11 @@
 
 
 //コンストラクタ
-CCollectionItemSmall::CCollectionItemSmall(int x, int y)
+CCollectionItemSmall::CCollectionItemSmall(int x, int y,int number)
 {
 	m_fPos_x = (float)x * OBJ_SIZE;
 	m_fPos_y = (float)y * OBJ_SIZE;
+	m_iPosition = number;
 }
 
 //初期化
@@ -40,6 +41,17 @@ void CCollectionItemSmall::Action()
 
 		//スコアに+500する
 		((UserData*)Save::GetData())->m_iScore += SCORE_SMALL;
+
+		//Map取得
+		CMap* m_pMap = dynamic_cast<CMap*>(Objs::GetObj(OBJ_MAP));
+		//Map内のm_iMapItem[]の中身の今の数値を0にする
+		m_pMap->m_iMapItem[m_iPosition] = 0;
+		//Map.cpp内のm_iMapItem[]に今の数値-1して直前の数値が0ならボーナス加算
+		if (m_pMap->m_iMapItem[m_iPosition - 1] == 0)
+		{
+			((UserData*)Save::GetData())->m_iScore += SCORE_BONUS;
+		}
+
 	}
 
 }

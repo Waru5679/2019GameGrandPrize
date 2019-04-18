@@ -7,7 +7,7 @@ using namespace GameL;
 class CCollectionItemBig : public CObj
 {
 public:
-	CCollectionItemBig(int x, int y);
+	CCollectionItemBig(int x, int y,int number);
 	void Init();	//初期化
 	void Action();	//更新
 	void Draw();	//描画
@@ -19,6 +19,6 @@ public:
 	float m_fPos_x;
 	float m_fPos_y;
 
-	//スコア加算用変数
-	int m_iScore;
+	//スコアの場所探索用
+	int m_iPosition;
 };
