@@ -156,12 +156,14 @@
     <ClInclude Include="ObjStar.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="Plane.h" />
     <ClInclude Include="SceneMain.h" />
     <ClInclude Include="ObjCollectionItem.h" />
     <ClInclude Include="ScrollChange.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Plane.cpp" />
     <ClCompile Include="ScrollChange.cpp" />
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="CharaBullet.cpp" />

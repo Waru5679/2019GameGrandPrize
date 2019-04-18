@@ -6,18 +6,19 @@ enum OBJ_NAME
 	//ゲームで使うオブジェクトの名前
 	//OBJ_○○と表記
 	OBJ_NO_NAME,	//オブジェクト名無し(禁止)
-	OBJ_BACK_GROUND,//背景
-	OBJ_MAP,		//マップ
-	OBJ_HOLE,		//穴
-	OBJ_CHARA,		//キャラクタ
-	OBJ_ENEMY,		//敵
-	OBJ_ENEMY_BULLET,//敵の弾
-	OBJ_CHARA_BULLET,//主人公の弾
-	OBJ_STAR,		 //星オブジェクト
-	OBJ_ITEM_BIG,	 //収集アイテムオブジェクト(大)
-	OBJ_ITEM_SMALL,	 //収集アイテムオブジェクト(小)
-	OBJ_SCORE,		 //スコア
-	OBJ_SCROLL_CHANGE,//スクロールの切り変えオブジェクト
+	OBJ_BACK_GROUND,	//背景
+	OBJ_MAP,			//マップ
+	OBJ_HOLE,			//穴
+	OBJ_CHARA,			//キャラクタ
+	OBJ_ENEMY,			//敵
+	OBJ_ENEMY_BULLET,	//敵の弾
+	OBJ_CHARA_BULLET,	//主人公の弾
+	OBJ_STAR,			//星オブジェクト
+	OBJ_ITEM_BIG,		//収集アイテムオブジェクト(大)
+	OBJ_ITEM_SMALL,		//収集アイテムオブジェクト(小)
+	OBJ_SCROLL_CHANGE,	//スクロールの切り変えオブジェクト
+	OBJ_PLANE,			//地面
+	OBJ_SCORE,		//スコア
 };
 //------------------------------------------------
 
@@ -34,6 +35,9 @@ enum HIT_ELEMENTS
 	ELEMENT_CHARA_BULLET,
 	ELEMENT_ENEMY_BULLET,
 	ELEMENT_STAR,
+	ELEMENT_SCROLL_CHANGE,
+	ELEMENT_PLANE,
+
 };
 //------------------------------------------------
 
@@ -64,6 +68,7 @@ struct UserData
 enum MAP_NUM
 {
 	MAP_NONE,		//何もない
+	MAP_PLANE,		//地面
 	MAP_HOLE,		//穴
 	MAP_ENEMY,		//敵
 	MAP_STAR,		//星
@@ -95,6 +100,9 @@ enum ITEM_NUM
 #define SCORE_SMALL		 500;
 #define SCORE_BONUS		 250;
 
+#define PLANE_WIDTH	32.0f
+#define PLANE_HEIGHT 6.0f
+
 //------------------------------------------------
 //ゲーム内で使用するクラスヘッダ------------------
 
@@ -114,6 +122,7 @@ enum ITEM_NUM
 #include "ObjCollectionItemBig.h"
 #include "ObjCollectionItemSmall.h"
 #include "ScrollChange.h"
+#include "Plane.h"
 #include "Score.h"
 //------------------------------------------------
 

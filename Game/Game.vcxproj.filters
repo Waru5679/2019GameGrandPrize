@@ -31,6 +31,9 @@
     <Filter Include="ソース ファイル\オブジェクト">
       <UniqueIdentifier>{f011419b-23f4-4b97-bdc4-02816fafe725}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\地面">
+      <UniqueIdentifier>{69c014dd-7cf9-437e-86aa-5ef0a8def937}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameHead.h">
@@ -108,17 +111,17 @@
     <ClInclude Include="ObjStar.h">
       <Filter>ソース ファイル\オブジェクト</Filter>
     </ClInclude>
-    <ClInclude Include="Score.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjCollectionItemBig.h">
-      <Filter>ソース ファイル\オブジェクト</Filter>
-    </ClInclude>
     <ClInclude Include="ObjCollectionItemSmall.h">
       <Filter>ソース ファイル\オブジェクト</Filter>
     </ClInclude>
     <ClInclude Include="ScrollChange.h">
       <Filter>ソース ファイル\オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjCollectionItem.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>ソース ファイル\地面</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +208,9 @@
     </ClCompile>
     <ClCompile Include="ScrollChange.cpp">
       <Filter>ソース ファイル\オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>ソース ファイル\地面</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

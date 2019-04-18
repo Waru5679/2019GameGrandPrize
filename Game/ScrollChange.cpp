@@ -16,13 +16,27 @@ void CScrollChange::Init()
 	//色
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 
-//	Hits::SetHitBox(this,m_vPos.x,m_vPos.y,SCROLL_CHANGE_SIZE, SCROLL_CHANGE_SIZE,)
+	//当たり判定
+	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, SCROLL_CHANGE_SIZE, SCROLL_CHANGE_SIZE, ELEMENT_SCROLL_CHANGE, OBJ_SCROLL_CHANGE, 1);
 }
 
 //更新
 void CScrollChange::Action()
 {
+	//キャラとの当たり判定
+	CHitBox* hit = Hits::GetHitBox(this);
+	if (hit->CheckObjNameHit(OBJ_CHARA) != nullptr)
+	{
+		//スクロールの変更
+		CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+		m_pScene->ScrollChange();
 
+		//自身削除
+		this->SetStatus(false);
+		
+		//HitBox削除
+		Hits::DeleteHitBox(this);
+	}
 }
 
 //描画

@@ -34,7 +34,6 @@ void CObjMainChara::Init()
 //アクション
 void CObjMainChara::Action()
 {
-
 	//スクロールの状態取得
 	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
 	m_bScroll = m_pScene->GetScroll();
