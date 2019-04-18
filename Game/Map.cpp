@@ -1,7 +1,7 @@
 #include "Map.h"
 #include "Function.h"
 #include "main.h"
-
+#include "GameHead.h"
 
 //コンストラクタ
 CMap::CMap(int* pMap)
@@ -15,6 +15,11 @@ void CMap::Init()
 {
 	//描画色設定
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
+
+	//マップ配列探索用変数初期化
+	m_iMapItem[MAX_ITEM];
+	m_iMapLoop = 0;
+
 }
 
 //更新
@@ -33,9 +38,9 @@ void CMap::Draw()
 //生成
 void CMap::Create()
 {
-	for (int y = 0; y < MAX_Y; y++)
+	for (int x = 0; x < MAX_X; x++)
 	{
-		for (int x = 0; x < MAX_X; x++)
+		for (int y = 0; y < MAX_Y; y++)
 		{
 			switch (m_Map[y][x])
 			{
@@ -77,24 +82,37 @@ void CMap::Create()
 
 					//生成が終われば空白に
 					m_Map[y][x] = MAP_NONE;
+
 					break;
 				}
 				case MAP_ITEM_BIG:
 				{
-					CCollectionItemBig* pCollection_big = new  CCollectionItemBig(x, y);
+					CCollectionItemBig* pCollection_big = new  CCollectionItemBig(x, y, m_iMapLoop);
 					Objs::InsertObj(pCollection_big, OBJ_ITEM_BIG, 10);
 
 					//生成が終われば空白に
 					m_Map[y][x] = MAP_NONE;
+
+					//マップ内のアイテムの種類識別
+					m_iMapItem[m_iMapLoop] = 1;
+
+					m_iMapLoop++;
+
 					break;
 				}
 				case MAP_ITEM_SMALL:
 				{
-					CCollectionItemSmall* pCollection_small = new  CCollectionItemSmall(x, y);
+					CCollectionItemSmall* pCollection_small = new  CCollectionItemSmall(x, y,m_iMapLoop);
 					Objs::InsertObj(pCollection_small, OBJ_ITEM_SMALL, 10);
 
 					//生成が終われば空白に
 					m_Map[y][x] = MAP_NONE;
+
+					//マップ内のアイテムの種類識別
+					m_iMapItem[m_iMapLoop] = 2;
+
+					m_iMapLoop++;
+
 					break;
 				}
 				//スクロールチェンジ
@@ -106,8 +124,9 @@ void CMap::Create()
 					//生成が終われば空白に
 					m_Map[y][x] = MAP_NONE;
 					break;
-				}
+				}				
 			}
+
 		}
 	}
 }

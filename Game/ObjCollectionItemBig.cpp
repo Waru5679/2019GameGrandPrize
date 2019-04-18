@@ -9,10 +9,12 @@
 
 
 //コンストラクタ
-CCollectionItemBig::CCollectionItemBig(int x, int y)
+CCollectionItemBig::CCollectionItemBig(int x, int y,int number)
 {
 	m_fPos_x = (float)x * OBJ_SIZE;
 	m_fPos_y = (float)y * OBJ_SIZE;
+
+	m_iPosition = number;
 }
 
 //初期化
@@ -22,7 +24,6 @@ void CCollectionItemBig::Init()
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 	
 	//スコア初期化
-	m_iScore = 0;
 
 	//当たり判定用HitBox作成
 	Hits::SetHitBox(this, m_fPos_x, m_fPos_y, ITEM_BIG_SIZE, ITEM_BIG_SIZE, ELEMENT_ITEM_BIG, OBJ_ITEM_BIG, 1);
@@ -43,6 +44,16 @@ void CCollectionItemBig::Action()
 
 		//スコアに+1000加算する
 		((UserData*)Save::GetData())->m_iScore += SCORE_BIG;
+
+		//Map取得
+		CMap* m_pMap = dynamic_cast<CMap*>(Objs::GetObj(OBJ_MAP));
+		//Map内のm_iMapItem[]の中身の今の数値を0にする
+		m_pMap->m_iMapItem[m_iPosition] = 0;
+		//Map.cpp内のm_iMapItem[]に今の数値-1して直前の数値が0ならボーナス加算
+		if (m_pMap->m_iMapItem[m_iPosition - 1] == 0)
+		{
+			((UserData*)Save::GetData())->m_iScore += SCORE_BONUS;
+		}
 
 	}
 
