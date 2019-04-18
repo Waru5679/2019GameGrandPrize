@@ -18,9 +18,10 @@ enum OBJ_NAME
 	OBJ_ITEM_SMALL,		//収集アイテムオブジェクト(小)
 	OBJ_SCROLL_CHANGE,	//スクロールの切り変えオブジェクト
 	OBJ_PLANE,			//地面
-	OBJ_SCORE,		//スコア
-	OBJ_TITLE,	//タイトル
-	OBJ_GAME_OVER,//ゲームオーバー
+	OBJ_SCORE,			//スコア
+	OBJ_TITLE,			//タイトル
+	OBJ_GAME_OVER,		//ゲームオーバー
+	OBJ_HOLE_CENTER,	//穴の中心
 };
 //------------------------------------------------
 
@@ -39,6 +40,7 @@ enum HIT_ELEMENTS
 	ELEMENT_STAR,
 	ELEMENT_SCROLL_CHANGE,
 	ELEMENT_PLANE,
+	ELEMENT_HOLE,
 
 };
 //------------------------------------------------

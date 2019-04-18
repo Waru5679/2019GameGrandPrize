@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GameL/SceneObjManager.h"
+#include "Vector.h"
 
 using namespace GameL;
 
@@ -17,8 +18,7 @@ private:
 	//•`‰æF
 	float m_fColor[4];
 
-	//”wŒi‚ÌˆÊ’u
-	float m_fPos_x;
-	float m_fPos_y;
+	//ˆÊ’u
+	Vector m_vPos;
 
 };

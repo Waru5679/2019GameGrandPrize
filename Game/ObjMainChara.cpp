@@ -112,18 +112,6 @@ void CObjMainChara::Draw()
 void CObjMainChara::SideMove()
 {
 	//入力
-	VarticalInput();
-	
-	//位置の更新
-	m_vPos.x += m_vMove.x;
-	m_vPos.y += m_vMove.y;
-
-}
-
-//移動縦
-void CObjMainChara::VarticalMove()
-{
-	//入力
 	SideInput();
 
 	//自由落下　地面についてないときは落下する
@@ -136,7 +124,19 @@ void CObjMainChara::VarticalMove()
 	{
 		m_bHitGround = true;
 	}
-	
+
+	//位置の更新
+	m_vPos.x += m_vMove.x;
+	m_vPos.y += m_vMove.y;
+
+}
+
+//移動縦
+void CObjMainChara::VarticalMove()
+{
+	//入力
+	VarticalInput();
+
 	//位置の更新
 	m_vPos.x += m_vMove.x;
 	m_vPos.y += m_vMove.y;
@@ -178,6 +178,7 @@ void CObjMainChara::SideInput()
 //縦の入力
 void CObjMainChara::VarticalInput()
 {
+	
 	//キー入力　右
 	if (Input::GetVKey(VK_RIGHT) == true)
 	{
@@ -203,7 +204,7 @@ void CObjMainChara::VarticalInput()
 	//キー入力　下
 	else if (Input::GetVKey(VK_DOWN) == true)
 	{
-		m_vMove.y =  3.0f;
+		m_vMove.y = 3.0f;
 	}
 	else
 	{

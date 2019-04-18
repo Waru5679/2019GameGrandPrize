@@ -12,5 +12,7 @@ class CVector
 {
 public :
 	static Vector Add(Vector Vec1, Vector Vec2);	//‰ÁZ
+	static Vector Sub(Vector Vec1, Vector Vec2);	//Œ¸Z
 	static Vector Create(float x, float y);	//ƒxƒNƒgƒ‹¶¬
+	static Vector Normalize(Vector Vec);	//³‹K‰»
 };

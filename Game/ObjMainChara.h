@@ -22,6 +22,7 @@ public:
 	void Draw();	//ÉhÉçÅ[
 
 	Vector GetPos() { return m_vPos; }
+	void SetMove(Vector Vec) { m_vMove = CVector::Add(m_vMove, Vec); }
 
 private:
 	Vector m_vPos;	//à íu
