@@ -14,7 +14,6 @@ namespace GameL
 			static int GetPosX();
 			static int GetPosY();
 
-			static void Refresh();
 			static void Init();
 		
 
