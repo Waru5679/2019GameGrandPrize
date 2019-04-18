@@ -159,11 +159,20 @@
     <ClInclude Include="Plane.h" />
     <ClInclude Include="SceneMain.h" />
     <ClInclude Include="ObjCollectionItem.h" />
+    <ClInclude Include="SceneTitle.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="ScrollChange.h" />
+    <ClInclude Include="Title.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="SceneTitle.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="ScrollChange.cpp" />
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="CharaBullet.cpp" />
@@ -193,6 +202,9 @@
     <ClCompile Include="SceneMain.cpp" />
     <ClCompile Include="ObjCollectionItemBig.cpp" />
     <ClCompile Include="Score.cpp" />
+    <ClCompile Include="Title.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>

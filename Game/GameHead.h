@@ -19,6 +19,7 @@ enum OBJ_NAME
 	OBJ_SCROLL_CHANGE,	//スクロールの切り変えオブジェクト
 	OBJ_PLANE,			//地面
 	OBJ_SCORE,		//スコア
+	OBJ_TITLE,	//タイトル
 };
 //------------------------------------------------
 
@@ -114,13 +115,15 @@ enum MAP_NUM
 #include "ScrollChange.h"
 #include "Plane.h"
 #include "Score.h"
+#include "Title.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
 #include "SceneMain.h"
+#include "SceneTitle.h"
 //-----------------------------------------------
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START CSceneMain 
+#define SET_GAME_START CSceneMain
 //-----------------------------------------------

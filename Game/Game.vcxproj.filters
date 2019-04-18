@@ -13,26 +13,32 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ソース ファイル\背景">
-      <UniqueIdentifier>{e74239f0-008e-486a-8892-98a854e77889}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\メイン">
+      <UniqueIdentifier>{932dcdd8-8f7a-44aa-ad30-cff1decb0299}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Map">
+    <Filter Include="ソース ファイル\メイン\Map">
       <UniqueIdentifier>{cfd6c901-ab81-46d2-aa57-5c161538e603}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\穴">
-      <UniqueIdentifier>{7ea4fbf3-bced-4b8f-a80d-732b57006944}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\敵">
-      <UniqueIdentifier>{f4ceae3f-71e1-4ae0-8c15-a1e1925e52d5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\主人公">
-      <UniqueIdentifier>{3abf9876-ceaa-47b1-bcad-e1a7d6d8e5af}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\オブジェクト">
+    <Filter Include="ソース ファイル\メイン\Map\オブジェクト">
       <UniqueIdentifier>{f011419b-23f4-4b97-bdc4-02816fafe725}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\地面">
+    <Filter Include="ソース ファイル\メイン\穴">
+      <UniqueIdentifier>{7ea4fbf3-bced-4b8f-a80d-732b57006944}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\メイン\主人公">
+      <UniqueIdentifier>{3abf9876-ceaa-47b1-bcad-e1a7d6d8e5af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\メイン\地面">
       <UniqueIdentifier>{69c014dd-7cf9-437e-86aa-5ef0a8def937}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\メイン\敵">
+      <UniqueIdentifier>{f4ceae3f-71e1-4ae0-8c15-a1e1925e52d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\メイン\背景">
+      <UniqueIdentifier>{e74239f0-008e-486a-8892-98a854e77889}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\タイトル">
+      <UniqueIdentifier>{53a38bbe-dc7b-4cb6-860c-0dbeba7d043c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -82,46 +88,52 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
-      <Filter>ソース ファイル\Map</Filter>
+      <Filter>ソース ファイル\メイン\Map</Filter>
     </ClInclude>
     <ClInclude Include="Hole.h">
-      <Filter>ソース ファイル\穴</Filter>
+      <Filter>ソース ファイル\メイン\穴</Filter>
     </ClInclude>
     <ClInclude Include="BackGround.h">
-      <Filter>ソース ファイル\背景</Filter>
+      <Filter>ソース ファイル\メイン\背景</Filter>
     </ClInclude>
     <ClInclude Include="Csv.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>ソース ファイル\敵</Filter>
+      <Filter>ソース ファイル\メイン\敵</Filter>
     </ClInclude>
     <ClInclude Include="EnemyBullet.h">
-      <Filter>ソース ファイル\敵</Filter>
+      <Filter>ソース ファイル\メイン\敵</Filter>
     </ClInclude>
     <ClInclude Include="Vector.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="ObjMainChara.h">
-      <Filter>ソース ファイル\主人公</Filter>
+      <Filter>ソース ファイル\メイン\主人公</Filter>
     </ClInclude>
     <ClInclude Include="CharaBullet.h">
-      <Filter>ソース ファイル\主人公</Filter>
+      <Filter>ソース ファイル\メイン\主人公</Filter>
     </ClInclude>
     <ClInclude Include="ObjStar.h">
-      <Filter>ソース ファイル\オブジェクト</Filter>
+      <Filter>ソース ファイル\メイン\Map\オブジェクト</Filter>
     </ClInclude>
     <ClInclude Include="ObjCollectionItemSmall.h">
-      <Filter>ソース ファイル\オブジェクト</Filter>
+      <Filter>ソース ファイル\メイン\Map\オブジェクト</Filter>
     </ClInclude>
     <ClInclude Include="ScrollChange.h">
-      <Filter>ソース ファイル\オブジェクト</Filter>
+      <Filter>ソース ファイル\メイン\Map\オブジェクト</Filter>
     </ClInclude>
     <ClInclude Include="ObjCollectionItem.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Plane.h">
-      <Filter>ソース ファイル\地面</Filter>
+      <Filter>ソース ファイル\メイン\地面</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneTitle.h">
+      <Filter>ソース ファイル\タイトル</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>ソース ファイル\タイトル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -168,49 +180,55 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
-      <Filter>ソース ファイル\Map</Filter>
+      <Filter>ソース ファイル\メイン\Map</Filter>
     </ClCompile>
     <ClCompile Include="Hole.cpp">
-      <Filter>ソース ファイル\穴</Filter>
+      <Filter>ソース ファイル\メイン\穴</Filter>
     </ClCompile>
     <ClCompile Include="BackGround.cpp">
-      <Filter>ソース ファイル\背景</Filter>
+      <Filter>ソース ファイル\メイン\背景</Filter>
     </ClCompile>
     <ClCompile Include="Csv.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>ソース ファイル\敵</Filter>
+      <Filter>ソース ファイル\メイン\敵</Filter>
     </ClCompile>
     <ClCompile Include="EnemyBullet.cpp">
-      <Filter>ソース ファイル\敵</Filter>
+      <Filter>ソース ファイル\メイン\敵</Filter>
     </ClCompile>
     <ClCompile Include="Vector.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="ObjMainChara.cpp">
-      <Filter>ソース ファイル\主人公</Filter>
+      <Filter>ソース ファイル\メイン\主人公</Filter>
     </ClCompile>
     <ClCompile Include="CharaBullet.cpp">
-      <Filter>ソース ファイル\主人公</Filter>
+      <Filter>ソース ファイル\メイン\主人公</Filter>
     </ClCompile>
     <ClCompile Include="ObjStar.cpp">
-      <Filter>ソース ファイル\オブジェクト</Filter>
+      <Filter>ソース ファイル\メイン\Map\オブジェクト</Filter>
     </ClCompile>
     <ClCompile Include="Score.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="ObjCollectionItemBig.cpp">
-      <Filter>ソース ファイル\オブジェクト</Filter>
+      <Filter>ソース ファイル\メイン\Map\オブジェクト</Filter>
     </ClCompile>
     <ClCompile Include="ObjCollectionItemSmall.cpp">
-      <Filter>ソース ファイル\オブジェクト</Filter>
+      <Filter>ソース ファイル\メイン\Map\オブジェクト</Filter>
     </ClCompile>
     <ClCompile Include="ScrollChange.cpp">
-      <Filter>ソース ファイル\オブジェクト</Filter>
+      <Filter>ソース ファイル\メイン\Map\オブジェクト</Filter>
     </ClCompile>
     <ClCompile Include="Plane.cpp">
-      <Filter>ソース ファイル\地面</Filter>
+      <Filter>ソース ファイル\メイン\地面</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneTitle.cpp">
+      <Filter>ソース ファイル\タイトル</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>ソース ファイル\タイトル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
