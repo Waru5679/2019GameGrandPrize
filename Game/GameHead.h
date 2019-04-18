@@ -80,6 +80,7 @@ enum MAP_NUM
 //アイテム用数値
 enum ITEM_NUM
 {
+	ITEM_NONE,		//アイテム無し
 	ITEM_BIG,		//アイテム(大)
 	ITEM_SMALL,		//アイテム(小)
 };
