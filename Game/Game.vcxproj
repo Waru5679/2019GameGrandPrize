@@ -148,20 +148,23 @@
     <ClInclude Include="GameL\SetWindow.h" />
     <ClInclude Include="GameL\UserData.h" />
     <ClInclude Include="GameL\WinInputs.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="Hole.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="ObjCollectionItemBig.h" />
     <ClInclude Include="ObjCollectionItemSmall.h" />
     <ClInclude Include="ObjMainChara.h" />
     <ClInclude Include="ObjStar.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Plane.h" />
+    <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneMain.h" />
-    <ClInclude Include="ObjCollectionItem.h" />
     <ClInclude Include="SceneTitle.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="Score.h" />
     <ClInclude Include="ScrollChange.h" />
     <ClInclude Include="Title.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -169,7 +172,9 @@
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="SceneGameOver.cpp" />
     <ClCompile Include="SceneTitle.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>

@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="ソース ファイル">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="ヘッダー ファイル">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
@@ -13,32 +9,57 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ソース ファイル\メイン">
+    <Filter Include="ソースファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ソースファイル\メイン">
       <UniqueIdentifier>{932dcdd8-8f7a-44aa-ad30-cff1decb0299}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\メイン\Map">
+    <Filter Include="ソースファイル\メイン\Map">
       <UniqueIdentifier>{cfd6c901-ab81-46d2-aa57-5c161538e603}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\メイン\Map\オブジェクト">
-      <UniqueIdentifier>{f011419b-23f4-4b97-bdc4-02816fafe725}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\メイン\穴">
+    <Filter Include="ソースファイル\メイン\穴">
       <UniqueIdentifier>{7ea4fbf3-bced-4b8f-a80d-732b57006944}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\メイン\主人公">
+    <Filter Include="ソースファイル\メイン\主人公">
       <UniqueIdentifier>{3abf9876-ceaa-47b1-bcad-e1a7d6d8e5af}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\メイン\地面">
+    <Filter Include="ソースファイル\メイン\地面">
       <UniqueIdentifier>{69c014dd-7cf9-437e-86aa-5ef0a8def937}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\メイン\敵">
+    <Filter Include="ソースファイル\メイン\敵">
       <UniqueIdentifier>{f4ceae3f-71e1-4ae0-8c15-a1e1925e52d5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\メイン\背景">
+    <Filter Include="ソースファイル\メイン\背景">
       <UniqueIdentifier>{e74239f0-008e-486a-8892-98a854e77889}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\タイトル">
+    <Filter Include="ソースファイル\タイトル">
       <UniqueIdentifier>{53a38bbe-dc7b-4cb6-860c-0dbeba7d043c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\メイン\コレクション">
+      <UniqueIdentifier>{f011419b-23f4-4b97-bdc4-02816fafe725}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\メイン\星">
+      <UniqueIdentifier>{2b92847c-5a36-44e9-8e2d-546356e88c94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\メイン\スクロール切り替え">
+      <UniqueIdentifier>{a6c55d4c-ad47-4a14-9db4-55b9496dfa14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\メイン\スコア">
+      <UniqueIdentifier>{6e5e2fe2-f121-42f1-a95f-6301091f0a99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Csv">
+      <UniqueIdentifier>{d5ef68d0-e3ae-4a3f-be5a-e915e65ba19b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Function">
+      <UniqueIdentifier>{b70c57b3-583c-4530-86b5-ed0d239c683d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Vector">
+      <UniqueIdentifier>{e6bca233-c0ea-4048-97cd-b3c2745f7c68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\ゲームオーバー">
+      <UniqueIdentifier>{87a31abb-c0cf-4435-8908-8f1c2fed6f3e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -81,59 +102,68 @@
     <ClInclude Include="GameL\WinInputs.h">
       <Filter>リソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Function.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneMain.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Map.h">
-      <Filter>ソース ファイル\メイン\Map</Filter>
+      <Filter>ソースファイル\メイン\Map</Filter>
     </ClInclude>
     <ClInclude Include="Hole.h">
-      <Filter>ソース ファイル\メイン\穴</Filter>
+      <Filter>ソースファイル\メイン\穴</Filter>
     </ClInclude>
     <ClInclude Include="BackGround.h">
-      <Filter>ソース ファイル\メイン\背景</Filter>
-    </ClInclude>
-    <ClInclude Include="Csv.h">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソースファイル\メイン\背景</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>ソース ファイル\メイン\敵</Filter>
+      <Filter>ソースファイル\メイン\敵</Filter>
     </ClInclude>
     <ClInclude Include="EnemyBullet.h">
-      <Filter>ソース ファイル\メイン\敵</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector.h">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソースファイル\メイン\敵</Filter>
     </ClInclude>
     <ClInclude Include="ObjMainChara.h">
-      <Filter>ソース ファイル\メイン\主人公</Filter>
+      <Filter>ソースファイル\メイン\主人公</Filter>
     </ClInclude>
     <ClInclude Include="CharaBullet.h">
-      <Filter>ソース ファイル\メイン\主人公</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjStar.h">
-      <Filter>ソース ファイル\メイン\Map\オブジェクト</Filter>
+      <Filter>ソースファイル\メイン\主人公</Filter>
     </ClInclude>
     <ClInclude Include="ObjCollectionItemSmall.h">
-      <Filter>ソース ファイル\メイン\Map\オブジェクト</Filter>
-    </ClInclude>
-    <ClInclude Include="ScrollChange.h">
-      <Filter>ソース ファイル\メイン\Map\オブジェクト</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjCollectionItem.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ソースファイル\メイン\コレクション</Filter>
     </ClInclude>
     <ClInclude Include="Plane.h">
-      <Filter>ソース ファイル\メイン\地面</Filter>
+      <Filter>ソースファイル\メイン\地面</Filter>
     </ClInclude>
     <ClInclude Include="SceneTitle.h">
-      <Filter>ソース ファイル\タイトル</Filter>
+      <Filter>ソースファイル\タイトル</Filter>
     </ClInclude>
     <ClInclude Include="Title.h">
-      <Filter>ソース ファイル\タイトル</Filter>
+      <Filter>ソースファイル\タイトル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjCollectionItemBig.h">
+      <Filter>ソースファイル\メイン\コレクション</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjStar.h">
+      <Filter>ソースファイル\メイン\星</Filter>
+    </ClInclude>
+    <ClInclude Include="ScrollChange.h">
+      <Filter>ソースファイル\メイン\スクロール切り替え</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>ソースファイル\メイン\スコア</Filter>
+    </ClInclude>
+    <ClInclude Include="Csv.h">
+      <Filter>ヘッダー ファイル\Csv</Filter>
+    </ClInclude>
+    <ClInclude Include="Function.h">
+      <Filter>ヘッダー ファイル\Function</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>ヘッダー ファイル\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMain.h">
+      <Filter>ソースファイル\メイン</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGameOver.h">
+      <Filter>ソースファイル\ゲームオーバー</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>ソースファイル\ゲームオーバー</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -173,62 +203,68 @@
     <ClCompile Include="GameL\WinInputs.cpp">
       <Filter>リソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Function.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneMain.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Map.cpp">
-      <Filter>ソース ファイル\メイン\Map</Filter>
+      <Filter>ソースファイル\メイン\Map</Filter>
     </ClCompile>
     <ClCompile Include="Hole.cpp">
-      <Filter>ソース ファイル\メイン\穴</Filter>
+      <Filter>ソースファイル\メイン\穴</Filter>
     </ClCompile>
     <ClCompile Include="BackGround.cpp">
-      <Filter>ソース ファイル\メイン\背景</Filter>
-    </ClCompile>
-    <ClCompile Include="Csv.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソースファイル\メイン\背景</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>ソース ファイル\メイン\敵</Filter>
+      <Filter>ソースファイル\メイン\敵</Filter>
     </ClCompile>
     <ClCompile Include="EnemyBullet.cpp">
-      <Filter>ソース ファイル\メイン\敵</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソースファイル\メイン\敵</Filter>
     </ClCompile>
     <ClCompile Include="ObjMainChara.cpp">
-      <Filter>ソース ファイル\メイン\主人公</Filter>
+      <Filter>ソースファイル\メイン\主人公</Filter>
     </ClCompile>
     <ClCompile Include="CharaBullet.cpp">
-      <Filter>ソース ファイル\メイン\主人公</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjStar.cpp">
-      <Filter>ソース ファイル\メイン\Map\オブジェクト</Filter>
-    </ClCompile>
-    <ClCompile Include="Score.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソースファイル\メイン\主人公</Filter>
     </ClCompile>
     <ClCompile Include="ObjCollectionItemBig.cpp">
-      <Filter>ソース ファイル\メイン\Map\オブジェクト</Filter>
+      <Filter>ソースファイル\メイン\コレクション</Filter>
     </ClCompile>
     <ClCompile Include="ObjCollectionItemSmall.cpp">
-      <Filter>ソース ファイル\メイン\Map\オブジェクト</Filter>
-    </ClCompile>
-    <ClCompile Include="ScrollChange.cpp">
-      <Filter>ソース ファイル\メイン\Map\オブジェクト</Filter>
+      <Filter>ソースファイル\メイン\コレクション</Filter>
     </ClCompile>
     <ClCompile Include="Plane.cpp">
-      <Filter>ソース ファイル\メイン\地面</Filter>
+      <Filter>ソースファイル\メイン\地面</Filter>
     </ClCompile>
     <ClCompile Include="SceneTitle.cpp">
-      <Filter>ソース ファイル\タイトル</Filter>
+      <Filter>ソースファイル\タイトル</Filter>
     </ClCompile>
     <ClCompile Include="Title.cpp">
-      <Filter>ソース ファイル\タイトル</Filter>
+      <Filter>ソースファイル\タイトル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjStar.cpp">
+      <Filter>ソースファイル\メイン\星</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrollChange.cpp">
+      <Filter>ソースファイル\メイン\スクロール切り替え</Filter>
+    </ClCompile>
+    <ClCompile Include="Score.cpp">
+      <Filter>ソースファイル\メイン\スコア</Filter>
+    </ClCompile>
+    <ClCompile Include="Csv.cpp">
+      <Filter>ヘッダー ファイル\Csv</Filter>
+    </ClCompile>
+    <ClCompile Include="Function.cpp">
+      <Filter>ヘッダー ファイル\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>ヘッダー ファイル\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMain.cpp">
+      <Filter>ソースファイル\メイン</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGameOver.cpp">
+      <Filter>ソースファイル\ゲームオーバー</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>ソースファイル\ゲームオーバー</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

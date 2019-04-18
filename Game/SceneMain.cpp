@@ -33,13 +33,7 @@ void CSceneMain::InitScene()
 	//キャラクターオブジェクト
 	CObjMainChara* chara = new CObjMainChara();
 	Objs::InsertObj(chara, OBJ_CHARA, 10);
-
-	//スクロールの切り替え
-	CScrollChange* pScrollChange = new  CScrollChange(5, 10);
-	Objs::InsertObj(pScrollChange, OBJ_SCROLL_CHANGE, 10);
-
-
-
+	
 	//スコア表示オブジェ
 	CScore* score = new CScore();
 	Objs::InsertObj(score, OBJ_SCORE, 10);

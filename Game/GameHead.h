@@ -20,6 +20,7 @@ enum OBJ_NAME
 	OBJ_PLANE,			//地面
 	OBJ_SCORE,		//スコア
 	OBJ_TITLE,	//タイトル
+	OBJ_GAME_OVER,//ゲームオーバー
 };
 //------------------------------------------------
 
@@ -127,11 +128,13 @@ enum ITEM_NUM
 #include "Plane.h"
 #include "Score.h"
 #include "Title.h"
+#include "GameOver.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
 #include "SceneMain.h"
 #include "SceneTitle.h"
+#include "SceneGameOver.h"
 //-----------------------------------------------
 
 //シーンスタートクラス---------------------------
