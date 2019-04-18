@@ -38,18 +38,7 @@ void CObjMainChara::Init()
 //アクション
 void CObjMainChara::Action()
 {
-	//スクロールの状態取得
-	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
-	m_bScroll = m_pScene->GetScroll();
-
-	//HitBox更新
-	CHitBox* hit_b = Hits::GetHitBox(this);
-	hit_b->SetPos(m_vPos.x, m_vPos.y);
-
-	//地面との当たり判定用HitBox更新
-	//CHitBox* hit_b2 = Hits::GetHitBox(this);
-	//hit_b2->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE -5.0f);
-
+	
 	//縦
 	if (m_bScroll == VERTICAL)
 	{
@@ -83,6 +72,20 @@ void CObjMainChara::Action()
 		m_vPos.y = WINDOW_SIZE_H - CHARA_SIZE;
 	}
 	//----------------------------------------------
+
+	//スクロールの状態取得
+	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+	m_bScroll = m_pScene->GetScroll();
+
+	//HitBox更新
+	CHitBox* hit_b = Hits::GetHitBox(this);
+	hit_b->SetPos(m_vPos.x, m_vPos.y);
+
+	//地面との当たり判定用HitBox更新
+	//CHitBox* hit_b2 = Hits::GetHitBox(this);
+	//hit_b2->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE -5.0f);
+
+	
 
 }
 
