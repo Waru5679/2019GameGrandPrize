@@ -17,6 +17,7 @@ void CPlane::Init()
 
 	//当たり判定セット
 	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, PLANE_WIDTH , PLANE_HEIGHT, ELEMENT_PLANE, OBJ_PLANE, 1);
+
 }
 
 //更新
