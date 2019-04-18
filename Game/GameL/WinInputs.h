@@ -8,6 +8,7 @@ namespace GameL
 		public :
 			static bool WmInput(HWND hWnd,UINT* uMsg, LPARAM* lParam);//ウィンドウプロジーシャーコールバック関数登録用
 			static bool GetVKey(int v_key);
+			static bool GetTrrigerKey(int Key);
 			static bool GetMouButtonL();
 			static bool GetMouButtonR();
 		
@@ -22,5 +23,6 @@ namespace GameL
 			static bool  m_ButtonL;		//マウスクリック
 			static bool  m_ButtonR;
 			static BYTE m_KeyBoard[256];//キーボード配列
+			static bool m_KeyState[256];//キーの状態
 	}Input;
 };
