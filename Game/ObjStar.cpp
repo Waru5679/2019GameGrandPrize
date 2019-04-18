@@ -20,7 +20,7 @@ void CStar::Init()
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 	
 	//当たり判定用HitBox作成
-	Hits::SetHitBox(this, m_fPos_x , m_fPos_y, STAR_SIZE / 2, STAR_SIZE / 2, ELEMENT_STAR, OBJ_STAR, 1);
+	Hits::SetHitBox(this, m_fPos_x , m_fPos_y, STAR_SIZE / 2.0f, STAR_SIZE / 2.0f, ELEMENT_STAR, OBJ_STAR, 1);
 }
 
 //更新
@@ -29,7 +29,7 @@ void CStar::Action()
 	//HitBox更新
 	CHitBox* hit_b = Hits::GetHitBox(this);
 	//当たり判定の位置を星の中に収めるように移動
-	hit_b->SetPos(m_fPos_x + (STAR_SIZE / 4), m_fPos_y + (STAR_SIZE / 4));
+	hit_b->SetPos(m_fPos_x + (STAR_SIZE / 4.0f), m_fPos_y + (STAR_SIZE / 4.0f));
 
 }
 

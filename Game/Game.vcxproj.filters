@@ -117,11 +117,14 @@
     <ClInclude Include="ScrollChange.h">
       <Filter>ソース ファイル\オブジェクト</Filter>
     </ClInclude>
-    <ClInclude Include="ObjCollectionItem.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Plane.h">
       <Filter>ソース ファイル\地面</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjCollectionItemBig.h">
+      <Filter>ソース ファイル\オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

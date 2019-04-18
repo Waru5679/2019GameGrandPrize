@@ -34,12 +34,6 @@ void CSceneMain::InitScene()
 	CObjMainChara* chara = new CObjMainChara();
 	Objs::InsertObj(chara, OBJ_CHARA, 10);
 
-	//スクロールの切り替え
-	CScrollChange* pScrollChange = new  CScrollChange(5, 10);
-	Objs::InsertObj(pScrollChange, OBJ_SCROLL_CHANGE, 10);
-
-
-
 	//スコア表示オブジェ
 	CScore* score = new CScore();
 	Objs::InsertObj(score, OBJ_SCORE, 10);
@@ -48,7 +42,7 @@ void CSceneMain::InitScene()
 	m_Count = 0;
 
 	//スクロール方向
-	m_bScroll = SIDE;
+	m_bScroll = VERTICAL;
 
 	//ボリューム調整
 	Audio::Volume(-0.8f, 0);
@@ -78,7 +72,6 @@ void CSceneMain::ScrollChange()
 	{
 		m_pBack1->SetScroll(0.0f, 0.0f, VERTICAL);
 		m_pBack2->SetScroll(0.0f, WINDOW_SIZE_H, VERTICAL);
-
 	}
 	//縦→横に変更
 	else
@@ -98,7 +91,6 @@ void CSceneMain::LoadTexture()
 	Draw::LoadImageW(L"Texture/BlackHole.png", OBJ_HOLE, TEX_SIZE_128);
 
 	//主人公
-	//Draw::LoadImageW(L"Texture/Player.png", OBJ_CHARA, TEX_SIZE_1024);
 	Draw::LoadImageW(L"Texture/MainCharacter.png",OBJ_CHARA, TEX_SIZE_128);
 	//敵
 	Draw::LoadImageW(L"Texture/Enemy.png", OBJ_ENEMY, TEX_SIZE_256);

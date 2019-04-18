@@ -6,8 +6,8 @@
 //コンストラクタ
 CHole::CHole(int y, int x)
 {
-	m_fPos_x = (float)x * OBJ_SIZE;
-	m_fPos_y = (float)y * OBJ_SIZE;
+	m_fPos_x = (float)y * OBJ_SIZE;
+	m_fPos_y = (float)x * OBJ_SIZE;
 
 }
 
