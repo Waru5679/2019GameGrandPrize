@@ -19,6 +19,8 @@ enum OBJ_NAME
 	OBJ_SCROLL_CHANGE,	//スクロールの切り変えオブジェクト
 	OBJ_PLANE,			//地面
 	OBJ_SCORE,		//スコア
+	OBJ_TITLE,	//タイトル
+	OBJ_GAME_OVER,//ゲームオーバー
 };
 //------------------------------------------------
 
@@ -125,13 +127,17 @@ enum ITEM_NUM
 #include "ScrollChange.h"
 #include "Plane.h"
 #include "Score.h"
+#include "Title.h"
+#include "GameOver.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
 #include "SceneMain.h"
+#include "SceneTitle.h"
+#include "SceneGameOver.h"
 //-----------------------------------------------
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START CSceneMain 
+#define SET_GAME_START CSceneMain
 //-----------------------------------------------

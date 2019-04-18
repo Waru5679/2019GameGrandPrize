@@ -148,6 +148,7 @@
     <ClInclude Include="GameL\SetWindow.h" />
     <ClInclude Include="GameL\UserData.h" />
     <ClInclude Include="GameL\WinInputs.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="Hole.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Map.h" />
@@ -158,13 +159,25 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Plane.h" />
+    <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneMain.h" />
+    <ClInclude Include="SceneTitle.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Score.h" />
     <ClInclude Include="ScrollChange.h" />
+    <ClInclude Include="Title.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="SceneGameOver.cpp" />
+    <ClCompile Include="SceneTitle.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="ScrollChange.cpp" />
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="CharaBullet.cpp" />
@@ -194,6 +207,9 @@
     <ClCompile Include="SceneMain.cpp" />
     <ClCompile Include="ObjCollectionItemBig.cpp" />
     <ClCompile Include="Score.cpp" />
+    <ClCompile Include="Title.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
