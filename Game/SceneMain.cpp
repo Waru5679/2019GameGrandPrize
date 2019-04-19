@@ -42,7 +42,7 @@ void CSceneMain::InitScene()
 	m_Count = 0;
 
 	//スクロール方向
-	m_bScroll = VERTICAL;
+	m_bScroll = SIDE;
 
 	//ボリューム調整
 	Audio::Volume(-0.8f, 0);
