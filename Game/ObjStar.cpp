@@ -26,6 +26,21 @@ void CStar::Init()
 //更新
 void CStar::Action()
 {
+	//スクロールの状態取得
+	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+	m_bScroll = m_pScene->GetScroll();
+
+	//スクロールが横の時左へ動く
+	if (m_bScroll = SIDE)
+	{
+		m_vPos.x -= SCROLL_SPEED;
+	}
+	//縦なら下へ動く
+	else
+	{
+		m_vPos.y += SCROLL_SPEED;
+	}
+
 	//HitBox更新
 	CHitBox* hit_b = Hits::GetHitBox(this);
 

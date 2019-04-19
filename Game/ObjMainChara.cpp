@@ -85,8 +85,6 @@ void CObjMainChara::Action()
 	//CHitBox* hit_b2 = Hits::GetHitBox(this);
 	//hit_b2->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE -5.0f);
 
-	
-
 }
 
 //ÉhÉçÅ[

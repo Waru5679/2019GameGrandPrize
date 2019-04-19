@@ -29,6 +29,21 @@ void CCollectionItemSmall::Init()
 
 void CCollectionItemSmall::Action()
 {
+	//シーンの状態取得
+	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+	m_bScroll = m_pScene->GetScroll();
+	
+	//スクロールが横の時左へ動く
+	if (m_bScroll == SIDE)
+	{
+		m_fPos_x -= SCROLL_SPEED;
+	}
+	//縦なら下へ動く
+	else
+	{
+		m_fPos_y += SCROLL_SPEED;
+	}
+
 	//HitBox更新
 	CHitBox* hit_b = Hits::GetHitBox(this);
 	hit_b->SetPos(m_fPos_x, m_fPos_y);
@@ -52,6 +67,20 @@ void CCollectionItemSmall::Action()
 			((UserData*)Save::GetData())->m_iScore += SCORE_BONUS;
 		}
 
+	}
+
+	//アイテム(小)オブジェクトが画面外へ出ると削除する
+	//画面左端
+	if (m_fPos_x + ITEM_SMALL_SIZE < 0)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}
+	//画面下端
+	if (m_fPos_y > WINDOW_SIZE_H)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
 	}
 
 }

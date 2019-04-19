@@ -23,8 +23,6 @@ void CCollectionItemBig::Init()
 	//色セット
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 	
-	//スコア初期化
-
 	//当たり判定用HitBox作成
 	Hits::SetHitBox(this, m_fPos_x, m_fPos_y, ITEM_BIG_SIZE, ITEM_BIG_SIZE, ELEMENT_ITEM_BIG, OBJ_ITEM_BIG, 1);
 
@@ -32,6 +30,21 @@ void CCollectionItemBig::Init()
 
 void CCollectionItemBig::Action()
 {
+	//スクロールの状態取得
+	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+	m_bScroll = m_pScene->GetScroll();
+
+	//スクロールが横の時右から左へ動く
+	if (m_bScroll == SIDE)
+	{
+		m_fPos_x -= SCROLL_SPEED;
+	}
+	//縦なら下へ動く
+	else
+	{
+		m_fPos_y += SCROLL_SPEED;
+	}
+
 	//HitBox更新
 	CHitBox* hit_b = Hits::GetHitBox(this);
 	hit_b->SetPos(m_fPos_x, m_fPos_y);
@@ -55,6 +68,20 @@ void CCollectionItemBig::Action()
 			((UserData*)Save::GetData())->m_iScore += SCORE_BONUS;
 		}
 
+	}
+
+	//アイテム(大)オブジェクトが画面外へ出ると削除
+	//画面左端
+	if (m_fPos_x + ITEM_BIG_SIZE < 0)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}
+	//画面下端
+	if (m_fPos_y > WINDOW_SIZE_H)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
 	}
 
 }

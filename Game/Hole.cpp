@@ -25,6 +25,23 @@ void CHole::Init()
 //更新
 void CHole::Action()
 {
+	//シーンの状態取得
+	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+	m_bScroll = m_pScene->GetScroll();
+
+	//コメントアウトするとスクロールの向き次第で左か下へ動く-----
+	////スクロールが横の時左へ動く
+	//if (m_bScroll == SIDE)
+	//{
+	//	m_vPos.x -= SCROLL_SPEED;
+	//}
+	////縦の時下へ動く
+	//else
+	//{
+	//	m_vPos.y += SCROLL_SPEED;
+	//}
+	//------------------------------------------------------------
+
 	//HitBox更新
 	CHitBox* hit_b = Hits::GetHitBox(this);
 	hit_b->SetPos(m_vPos.x - HOLE_SIZE, m_vPos.y -HOLE_SIZE);
@@ -42,6 +59,20 @@ void CHole::Action()
 
 		//キャラに移動ベクトル追加
 		pChara->SetMove(vHoleDir);
+	}
+
+	//穴が画面外へ出ると削除
+	//
+	if (m_vPos.x + (HOLE_SIZE * 2.0f) < 0)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}
+	//画面下端
+	if (m_vPos.y - HOLE_SIZE > WINDOW_SIZE_H)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
 	}
 }
 

@@ -21,4 +21,5 @@ private:
 	int m_Map[MAX_Y][MAX_X];	//マップデータ
 	float m_fColor[4];			//描画色
 	bool m_bScroll;				//スクロールの状態取得
+	float m_fScroll;			//スクロール移動
 };

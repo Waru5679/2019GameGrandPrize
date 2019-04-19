@@ -58,8 +58,9 @@ struct UserData
 
 
 //スクロール
-#define SIDE true		//横
-#define VERTICAL false	//縦
+#define SIDE true			//横
+#define VERTICAL false		//縦
+#define SCROLL_SPEED 1.0f	//スクロール速度
 
 //マップ
 #define MAX_X 10

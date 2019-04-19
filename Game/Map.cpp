@@ -20,6 +20,9 @@ void CMap::Init()
 	m_iMapItem[MAX_ITEM];
 	m_iMapLoop = 0;
 
+	//スクロール移動
+	m_fScroll = SCROLL_SPEED;
+
 }
 
 //更新

@@ -23,7 +23,27 @@ void CPlane::Init()
 //更新
 void CPlane::Action()
 {
+	//スクロールの状態取得
+	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+	m_bScroll = m_pScene->GetScroll();
 
+	//スクロールが横の時左へ動く
+	if (m_bScroll == SIDE)
+	{
+		m_vPos.x -= SCROLL_SPEED;
+	}
+
+	//HitBox更新
+	CHitBox* hit_b = Hits::GetHitBox(this);
+	hit_b->SetPos(m_vPos.x, m_vPos.y);
+
+	 //床が画面外へ出ると削除
+	//画面下端
+	if (m_vPos.x + PLANE_WIDTH < 0)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}
 }
 
 //描画
