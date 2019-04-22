@@ -25,8 +25,9 @@ public:
 	void SetMove(Vector Vec) { m_vMove = CVector::Add(m_vMove, Vec); }
 
 private:
-	Vector m_vPos;	//位置
-	Vector m_vMove;	//移動
+	Vector m_vPos;		//位置
+	Vector m_vMove;		//移動
+	Vector m_vPlanePos;	//地面の位置
 
 	float m_fDirection;	//向き
 	bool m_bDirection;	//向き 右向き:false 左向き:true

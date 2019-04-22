@@ -21,4 +21,6 @@ private:
 	//位置
 	Vector m_vPos;
 
+	//スクロールの向き
+	bool m_bScroll;
 };

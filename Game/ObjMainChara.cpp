@@ -27,17 +27,18 @@ void CObjMainChara::Init()
 
 	m_fGravity = 0.98f;
 
+	
 	//当たり判定用HitBox作成
-	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CHARA_SIZE, CHARA_SIZE, ELEMENT_PLAYER, OBJ_CHARA, 1);
+	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CHARA_SIZE, CHARA_SIZE - 5.0f, ELEMENT_PLAYER, OBJ_CHARA, 1);
+	//地面との当たり判定用HitBox作成
+	//Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CHARA_SIZE, 5.0f, ELEMENT_PLAYER, OBJ_CHARA, 1);
+
 }
 
 //アクション
 void CObjMainChara::Action()
 {
-	//スクロールの状態取得
-	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
-	m_bScroll = m_pScene->GetScroll();
-
+	
 	//縦
 	if (m_bScroll == VERTICAL)
 	{
@@ -72,9 +73,17 @@ void CObjMainChara::Action()
 	}
 	//----------------------------------------------
 
+	//スクロールの状態取得
+	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+	m_bScroll = m_pScene->GetScroll();
+
 	//HitBox更新
 	CHitBox* hit_b = Hits::GetHitBox(this);
 	hit_b->SetPos(m_vPos.x, m_vPos.y);
+
+	//地面との当たり判定用HitBox更新
+	//CHitBox* hit_b2 = Hits::GetHitBox(this);
+	//hit_b2->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE -5.0f);
 
 }
 
@@ -115,7 +124,7 @@ void CObjMainChara::SideMove()
 	SideInput();
 
 	//自由落下　地面についてないときは落下する
-	if (m_vPos.y <= 585.0f - CHARA_SIZE)
+	if (m_vPos.y <= 585.0f - CHARA_SIZE || m_vPos.y + CHARA_SIZE <= m_vPlanePos.y)
 	{
 		m_vMove.y += 9.8f / 16.0f;
 	}

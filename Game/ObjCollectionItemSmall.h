@@ -12,6 +12,7 @@ public:
 	void Action();	//更新
 	void Draw();	//描画
 
+private:
 	//描画色
 	float m_fColor[4];
 
@@ -21,4 +22,7 @@ public:
 
 	//スコアの場所探索用
 	int m_iPosition;
+
+	//スクロールの向き
+	bool m_bScroll;
 };
