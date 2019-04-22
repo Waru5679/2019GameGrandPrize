@@ -247,15 +247,19 @@ CHitBox* CHitBoxManager::GetHitBox(void* t)
 }
 
 //ヒットボックスの登録メソッド
-void CHitBoxManager::SetHitBox(void* t,float x,float y,float w,float h,int e,int n,int p)
+CHitBox* CHitBoxManager::SetHitBox(void* t,float x,float y,float w,float h,int e,int n,int p)
 {
-	shared_ptr<CHitBox> ptr_box(new CHitBox());
-	ptr_box->SetPos(x,y,h,w);
-	ptr_box->SetStatus(e,n,p);
-	ptr_box->SetObj(t);
-	ptr_box->SetInvincibility(false);
+
+	CHitBox* pHit = new CHitBox();
+	pHit->SetPos(x,y,h,w);
+	pHit->SetStatus(e,n,p);
+	pHit->SetObj(t);
+	pHit->SetInvincibility(false);
+
+	shared_ptr<CHitBox> ptr_box(pHit);
 	m_ListHitBox->push_front(ptr_box);		//データ登録
-	return ;
+	
+	return pHit;
 }
 
 //ヒットボックスの削除メソッド

@@ -79,7 +79,7 @@ namespace GameL
 		public:
 			static void		Init();
 			static void		Delete();
-			static void		SetHitBox(void* t,float x,float y,float w,float h,int e,int n,int p);	//ヒットボックスの作成と登録
+			static CHitBox*	SetHitBox(void* t,float x,float y,float w,float h,int e,int n,int p);	//ヒットボックスの作成と登録
 			static CHitBox*	GetHitBox(void* t);												//自分のアドレスを持つヒットボックスを返す
 			static void		DeleteHitBox(void* t);											//自分のアドレスを持つヒットボックスの削除
 			static void		AllHitCheck();													//衝突判定
