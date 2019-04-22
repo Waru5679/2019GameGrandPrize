@@ -39,7 +39,6 @@ private:
 	bool m_bScroll;			//スクロールの向き
 	bool m_bHitGround;
 	bool m_bBullet_FireIs;	//弾丸制御
-	bool m_bFall;			//落下してるかどうか
 
 	bool m_bIsHitBlackHole;//ブラックホールヒット判定
 

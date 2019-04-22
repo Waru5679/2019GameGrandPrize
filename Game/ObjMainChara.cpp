@@ -24,7 +24,6 @@ void CObjMainChara::Init()
 	m_bDirection = false;
 	m_bHitGround = false;
 	m_bBullet_FireIs = true;
-	m_bFall = true;
 
 	m_fGravity = 0.98f;
 
@@ -41,20 +40,8 @@ void CObjMainChara::Init()
 //アクション
 void CObjMainChara::Action()
 {
-	
-	//縦
-	if (m_bScroll == VERTICAL)
-	{
-		VarticalMove();
-	}
-	//横
-	else
-	{
-		SideMove();
-	}
-			
 	//移動範囲制御------------------------------
-	//画面右端
+//画面右端
 	if (m_vPos.x > WINDOW_SIZE_W - CHARA_SIZE)
 	{
 		m_vPos.x = WINDOW_SIZE_W - CHARA_SIZE;
@@ -70,12 +57,24 @@ void CObjMainChara::Action()
 		m_vPos.y = 0.0f;
 	}
 	//画面下端(縦スクロール時のみ有効)
-	if (m_vPos.y > WINDOW_SIZE_H - CHARA_SIZE)
+	if (m_vPos.y >= WINDOW_SIZE_H - CHARA_SIZE)
 	{
 		m_vPos.y = WINDOW_SIZE_H - CHARA_SIZE;
 		m_bHitGround = true;
 	}
 	//----------------------------------------------
+
+	//縦
+	if (m_bScroll == VERTICAL)
+	{
+		VarticalMove();
+	}
+	//横
+	else
+	{
+		SideMove();
+	}
+			
 
 	//スクロールの状態取得
 	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
@@ -88,23 +87,26 @@ void CObjMainChara::Action()
 	//HitBox更新(足)
 	m_pChara_Leg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE -5.0f);
 
-	//Planeとの当たり判定
-	if (m_pChara_Leg->CheckElementHit(ELEMENT_PLANE) == true && m_bFall == true)
+	//地面乗ってるとき
+	if (m_pChara_Leg->CheckElementHit(ELEMENT_PLANE) == true )
 	{
-		//床の状態取得
-		CPlane* m_pPlane = dynamic_cast<CPlane*>(Objs::GetObj(OBJ_PLANE));
-		m_vPlanePos = m_pPlane->GetPos();
+		//上から来てるとき
+		if (m_vMove.y >= 0.0f)
+		{
+			//床の状態取得
+			CPlane* m_pPlane = dynamic_cast<CPlane*>(Objs::GetObj(OBJ_PLANE));
+			m_vPlanePos = m_pPlane->GetPos();
 
-		//キャラの位置を地面の上にする
-		m_vPos.y = m_vPlanePos.y - CHARA_SIZE + 0.1f;
+			//キャラの位置を地面の上にする
+			m_vPos.y = m_vPlanePos.y - CHARA_SIZE + 0.1f;
 
-		//落下を0にする
-		m_vMove.y = 0.0f;
-		m_bHitGround = true;
-		m_bFall = false;
+			//落下を0にする
+			m_vMove.y = 0.0f;
+			m_bHitGround = true;
+		}
 	}
 	//地面に乗ってないとき
-	else if(m_pChara_Leg->CheckElementHit(ELEMENT_PLANE) == false && m_bFall == false && m_vPos.y <= m_vPlanePos.y)
+	else
 	{
 		m_bHitGround = false;
 	}
@@ -165,7 +167,7 @@ void CObjMainChara::SideMove()
 	else
 	{
 		//自由落下　地面についてないときは落下する
-		if (m_vPos.y <= 585.0f - CHARA_SIZE || m_vPos.y + CHARA_SIZE <= m_vPlanePos.y)
+		if (m_bHitGround==false)
 		{
 			m_vMove.y += 9.8f / 16.0f;
 		}
