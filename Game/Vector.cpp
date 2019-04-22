@@ -24,6 +24,17 @@ Vector CVector::Sub(Vector Vec1, Vector Vec2)
 
 }
 
+//æZ
+Vector CVector::Multiply(Vector Vec, float Num)
+{
+	Vector vOut;
+
+	vOut.x = Vec.x * Num;
+	vOut.y = Vec.y * Num;
+
+	return vOut;
+}
+
 //ƒxƒNƒgƒ‹¶¬
 Vector CVector::Create(float x, float y)
 {

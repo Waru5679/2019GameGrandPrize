@@ -1,224 +1,257 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="GameL\DirectXDevice.cpp">
+      <Filter>学校ライブラリ</Filter>
+    </ClCompile>
     <ClCompile Include="GameL\Audio.cpp">
-      <Filter>ソースファイル</Filter>
+      <Filter>学校ライブラリ</Filter>
     </ClCompile>
     <ClCompile Include="GameL\DrawFont.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\DirectXDevice.cpp">
-      <Filter>ソースファイル</Filter>
+      <Filter>学校ライブラリ</Filter>
     </ClCompile>
     <ClCompile Include="GameL\DrawTexture.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\HitBoxManager.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\MultiThread.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\SetWindow.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\UserData.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GameL\WinInputs.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="BackGround.cpp">
-      <Filter>リソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="CharaBullet.cpp">
-      <Filter>リソースファイル</Filter>
+      <Filter>学校ライブラリ</Filter>
     </ClCompile>
     <ClCompile Include="Csv.cpp">
-      <Filter>リソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>リソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyBullet.cpp">
-      <Filter>リソースファイル</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Function.cpp">
-      <Filter>リソースファイル</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="GameL\GameL_Main.cpp">
-      <Filter>リソースファイル</Filter>
+      <Filter>学校ライブラリ</Filter>
     </ClCompile>
-    <ClCompile Include="GameOver.cpp">
-      <Filter>リソースファイル</Filter>
+    <ClCompile Include="GameL\HitBoxManager.cpp">
+      <Filter>学校ライブラリ</Filter>
     </ClCompile>
-    <ClCompile Include="Hole.cpp">
-      <Filter>リソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>リソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjCollectionItemBig.cpp">
-      <Filter>リソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjCollectionItemSmall.cpp">
-      <Filter>リソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjMainChara.cpp">
-      <Filter>リソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjStar.cpp">
-      <Filter>リソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Plane.cpp">
-      <Filter>リソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneGameOver.cpp">
-      <Filter>リソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneMain.cpp">
-      <Filter>リソースファイル</Filter>
+    <ClCompile Include="GameL\MultiThread.cpp">
+      <Filter>学校ライブラリ</Filter>
     </ClCompile>
     <ClCompile Include="GameL\SceneManager.cpp">
-      <Filter>リソースファイル</Filter>
+      <Filter>学校ライブラリ</Filter>
     </ClCompile>
     <ClCompile Include="GameL\SceneObjManager.cpp">
-      <Filter>リソースファイル</Filter>
+      <Filter>学校ライブラリ</Filter>
     </ClCompile>
-    <ClCompile Include="SceneTitle.cpp">
-      <Filter>リソースファイル</Filter>
+    <ClCompile Include="GameL\WinInputs.cpp">
+      <Filter>学校ライブラリ</Filter>
     </ClCompile>
-    <ClCompile Include="Score.cpp">
-      <Filter>リソースファイル</Filter>
+    <ClCompile Include="GameL\UserData.cpp">
+      <Filter>学校ライブラリ</Filter>
     </ClCompile>
-    <ClCompile Include="ScrollChange.cpp">
-      <Filter>リソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Title.cpp">
-      <Filter>リソースファイル</Filter>
+    <ClCompile Include="GameL\SetWindow.cpp">
+      <Filter>学校ライブラリ</Filter>
     </ClCompile>
     <ClCompile Include="Vector.cpp">
-      <Filter>リソースファイル</Filter>
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>Source\タイトル</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneTitle.cpp">
+      <Filter>Source\タイトル</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMain.cpp">
+      <Filter>Source\メイン</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>Source\ゲームオーバー</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGameOver.cpp">
+      <Filter>Source\ゲームオーバー</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>Source\メイン\背景</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source\メイン\敵</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBullet.cpp">
+      <Filter>Source\メイン\敵</Filter>
+    </ClCompile>
+    <ClCompile Include="CharaBullet.cpp">
+      <Filter>Source\メイン\キャラクター</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMainChara.cpp">
+      <Filter>Source\メイン\キャラクター</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjCollectionItemBig.cpp">
+      <Filter>Source\メイン\スコア</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjCollectionItemSmall.cpp">
+      <Filter>Source\メイン\スコア</Filter>
+    </ClCompile>
+    <ClCompile Include="Score.cpp">
+      <Filter>Source\メイン\スコア</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source\メイン\ステージ</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrollChange.cpp">
+      <Filter>Source\メイン\ステージ</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>Source\メイン\床</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjStar.cpp">
+      <Filter>Source\メイン\廃星</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackHole.cpp">
+      <Filter>Source\メイン\ブラックホール</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameL\Audio.h">
-      <Filter>ソースファイル</Filter>
-    </ClInclude>
     <ClInclude Include="GameL\DirectXDevice.h">
-      <Filter>ソースファイル</Filter>
+      <Filter>学校ライブラリ</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\Audio.h">
+      <Filter>学校ライブラリ</Filter>
     </ClInclude>
     <ClInclude Include="GameL\DrawFont.h">
-      <Filter>ソースファイル</Filter>
+      <Filter>学校ライブラリ</Filter>
     </ClInclude>
     <ClInclude Include="GameL\DrawTexture.h">
-      <Filter>ソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GameL\HitBoxManager.h">
-      <Filter>ソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GameL\MultiThread.h">
-      <Filter>ソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GameL\SetWindow.h">
-      <Filter>ソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GameL\UserData.h">
-      <Filter>ソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GameL\WinInputs.h">
-      <Filter>ソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="BackGround.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="CharaBullet.h">
-      <Filter>リソースファイル</Filter>
+      <Filter>学校ライブラリ</Filter>
     </ClInclude>
     <ClInclude Include="Csv.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyBullet.h">
-      <Filter>リソースファイル</Filter>
+      <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Function.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GameOver.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Hole.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjCollectionItemBig.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjCollectionItemSmall.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjMainChara.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjStar.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Plane.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneGameOver.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneMain.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GameL\SceneManager.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GameL\SceneObjManager.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneTitle.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Score.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ScrollChange.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Title.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector.h">
-      <Filter>リソースファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="main.h">
-      <Filter>ヘッダーファイル</Filter>
+      <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="GameHead.h">
-      <Filter>ヘッダーファイル</Filter>
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\HitBoxManager.h">
+      <Filter>学校ライブラリ</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\MultiThread.h">
+      <Filter>学校ライブラリ</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\SceneManager.h">
+      <Filter>学校ライブラリ</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\SceneObjManager.h">
+      <Filter>学校ライブラリ</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\WinInputs.h">
+      <Filter>学校ライブラリ</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\UserData.h">
+      <Filter>学校ライブラリ</Filter>
+    </ClInclude>
+    <ClInclude Include="GameL\SetWindow.h">
+      <Filter>学校ライブラリ</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneTitle.h">
+      <Filter>Source\タイトル</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>Source\タイトル</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMain.h">
+      <Filter>Source\メイン</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>Source\ゲームオーバー</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGameOver.h">
+      <Filter>Source\ゲームオーバー</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGround.h">
+      <Filter>Source\メイン\背景</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Source\メイン\敵</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBullet.h">
+      <Filter>Source\メイン\敵</Filter>
+    </ClInclude>
+    <ClInclude Include="CharaBullet.h">
+      <Filter>Source\メイン\キャラクター</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMainChara.h">
+      <Filter>Source\メイン\キャラクター</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjCollectionItemBig.h">
+      <Filter>Source\メイン\スコア</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjCollectionItemSmall.h">
+      <Filter>Source\メイン\スコア</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>Source\メイン\スコア</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Source\メイン\ステージ</Filter>
+    </ClInclude>
+    <ClInclude Include="ScrollChange.h">
+      <Filter>Source\メイン\ステージ</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>Source\メイン\床</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjStar.h">
+      <Filter>Source\メイン\廃星</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackHole.h">
+      <Filter>Source\メイン\ブラックホール</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="ソースファイル">
-      <UniqueIdentifier>{05048279-81d2-43fd-abd1-42647b82182d}</UniqueIdentifier>
+    <Filter Include="学校ライブラリ">
+      <UniqueIdentifier>{9fc8b7e2-823b-43a6-ac2b-7d361558f991}</UniqueIdentifier>
     </Filter>
-    <Filter Include="リソースファイル">
-      <UniqueIdentifier>{b2f4235f-9e96-43b9-a57c-c2664cefc744}</UniqueIdentifier>
+    <Filter Include="Header">
+      <UniqueIdentifier>{306b46ae-5efc-4372-9a67-f49b4d59cfe4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダーファイル">
-      <UniqueIdentifier>{33f2af4c-61c5-496c-93ce-e1145e8028cd}</UniqueIdentifier>
+    <Filter Include="Source">
+      <UniqueIdentifier>{91194809-46db-45a1-bdbc-9fc72a0bd69a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\タイトル">
+      <UniqueIdentifier>{2e85ad55-ad99-4f05-8602-36d9f5ec21f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\メイン">
+      <UniqueIdentifier>{1177d3e0-ea0b-4a4e-8ba9-93973eab5f4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\ゲームオーバー">
+      <UniqueIdentifier>{ac3d10d7-4cbd-477a-af88-133fc7a5049b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\メイン\背景">
+      <UniqueIdentifier>{c1fab34e-26d6-4d77-aa13-928b09e64513}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\メイン\敵">
+      <UniqueIdentifier>{91313c96-250f-4c0c-9b22-cdc2fb0dfcba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\メイン\キャラクター">
+      <UniqueIdentifier>{5621b605-225d-41a6-b282-e84352e63bdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\メイン\スコア">
+      <UniqueIdentifier>{e79c2614-86b4-48ff-87bc-6ac4d7181095}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\メイン\ステージ">
+      <UniqueIdentifier>{90697f79-4752-44ff-b3c4-cbd611facbc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\メイン\ブラックホール">
+      <UniqueIdentifier>{e89608da-d7b7-4507-8556-2b59bc93b8d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\メイン\床">
+      <UniqueIdentifier>{adda730a-341d-4197-ae8f-671015a09c2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\メイン\廃星">
+      <UniqueIdentifier>{85e23d30-e7c3-438b-ac42-303a70aeca3a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="GameL\Draw2DTex.hlsl">
-      <Filter>ソースファイル</Filter>
+      <Filter>学校ライブラリ</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

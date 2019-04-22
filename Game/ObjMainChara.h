@@ -22,7 +22,9 @@ public:
 	void Draw();	//ドロー
 
 	Vector GetPos() { return m_vPos; }
-	void SetMove(Vector Vec) { m_vMove = CVector::Add(m_vMove, Vec); }
+
+	//ブラックホールとのヒット処理
+	void HitBlackHole(Vector Vec);
 
 private:
 	Vector m_vPos;		//位置
@@ -35,6 +37,8 @@ private:
 	bool m_bScroll;		//スクロールの向き
 	bool m_bHitGround;
 	bool m_bBullet_FireIs;//弾丸制御
+
+	bool m_bIsHitBlackHole;//ブラックホールヒット判定
 
 	//描画色
 	float m_fColor[4];

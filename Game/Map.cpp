@@ -70,11 +70,11 @@ void CMap::CreateSide()
 				m_Map[y][x] = MAP_NONE;
 				break;
 			}
-			//穴
-			case MAP_HOLE:
+			//ブラック
+			case MAP_BLACK_HOLE:
 			{
-				CHole* pHole = new CHole(x, y);
-				Objs::InsertObj(pHole, OBJ_HOLE, 10);
+				CBlackHole* pBlackHole = new CBlackHole(x, y);
+				Objs::InsertObj(pBlackHole, OBJ_BLACK_HOLE, 10);
 
 				//生成が終われば空白に
 				m_Map[y][x] = MAP_NONE;
@@ -168,11 +168,11 @@ void CMap::CreateVertical()
 				m_Map[y][x] = MAP_NONE;
 				break;
 			}
-			//穴
-			case MAP_HOLE:
+			//ブラックホール
+			case MAP_BLACK_HOLE:
 			{
-				CHole* pHole = new CHole(x, y);
-				Objs::InsertObj(pHole, OBJ_HOLE, 10);
+				CBlackHole* pBlackHole = new CBlackHole(x, y);
+				Objs::InsertObj(pBlackHole, OBJ_BLACK_HOLE, 10);
 
 				//生成が終われば空白に
 				m_Map[y][x] = MAP_NONE;

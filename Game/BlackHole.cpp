@@ -1,29 +1,35 @@
-#include "Hole.h"
+#include "BlackHole.h"
 #include "GameHead.h"
 #include "Function.h"
 #include "GameL/DrawTexture.h"
 #include "GameL/HitBoxManager.h"
 
 //コンストラクタ
-CHole::CHole(int y, int x)
+CBlackHole::CBlackHole(int y, int x)
 {
-	m_vPos.x = 400.0f;// (float)y * OBJ_SIZE;
-	m_vPos.y = 400.0f;//(float)x * OBJ_SIZE;
+	m_vPos.x = 400.0f;//(float)y * OBJ_SIZE;
+	m_vPos.y = 300.0f;//(float)x * OBJ_SIZE;
 
 }
 
 //初期化
-void CHole::Init()
+void CBlackHole::Init()
 {
 	//色
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
+	
+	//吸引力
+	m_fSuctionPower=1.2f;
+	
+	//吸引判定
+	m_pSuction = Hits::SetHitBox(this, m_vPos.x, m_vPos.y, BLACK_HOLE_SIZE, BLACK_HOLE_SIZE, ELEMENT_BLACK_HOLE, OBJ_BLACK_HOLE, 0);
 
-	//HitBoxセット
-	Hits::SetHitBox(this, m_vPos.x- HOLE_SIZE, m_vPos.y-HOLE_SIZE, HOLE_SIZE*3.0f, HOLE_SIZE*3.0f, ELEMENT_HOLE, OBJ_HOLE, 0);
+	//死亡判定
+//	m_pDeath = Hits::SetHitBox(this,( (m_vPos.x - BLACK_HOLE_SIZE) / 2.0f ) - ( ( HOLE_DEATH_SIZE / 2.0f) ) ,
 }
 
 //更新
-void CHole::Action()
+void CBlackHole::Action()
 {
 	//シーンの状態取得
 	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
@@ -44,7 +50,7 @@ void CHole::Action()
 
 	//HitBox更新
 	CHitBox* hit_b = Hits::GetHitBox(this);
-	hit_b->SetPos(m_vPos.x - HOLE_SIZE, m_vPos.y -HOLE_SIZE);
+	hit_b->SetPos(m_vPos.x , m_vPos.y);
 
 	//プレイヤーが当たっているとき
 	if (hit_b->CheckObjNameHit(OBJ_CHARA) != nullptr)
@@ -58,18 +64,17 @@ void CHole::Action()
 		vHoleDir = CVector::Normalize(vHoleDir);
 
 		//キャラに移動ベクトル追加
-		pChara->SetMove(vHoleDir);
+		pChara->HitBlackHole(CVector::Multiply(vHoleDir,m_fSuctionPower));
 	}
 
 	//穴が画面外へ出ると削除
-	//
-	if (m_vPos.x + (HOLE_SIZE * 2.0f) < 0)
+	if (m_vPos.x + (BLACK_HOLE_SIZE * 2.0f) < 0)
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
 	}
 	//画面下端
-	if (m_vPos.y - HOLE_SIZE > WINDOW_SIZE_H)
+	if (m_vPos.y - BLACK_HOLE_SIZE > WINDOW_SIZE_H)
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
@@ -77,7 +82,7 @@ void CHole::Action()
 }
 
 //描画
-void CHole::Draw()
+void CBlackHole::Draw()
 {
 	RECT_F src, dst;
 
@@ -85,9 +90,8 @@ void CHole::Draw()
 	RectSet(&src, 0.0f, 0.0f, 128.0f, 128.0f);
 
 	//描画位置
-	RectSet(&dst, m_vPos.y, m_vPos.x, HOLE_SIZE, HOLE_SIZE);
+	RectSet(&dst, m_vPos.y, m_vPos.x, BLACK_HOLE_SIZE, BLACK_HOLE_SIZE);
 	
 	//描画
-	Draw::Draw(OBJ_HOLE, &src, &dst, m_fColor, 0.0f);
-
+	Draw::Draw(OBJ_BLACK_HOLE, &src, &dst, m_fColor, 0.0f);
 }

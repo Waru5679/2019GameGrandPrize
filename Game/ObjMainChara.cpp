@@ -27,6 +27,8 @@ void CObjMainChara::Init()
 
 	m_fGravity = 0.98f;
 
+	//ブラックホール当たっていない
+	m_bIsHitBlackHole = false;
 	
 	//当たり判定用HitBox作成
 	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CHARA_SIZE, CHARA_SIZE - 5.0f, ELEMENT_PLAYER, OBJ_CHARA, 1);
@@ -123,20 +125,43 @@ void CObjMainChara::SideMove()
 	//入力
 	SideInput();
 
-	//自由落下　地面についてないときは落下する
-	if (m_vPos.y <= 585.0f - CHARA_SIZE || m_vPos.y + CHARA_SIZE <= m_vPlanePos.y)
+	//ブラックホールに当たっているとき
+	if(m_bIsHitBlackHole==true)
 	{
-		m_vMove.y += 9.8f / 16.0f;
+
+		//位置の更新
+		m_vPos.x += m_vMove.x;
+		m_vPos.y += m_vMove.y;
+
+		//移動初期化
+		m_vMove.x = 0.0f;
+		m_vMove.y = 0.0f;
+
+		//ブラックホールとの当たり判定解除
+		m_bIsHitBlackHole = false;
 	}
-	//地面についていればジャンプ用の判定(m_bHitGround)をtrueにする
+	//ブラックホールに当たっていないとき
 	else
 	{
-		m_bHitGround = true;
+		//自由落下　地面についてないときは落下する
+		if (m_vPos.y <= 585.0f - CHARA_SIZE || m_vPos.y + CHARA_SIZE <= m_vPlanePos.y)
+		{
+			m_vMove.y += 9.8f / 16.0f;
+		}
+		//地面についていればジャンプ用の判定(m_bHitGround)をtrueにする
+		else
+		{
+			m_bHitGround = true;
+		}
+
+		//位置の更新
+		m_vPos.x += m_vMove.x;
+		m_vPos.y += m_vMove.y;
+
+		//移動初期化
+		m_vMove.x = 0.0f;
 	}
 
-	//位置の更新
-	m_vPos.x += m_vMove.x;
-	m_vPos.y += m_vMove.y;
 
 }
 
@@ -150,6 +175,10 @@ void CObjMainChara::VarticalMove()
 	m_vPos.x += m_vMove.x;
 	m_vPos.y += m_vMove.y;
 
+	//移動初期化
+	m_vMove.x = 0.0f;
+	m_vMove.y = 0.0f;
+
 }
 
 //横の入力
@@ -158,18 +187,18 @@ void CObjMainChara::SideInput()
 	//キー入力　右
 	if (Input::GetVKey(VK_RIGHT) == true)
 	{
-		m_vMove.x = 3.0f;
+		m_vMove.x += 3.0f;
 		m_bDirection = false;
 	}
 	//キー入力　左
 	else if (Input::GetVKey(VK_LEFT) == true)
 	{
-		m_vMove.x = -3.0f;
+		m_vMove.x += -3.0f;
 		m_bDirection = true;
 	}
 	else
 	{
-		m_vMove.x = 0.0f;
+	//	m_vMove.x = 0.0f;
 	}
 
 	//ジャンプ
@@ -191,33 +220,33 @@ void CObjMainChara::VarticalInput()
 	//キー入力　右
 	if (Input::GetVKey(VK_RIGHT) == true)
 	{
-		m_vMove.x = 3.0f;
+		m_vMove.x += 3.0f;
 		m_bDirection = false;
 	}
 	//キー入力　左
 	else if (Input::GetVKey(VK_LEFT) == true)
 	{
-		m_vMove.x = -3.0f;
+		m_vMove.x += -3.0f;
 		m_bDirection = true;
 	}
 	else
 	{
-		m_vMove.x = 0.0f;
+		//m_vMove.x = 0.0f;
 	}
 
 	//キー入力　上
 	if (Input::GetVKey(VK_UP) == true)
 	{
-		m_vMove.y = -3.0f;
+		m_vMove.y += -3.0f;
 	}
 	//キー入力　下
 	else if (Input::GetVKey(VK_DOWN) == true)
 	{
-		m_vMove.y = 3.0f;
+		m_vMove.y += 3.0f;
 	}
 	else
 	{
-		m_vMove.y = 0.0f;
+//		m_vMove.y = 0.0f;
 	}
 
 	//攻撃
@@ -236,4 +265,11 @@ void CObjMainChara::VarticalInput()
 	{
 		m_bBullet_FireIs = true;
 	}
+}
+
+//ブラックホールとのヒット処理
+void CObjMainChara::HitBlackHole(Vector Vec)
+{
+	m_vMove = CVector::Add(m_vMove, Vec);
+	m_bIsHitBlackHole = true;
 }

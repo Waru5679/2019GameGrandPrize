@@ -2,14 +2,15 @@
 
 #include "GameL/SceneObjManager.h"
 #include "Vector.h"
+#include "GameL/HitBoxManager.h"
 
 using namespace GameL;
 
-//穴クラス
-class CHole :public CObj
+//ブラックホールクラス
+class CBlackHole :public CObj
 {
 public:
-	CHole(int x, int y);
+	CBlackHole(int x, int y);
 	void Init();	//初期化
 	void Action();	//更新
 	void Draw();	//描画
@@ -21,6 +22,12 @@ private:
 	//位置
 	Vector m_vPos;
 
+	//吸引力
+	float m_fSuctionPower;
+
 	//スクロールの向き
 	bool m_bScroll;
+
+	CHitBox* m_pSuction;	//吸引判定
+	CHitBox* m_pDeath;		//死亡判定	
 };

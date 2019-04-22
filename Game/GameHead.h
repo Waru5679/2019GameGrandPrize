@@ -8,7 +8,7 @@ enum OBJ_NAME
 	OBJ_NO_NAME,	//オブジェクト名無し(禁止)
 	OBJ_BACK_GROUND,	//背景
 	OBJ_MAP,			//マップ
-	OBJ_HOLE,			//穴
+	OBJ_BLACK_HOLE,		//ブラックホール
 	OBJ_CHARA,			//キャラクタ
 	OBJ_ENEMY,			//敵
 	OBJ_ENEMY_BULLET,	//敵の弾
@@ -40,7 +40,7 @@ enum HIT_ELEMENTS
 	ELEMENT_STAR,
 	ELEMENT_SCROLL_CHANGE,
 	ELEMENT_PLANE,
-	ELEMENT_HOLE,
+	ELEMENT_BLACK_HOLE,
 
 };
 //------------------------------------------------
@@ -74,7 +74,7 @@ enum MAP_NUM
 {
 	MAP_NONE,		//何もない
 	MAP_PLANE,		//地面
-	MAP_HOLE,		//穴
+	MAP_BLACK_HOLE,	//ブラックホール
 	MAP_ENEMY,		//敵
 	MAP_STAR,		//星
 	MAP_ITEM_BIG,	//収集アイテム(大)
@@ -92,7 +92,8 @@ enum ITEM_NUM
 
 //オブジェクトサイズ
 #define OBJ_SIZE		32.0f
-#define HOLE_SIZE		32.0f
+#define BLACK_HOLE_SIZE	256.0f
+#define HOLE_DEATH_SIZE 32.0f
 #define ENEMY_SIZE		64.0f
 #define BULLET_SIZE		32.0f
 #define CHARA_SIZE		64.0f
@@ -118,7 +119,7 @@ enum ITEM_NUM
 //ゲームシーンオブジェクトヘッダ------------------
 #include "BackGround.h"
 #include "Map.h"
-#include "Hole.h"
+#include "BlackHole.h"
 #include "SceneMain.h"
 #include "ObjMainChara.h"
 #include "Enemy.h"

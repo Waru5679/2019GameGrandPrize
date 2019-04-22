@@ -18,6 +18,12 @@ void CSceneMain::InitScene()
 	//マップ情報読み込み
 	m_pMap=CCsv::LoadCsv("Map/TestMap.csv",MAX_X,MAX_Y);
 
+	//カウンタ初期化
+	m_Count = 0;
+
+	//スクロール方向
+	m_bScroll = SIDE;
+
 	//背景オブジェクト1
 	m_pBack1 = new CBackGround(0.0f, 0.0f, SIDE);
 	Objs::InsertObj(m_pBack1, OBJ_BACK_GROUND, 1);
@@ -37,12 +43,6 @@ void CSceneMain::InitScene()
 	//スコア表示オブジェ
 	CScore* score = new CScore();
 	Objs::InsertObj(score, OBJ_SCORE, 10);
-
-	//カウンタ初期化
-	m_Count = 0;
-
-	//スクロール方向
-	m_bScroll = SIDE;
 
 	//ボリューム調整
 	Audio::Volume(-0.8f, 0);
@@ -88,7 +88,7 @@ void CSceneMain::LoadTexture()
 	Draw::LoadImageW(L"Texture/BackGround.png", OBJ_BACK_GROUND, TEX_SIZE_512);
 
 	//穴
-	Draw::LoadImageW(L"Texture/BlackHole.png", OBJ_HOLE, TEX_SIZE_128);
+	Draw::LoadImageW(L"Texture/BlackHole.png", OBJ_BLACK_HOLE, TEX_SIZE_128);
 
 	//主人公
 	Draw::LoadImageW(L"Texture/MainCharacter.png",OBJ_CHARA, TEX_SIZE_128);
