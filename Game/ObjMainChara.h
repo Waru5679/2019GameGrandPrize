@@ -1,6 +1,8 @@
 #pragma once
 //使用するヘッダー
 #include "GameL/SceneObjManager.h"
+#include "GameL/HitBoxManager.h"
+
 #include "Vector.h"
 //使用するネームスペース
 using namespace GameL;
@@ -25,17 +27,21 @@ public:
 	void SetMove(Vector Vec) { m_vMove = CVector::Add(m_vMove, Vec); }
 
 private:
-	Vector m_vPos;		//位置
-	Vector m_vMove;		//移動
-	Vector m_vPlanePos;	//地面の位置
+	Vector m_vPos;			//位置
+	Vector m_vMove;			//移動
+	Vector m_vPlanePos;		//地面の位置
 
-	float m_fDirection;	//向き
-	bool m_bDirection;	//向き 右向き:false 左向き:true
-	float m_fGravity;	//重力
-	bool m_bScroll;		//スクロールの向き
+	float m_fDirection;		//向き
+	bool m_bDirection;		//向き 右向き:false 左向き:true
+	float m_fGravity;		//重力
+	bool m_bScroll;			//スクロールの向き
 	bool m_bHitGround;
-	bool m_bBullet_FireIs;//弾丸制御
+	bool m_bBullet_FireIs;	//弾丸制御
+	bool m_bFall;			//落下してるかどうか
 
 	//描画色
 	float m_fColor[4];
+
+	CHitBox* m_pChara_Body;	//キャラの当たり判定胴体用
+	CHitBox* m_pChara_Leg;	//キャラの当たり判定足用
 };

@@ -59,7 +59,7 @@ void CEnemy::Action()
 			Vector vCharaPos = pChara->GetPos();
 
 			//íeê∂ê¨
-			CEnemyBullet* pBullet = new CEnemyBullet(m_vPos, CVector::Create(vCharaPos.x-100.0f , vCharaPos.y));
+			CEnemyBullet* pBullet = new CEnemyBullet(m_vPos, CVector::Create(vCharaPos.x - 240.0f , vCharaPos.y));
 			Objs::InsertObj(pBullet, OBJ_ENEMY_BULLET, 10);
 		}
 	}
