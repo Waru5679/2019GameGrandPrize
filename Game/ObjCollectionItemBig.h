@@ -11,7 +11,6 @@ public:
 	void Init();	//‰Šú‰»
 	void Action();	//XV
 	void Draw();	//•`‰æ
-
 	
 
 private:

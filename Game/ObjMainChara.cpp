@@ -24,6 +24,7 @@ void CObjMainChara::Init()
 	m_bDirection = false;
 	m_bHitGround = false;
 	m_bBullet_FireIs = true;
+	m_bFall = true;
 
 	m_fGravity = 0.98f;
 
@@ -31,9 +32,9 @@ void CObjMainChara::Init()
 	m_bIsHitBlackHole = false;
 	
 	//当たり判定用HitBox作成
-	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CHARA_SIZE, CHARA_SIZE - 5.0f, ELEMENT_PLAYER, OBJ_CHARA, 1);
+	m_pChara_Body = Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CHARA_SIZE, CHARA_SIZE - 5.0f, ELEMENT_PLAYER, OBJ_CHARA, 1);
 	//地面との当たり判定用HitBox作成
-	//Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CHARA_SIZE, 5.0f, ELEMENT_PLAYER, OBJ_CHARA, 1);
+	m_pChara_Leg =  Hits::SetHitBox(this, m_vPos.x, m_vPos.y + (CHARA_SIZE - 5.0f), CHARA_SIZE, 5.0f, ELEMENT_PLAYER_LEG, OBJ_CHARA, 1);
 
 }
 
@@ -72,6 +73,7 @@ void CObjMainChara::Action()
 	if (m_vPos.y > WINDOW_SIZE_H - CHARA_SIZE)
 	{
 		m_vPos.y = WINDOW_SIZE_H - CHARA_SIZE;
+		m_bHitGround = true;
 	}
 	//----------------------------------------------
 
@@ -79,14 +81,33 @@ void CObjMainChara::Action()
 	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
 	m_bScroll = m_pScene->GetScroll();
 
-	//HitBox更新
-	CHitBox* hit_b = Hits::GetHitBox(this);
-	hit_b->SetPos(m_vPos.x, m_vPos.y);
+	//床の状態取得
 
-	//地面との当たり判定用HitBox更新
-	//CHitBox* hit_b2 = Hits::GetHitBox(this);
-	//hit_b2->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE -5.0f);
+	//HitBox更新(胴体)
+	m_pChara_Body->SetPos(m_vPos.x, m_vPos.y);
+	//HitBox更新(足)
+	m_pChara_Leg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE -5.0f);
 
+	//Planeとの当たり判定
+	if (m_pChara_Leg->CheckElementHit(ELEMENT_PLANE) == true && m_bFall == true)
+	{
+		//床の状態取得
+		CPlane* m_pPlane = dynamic_cast<CPlane*>(Objs::GetObj(OBJ_PLANE));
+		m_vPlanePos = m_pPlane->GetPos();
+
+		//キャラの位置を地面の上にする
+		m_vPos.y = m_vPlanePos.y - CHARA_SIZE + 0.1f;
+
+		//落下を0にする
+		m_vMove.y = 0.0f;
+		m_bHitGround = true;
+		m_bFall = false;
+	}
+	//地面に乗ってないとき
+	else if(m_pChara_Leg->CheckElementHit(ELEMENT_PLANE) == false && m_bFall == false && m_vPos.y <= m_vPlanePos.y)
+	{
+		m_bHitGround = false;
+	}
 }
 
 //ドロー
@@ -95,7 +116,7 @@ void CObjMainChara::Draw()
 	RECT_F src, dst;
 
 	//切り取り位置の設定
-	RectSet(&src, 64.0f, 2.0f, 32.0f, 32.0f);
+	RectSet(&src, 64.0f, 0.0f, 32.0f, 32.0f);
 
 	//表示位置の設定
 	dst.m_top = m_vPos.y;
@@ -196,10 +217,7 @@ void CObjMainChara::SideInput()
 		m_vMove.x += -3.0f;
 		m_bDirection = true;
 	}
-	else
-	{
-	//	m_vMove.x = 0.0f;
-	}
+
 
 	//ジャンプ
 	if (Input::GetVKey('C') == true)
@@ -229,10 +247,7 @@ void CObjMainChara::VarticalInput()
 		m_vMove.x += -3.0f;
 		m_bDirection = true;
 	}
-	else
-	{
-		//m_vMove.x = 0.0f;
-	}
+	
 
 	//キー入力　上
 	if (Input::GetVKey(VK_UP) == true)
@@ -244,10 +259,7 @@ void CObjMainChara::VarticalInput()
 	{
 		m_vMove.y += 3.0f;
 	}
-	else
-	{
-//		m_vMove.y = 0.0f;
-	}
+
 
 	//攻撃
 	if (Input::GetVKey('X') == true)

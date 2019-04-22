@@ -30,7 +30,7 @@ void CPlane::Action()
 	//スクロールが横の時左へ動く
 	if (m_bScroll == SIDE)
 	{
-		m_vPos.x -= SCROLL_SPEED;
+		//m_vPos.x -= SCROLL_SPEED;
 	}
 
 	//HitBox更新

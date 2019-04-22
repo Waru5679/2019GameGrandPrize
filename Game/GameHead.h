@@ -41,6 +41,7 @@ enum HIT_ELEMENTS
 	ELEMENT_SCROLL_CHANGE,
 	ELEMENT_PLANE,
 	ELEMENT_BLACK_HOLE,
+	ELEMENT_PLAYER_LEG,
 
 };
 //------------------------------------------------
