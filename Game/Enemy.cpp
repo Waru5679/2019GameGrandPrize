@@ -78,6 +78,7 @@ void CEnemy::Action()
 		Hits::DeleteHitBox(this);
 	}
 	//--------------------------------------------------------------
+
 	//âÊñ äOÇ»ÇÁè¡Ç∑
 	if (m_bInWindow == false)
 	{

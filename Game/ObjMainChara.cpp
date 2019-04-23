@@ -129,6 +129,7 @@ void CObjMainChara::SideMove()
 
 		//ブラックホールとの当たり判定解除
 		m_bIsHitBlackHole = false;
+  		m_bHitGround = true;
 	}
 	//ブラックホールに当たっていないとき
 	else
@@ -151,6 +152,8 @@ void CObjMainChara::SideMove()
 		m_pBody->SetPos(m_vPos.x, m_vPos.y);		
 		m_pLeg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE - 5.0f);
 	}
+
+
 }
 
 //移動縦
@@ -187,7 +190,7 @@ void CObjMainChara::SideInput()
 
 
 	//ジャンプ
-	if (Input::GetVKey('C') == true)
+	if (Input::GetTrrigerKey(VK_SPACE) == true)
 	{
 		//地面に接地してるとき(m_bHitGround == true)の時のみ飛ぶ
 		if (m_bHitGround == true)
