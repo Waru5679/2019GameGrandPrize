@@ -21,6 +21,7 @@ private:
 
 	//ˆÊ’u
 	Vector m_vPos;
+	Vector m_vDeathPos;	//Ž€–S”»’è‚ÌˆÊ’u
 
 	//‹zˆø—Í
 	float m_fSuctionPower;

@@ -20,12 +20,16 @@ void CBlackHole::Init()
 	
 	//吸引力
 	m_fSuctionPower=1.2f;
-	
+
+	//死亡判定の位置　(オブジェクトの中心と死亡判定の中心が同じになる位置にしてる)
+	m_vDeathPos.x = (m_vPos.x - (BLACK_HOLE_SIZE / 2.0f))- (HOLE_DEATH_SIZE / 2.0f);
+	m_vDeathPos.y = (m_vPos.y - (BLACK_HOLE_SIZE / 2.0f)) - (HOLE_DEATH_SIZE / 2.0f);
+
 	//吸引判定
-	m_pSuction = Hits::SetHitBox(this, m_vPos.x, m_vPos.y, BLACK_HOLE_SIZE, BLACK_HOLE_SIZE, ELEMENT_BLACK_HOLE, OBJ_BLACK_HOLE, 0);
+	m_pSuction = Hits::SetHitBox(this, m_vPos.x, m_vPos.y, BLACK_HOLE_SIZE, BLACK_HOLE_SIZE, ELEMENT_STAGE, OBJ_BLACK_HOLE, 0);
 
 	//死亡判定
-//	m_pDeath = Hits::SetHitBox(this,( (m_vPos.x - BLACK_HOLE_SIZE) / 2.0f ) - ( ( HOLE_DEATH_SIZE / 2.0f) ) ,
+	m_pDeath = Hits::SetHitBox(this, m_vDeathPos.x, m_vDeathPos.y, HOLE_DEATH_SIZE, HOLE_DEATH_SIZE, ELEMENT_DEATH, OBJ_BLACK_HOLE, 0);
 }
 
 //更新
@@ -34,42 +38,54 @@ void CBlackHole::Action()
 	//シーンの状態取得
 	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
 	m_bScroll = m_pScene->GetScroll();
-
-	//コメントアウトするとスクロールの向き次第で左か下へ動く-----
-	////スクロールが横の時左へ動く
-	//if (m_bScroll == SIDE)
-	//{
-	//	m_vPos.x -= SCROLL_SPEED;
-	//}
-	////縦の時下へ動く
-	//else
-	//{
-	//	m_vPos.y += SCROLL_SPEED;
-	//}
-	//------------------------------------------------------------
+	
+	//スクロールが横の時左へ動く
+	if (m_bScroll == SIDE)
+	{
+		m_vPos.x -= SCROLL_SPEED;
+	}
+	//縦の時下へ動く
+	else
+	{
+		m_vPos.y += SCROLL_SPEED;
+	}
+	
+	//死亡判定の位置　(オブジェクトの中心と死亡判定の中心が同じになる位置にしてる)
+	m_vDeathPos.x = (m_vPos.x + (BLACK_HOLE_SIZE / 2.0f)) - (HOLE_DEATH_SIZE / 2.0f);
+	m_vDeathPos.y = (m_vPos.y + (BLACK_HOLE_SIZE / 2.0f))- (HOLE_DEATH_SIZE / 2.0f);
 
 	//HitBox更新
-	CHitBox* hit_b = Hits::GetHitBox(this);
-	hit_b->SetPos(m_vPos.x , m_vPos.y);
-
-	//プレイヤーが当たっているとき
-	if (hit_b->CheckObjNameHit(OBJ_CHARA) != nullptr)
+	m_pSuction->SetPos(m_vPos.x, m_vPos.y);
+	m_pDeath->SetPos(m_vDeathPos.x,m_vDeathPos.y);	
+	
+	//キャラに当たっているときの吸い込み判定
+	if (m_pSuction->CheckObjNameHit(OBJ_CHARA) != nullptr)
 	{
 		//キャラの位置取得
 		CObjMainChara* pChara = dynamic_cast<CObjMainChara*>(Objs::GetObj(OBJ_CHARA));
 		Vector vCharaPos = pChara->GetPos();
 
 		//キャラクターから見た穴の方向(正規化)
-		Vector vHoleDir=CVector::Sub(m_vPos, vCharaPos);
+		Vector vHoleDir=CVector::Sub(m_vDeathPos, vCharaPos);
 		vHoleDir = CVector::Normalize(vHoleDir);
 
 		//キャラに移動ベクトル追加
 		pChara->HitBlackHole(CVector::Multiply(vHoleDir,m_fSuctionPower));
 	}
 
-	//穴が画面外へ出ると削除
-	//画面左端
-	if (m_vPos.x + (BLACK_HOLE_SIZE * 2.0f) < 0)
+	//キャラが当たった時の死亡判定
+	if (m_pDeath->CheckObjNameHit(OBJ_CHARA) != nullptr)
+	{
+		//消す
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+
+		//ゲームオーバーへ
+		Scene::SetScene(new CSceneGameOver());
+	}
+
+	//画面外へ出ると削除
+	if (m_vPos.x + (BLACK_HOLE_SIZE * 2.0f) < 0.0f)
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);

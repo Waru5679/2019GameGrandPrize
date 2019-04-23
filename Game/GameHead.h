@@ -32,18 +32,11 @@ enum HIT_ELEMENTS
 	ELEMENT_NULL,//属性無し 全ての属性と当たり判定が実行される
 	//以下　同じ属性同士では当たり判定は実行されない
 	//属性は追加可能だが、デバック時の色は初期設定分しか無い
-	ELEMENT_PLAYER,
-	ELEMENT_ENEMY,
-	ELEMENT_ITEM_BIG,
-	ELEMENT_ITEM_SMALL,
-	ELEMENT_CHARA_BULLET,
-	ELEMENT_ENEMY_BULLET,
-	ELEMENT_STAR,
-	ELEMENT_SCROLL_CHANGE,
-	ELEMENT_PLANE,
-	ELEMENT_BLACK_HOLE,
-	ELEMENT_PLAYER_LEG,
-
+	ELEMENT_CHARA,			//キャラクター
+	ELEMENT_ENEMY,			//敵
+	ELEMENT_ITEM,			//アイテム
+	ELEMENT_STAGE,			//ステージ
+	ELEMENT_DEATH,			//死亡判定
 };
 //------------------------------------------------
 

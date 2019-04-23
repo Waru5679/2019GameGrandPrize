@@ -72,7 +72,7 @@ void CEnemy::Action()
 	hit_b->SetPos(m_vPos.x, m_vPos.y);
 
 	//ŽålŒö‚Ì’e‚É“–‚½‚é‚ÆÁ–Å
-	if (hit_b->CheckElementHit(ELEMENT_CHARA_BULLET) == true)
+	if (hit_b->CheckObjNameHit(OBJ_CHARA_BULLET) != nullptr)
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);

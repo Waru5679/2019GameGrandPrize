@@ -31,9 +31,9 @@ void CObjMainChara::Init()
 	m_bIsHitBlackHole = false;
 	
 	//ìñÇΩÇËîªíËópHitBoxçÏê¨
-	m_pBody = Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CHARA_SIZE, CHARA_SIZE - 5.0f, ELEMENT_PLAYER, OBJ_CHARA, 1);
+	m_pBody = Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CHARA_SIZE, CHARA_SIZE - 5.0f, ELEMENT_CHARA, OBJ_CHARA, 1);
 	//ínñ Ç∆ÇÃìñÇΩÇËîªíËópHitBoxçÏê¨
-	m_pLeg =  Hits::SetHitBox(this, m_vPos.x, m_vPos.y + (CHARA_SIZE - 5.0f), CHARA_SIZE, 5.0f, ELEMENT_PLAYER_LEG, OBJ_CHARA, 1);
+	m_pLeg =  Hits::SetHitBox(this, m_vPos.x, m_vPos.y + (CHARA_SIZE - 5.0f), CHARA_SIZE, 5.0f, ELEMENT_CHARA, OBJ_CHARA, 1);
 
 }
 

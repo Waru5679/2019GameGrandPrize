@@ -20,15 +20,15 @@ void CStar::Init()
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 	
 	//当たり判定用HitBox作成
-	Hits::SetHitBox(this, m_vPos.x , m_vPos.y, STAR_SIZE / 2.0f, STAR_SIZE / 2.0f, ELEMENT_STAR, OBJ_STAR, 1);
+	Hits::SetHitBox(this, m_vPos.x , m_vPos.y, STAR_SIZE / 2.0f, STAR_SIZE / 2.0f, ELEMENT_DEATH, OBJ_STAR, 1);
 }
 
 //更新
 void CStar::Action()
 {
 	//スクロールの状態取得
-	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
-	m_bScroll = m_pScene->GetScroll();
+	CSceneMain* pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+	m_bScroll = pScene->GetScroll();
 
 	//スクロールが横の時左へ動く
 	if (m_bScroll = SIDE)

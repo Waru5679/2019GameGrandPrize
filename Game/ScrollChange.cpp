@@ -17,7 +17,7 @@ void CScrollChange::Init()
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 
 	//ìñÇΩÇËîªíË
-	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, SCROLL_CHANGE_SIZE, SCROLL_CHANGE_SIZE, ELEMENT_SCROLL_CHANGE, OBJ_SCROLL_CHANGE, 1);
+	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, SCROLL_CHANGE_SIZE, SCROLL_CHANGE_SIZE, ELEMENT_STAGE, OBJ_SCROLL_CHANGE, 1);
 }
 
 //çXêV

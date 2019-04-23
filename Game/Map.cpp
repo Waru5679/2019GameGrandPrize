@@ -70,7 +70,7 @@ void CMap::CreateSide()
 				m_Map[y][x] = MAP_NONE;
 				break;
 			}
-			//ブラック
+			//ブラックホール
 			case MAP_BLACK_HOLE:
 			{
 				CBlackHole* pBlackHole = new CBlackHole(x, y);
