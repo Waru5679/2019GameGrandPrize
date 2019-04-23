@@ -114,6 +114,9 @@ void CSceneMain::LoadTexture()
 	//床
 	Draw::LoadImageW(L"Texture/Plane.png", OBJ_PLANE, TEX_SIZE_128);
 
+	//クリアアイテム読み込み
+	Draw::LoadImageW(L"Texture/Clear.png", OBJ_GAME_CLEAR, TEX_SIZE_128);
+
 }
 
 //音楽読み込み
