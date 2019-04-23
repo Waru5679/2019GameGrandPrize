@@ -31,9 +31,9 @@ void CObjMainChara::Init()
 	m_bIsHitBlackHole = false;
 	
 	//当たり判定用HitBox作成
-	m_pChara_Body = Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CHARA_SIZE, CHARA_SIZE - 5.0f, ELEMENT_PLAYER, OBJ_CHARA, 1);
+	m_pBody = Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CHARA_SIZE, CHARA_SIZE - 5.0f, ELEMENT_CHARA, OBJ_CHARA, 1);
 	//地面との当たり判定用HitBox作成
-	m_pChara_Leg =  Hits::SetHitBox(this, m_vPos.x, m_vPos.y + (CHARA_SIZE - 5.0f), CHARA_SIZE, 5.0f, ELEMENT_PLAYER_LEG, OBJ_CHARA, 1);
+	m_pLeg =  Hits::SetHitBox(this, m_vPos.x, m_vPos.y + (CHARA_SIZE - 5.0f), CHARA_SIZE, 5.0f, ELEMENT_CHARA, OBJ_CHARA, 1);
 
 }
 
@@ -83,12 +83,12 @@ void CObjMainChara::Action()
 	//床の状態取得
 
 	//HitBox更新(胴体)
-	m_pChara_Body->SetPos(m_vPos.x, m_vPos.y);
+	m_pBody->SetPos(m_vPos.x, m_vPos.y);
 	//HitBox更新(足)
-	m_pChara_Leg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE -5.0f);
+	m_pLeg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE -5.0f);
 
 	//地面乗ってるとき
-	if (m_pChara_Leg->CheckElementHit(ELEMENT_PLANE) == true )
+	if (m_pLeg->CheckObjNameHit(OBJ_PLANE) != nullptr )
 	{
 		//上から来てるとき
 		if (m_vMove.y >= 0.0f)

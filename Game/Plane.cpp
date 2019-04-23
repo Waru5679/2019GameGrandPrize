@@ -16,7 +16,7 @@ void CPlane::Init()
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 
 	//“–‚½‚è”»’èƒZƒbƒg
-	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, PLANE_WIDTH , PLANE_HEIGHT, ELEMENT_PLANE, OBJ_PLANE, 1);
+	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, PLANE_WIDTH , PLANE_HEIGHT, ELEMENT_STAGE, OBJ_PLANE, 1);
 
 }
 

@@ -45,6 +45,6 @@ private:
 	//描画色
 	float m_fColor[4];
 
-	CHitBox* m_pChara_Body;	//キャラの当たり判定胴体用
-	CHitBox* m_pChara_Leg;	//キャラの当たり判定足用
+	CHitBox* m_pBody;	//キャラの当たり判定胴体用
+	CHitBox* m_pLeg;	//キャラの当たり判定足用
 };

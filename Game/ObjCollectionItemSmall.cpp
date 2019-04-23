@@ -23,7 +23,7 @@ void CCollectionItemSmall::Init()
 
 
 	//“–‚½‚è”»’è—pHitBoxì¬
-	Hits::SetHitBox(this, m_fPos_x, m_fPos_y, ITEM_SMALL_SIZE, ITEM_SMALL_SIZE, ELEMENT_ITEM_SMALL, OBJ_ITEM_SMALL, 1);
+	Hits::SetHitBox(this, m_fPos_x, m_fPos_y, ITEM_SMALL_SIZE, ITEM_SMALL_SIZE, ELEMENT_ITEM, OBJ_ITEM_SMALL, 1);
 
 }
 
@@ -49,7 +49,7 @@ void CCollectionItemSmall::Action()
 	hit_b->SetPos(m_fPos_x, m_fPos_y);
 
 	//ŽålŒö‚É“–‚½‚é‚ÆÁ–Å
-	if (hit_b->CheckElementHit(ELEMENT_PLAYER) == true)
+	if (hit_b->CheckObjNameHit(OBJ_CHARA) != nullptr)
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);

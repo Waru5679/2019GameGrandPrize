@@ -27,7 +27,7 @@ void CCharaBullet::Init()
 	m_bInWindow = true;
 
 	//ìñÇΩÇËîªíËópHitBoxçÏê¨
-	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, BULLET_SIZE, BULLET_SIZE, ELEMENT_CHARA_BULLET, OBJ_CHARA_BULLET,1);
+	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, BULLET_SIZE, BULLET_SIZE, ELEMENT_CHARA, OBJ_CHARA_BULLET,1);
 }
 
 //çXêV

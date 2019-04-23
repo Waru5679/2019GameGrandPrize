@@ -31,7 +31,7 @@ void CEnemyBullet::Init()
 	m_fShotTime = 0.0f;
 
 	//当たり判定用HitBox作成
-	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, 32.0f, 32.0f, ELEMENT_ENEMY_BULLET, OBJ_ENEMY_BULLET, 1);
+	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, BULLET_SIZE, BULLET_SIZE, ELEMENT_ENEMY, OBJ_ENEMY_BULLET, 1);
 }
 
 //更新
@@ -39,10 +39,10 @@ void CEnemyBullet::Action()
 {
 	if (m_bShot == true)
 	{
-		CObjMainChara* obj_chara = dynamic_cast<CObjMainChara*>(Objs::GetObj(OBJ_CHARA));
+		CObjMainChara* pChara = dynamic_cast<CObjMainChara*>(Objs::GetObj(OBJ_CHARA));
 
 		//主人公のポジションセット
-		Vector m_vPos_Chara = obj_chara->GetPos();
+		Vector m_vPos_Chara = pChara->GetPos();
 		m_vPos_Chara.x = m_vPos_Chara.x - m_vPos.x;
 		m_vPos_Chara.y = m_vPos_Chara.y - m_vPos.y;
 

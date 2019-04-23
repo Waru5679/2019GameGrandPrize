@@ -82,6 +82,7 @@ namespace GameL
 			static CHitBox*	SetHitBox(void* t,float x,float y,float w,float h,int e,int n,int p);	//ヒットボックスの作成と登録
 			static CHitBox*	GetHitBox(void* t);												//自分のアドレスを持つヒットボックスを返す
 			static void		DeleteHitBox(void* t);											//自分のアドレスを持つヒットボックスの削除
+			static void		DeleteHitBox(CHitBox* pHitBox);
 			static void		AllHitCheck();													//衝突判定
 			static void		DeleteAllListData();											//リスト情報破棄
 			static void		DrawHitBox();													//デバック用の当たり判定描画

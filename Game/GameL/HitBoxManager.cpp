@@ -276,6 +276,19 @@ void  CHitBoxManager::DeleteHitBox(void* t)
 
 }
 
+//ヒットボックスの削除メソッド
+void  CHitBoxManager::DeleteHitBox(CHitBox* pHitBox)
+{
+	for (auto itr = m_ListHitBox->begin(); itr != m_ListHitBox->end(); itr++)
+	{
+		if ((*itr).get() == pHitBox)
+		{
+			m_ListHitBox->erase(itr);	//データ削除
+		}
+	}
+	return;
+}
+
 //リスト情報破棄
 void CHitBoxManager::DeleteAllListData()
 {
