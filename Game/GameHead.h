@@ -21,6 +21,7 @@ enum OBJ_NAME
 	OBJ_SCORE,			//スコア
 	OBJ_TITLE,			//タイトル
 	OBJ_GAME_OVER,		//ゲームオーバー
+	OBJ_GAME_CLEAR,
 	OBJ_HOLE_CENTER,	//穴の中心
 };
 //------------------------------------------------
@@ -134,12 +135,14 @@ enum ITEM_NUM
 #include "Score.h"
 #include "Title.h"
 #include "GameOver.h"
+#include "GameClear.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
 #include "SceneMain.h"
 #include "SceneTitle.h"
 #include "SceneGameOver.h"
+#include "SceneGameClear.h"
 //-----------------------------------------------
 
 //シーンスタートクラス---------------------------

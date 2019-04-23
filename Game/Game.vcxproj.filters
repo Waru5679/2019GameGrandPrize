@@ -100,6 +100,12 @@
     <ClCompile Include="BlackHole.cpp">
       <Filter>Source\メイン\ブラックホール</Filter>
     </ClCompile>
+    <ClCompile Include="SceneGameClear.cpp">
+      <Filter>Source\クリア</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClear.cpp">
+      <Filter>Source\クリア</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\DirectXDevice.h">
@@ -204,6 +210,12 @@
     <ClInclude Include="BlackHole.h">
       <Filter>Source\メイン\ブラックホール</Filter>
     </ClInclude>
+    <ClInclude Include="SceneGameClear.h">
+      <Filter>Source\クリア</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClear.h">
+      <Filter>Source\クリア</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="学校ライブラリ">
@@ -247,6 +259,9 @@
     </Filter>
     <Filter Include="Source\メイン\廃星">
       <UniqueIdentifier>{85e23d30-e7c3-438b-ac42-303a70aeca3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\クリア">
+      <UniqueIdentifier>{bdd588ce-829f-4e63-b4e4-08086b1c696d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -31,9 +31,9 @@ void CObjMainChara::Init()
 	m_bIsHitBlackHole = false;
 	
 	//当たり判定用HitBox作成
-	m_pChara_Body = Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CHARA_SIZE, CHARA_SIZE - 5.0f, ELEMENT_PLAYER, OBJ_CHARA, 1);
+	m_pBody = Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CHARA_SIZE, CHARA_SIZE - 5.0f, ELEMENT_PLAYER, OBJ_CHARA, 1);
 	//地面との当たり判定用HitBox作成
-	m_pChara_Leg =  Hits::SetHitBox(this, m_vPos.x, m_vPos.y + (CHARA_SIZE - 5.0f), CHARA_SIZE, 5.0f, ELEMENT_PLAYER_LEG, OBJ_CHARA, 1);
+	m_pLeg =  Hits::SetHitBox(this, m_vPos.x, m_vPos.y + (CHARA_SIZE - 5.0f), CHARA_SIZE, 5.0f, ELEMENT_PLAYER_LEG, OBJ_CHARA, 1);
 
 }
 
@@ -64,6 +64,17 @@ void CObjMainChara::Action()
 	}
 	//----------------------------------------------
 
+	//スクロールの状態取得
+	CSceneMain* pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+	m_bScroll = pScene->GetScroll();
+
+	//床の状態取得
+
+	//HitBox更新(胴体)
+	m_pBody->SetPos(m_vPos.x, m_vPos.y);
+	//HitBox更新(足)
+	m_pLeg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE - 5.0f);
+
 	//縦
 	if (m_bScroll == VERTICAL)
 	{
@@ -74,42 +85,7 @@ void CObjMainChara::Action()
 	{
 		SideMove();
 	}
-			
-
-	//スクロールの状態取得
-	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
-	m_bScroll = m_pScene->GetScroll();
-
-	//床の状態取得
-
-	//HitBox更新(胴体)
-	m_pChara_Body->SetPos(m_vPos.x, m_vPos.y);
-	//HitBox更新(足)
-	m_pChara_Leg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE -5.0f);
-
-	//地面乗ってるとき
-	if (m_pChara_Leg->CheckElementHit(ELEMENT_PLANE) == true )
-	{
-		//上から来てるとき
-		if (m_vMove.y >= 0.0f)
-		{
-			//床の状態取得
-			CPlane* m_pPlane = dynamic_cast<CPlane*>(Objs::GetObj(OBJ_PLANE));
-			m_vPlanePos = m_pPlane->GetPos();
-
-			//キャラの位置を地面の上にする
-			m_vPos.y = m_vPlanePos.y - CHARA_SIZE + 0.1f;
-
-			//落下を0にする
-			m_vMove.y = 0.0f;
-			m_bHitGround = true;
-		}
-	}
-	//地面に乗ってないとき
-	else
-	{
-		m_bHitGround = false;
-	}
+				
 }
 
 //ドロー
@@ -132,7 +108,7 @@ void CObjMainChara::Draw()
 	//向きが左なら読み取った時の状態にする
 	else
 	{
-		dst.m_left = (64.0f * 1.0f) + m_vPos.x;
+		dst.m_left = 64.0f + m_vPos.x;
 		dst.m_right =m_vPos.x;
 	}
 	dst.m_bottom =m_vPos.y + CHARA_SIZE;
@@ -185,6 +161,29 @@ void CObjMainChara::SideMove()
 		m_vMove.x = 0.0f;
 	}
 
+	//地面の上に乗ってるとき
+	if (m_pLeg->CheckElementHit(ELEMENT_PLANE) == true)
+	{
+		//上から来てるとき
+		if (m_vMove.y >= 0.0f)
+		{
+			//床の状態取得
+			CPlane* m_pPlane = dynamic_cast<CPlane*>(Objs::GetObj(OBJ_PLANE));
+			m_vPlanePos = m_pPlane->GetPos();
+
+			//キャラの位置を地面の上にする
+			m_vPos.y = m_vPlanePos.y - CHARA_SIZE + 0.1f;
+
+			//落下を0にする
+			m_vMove.y = 0.0f;
+			m_bHitGround = true;
+		}
+	}
+	//地面に乗ってないとき
+	else
+	{
+		m_bHitGround = false;
+	}
 
 }
 
@@ -222,7 +221,7 @@ void CObjMainChara::SideInput()
 
 
 	//ジャンプ
-	if (Input::GetVKey('C') == true)
+	if (Input::GetTrrigerKey(VK_SPACE) == true)
 	{
 		//地面に接地してるとき(m_bHitGround == true)の時のみ飛ぶ
 		if (m_bHitGround == true)

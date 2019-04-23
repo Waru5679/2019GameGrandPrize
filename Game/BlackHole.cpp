@@ -68,6 +68,7 @@ void CBlackHole::Action()
 	}
 
 	//ŒŠ‚ª‰æ–ÊŠO‚Öo‚é‚Æíœ
+	//‰æ–Ê¶’[
 	if (m_vPos.x + (BLACK_HOLE_SIZE * 2.0f) < 0)
 	{
 		this->SetStatus(false);
