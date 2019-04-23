@@ -21,8 +21,9 @@ enum OBJ_NAME
 	OBJ_SCORE,			//スコア
 	OBJ_TITLE,			//タイトル
 	OBJ_GAME_OVER,		//ゲームオーバー
-	OBJ_GAME_CLEAR,
+	OBJ_GOAL,			//ゴール
 	OBJ_HOLE_CENTER,	//穴の中心
+	OBJ_CLEAR,			//クリア
 };
 //------------------------------------------------
 
@@ -76,7 +77,7 @@ enum MAP_NUM
 	MAP_ITEM_SMALL,	//収集アイテム(小)			(5)	
 	MAP_ITEM_BIG,	//収集アイテム(大)			(6)
 	MAP_SCROLL_CHANGE,//スクロールの切り替え	(7)
-	MAP_CLEAR,		//クリアアイテム
+	MAP_GOAL,		//ゴール
 };
 
 //アイテム用数値
@@ -98,7 +99,7 @@ enum ITEM_NUM
 #define ITEM_BIG_SIZE	64.0f
 #define ITEM_SMALL_SIZE	32.0f
 #define SCROLL_CHANGE_SIZE 64.0f
-#define CLEAR_SIZE		64.0f
+#define GOAL_SIZE		64.0f
 
 //スコア
 #define SCORE_BIG		1000;
@@ -132,7 +133,7 @@ enum ITEM_NUM
 #include "Title.h"
 #include "GameOver.h"
 #include "GameClear.h"
-#include "ObjClear.h"
+#include "Goal.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

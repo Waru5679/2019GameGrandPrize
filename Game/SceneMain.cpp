@@ -44,6 +44,8 @@ void CSceneMain::InitScene()
 	CScore* score = new CScore();
 	Objs::InsertObj(score, OBJ_SCORE, 10);
 
+	
+
 	//ボリューム調整
 	Audio::Volume(-0.8f, 0);
 	
@@ -115,7 +117,7 @@ void CSceneMain::LoadTexture()
 	Draw::LoadImageW(L"Texture/Plane.png", OBJ_PLANE, TEX_SIZE_128);
 
 	//クリアアイテム読み込み
-	Draw::LoadImageW(L"Texture/Clear.png", OBJ_GAME_CLEAR, TEX_SIZE_128);
+	Draw::LoadImageW(L"Texture/Clear.png", OBJ_CLEAR, TEX_SIZE_128);
 
 }
 

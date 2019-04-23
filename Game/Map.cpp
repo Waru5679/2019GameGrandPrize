@@ -143,10 +143,10 @@ void CMap::CreateSide()
 					m_Map[y][x] = MAP_NONE;
 					break;
 				}
-				case MAP_CLEAR:
+				case MAP_GOAL:
 				{
-					CObjClear* pClear = new CObjClear(x, y);
-					Objs::InsertObj(pClear, OBJ_GAME_CLEAR, 10);
+					CGoal* pClear = new CGoal(x, y);
+					Objs::InsertObj(pClear, OBJ_GOAL, 10);
 
 					//ê∂ê¨Ç™èIÇÌÇÍÇŒãÛîíÇ…
 					m_Map[y][x] = MAP_NONE;

@@ -1,27 +1,27 @@
-#include "ObjClear.h"
+#include "Goal.h"
 #include "GameHead.h"
 #include "Function.h"
 #include "GameL/HitBoxManager.h"
 
 //コンストラクタ
-CObjClear::CObjClear(int x, int y)
+CGoal::CGoal(int x, int y)
 {
 	m_vPos.x = (float)x * OBJ_SIZE;
 	m_vPos.y = (float)y * OBJ_SIZE;
 }
 
 //初期化
-void CObjClear::Init()
+void CGoal::Init()
 {
 	//色
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 
 	//当たり判定
-	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CLEAR_SIZE, CLEAR_SIZE, ELEMENT_STAGE, OBJ_GAME_CLEAR, 1);
+	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, GOAL_SIZE, GOAL_SIZE, ELEMENT_STAGE, OBJ_GOAL, 1);
 }
 
 //更新
-void CObjClear::Action()
+void CGoal::Action()
 {
 	//主人公との当たり判定
 	CHitBox* hit_b = Hits::GetHitBox(this);
@@ -37,7 +37,7 @@ void CObjClear::Action()
 }
 
 //描画
-void CObjClear::Draw()
+void CGoal::Draw()
 {
 	RECT_F src, dst;
 
@@ -45,8 +45,8 @@ void CObjClear::Draw()
 	RectSet(&src, 0.0f, 0.0f, 128.0f, 128.0f);
 
 	//描画位置
-	RectSet(&dst, m_vPos.y, m_vPos.x, CLEAR_SIZE, CLEAR_SIZE);
+	RectSet(&dst, m_vPos.y, m_vPos.x, GOAL_SIZE, GOAL_SIZE);
 
 	//描画
-	Draw::Draw(OBJ_GAME_CLEAR, &src, &dst, m_fColor, 0.0f);
+	Draw::Draw(OBJ_GOAL, &src, &dst, m_fColor, 0.0f);
 }
