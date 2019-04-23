@@ -16,7 +16,7 @@ void CSceneMain::InitScene()
 	LoadAudio();
 
 	//マップ情報読み込み
-	m_pMap=CCsv::LoadCsv("Map/TestMap.csv",MAX_X,MAX_Y);
+	m_pMap=CCsv::LoadCsv("Map/Test.csv",MAX_X,MAX_Y);
 
 	//カウンタ初期化
 	m_Count = 0;

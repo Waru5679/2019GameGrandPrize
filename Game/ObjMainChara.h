@@ -25,6 +25,9 @@ public:
 
 	Vector GetPos() { return m_vPos; }
 
+	//床とのヒット
+	void PlaneHit(Vector vPos);
+
 	//ブラックホールとのヒット処理
 	void HitBlackHole(Vector Vec);
 

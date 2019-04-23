@@ -5,8 +5,8 @@
 
 CPlane::CPlane(int x, int y)
 {
-	m_vPos.x = 100.0f;//(float)x * OBJ_SIZE;
-	m_vPos.y = 500.0f;//(float)y * OBJ_SIZE;
+	m_vPos.x = (float)x * OBJ_SIZE;
+	m_vPos.y = (float)y * OBJ_SIZE;
 }
 
 //初期化
@@ -43,6 +43,15 @@ void CPlane::Action()
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
+	}
+
+	//キャラクターとのヒット判定
+	if (hit_b->CheckObjNameHit(OBJ_CHARA) != nullptr)
+	{
+		//キャラクターに着地処理を行う
+		CObjMainChara* pChara = dynamic_cast<CObjMainChara*>(Objs::GetObj(OBJ_CHARA));
+		pChara->PlaneHit(m_vPos);
+
 	}
 }
 
