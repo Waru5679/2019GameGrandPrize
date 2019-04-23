@@ -75,6 +75,7 @@ enum MAP_NUM
 	MAP_ITEM_BIG,	//収集アイテム(大)
 	MAP_ITEM_SMALL,	//収集アイテム(小)
 	MAP_SCROLL_CHANGE,//スクロールの切り替え
+	MAP_CLEAR,		//クリアアイテム
 };
 
 //アイテム用数値
@@ -96,6 +97,7 @@ enum ITEM_NUM
 #define ITEM_BIG_SIZE	64.0f
 #define ITEM_SMALL_SIZE	32.0f
 #define SCROLL_CHANGE_SIZE 64.0f
+#define CLEAR_SIZE		64.0f
 
 //スコア
 #define SCORE_BIG		1000;
@@ -129,6 +131,7 @@ enum ITEM_NUM
 #include "Title.h"
 #include "GameOver.h"
 #include "GameClear.h"
+#include "ObjClear.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

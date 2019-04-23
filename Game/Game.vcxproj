@@ -153,6 +153,7 @@
     <ClInclude Include="BlackHole.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="ObjClear.h" />
     <ClInclude Include="ObjCollectionItemBig.h" />
     <ClInclude Include="ObjCollectionItemSmall.h" />
     <ClInclude Include="ObjMainChara.h" />
@@ -176,6 +177,7 @@
   <ItemGroup>
     <ClCompile Include="GameClear.cpp" />
     <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="ObjClear.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="SceneGameClear.cpp" />
     <ClCompile Include="SceneGameOver.cpp" />
