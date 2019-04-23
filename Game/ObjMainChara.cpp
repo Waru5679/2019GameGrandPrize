@@ -41,7 +41,7 @@ void CObjMainChara::Init()
 void CObjMainChara::Action()
 {
 	//移動範囲制御------------------------------
-//画面右端
+	//画面右端
 	if (m_vPos.x > WINDOW_SIZE_W - CHARA_SIZE)
 	{
 		m_vPos.x = WINDOW_SIZE_W - CHARA_SIZE;
@@ -68,7 +68,6 @@ void CObjMainChara::Action()
 	CSceneMain* pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
 	m_bScroll = pScene->GetScroll();
 
-	//床の状態取得
 
 	//HitBox更新(胴体)
 	m_pBody->SetPos(m_vPos.x, m_vPos.y);
@@ -85,7 +84,6 @@ void CObjMainChara::Action()
 	{
 		SideMove();
 	}
-				
 }
 
 //ドロー
@@ -138,6 +136,7 @@ void CObjMainChara::SideMove()
 
 		//ブラックホールとの当たり判定解除
 		m_bIsHitBlackHole = false;
+  		m_bHitGround = true;
 	}
 	//ブラックホールに当たっていないとき
 	else
@@ -162,7 +161,7 @@ void CObjMainChara::SideMove()
 	}
 
 	//地面の上に乗ってるとき
-	if (m_pLeg->CheckElementHit(ELEMENT_PLANE) == true)
+	if (m_pLeg->CheckObjNameHit(OBJ_PLANE) != nullptr)
 	{
 		//上から来てるとき
 		if (m_vMove.y >= 0.0f)
@@ -176,6 +175,7 @@ void CObjMainChara::SideMove()
 
 			//落下を0にする
 			m_vMove.y = 0.0f;
+			//ジャンプ用フラグをtrueにする
 			m_bHitGround = true;
 		}
 	}

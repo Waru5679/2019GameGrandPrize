@@ -84,6 +84,16 @@ void CEnemyBullet::Action()
 	CHitBox* hit_b = Hits::GetHitBox(this);
 	hit_b->SetPos(m_vPos.x, m_vPos.y);
 
+	//主人公に当たるとゲームオーバーへ移行
+	if (hit_b->CheckObjNameHit(OBJ_CHARA) != nullptr)
+	{
+		//自身を削除
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+		//ゲームオーバー
+		Scene::SetScene(new CSceneGameOver());
+	}
+
 	//画面外なら消す
 	if (m_bInWindow == false)
 	{
