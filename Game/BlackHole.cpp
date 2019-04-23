@@ -73,19 +73,9 @@ void CBlackHole::Action()
 		pChara->HitBlackHole(CVector::Multiply(vHoleDir,m_fSuctionPower));
 	}
 
-	//キャラが当たった時の死亡判定
-	if (m_pDeath->CheckObjNameHit(OBJ_CHARA) != nullptr)
-	{
-		//消す
-		this->SetStatus(false);
-		Hits::DeleteHitBox(this);
-
-		//ゲームオーバーへ
-		Scene::SetScene(new CSceneGameOver());
-	}
-
-	//画面外へ出ると削除
-	if (m_vPos.x + (BLACK_HOLE_SIZE * 2.0f) < 0.0f)
+	//穴が画面外へ出ると削除
+	//画面左端
+	if (m_vPos.x + (BLACK_HOLE_SIZE * 2.0f) < 0)
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
