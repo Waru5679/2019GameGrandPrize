@@ -87,7 +87,7 @@ enum ITEM_NUM
 };
 
 //オブジェクトサイズ
-#define OBJ_SIZE		32.0f
+#define OBJ_SIZE		64.0f
 #define BLACK_HOLE_SIZE	256.0f
 #define HOLE_DEATH_SIZE 32.0f
 #define ENEMY_SIZE		64.0f
@@ -104,7 +104,7 @@ enum ITEM_NUM
 #define SCORE_SMALL		 500;
 #define SCORE_BONUS		 250;
 
-#define PLANE_WIDTH	32.0f
+#define PLANE_WIDTH	OBJ_SIZE
 #define PLANE_HEIGHT 6.0f
 
 //------------------------------------------------

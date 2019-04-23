@@ -44,6 +44,15 @@ void CPlane::Action()
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
 	}
+
+	//キャラクターとのヒット判定
+	if (hit_b->CheckObjNameHit(OBJ_CHARA) != nullptr)
+	{
+		//キャラクターに着地処理を行う
+		CObjMainChara* pChara = dynamic_cast<CObjMainChara*>(Objs::GetObj(OBJ_CHARA));
+		pChara->PlaneHit(m_vPos);
+
+	}
 }
 
 //描画

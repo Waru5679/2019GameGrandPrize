@@ -18,8 +18,8 @@ void CObjMainChara::Init()
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 
 	m_vPos.x = 0.0f;	//位置
-	m_vPos.y = WINDOW_SIZE_H - CHARA_SIZE;
-	m_vMove.x = 0.0f;	//移動ベクトル
+	m_vPos.y = //WINDOW_SIZE_H - CHARA_SIZE;
+	m_vMove.x =20.0f;	//移動ベクトル
 	m_vMove.y = 0.0f;
 	m_bDirection = false;
 	m_bHitGround = false;
@@ -40,6 +40,10 @@ void CObjMainChara::Init()
 //アクション
 void CObjMainChara::Action()
 {
+	//スクロールの状態取得
+	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+	m_bScroll = m_pScene->GetScroll();
+	
 	//移動範囲制御------------------------------
 	//画面右端
 	if (m_vPos.x > WINDOW_SIZE_W - CHARA_SIZE)
@@ -60,19 +64,8 @@ void CObjMainChara::Action()
 	if (m_vPos.y >= WINDOW_SIZE_H - CHARA_SIZE)
 	{
 		m_vPos.y = WINDOW_SIZE_H - CHARA_SIZE;
-		m_bHitGround = true;
 	}
 	//----------------------------------------------
-
-	//スクロールの状態取得
-	CSceneMain* pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
-	m_bScroll = pScene->GetScroll();
-
-
-	//HitBox更新(胴体)
-	m_pBody->SetPos(m_vPos.x, m_vPos.y);
-	//HitBox更新(足)
-	m_pLeg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE - 5.0f);
 
 	//縦
 	if (m_bScroll == VERTICAL)
@@ -141,15 +134,11 @@ void CObjMainChara::SideMove()
 	//ブラックホールに当たっていないとき
 	else
 	{
-		//自由落下　地面についてないときは落下する
-		if (m_bHitGround==false)
+		//地面に乗ってないとき
+		if (m_pLeg->CheckObjNameHit(OBJ_PLANE) == nullptr)
 		{
+			//自由落下
 			m_vMove.y += 9.8f / 16.0f;
-		}
-		//地面についていればジャンプ用の判定(m_bHitGround)をtrueにする
-		else
-		{
-			m_bHitGround = true;
 		}
 
 		//位置の更新
@@ -158,32 +147,12 @@ void CObjMainChara::SideMove()
 
 		//移動初期化
 		m_vMove.x = 0.0f;
+
+		//HitBox更新
+		m_pBody->SetPos(m_vPos.x, m_vPos.y);		
+		m_pLeg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE - 5.0f);
 	}
 
-	//地面の上に乗ってるとき
-	if (m_pLeg->CheckObjNameHit(OBJ_PLANE) != nullptr)
-	{
-		//上から来てるとき
-		if (m_vMove.y >= 0.0f)
-		{
-			//床の状態取得
-			CPlane* m_pPlane = dynamic_cast<CPlane*>(Objs::GetObj(OBJ_PLANE));
-			m_vPlanePos = m_pPlane->GetPos();
-
-			//キャラの位置を地面の上にする
-			m_vPos.y = m_vPlanePos.y - CHARA_SIZE + 0.1f;
-
-			//落下を0にする
-			m_vMove.y = 0.0f;
-			//ジャンプ用フラグをtrueにする
-			m_bHitGround = true;
-		}
-	}
-	//地面に乗ってないとき
-	else
-	{
-		m_bHitGround = false;
-	}
 
 }
 
@@ -285,4 +254,19 @@ void CObjMainChara::HitBlackHole(Vector Vec)
 {
 	m_vMove = CVector::Add(m_vMove, Vec);
 	m_bIsHitBlackHole = true;
+}
+
+//床とのヒット
+void CObjMainChara::PlaneHit(Vector vPos)
+{
+	//上から来てるとき
+	if (m_vMove.y >= 0.0f)
+	{
+		//キャラの位置を地面の上にする
+		m_vPos.y = vPos.y - CHARA_SIZE;
+
+		//落下を0にする
+		m_vMove.y = 0.0f;
+		m_bHitGround = true;
+	}
 }
