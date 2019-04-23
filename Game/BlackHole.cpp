@@ -7,8 +7,8 @@
 //コンストラクタ
 CBlackHole::CBlackHole(int y, int x)
 {
-	m_vPos.x = 400.0f;//(float)y * OBJ_SIZE;
-	m_vPos.y = 300.0f;//(float)x * OBJ_SIZE;
+	m_vPos.x = (float)y * OBJ_SIZE;
+	m_vPos.y = (float)x * OBJ_SIZE;
 
 }
 
