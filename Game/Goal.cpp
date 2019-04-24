@@ -49,4 +49,5 @@ void CGoal::Draw()
 
 	//•`‰æ
 	Draw::Draw(OBJ_GOAL, &src, &dst, m_fColor, 0.0f);
+
 }
