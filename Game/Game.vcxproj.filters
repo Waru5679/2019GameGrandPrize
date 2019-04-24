@@ -109,6 +109,9 @@
     <ClCompile Include="Goal.cpp">
       <Filter>Source\メイン\ステージ</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyUpDown.cpp">
+      <Filter>Source\メイン\敵</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\DirectXDevice.h">
@@ -221,6 +224,9 @@
     </ClInclude>
     <ClInclude Include="Goal.h">
       <Filter>Source\メイン\ステージ</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyUpDown.h">
+      <Filter>Source\メイン\敵</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

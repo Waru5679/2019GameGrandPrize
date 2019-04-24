@@ -143,10 +143,21 @@ void CMap::CreateSide()
 					m_Map[y][x] = MAP_NONE;
 					break;
 				}
+				//ƒS[ƒ‹
 				case MAP_GOAL:
 				{
 					CGoal* pClear = new CGoal(x, y);
 					Objs::InsertObj(pClear, OBJ_GAME_CLEAR, 10);
+
+					//¶¬‚ªI‚í‚ê‚Î‹ó”’‚É
+					m_Map[y][x] = MAP_NONE;
+					break;
+				}
+				//ã‰ºˆÚ“®“G
+				case MAP_ENEMY_UPDOWN:
+				{
+					CEnemyUpDown* pEnemyUpDown = new CEnemyUpDown(x, y);
+					Objs::InsertObj(pEnemyUpDown, OBJ_ENEMY_UPDOWN, 10);
 
 					//¶¬‚ªI‚í‚ê‚Î‹ó”’‚É
 					m_Map[y][x] = MAP_NONE;

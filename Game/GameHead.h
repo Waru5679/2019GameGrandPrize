@@ -11,6 +11,7 @@ enum OBJ_NAME
 	OBJ_BLACK_HOLE,		//ブラックホール
 	OBJ_CHARA,			//キャラクタ
 	OBJ_ENEMY,			//敵
+	OBJ_ENEMY_UPDOWN,	//上下移動の敵
 	OBJ_ENEMY_BULLET,	//敵の弾
 	OBJ_CHARA_BULLET,	//主人公の弾
 	OBJ_STAR,			//星オブジェクト
@@ -57,7 +58,7 @@ struct UserData
 //スクロール
 #define SIDE true			//横
 #define VERTICAL false		//縦
-#define SCROLL_SPEED 1.0f	//スクロール速度
+#define SCROLL_SPEED 0.0f	//スクロール速度
 
 //マップ
 #define MAX_X 37
@@ -78,6 +79,7 @@ enum MAP_NUM
 	MAP_ITEM_BIG,	//収集アイテム(小)
 	MAP_SCROLL_CHANGE,//スクロールの切り替え
 	MAP_GOAL,		//クリアアイテム
+	MAP_ENEMY_UPDOWN,//上下移動敵
 };
 
 //アイテム用数値
@@ -134,6 +136,7 @@ enum ITEM_NUM
 #include "GameOver.h"
 #include "GameClear.h"
 #include "Goal.h"
+#include "EnemyUpDown.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

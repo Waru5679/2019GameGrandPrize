@@ -135,6 +135,7 @@
     <ClInclude Include="Csv.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyBullet.h" />
+    <ClInclude Include="EnemyUpDown.h" />
     <ClInclude Include="Function.h" />
     <ClInclude Include="GameClear.h" />
     <ClInclude Include="GameHead.h" />
@@ -175,6 +176,7 @@
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EnemyUpDown.cpp" />
     <ClCompile Include="GameClear.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Goal.cpp" />

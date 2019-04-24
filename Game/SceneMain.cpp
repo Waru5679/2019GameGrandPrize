@@ -117,6 +117,9 @@ void CSceneMain::LoadTexture()
 	//クリアアイテム読み込み
 	Draw::LoadImageW(L"Texture/Clear.png", OBJ_GAME_CLEAR, TEX_SIZE_128);
 
+	//上下移動する敵読み込み
+	Draw::LoadImageW(L"Texture/Enemy2.png", OBJ_ENEMY_UPDOWN, TEX_SIZE_256);
+
 }
 
 //音楽読み込み
