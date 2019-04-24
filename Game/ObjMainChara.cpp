@@ -167,12 +167,11 @@ void CObjMainChara::SideMove()
 		//移動初期化
 		m_vMove.x = 0.0f;
 
-		//HitBox更新
-		m_pBody->SetPos(m_vPos.x, m_vPos.y);		
-		m_pLeg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE - 5.0f);
 	}
 
-
+	//HitBox更新
+	m_pBody->SetPos(m_vPos.x, m_vPos.y);
+	m_pLeg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE - 5.0f);
 }
 
 //移動縦
@@ -298,7 +297,7 @@ void CObjMainChara::HitBlackHole(Vector Vec)
 void CObjMainChara::PlaneHit(Vector vPos)
 {
 	//上から来てるとき
-	if (m_vMove.y >= 0.0f)
+	if (m_vMove.y > 0.0f)
 	{
 		//キャラの位置を地面の上にする
 		m_vPos.y = vPos.y - CHARA_SIZE;

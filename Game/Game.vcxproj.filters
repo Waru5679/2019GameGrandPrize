@@ -106,7 +106,7 @@
     <ClCompile Include="GameClear.cpp">
       <Filter>Source\クリア</Filter>
     </ClCompile>
-    <ClCompile Include="ObjClear.cpp">
+    <ClCompile Include="Goal.cpp">
       <Filter>Source\メイン\ステージ</Filter>
     </ClCompile>
   </ItemGroup>
@@ -219,7 +219,7 @@
     <ClInclude Include="GameClear.h">
       <Filter>Source\クリア</Filter>
     </ClInclude>
-    <ClInclude Include="ObjClear.h">
+    <ClInclude Include="Goal.h">
       <Filter>Source\メイン\ステージ</Filter>
     </ClInclude>
   </ItemGroup>

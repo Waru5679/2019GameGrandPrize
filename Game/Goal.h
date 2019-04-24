@@ -5,10 +5,10 @@
 using namespace GameL;
 
 //クリアアイテムクラス
-class CObjClear :public CObj
+class CGoal :public CObj
 {
 public:
-	CObjClear(int x, int y);
+	CGoal(int x, int y);
 
 	void Init();	//初期化
 	void Action();	//更新
