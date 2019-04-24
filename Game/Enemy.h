@@ -3,7 +3,7 @@
 #include "Vector.h"
 using namespace GameL;
 
-#define SHOT_TIME 60
+#define SHOT_TIME 120
 
 //“GƒNƒ‰ƒX
 class CEnemy :public CObj

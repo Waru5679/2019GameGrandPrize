@@ -60,22 +60,29 @@ void CObjMainChara::Action()
 	{
 		m_vPos.y = 0.0f;
 	}
-	//画面下端(縦スクロール時のみ有効)
-	if (m_vPos.y >= WINDOW_SIZE_H - CHARA_SIZE)
-	{
-		m_vPos.y = WINDOW_SIZE_H - CHARA_SIZE;
-	}
 	//----------------------------------------------
 
 	//縦
 	if (m_bScroll == VERTICAL)
 	{
 		VarticalMove();
+
+		//画面下端(縦スクロール時のみ有効)
+		if (m_vPos.y >= WINDOW_SIZE_H - CHARA_SIZE)
+		{
+			m_vPos.y = WINDOW_SIZE_H - CHARA_SIZE;
+		}
 	}
 	//横
 	else
 	{
 		SideMove();
+
+		//画面下端(横スクロール時のみ有効)
+		if (m_vPos.y >= WINDOW_SIZE_H)
+		{
+			Scene::SetScene(new CSceneGameOver());
+		}
 	}
 }
 
@@ -84,8 +91,16 @@ void CObjMainChara::Draw()
 {
 	RECT_F src, dst;
 
-	//切り取り位置の設定
-	RectSet(&src, 64.0f, 0.0f, 32.0f, 32.0f);
+	if (m_bScroll == SIDE)
+	{
+		//切り取り位置の設定
+		RectSet(&src, 32.0f, 0.0f, 32.0f, 32.0f);
+	}
+	else
+	{
+		//切り取り位置の設定
+		RectSet(&src, 64.0f, 0.0f, 32.0f, 32.0f);
+	}
 
 	//表示位置の設定
 	dst.m_top = m_vPos.y;
@@ -126,6 +141,10 @@ void CObjMainChara::SideMove()
 		//移動初期化
 		m_vMove.x = 0.0f;
 		m_vMove.y = 0.0f;
+
+		//HitBox更新
+		m_pBody->SetPos(m_vPos.x, m_vPos.y);
+		m_pLeg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE - 5.0f);
 
 		//ブラックホールとの当たり判定解除
 		m_bIsHitBlackHole = false;
@@ -169,6 +188,10 @@ void CObjMainChara::VarticalMove()
 	m_vMove.x = 0.0f;
 	m_vMove.y = 0.0f;
 
+	//当たり判定の更新
+	m_pBody->SetPos(m_vPos.x, m_vPos.y);
+	m_pLeg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE - 5.0f);
+
 }
 
 //横の入力
@@ -185,6 +208,21 @@ void CObjMainChara::SideInput()
 	{
 		m_vMove.x += -3.0f;
 		m_bDirection = true;
+	}
+
+	//ブラックホールに接地しているとき
+	if (m_bIsHitBlackHole == true)
+	{
+		//上移動
+		if (Input::GetVKey(VK_UP) == true)
+		{
+			m_vMove.y += -3.0f;
+		}
+		//下移動
+		else if (Input::GetVKey(VK_DOWN) == true)
+		{
+			m_vMove.y += 3.0f;
+		}
 	}
 
 

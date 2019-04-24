@@ -21,10 +21,28 @@ void CEnemy::Init()
 	
 	//カウンタ
 	m_Count = 0;
-
+	
 	//移動
-	//m_fvx = 1.0f;
-	//m_fvy = 0.0f;
+	//画面内に入ると縦をゆっくり動くようにする
+	if (m_vPos.y > 0.0f)
+	{
+		m_fvy = 0.2f;
+	}
+	//画面外
+	else
+	{
+		m_fvy = SCROLL_SPEED;
+	}
+	//画面半分より左なら右移動
+	if (m_vPos.x < WINDOW_SIZE_W / 2.0f)
+	{
+		m_fvx = 1.0f;
+	}
+	//画面半分より右なら左移動
+	else
+	{
+		m_fvx = -1.0f;
+	}
 
 	//弾丸用速度
 	m_fSpeed.x = 1.0f;
@@ -42,6 +60,10 @@ void CEnemy::Init()
 void CEnemy::Action()
 {
 	
+	//位置の更新
+	m_vPos.x += m_fvx;
+	m_vPos.y += m_fvy;
+
 	//攻撃-----------------------------------------------------------
 	//カウンタ更新
 	m_Count++;
@@ -79,12 +101,26 @@ void CEnemy::Action()
 	}
 	//--------------------------------------------------------------
 
-	//画面外なら消す
-	if (m_bInWindow == false)
+	//アイテム(大)オブジェクトが画面端へ出ると削除
+	//右移動の時画面右端
+	if (m_fvx > 0 && m_vPos.x > WINDOW_SIZE_W)
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
 	}
+	else if (m_fvx < 0 && m_vPos.x + ENEMY_SIZE < 0)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}
+
+	//画面下端
+	if (m_vPos.y > WINDOW_SIZE_H)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}
+
 }
 
 //描画

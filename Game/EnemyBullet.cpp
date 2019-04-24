@@ -88,10 +88,10 @@ void CEnemyBullet::Action()
 	if (hit_b->CheckObjNameHit(OBJ_CHARA) != nullptr)
 	{
 		//自身を削除
-		this->SetStatus(false);
-		Hits::DeleteHitBox(this);
+	//	this->SetStatus(false);
+	//	Hits::DeleteHitBox(this);
 		//ゲームオーバー
-		Scene::SetScene(new CSceneGameOver());
+	//	Scene::SetScene(new CSceneGameOver());
 	}
 
 	//画面外なら消す
