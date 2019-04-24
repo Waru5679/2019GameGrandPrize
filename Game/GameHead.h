@@ -21,8 +21,9 @@ enum OBJ_NAME
 	OBJ_SCORE,			//スコア
 	OBJ_TITLE,			//タイトル
 	OBJ_GAME_OVER,		//ゲームオーバー
-	OBJ_GOAL,			//ゴール
+	OBJ_GAME_CLEAR,
 	OBJ_HOLE_CENTER,	//穴の中心
+	OBJ_GOAL,			//ゴール
 	OBJ_CLEAR,			//クリア
 };
 //------------------------------------------------
@@ -68,16 +69,15 @@ struct UserData
 //マップ数値
 enum MAP_NUM
 {
-
-	MAP_NONE,		//何もない					(0)
-	MAP_PLANE,		//地面						(1)
-	MAP_BLACK_HOLE,	//ブラックホール			(2)
-	MAP_STAR,		//星						(3)
-	MAP_ENEMY,		//敵						(4)
-	MAP_ITEM_SMALL,	//収集アイテム(小)			(5)	
-	MAP_ITEM_BIG,	//収集アイテム(大)			(6)
-	MAP_SCROLL_CHANGE,//スクロールの切り替え	(7)
-	MAP_GOAL,		//ゴール
+	MAP_NONE,		//何もない
+	MAP_PLANE,		//地面
+	MAP_BLACK_HOLE,	//ブラックホール
+	MAP_STAR,		//星
+	MAP_ENEMY,		//敵
+	MAP_ITEM_SMALL,	//収集アイテム(大)
+	MAP_ITEM_BIG,	//収集アイテム(小)
+	MAP_SCROLL_CHANGE,//スクロールの切り替え
+	MAP_GOAL,		//クリアアイテム
 };
 
 //アイテム用数値

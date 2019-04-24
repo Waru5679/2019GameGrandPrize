@@ -12,7 +12,7 @@ void CSceneGameClear::InitScene()
 
 	//ゲームクリアObj作成
 	CGameClear* pGameClear = new CGameClear();
-	Objs::InsertObj(pGameClear, OBJ_CLEAR, 0);
+	Objs::InsertObj(pGameClear, OBJ_GAME_CLEAR, 0);
 }
 
 //テクスチャ読み込み

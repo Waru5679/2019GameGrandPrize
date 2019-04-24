@@ -151,9 +151,9 @@
     <ClInclude Include="GameL\WinInputs.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="BlackHole.h" />
+    <ClInclude Include="Goal.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Map.h" />
-    <ClInclude Include="Goal.h" />
     <ClInclude Include="ObjCollectionItemBig.h" />
     <ClInclude Include="ObjCollectionItemSmall.h" />
     <ClInclude Include="ObjMainChara.h" />
