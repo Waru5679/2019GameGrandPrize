@@ -8,7 +8,7 @@ using namespace GameL;
 class CMap :public CObj
 {
 public:
-	CMap(int* pMap);
+	CMap(int* pSideMap, int* pVarticalMap);
 	void Init();	//初期化
 	void Action();	//更新
 	void Draw();	//描画
@@ -18,7 +18,10 @@ public:
 	int m_iMapItem[MAX_ITEM];	//マップ内のアイテム数取得用配列
 	int m_iMapLoop;				//マップ配列探索用変数
 private:
-	int m_Map[MAX_Y][MAX_X];	//マップデータ
+	//マップデータ
+	int m_SideMap[SIDE_MAX_Y][SIDE_MAX_X];	
+	int m_VarticalMap[VARTICAL_MAX_Y][VARTICAL_MAX_X];
+	
 	float m_fColor[4];			//描画色
 	bool m_bScroll;				//スクロールの状態取得
 	float m_fScroll;			//スクロール移動

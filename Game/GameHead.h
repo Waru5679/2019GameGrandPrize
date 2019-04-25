@@ -58,11 +58,14 @@ struct UserData
 //スクロール
 #define SIDE true			//横
 #define VERTICAL false		//縦
-#define SCROLL_SPEED 0.0f	//スクロール速度
+#define SCROLL_SPEED 1.6f	//スクロール速度
 
 //マップ
-#define MAX_X 37
-#define MAX_Y 10
+#define SIDE_MAX_X 70
+#define SIDE_MAX_Y 10
+
+#define VARTICAL_MAX_X 10
+#define VARTICAL_MAX_Y 70
 
 //最大アイテム数
 #define MAX_ITEM 4
@@ -77,9 +80,9 @@ enum MAP_NUM
 	MAP_ENEMY,		//敵
 	MAP_ITEM_SMALL,	//収集アイテム(大)
 	MAP_ITEM_BIG,	//収集アイテム(小)
+	MAP_ENEMY_UPDOWN,//上下移動敵
 	MAP_SCROLL_CHANGE,//スクロールの切り替え
 	MAP_GOAL,		//クリアアイテム
-	MAP_ENEMY_UPDOWN,//上下移動敵
 };
 
 //アイテム用数値

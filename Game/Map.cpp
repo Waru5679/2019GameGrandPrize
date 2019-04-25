@@ -4,10 +4,11 @@
 #include "GameHead.h"
 
 //コンストラクタ
-CMap::CMap(int* pMap)
+CMap::CMap(int* pSideMap,int* pVarticalMap)
 {
 	//マップデータコピー
-	memcpy(m_Map, pMap, sizeof(int)*(MAX_Y * MAX_X));
+	memcpy(m_SideMap, pSideMap, sizeof(int)*(SIDE_MAX_Y * SIDE_MAX_X));
+	memcpy(m_VarticalMap,pVarticalMap,sizeof(int)*(VARTICAL_MAX_Y*VARTICAL_MAX_X));
 }
 
 //初期化
@@ -54,11 +55,11 @@ void CMap::Draw()
 //生成(横)
 void CMap::CreateSide()
 {
-	for (int x = 0; x < MAX_X; x++)
+	for (int x = 0; x < SIDE_MAX_X; x++)
 	{
-		for (int y = 0; y < MAX_Y; y++)
+		for (int y = 0; y < SIDE_MAX_Y; y++)
 		{
-			switch (m_Map[y][x])
+			switch (m_SideMap[y][x])
 			{
 				//地面
 				case MAP_PLANE:
@@ -67,7 +68,7 @@ void CMap::CreateSide()
 					Objs::InsertObj(pPlane, OBJ_PLANE, 10);
 
 					//生成が終われば空白に
-					m_Map[y][x] = MAP_NONE;
+					m_SideMap[y][x] = MAP_NONE;
 					break;
 				}
 				//ブラックホール
@@ -77,7 +78,7 @@ void CMap::CreateSide()
 					Objs::InsertObj(pBlackHole, OBJ_BLACK_HOLE, 10);
 
 					//生成が終われば空白に
-					m_Map[y][x] = MAP_NONE;
+					m_SideMap[y][x] = MAP_NONE;
 					break;
 				}
 				//敵
@@ -87,7 +88,7 @@ void CMap::CreateSide()
 					Objs::InsertObj(pEnemy, OBJ_ENEMY, 10);
 
 					//生成が終われば空白に
-					m_Map[y][x] = MAP_NONE;
+					m_SideMap[y][x] = MAP_NONE;
 					break;
 				}
 				//星
@@ -97,7 +98,7 @@ void CMap::CreateSide()
 					Objs::InsertObj(pStar, OBJ_STAR, 10);
 
 					//生成が終われば空白に
-					m_Map[y][x] = MAP_NONE;
+					m_SideMap[y][x] = MAP_NONE;
 
 					break;
 				}
@@ -108,7 +109,7 @@ void CMap::CreateSide()
 					Objs::InsertObj(pCollection_big, OBJ_ITEM_BIG, 10);
 
 					//生成が終われば空白に
-					m_Map[y][x] = MAP_NONE;
+					m_SideMap[y][x] = MAP_NONE;
 
 					//マップ内のアイテムの種類識別
 					m_iMapItem[m_iMapLoop] = ITEM_BIG;
@@ -124,7 +125,7 @@ void CMap::CreateSide()
 					Objs::InsertObj(pCollection_small, OBJ_ITEM_SMALL, 10);
 
 					//生成が終われば空白に
-					m_Map[y][x] = MAP_NONE;
+					m_SideMap[y][x] = MAP_NONE;
 
 					//マップ内のアイテムの種類識別
 					m_iMapItem[m_iMapLoop] = ITEM_SMALL;
@@ -140,7 +141,7 @@ void CMap::CreateSide()
 					Objs::InsertObj(pScrollChange, OBJ_SCROLL_CHANGE, 10);
 
 					//生成が終われば空白に
-					m_Map[y][x] = MAP_NONE;
+					m_SideMap[y][x] = MAP_NONE;
 					break;
 				}
 				//ゴール
@@ -150,7 +151,7 @@ void CMap::CreateSide()
 					Objs::InsertObj(pClear, OBJ_GAME_CLEAR, 10);
 
 					//生成が終われば空白に
-					m_Map[y][x] = MAP_NONE;
+					m_SideMap[y][x] = MAP_NONE;
 					break;
 				}
 				//上下移動敵
@@ -160,7 +161,7 @@ void CMap::CreateSide()
 					Objs::InsertObj(pEnemyUpDown, OBJ_ENEMY_UPDOWN, 10);
 
 					//生成が終われば空白に
-					m_Map[y][x] = MAP_NONE;
+					m_SideMap[y][x] = MAP_NONE;
 					break;
 				}
 
@@ -173,11 +174,11 @@ void CMap::CreateSide()
 //生成(縦)
 void CMap::CreateVertical()
 {
-	for (int y = MAX_Y; y > 0; y--)
+	for (int y = VARTICAL_MAX_Y-1; y >= 0; y--)
 	{
-		for (int x = MAX_X; x > 0; x--)
+		for (int x = 0; x < VARTICAL_MAX_X; x++)
 		{
-			switch (m_Map[y][x])
+			switch (m_VarticalMap[y][x])
 			{
 			//地面
 			case MAP_PLANE:
@@ -186,7 +187,7 @@ void CMap::CreateVertical()
 				Objs::InsertObj(pPlane, OBJ_PLANE, 10);
 
 				//生成が終われば空白に
-				m_Map[y][x] = MAP_NONE;
+				m_VarticalMap[y][x] = MAP_NONE;
 				break;
 			}
 			//ブラックホール
@@ -196,7 +197,7 @@ void CMap::CreateVertical()
 				Objs::InsertObj(pBlackHole, OBJ_BLACK_HOLE, 10);
 
 				//生成が終われば空白に
-				m_Map[y][x] = MAP_NONE;
+				m_VarticalMap[y][x] = MAP_NONE;
 				break;
 			}
 			//敵
@@ -206,7 +207,7 @@ void CMap::CreateVertical()
 				Objs::InsertObj(pEnemy, OBJ_ENEMY, 10);
 
 				//生成が終われば空白に
-				m_Map[y][x] = MAP_NONE;
+				m_VarticalMap[y][x] = MAP_NONE;
 				break;
 			}
 			//星
@@ -216,7 +217,7 @@ void CMap::CreateVertical()
 				Objs::InsertObj(pStar, OBJ_STAR, 10);
 
 				//生成が終われば空白に
-				m_Map[y][x] = MAP_NONE;
+				m_VarticalMap[y][x] = MAP_NONE;
 
 				break;
 			}
@@ -227,7 +228,7 @@ void CMap::CreateVertical()
 				Objs::InsertObj(pCollection_big, OBJ_ITEM_BIG, 10);
 
 				//生成が終われば空白に
-				m_Map[y][x] = MAP_NONE;
+				m_VarticalMap[y][x] = MAP_NONE;
 
 				//マップ内のアイテムの種類識別
 				m_iMapItem[m_iMapLoop] = ITEM_BIG;
@@ -243,7 +244,7 @@ void CMap::CreateVertical()
 				Objs::InsertObj(pCollection_small, OBJ_ITEM_SMALL, 10);
 
 				//生成が終われば空白に
-				m_Map[y][x] = MAP_NONE;
+				m_VarticalMap[y][x] = MAP_NONE;
 
 				//マップ内のアイテムの種類識別
 				m_iMapItem[m_iMapLoop] = ITEM_SMALL;
@@ -259,7 +260,7 @@ void CMap::CreateVertical()
 				Objs::InsertObj(pScrollChange, OBJ_SCROLL_CHANGE, 10);
 
 				//生成が終われば空白に
-				m_Map[y][x] = MAP_NONE;
+				m_VarticalMap[y][x] = MAP_NONE;
 				break;
 			}
 			}

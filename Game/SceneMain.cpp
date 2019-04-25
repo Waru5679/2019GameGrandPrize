@@ -16,7 +16,8 @@ void CSceneMain::InitScene()
 	LoadAudio();
 
 	//マップ情報読み込み
-	m_pMap=CCsv::LoadCsv("Map/Test.csv",MAX_X,MAX_Y);
+	m_pSideMap=CCsv::LoadCsv("Map/SideMap.csv",SIDE_MAX_X,SIDE_MAX_Y);
+	m_pVarticalMap = CCsv::LoadCsv("Map/VarticalMap.csv", VARTICAL_MAX_X, VARTICAL_MAX_Y);
 
 	//カウンタ初期化
 	m_Count = 0;
@@ -33,17 +34,21 @@ void CSceneMain::InitScene()
 	Objs::InsertObj(m_pBack2, OBJ_BACK_GROUND, 1);
 
 	//マップオブジェクト
-	CMap* pMap = new CMap(m_pMap);
+	CMap* pMap = new CMap(m_pSideMap,m_pVarticalMap);
 	Objs::InsertObj(pMap, OBJ_MAP, 100);
 
 	//キャラクターオブジェクト
-	CObjMainChara* chara = new CObjMainChara();
-	Objs::InsertObj(chara, OBJ_CHARA, 10);
+	CObjMainChara* pChara = new CObjMainChara();
+	Objs::InsertObj(pChara, OBJ_CHARA, 10);
 
-	//スコア表示オブジェ
-	CScore* score = new CScore();
-	Objs::InsertObj(score, OBJ_SCORE, 10);
+	//スコア表示オブジェクト
+	CScore* pScore = new CScore();
+	Objs::InsertObj(pScore, OBJ_SCORE, 10);
 
+	//Debug用　スクロールチェンジ
+	/*CScrollChange* pScroll = new CScrollChange(5, 8);
+	Objs::InsertObj(pScroll, OBJ_SCROLL_CHANGE, 10);
+*/
 	//ボリューム調整
 	Audio::Volume(-0.8f, 0);
 	

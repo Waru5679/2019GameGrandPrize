@@ -5,11 +5,10 @@
 #include "GameL/HitBoxManager.h"
 
 //コンストラクタ
-CBlackHole::CBlackHole(int y, int x)
+CBlackHole::CBlackHole(int x, int y)
 {
-	m_vPos.x = (float)y * OBJ_SIZE;
-	m_vPos.y = (float)x * OBJ_SIZE;
-
+	m_vPos.x = (float)x * OBJ_SIZE;
+	m_vPos.y = (float)y * OBJ_SIZE;
 }
 
 //初期化
@@ -71,6 +70,17 @@ void CBlackHole::Action()
 
 		//キャラに移動ベクトル追加
 		pChara->HitBlackHole(CVector::Multiply(vHoleDir,m_fSuctionPower));
+	}
+
+	//死亡判定
+	if (m_pDeath->CheckObjNameHit(OBJ_CHARA) != nullptr)
+	{
+		//消す
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+
+		//ゲームオーバーへ
+		Scene::SetScene(new CSceneGameOver());
 	}
 
 	//穴が画面外へ出ると削除

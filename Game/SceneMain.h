@@ -22,7 +22,8 @@ private:
 	int m_Count;	//タイムカウンタ
 
 	//マップポインタ
-	int* m_pMap;
+	int* m_pVarticalMap;
+	int* m_pSideMap;
 
 	//背景ポインタ
 	CBackGround* m_pBack1;

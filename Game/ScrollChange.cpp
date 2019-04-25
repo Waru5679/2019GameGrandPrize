@@ -6,8 +6,8 @@
 //コンストラクタ
 CScrollChange::CScrollChange(int x, int y)
 {
-	m_vPos.x = 100.0f;//(float)x * OBJ_SIZE;
-	m_vPos.y = 400.0f;//(float)y * OBJ_SIZE;
+	m_vPos.x = (float)x * OBJ_SIZE;
+	m_vPos.y = (float)y * OBJ_SIZE;
 }
 
 //初期化
