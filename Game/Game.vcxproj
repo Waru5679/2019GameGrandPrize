@@ -165,11 +165,13 @@
     <ClInclude Include="SceneGameClear.h" />
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneMain.h" />
+    <ClInclude Include="SceneStageSelect.h" />
     <ClInclude Include="SceneTitle.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Score.h" />
     <ClInclude Include="ScrollChange.h" />
+    <ClInclude Include="StageSelect.h" />
     <ClInclude Include="Title.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
@@ -183,6 +185,7 @@
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="SceneGameClear.cpp" />
     <ClCompile Include="SceneGameOver.cpp" />
+    <ClCompile Include="SceneStageSelect.cpp" />
     <ClCompile Include="SceneTitle.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
@@ -215,6 +218,7 @@
     <ClCompile Include="SceneMain.cpp" />
     <ClCompile Include="ObjCollectionItemBig.cpp" />
     <ClCompile Include="Score.cpp" />
+    <ClCompile Include="StageSelect.cpp" />
     <ClCompile Include="Title.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>

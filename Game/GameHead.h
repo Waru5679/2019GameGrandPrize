@@ -147,6 +147,7 @@ enum ITEM_NUM
 #include "SceneTitle.h"
 #include "SceneGameOver.h"
 #include "SceneGameClear.h"
+#include "SceneStageSelect.h"
 //-----------------------------------------------
 
 //シーンスタートクラス---------------------------

@@ -112,6 +112,12 @@
     <ClCompile Include="EnemyUpDown.cpp">
       <Filter>Source\メイン\敵</Filter>
     </ClCompile>
+    <ClCompile Include="StageSelect.cpp">
+      <Filter>Source\メニュー</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneStageSelect.cpp">
+      <Filter>Source\メニュー</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\DirectXDevice.h">
@@ -228,6 +234,12 @@
     <ClInclude Include="EnemyUpDown.h">
       <Filter>Source\メイン\敵</Filter>
     </ClInclude>
+    <ClInclude Include="StageSelect.h">
+      <Filter>Source\メニュー</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneStageSelect.h">
+      <Filter>Source\メニュー</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="学校ライブラリ">
@@ -274,6 +286,9 @@
     </Filter>
     <Filter Include="Source\クリア">
       <UniqueIdentifier>{bdd588ce-829f-4e63-b4e4-08086b1c696d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\メニュー">
+      <UniqueIdentifier>{c3e206a6-77a3-494d-988c-04c60e068578}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

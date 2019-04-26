@@ -41,7 +41,7 @@ void CStar::Action()
 		m_vPos.y += SCROLL_SPEED;
 	}
 
-	//HitBox更新
+	//当たり判定更新
 	CHitBox* hit_b = Hits::GetHitBox(this);
 
 	//当たり判定の位置を星の中に収めるように移動

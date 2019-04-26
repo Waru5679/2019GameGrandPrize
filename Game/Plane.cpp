@@ -32,7 +32,10 @@ void CPlane::Action()
 	{
 		m_vPos.x -= SCROLL_SPEED;
 	}
-
+	else
+	{
+		m_vPos.y += SCROLL_SPEED;
+	}
 	//HitBoxXV
 	CHitBox* hit_b = Hits::GetHitBox(this);
 	hit_b->SetPos(m_vPos.x, m_vPos.y);
