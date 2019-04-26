@@ -298,7 +298,7 @@ void CObjMainChara::HitBlackHole(Vector Vec)
 void CObjMainChara::PlaneHit(Vector vPos)
 {
 	//ã‚©‚ç—ˆ‚Ä‚é‚Æ‚«
-	if (m_vMove.y >= 0.0f)
+	if (m_vMove.y > 0.0f)
 	{
 		//ƒLƒƒƒ‰‚ÌˆÊ’u‚ð’n–Ê‚Ìã‚É‚·‚é
 		m_vPos.y = vPos.y - CHARA_SIZE;
