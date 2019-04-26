@@ -26,6 +26,7 @@ enum OBJ_NAME
 	OBJ_HOLE_CENTER,	//穴の中心
 	OBJ_GOAL,			//ゴール
 	OBJ_CLEAR,			//クリア
+	OBJ_STAGE_SELECT,	//ステージセレクト
 };
 //------------------------------------------------
 
@@ -138,6 +139,7 @@ enum ITEM_NUM
 #include "Title.h"
 #include "GameOver.h"
 #include "GameClear.h"
+#include "StageSelect.h"
 #include "Goal.h"
 #include "EnemyUpDown.h"
 //------------------------------------------------
@@ -152,5 +154,5 @@ enum ITEM_NUM
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START CSceneMain
+#define SET_GAME_START CSceneStageSelect
 //-----------------------------------------------
