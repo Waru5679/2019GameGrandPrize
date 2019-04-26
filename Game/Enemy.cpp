@@ -42,21 +42,20 @@ void CEnemy::Action()
 {
 	//ˆÚ“®
 	//‰æ–Ê“à‚É“ü‚é‚Æc‚ð‚ä‚Á‚­‚è“®‚­‚æ‚¤‚É‚·‚é
-	if (m_vPos.y > 100.0f)
+	if (m_vPos.y > 0.0f)
 	{
-		m_fvy = 0.0f;//SCROLL_SPEED;
+		m_fvy = SCROLL_SPEED;
 
 		//‰æ–Ê”¼•ª‚æ‚è¶‚È‚ç‰EˆÚ“®
 		if (m_vPos.x < WINDOW_SIZE_W / 2.0f)
 		{
 			//m_fvx = 1.0f;
-			m_fvx = 0.0f;
+			
 		}
 		//‰æ–Ê”¼•ª‚æ‚è‰E‚È‚ç¶ˆÚ“®
 		else
 		{
 			//m_fvx = -1.0f;
-			m_fvx = 0.0f;
 		}
 	}
 

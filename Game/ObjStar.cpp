@@ -31,7 +31,7 @@ void CStar::Action()
 	m_bScroll = pScene->GetScroll();
 
 	//ƒXƒNƒ[ƒ‹‚ª‰¡‚ÌŽž¶‚Ö“®‚­
-	if (m_bScroll = SIDE)
+	if (m_bScroll == SIDE)
 	{
 		m_vPos.x -= SCROLL_SPEED;
 	}
