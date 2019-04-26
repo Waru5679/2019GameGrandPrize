@@ -68,7 +68,7 @@ struct UserData
 #define VARTICAL_MAX_Y 70
 
 //最大アイテム数
-#define MAX_ITEM 4
+#define MAX_ITEM 256
 
 //マップ数値
 enum MAP_NUM

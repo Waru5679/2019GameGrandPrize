@@ -23,6 +23,21 @@ void CGoal::Init()
 //更新
 void CGoal::Action()
 {
+	//スクロールのポインタ
+	CSceneMain* pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+	m_bScroll = pScene->GetScroll();
+
+	//スクロールが横の時左へ動く
+	if (m_bScroll == SIDE)
+	{
+		m_vPos.x -= SCROLL_SPEED;
+	}
+	//縦なら下へ動く
+	else
+	{
+		m_vPos.y += SCROLL_SPEED;
+	}
+
 	//主人公との当たり判定
 	CHitBox* hit_b = Hits::GetHitBox(this);
 	//主人公と当たればゲームクリアへ

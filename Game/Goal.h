@@ -20,4 +20,6 @@ private:
 	//•`‰æF
 	float m_fColor[4];
 
+	bool m_bScroll;
+
 };
