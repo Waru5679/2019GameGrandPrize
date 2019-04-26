@@ -29,6 +29,8 @@ void CEnemy::Init()
 	m_fSpeed.x = 1.5f;
 	m_fSpeed.y = 1.5f;
 
+	m_bMoveSwitch = true;
+
 	//主人公の位置取得
 	CObjMainChara* obj_pChara = new CObjMainChara();
 	m_fChara = obj_pChara->GetPos();
@@ -44,18 +46,23 @@ void CEnemy::Action()
 	//画面内に入ると縦をゆっくり動くようにする
 	if (m_vPos.y > 0.0f)
 	{
-		m_fvy = SCROLL_SPEED;
+		m_fvy = SCROLL_SPEED / 2.0f;
 
-		//画面半分より左なら右移動
-		if (m_vPos.x < WINDOW_SIZE_W / 2.0f)
+		if (m_bMoveSwitch == true)
 		{
-			//m_fvx = 1.0f;
-			
-		}
-		//画面半分より右なら左移動
-		else
-		{
-			//m_fvx = -1.0f;
+			//画面半分より左なら右移動
+			if (m_vPos.x < WINDOW_SIZE_W / 2.0f)
+			{
+				m_fvx = 1.0f;
+				m_bMoveSwitch = false;
+
+			}
+			//画面半分より右なら左移動
+			else
+			{
+				m_fvx = -1.0f;
+				m_bMoveSwitch = false;
+			}
 		}
 	}
 
