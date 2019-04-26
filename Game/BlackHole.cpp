@@ -68,6 +68,23 @@ void CBlackHole::Action()
 		Vector vHoleDir=CVector::Sub(m_vDeathPos, vCharaPos);
 		vHoleDir = CVector::Normalize(vHoleDir);
 
+		if (m_bScroll == SIDE)
+		{
+			//xの数値が-だった時（右から当たった時）吸い込み量を増やす
+			if (vHoleDir.x < 0.0f)
+			{
+				m_fSuctionPower = 2.6f;
+			}
+		}
+		else
+		{
+			//yの数値が＋だった時（上から当たった時）吸い込み量を増やす
+			if (vHoleDir.y > 0.0f)
+			{
+				m_fSuctionPower = 2.6f;
+			}
+		}
+
 		//キャラに移動ベクトル追加
 		pChara->HitBlackHole(CVector::Multiply(vHoleDir,m_fSuctionPower));
 	}

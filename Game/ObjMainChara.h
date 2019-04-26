@@ -44,6 +44,7 @@ private:
 	bool m_bBullet_FireIs;	//弾丸制御
 
 	bool m_bIsHitBlackHole;//ブラックホールヒット判定
+	Vector m_vBlackHolePos;//ブラックホールの位置
 
 	//描画色
 	float m_fColor[4];

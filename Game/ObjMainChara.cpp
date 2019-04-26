@@ -207,7 +207,7 @@ void CObjMainChara::SideInput()
 	//キー入力　左
 	else if (Input::GetVKey(VK_LEFT) == true)
 	{
-		m_vMove.x += -3.0f;
+		m_vMove.x += -4.0f;
 		m_bDirection = true;
 	}
 
@@ -224,6 +224,7 @@ void CObjMainChara::SideInput()
 		{
 			m_vMove.y += 3.0f;
 		}
+
 	}
 
 
@@ -255,7 +256,6 @@ void CObjMainChara::VarticalInput()
 		m_vMove.x += -3.0f;
 		m_bDirection = true;
 	}
-	
 
 	//キー入力　上
 	if (Input::GetVKey(VK_UP) == true)
@@ -267,6 +267,8 @@ void CObjMainChara::VarticalInput()
 	{
 		m_vMove.y += 3.0f;
 	}
+	
+
 
 
 	//攻撃

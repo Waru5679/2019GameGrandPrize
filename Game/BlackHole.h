@@ -14,6 +14,8 @@ public:
 	void Init();	//‰Šú‰»
 	void Action();	//XV
 	void Draw();	//•`‰æ
+
+	Vector GetPos() { return m_vPos; }
 private:
 	
 	//•`‰æF

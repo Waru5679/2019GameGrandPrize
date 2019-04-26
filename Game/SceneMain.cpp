@@ -23,7 +23,7 @@ void CSceneMain::InitScene()
 	m_Count = 0;
 
 	//スクロール方向
-	m_bScroll = VERTICAL;
+	m_bScroll = SIDE;
 
 	//背景オブジェクト1
 	m_pBack1 = new CBackGround(0.0f, 0.0f, SIDE);
