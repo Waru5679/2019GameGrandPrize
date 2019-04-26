@@ -43,37 +43,53 @@ void CEnemyBullet::Action()
 
 		//主人公のポジションセット
 		Vector m_vPos_Chara = pChara->GetPos();
-		m_vPos_Chara.x = m_vPos_Chara.x - m_vPos.x;
-		m_vPos_Chara.y = m_vPos_Chara.y - m_vPos.y;
 
-		//主人公の角度を取る
-		float m_fAngle_Chara = GetAtan2Angle(m_vPos_Chara.x, -m_vPos_Chara.y);
-		//自分の弾(EnemyBullet)の角度を取る
-		float m_fAngle_Bullet = GetAtan2Angle(m_vMove.x, -m_vMove.y);
+		Vector vBulletDir = CVector::Sub(m_vPos_Chara, m_vPos);
+		vBulletDir = CVector::Normalize(vBulletDir);
 
+		//CVector::Multiply(vBulletDir, 1.0f);
 
-		//角度1°
-		float r = 3.14f / 180.0f;
+		//m_vPos_Chara.x = m_vPos_Chara.x - m_vPos.x;
+		//m_vPos_Chara.y = m_vPos_Chara.y - m_vPos.y;
 
-		//arよりbrが低い場合移動方向に+1°加える
-		//違う場合移動方向に-1°加える
-		if (m_fAngle_Chara < m_fAngle_Bullet)
-		{
-			m_vMove.x = m_vMove.x * cos(r) - m_vMove.y * sin(r);
-			m_vMove.y = m_vMove.y * cos(r) + m_vMove.x * sin(r);
-		}
-		else
-		{
-			m_vMove.x = m_vMove.x * cos( r) - m_vMove.y * sin( r);
-			m_vMove.y = m_vMove.y * cos(-r) + m_vMove.x * sin(-r);
-		}
+		////角度1°
+		//float r = 3.14f / 180.0f;
 
-		//正規化
-		UnitVec(&m_vMove.x, &m_vMove.y);	
+		////主人公の角度を取る
+		//float m_fAngle_Chara = GetAtan2Angle(-m_vPos_Chara.y, m_vPos_Chara.x) * 180.0f /3.14;
+		////自分の弾(EnemyBullet)の角度を取る
+		//float m_fAngle_Bullet = GetAtan2Angle(-m_vMove.y, -m_vMove.x) * 180.0f / 3.14;
+
+		//if (m_fAngle_Chara < 0)
+		//{
+		//	m_fAngle_Chara = 360 - abs(m_fAngle_Chara);
+		//}
+
+		//if (m_fAngle_Bullet < 0)
+		//{
+		//	m_fAngle_Bullet = 360 - abs(m_fAngle_Bullet);
+		//}
+
+		////arよりbrが低い場合移動方向に+1°加える
+		////違う場合移動方向に-1°加える
+		//if (m_fAngle_Chara < m_fAngle_Bullet)
+		//{
+		//	m_vMove.x = m_vMove.x * cos(r) - m_vMove.y * sin(r);
+		//	m_vMove.y = m_vMove.y * cos(r) + m_vMove.x * sin(r);
+		//}
+		//else
+		//{
+		//	m_vMove.x = m_vMove.x * cos(-r) - m_vMove.y * sin(-r);
+		//	m_vMove.y = m_vMove.y * cos(-r) + m_vMove.x * sin(-r);
+		//}
+
+		////正規化
+		//UnitVec(&m_vMove.x, &m_vMove.y);	
 		m_bShot = false;
+
 	}
 
-	m_vPos = CVector::Add(m_vPos, m_vMove);
+	//m_vPos = CVector::Add(vBulletDir, m_vMove);	
 
 	//画面外か調べる
 	m_bInWindow = WindowInCheck(m_vPos, CVector::Create(BULLET_SIZE, BULLET_SIZE));

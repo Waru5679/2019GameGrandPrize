@@ -34,15 +34,15 @@ void CEnemyUpDown::Init()
 void CEnemyUpDown::Action()
 {
 	//ˆÚ“®
-	if (m_vPos.y >= WINDOW_SIZE_H / 3.0f)
+	if (m_vPos.y >= 0)
 	{
 		m_Count++;
 
-		if (m_Count >= 180.0f)
+		if (m_Count >= 360.0f)
 		{
-			m_fvy = -1.0f;
+			m_fvy = -SCROLL_SPEED;
 		}
-		else
+		else if(m_Count >= 180.0f)
 		{
 			m_fvy = 0.0f;
 		}

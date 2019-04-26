@@ -22,31 +22,12 @@ void CEnemy::Init()
 	//カウンタ
 	m_Count = 0;
 	
-	//移動
-	//画面内に入ると縦をゆっくり動くようにする
-	if (m_vPos.y > 0.0f)
-	{
-		m_fvy = 0.2f;
-	}
-	//画面外
-	else
-	{
-		m_fvy = SCROLL_SPEED;
-	}
-	//画面半分より左なら右移動
-	if (m_vPos.x < WINDOW_SIZE_W / 2.0f)
-	{
-		m_fvx = 1.0f;
-	}
-	//画面半分より右なら左移動
-	else
-	{
-		m_fvx = -1.0f;
-	}
+	m_fvx = 0.0f;
+	m_fvy = SCROLL_SPEED;
 
 	//弾丸用速度
-	m_fSpeed.x = 1.0f;
-	m_fSpeed.y = 1.0f;
+	m_fSpeed.x = 1.5f;
+	m_fSpeed.y = 1.5f;
 
 	//主人公の位置取得
 	CObjMainChara* obj_pChara = new CObjMainChara();
@@ -59,7 +40,27 @@ void CEnemy::Init()
 //更新
 void CEnemy::Action()
 {
-	
+	//移動
+	//画面内に入ると縦をゆっくり動くようにする
+	if (m_vPos.y > 100.0f)
+	{
+		m_fvy = 0.0f;//SCROLL_SPEED;
+
+		//画面半分より左なら右移動
+		if (m_vPos.x < WINDOW_SIZE_W / 2.0f)
+		{
+			//m_fvx = 1.0f;
+			m_fvx = 0.0f;
+		}
+		//画面半分より右なら左移動
+		else
+		{
+			//m_fvx = -1.0f;
+			m_fvx = 0.0f;
+		}
+	}
+
+
 	//位置の更新
 	m_vPos.x += m_fvx;
 	m_vPos.y += m_fvy;
@@ -81,7 +82,7 @@ void CEnemy::Action()
 			Vector vCharaPos = pChara->GetPos();
 
 			//弾生成
-			CEnemyBullet* pBullet = new CEnemyBullet(m_vPos, CVector::Create(vCharaPos.x - 240.0f , vCharaPos.y));
+			CEnemyBullet* pBullet = new CEnemyBullet(m_vPos, CVector::Create(vCharaPos.x, vCharaPos.y));
 			Objs::InsertObj(pBullet, OBJ_ENEMY_BULLET, 10);
 		}
 	}
@@ -101,7 +102,7 @@ void CEnemy::Action()
 	}
 	//--------------------------------------------------------------
 
-	//アイテム(大)オブジェクトが画面端へ出ると削除
+	//敵が画面端へ出ると削除
 	//右移動の時画面右端
 	if (m_fvx > 0 && m_vPos.x > WINDOW_SIZE_W)
 	{
