@@ -15,6 +15,7 @@ private:
 	float m_fColor[4];	//•`‰æF
 	Vector m_vPos;		//ˆÊ’u
 	Vector m_vMove;		//ˆÚ“®
+	Vector m_vBulletDir;//’e‚ÌŒü‚«
 	float m_fRot;		//‰ñ“]
 	bool m_bInWindow;	//‰æ–Ê“à‚©‚Ç‚¤‚©
 	bool m_bShot;		//”­ËŠÇ—

@@ -19,7 +19,8 @@ private:
 	float m_fvx;		//移動ベクトル
 	float m_fvy;		
 	int m_Count;		//カウンタ
-	Vector m_fChara;	//キャラの位置取得用
-	Vector m_fSpeed;	//速度
-	bool m_bInWindow;	//画面内かどうか
+
+	Vector m_fChara;		//キャラの位置取得用
+	Vector m_fSpeed;		//速度
+	bool m_bInWindow;		//画面内かどうか
 };
