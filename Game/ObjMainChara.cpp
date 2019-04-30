@@ -63,7 +63,7 @@ void CObjMainChara::Action()
 	//----------------------------------------------
 
 	//èc
-	if (m_bScroll == VERTICAL)
+	if (m_bScroll == VARTICAL)
 	{
 		VarticalMove();
 
@@ -268,9 +268,6 @@ void CObjMainChara::VarticalInput()
 		m_vMove.y += 3.0f;
 	}
 	
-
-
-
 	//çUåÇ
 	if (Input::GetVKey('X') == true)
 	{

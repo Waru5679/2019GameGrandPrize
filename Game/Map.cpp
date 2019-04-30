@@ -137,7 +137,7 @@ void CMap::CreateSide()
 				//スクロールチェンジ
 				case MAP_SCROLL_CHANGE:
 				{
-					CScrollChange* pScrollChange = new  CScrollChange(x, y);
+					CScrollChange* pScrollChange = new  CScrollChange(x, y,SIDE);
 					Objs::InsertObj(pScrollChange, OBJ_SCROLL_CHANGE, 10);
 
 					//生成が終われば空白に
@@ -236,7 +236,7 @@ void CMap::CreateVertical()
 				//スクロールチェンジ
 				case MAP_SCROLL_CHANGE:
 				{
-					CScrollChange* pScrollChange = new  CScrollChange(x, y - VARTICAL_MAX_Y);
+					CScrollChange* pScrollChange = new  CScrollChange(x, y - VARTICAL_MAX_Y,VARTICAL);
 					Objs::InsertObj(pScrollChange, OBJ_SCROLL_CHANGE, 10);
 
 					//生成が終われば空白に

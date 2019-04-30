@@ -58,14 +58,14 @@ struct UserData
 
 //スクロール
 #define SIDE true			//横
-#define VERTICAL false		//縦
+#define VARTICAL false		//縦
 #define SCROLL_SPEED 2.0f	//スクロール速度
 
 //マップ
-#define SIDE_MAX_X 70
+#define SIDE_MAX_X 76
 #define SIDE_MAX_Y 10
 
-#define VARTICAL_MAX_X 10
+#define VARTICAL_MAX_X 12
 #define VARTICAL_MAX_Y 70
 
 //最大アイテム数
@@ -154,5 +154,5 @@ enum ITEM_NUM
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START CSceneStageSelect
+#define SET_GAME_START CSceneMain
 //-----------------------------------------------

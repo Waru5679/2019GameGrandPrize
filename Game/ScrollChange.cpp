@@ -4,10 +4,25 @@
 #include "GameL/HitBoxManager.h"
 
 //コンストラクタ
-CScrollChange::CScrollChange(int x, int y)
+CScrollChange::CScrollChange(int x, int y,bool bScroll)
 {
 	m_vPos.x = (float)x * OBJ_SIZE;
 	m_vPos.y = (float)y * OBJ_SIZE;
+
+	m_bScroll = bScroll;
+
+	//スクロールの方向に合わせて判定のサイズを変える
+	if (m_bScroll == SIDE)
+	{
+		m_vHitSize.x =  OBJ_SIZE;
+		m_vHitSize.y = OBJ_SIZE * SIDE_MAX_Y;
+	}
+	else
+	{
+		m_vHitSize.x = OBJ_SIZE * VARTICAL_MAX_X;
+		m_vHitSize.y = OBJ_SIZE;
+	}
+
 }
 
 //初期化
@@ -17,16 +32,12 @@ void CScrollChange::Init()
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 
 	//当たり判定
-	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, SCROLL_CHANGE_SIZE, SCROLL_CHANGE_SIZE, ELEMENT_STAGE, OBJ_SCROLL_CHANGE, 1);
+	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, m_vHitSize.x, m_vHitSize.y, ELEMENT_STAGE, OBJ_SCROLL_CHANGE, 1);
 }
 
 //更新
 void CScrollChange::Action()
 {
-	//スクロールのポインタ
-	CSceneMain* pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
-	m_bScroll = pScene->GetScroll();
-
 	///スクロールが横の時左へ動く
 	if (m_bScroll == SIDE)
 	{
@@ -38,8 +49,11 @@ void CScrollChange::Action()
 		m_vPos.y += SCROLL_SPEED;
 	}
 
-	//キャラとの当たり判定
+	//HitBox更新
 	CHitBox* hit = Hits::GetHitBox(this);
+	hit->SetPos(m_vPos.x, m_vPos.y);
+	
+	//キャラとの当たり判定
 	if (hit->CheckObjNameHit(OBJ_CHARA) != nullptr)
 	{
 		//スクロールの変更

@@ -7,7 +7,7 @@
 //コンストラクタ
 CCharaBullet::CCharaBullet(Vector vPos, Vector vMove)
 {
-	//位置
+	//位置x
 	m_vPos = vPos;
 
 	//移動

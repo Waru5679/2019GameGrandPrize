@@ -33,7 +33,7 @@ void CSceneMain::InitScene()
 	m_pBack2 = new CBackGround(WINDOW_SIZE_W, 0.0f, SIDE);
 	Objs::InsertObj(m_pBack2, OBJ_BACK_GROUND, 1);
 
-	//マップオブジェクト
+	//マップオブジェクト]
 	CMap* pMap = new CMap(m_pSideMap,m_pVarticalMap);
 	Objs::InsertObj(pMap, OBJ_MAP, 100);
 
@@ -45,9 +45,9 @@ void CSceneMain::InitScene()
 	CScore* pScore = new CScore();
 	Objs::InsertObj(pScore, OBJ_SCORE, 10);
 
-	//Debug用　スクロールチェンジ
-//	CScrollChange* pScroll = new CScrollChange(5, 8);
-//	Objs::InsertObj(pScroll, OBJ_SCROLL_CHANGE, 10);
+	////Debug用　スクロールチェンジ
+	//CScrollChange* pScroll = new CScrollChange(0, 0,VARTICAL);
+	//Objs::InsertObj(pScroll, OBJ_SCROLL_CHANGE, 10);
 
 	//ボリューム調整
 	Audio::Volume(-0.8f, 0);
@@ -73,10 +73,10 @@ void CSceneMain::ScrollChange()
 	//背景の位置とスクロール方向の変更
 
 	//横→縦に変更
-	if (m_bScroll == VERTICAL)
+	if (m_bScroll == VARTICAL)
 	{
-		m_pBack1->SetScroll(0.0f, 0.0f, VERTICAL);
-		m_pBack2->SetScroll(0.0f, WINDOW_SIZE_H, VERTICAL);
+		m_pBack1->SetScroll(0.0f, 0.0f, VARTICAL);
+		m_pBack2->SetScroll(0.0f, WINDOW_SIZE_H, VARTICAL);
 	}
 	//縦→横に変更
 	else

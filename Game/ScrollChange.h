@@ -8,7 +8,7 @@ using namespace GameL;
 class CScrollChange :public CObj
 {
 public:
-	CScrollChange(int x, int y);
+	CScrollChange(int x, int y,bool bScroll);
 	
 	void Init();	//初期化
 	void Action();	//更新
@@ -16,6 +16,7 @@ public:
 
 private:
 	Vector m_vPos;	//位置
+	Vector m_vHitSize;	//当たり判定用サイズ
 	
 	//描画色
 	float m_fColor[4];
