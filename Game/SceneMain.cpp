@@ -16,14 +16,14 @@ void CSceneMain::InitScene()
 	LoadAudio();
 
 	//マップ情報読み込み
-	m_pSideMap=CCsv::LoadCsv("Map/SideMap.csv",SIDE_MAX_X,SIDE_MAX_Y);
-	m_pVarticalMap = CCsv::LoadCsv("Map/VarticalMap.csv", VARTICAL_MAX_X, VARTICAL_MAX_Y);
+	m_pSideMap=CCsv::LoadCsv("Map/Stage2/Side.csv",SIDE_MAX_X,SIDE_MAX_Y);
+	m_pVarticalMap = CCsv::LoadCsv("Map/Stage2/Vartical.csv", VARTICAL_MAX_X, VARTICAL_MAX_Y);
 
 	//カウンタ初期化
 	m_Count = 0;
 
 	//スクロール方向
-	m_bScroll = SIDE;
+	m_bScroll = !SIDE;
 
 	//背景オブジェクト1
 	m_pBack1 = new CBackGround(0.0f, 0.0f, SIDE);
