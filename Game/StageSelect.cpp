@@ -33,6 +33,7 @@ void CStageSelect::Action()
 		if (Input::GetTrrigerKey(VK_RETURN) == true)
 		{
 			//ステージ１の難易度選択シーンへ移動
+			Scene::SetScene(new CSceneMain);
 		}
 		//右キーを押すとStage2にする
 		if (Input::GetTrrigerKey(VK_RIGHT) == true)
@@ -69,14 +70,74 @@ void CStageSelect::Action()
 			SelectNum = RANKING;
 		}
 	}
+
+	if (SelectNum == STAGE_3)
+	{
+		if (Input::GetTrrigerKey(VK_RETURN) == true)
+		{
+			//ステージ3の難易度選択シーンへ移動
+		}
+		//左キーを押すとStage2にする
+		if (Input::GetTrrigerKey(VK_LEFT) == true)
+		{
+			SelectNum = STAGE_2;
+		}
+		//下キーを押すとランキングにする
+		if (Input::GetTrrigerKey(VK_DOWN) == true)
+		{
+			SelectNum = RANKING;
+		}
+	}
+
+	if (SelectNum == RANKING)
+	{
+		if (Input::GetTrrigerKey(VK_RETURN) == true)
+		{
+			//ランキング表示
+		}
+		//左キーを押すとStage2にする
+		if (Input::GetTrrigerKey(VK_UP) == true)
+		{
+			SelectNum = STAGE_2;
+		}
+	}
+
 }
 
 //描画
 void CStageSelect::Draw()
 {
-	Font::StrDraw(L"ステージ1",  50.0f, 200.0f, 32.0f, m_fColor);
-	Font::StrDraw(L"ステージ2", 320.0f, 200.0f, 32.0f, m_fColor);
-	Font::StrDraw(L"ステージ3", 590.0f, 200.0f, 32.0f, m_fColor);
-
-	Font::StrDraw(L"ランキング", 310.0f, 450.0f, 32.0f, m_fColor);
+	//SelectNumの数値によって文字を大きくする
+	if (SelectNum == STAGE_1)
+	{
+		Font::StrDraw(L"ステージ1", 35.0f, 200.0f, 48.0f, m_fColor);
+	}
+	else
+	{
+		Font::StrDraw(L"ステージ1", 50.0f, 200.0f, 32.0f, m_fColor);
+	}
+	if (SelectNum == STAGE_2)
+	{
+		Font::StrDraw(L"ステージ2", 285.0f, 200.0f, 48.0f, m_fColor);
+	}
+	else
+	{
+		Font::StrDraw(L"ステージ2", 320.0f, 200.0f, 32.0f, m_fColor);
+	}
+	if (SelectNum == STAGE_3)
+	{
+		Font::StrDraw(L"ステージ3", 550.0f, 200.0f, 48.0f, m_fColor);
+	}
+	else
+	{
+		Font::StrDraw(L"ステージ3", 590.0f, 200.0f, 32.0f, m_fColor);
+	}
+	if (SelectNum == RANKING)
+	{
+		Font::StrDraw(L"ランキング", 270.0f, 450.0f, 48.0f, m_fColor);
+	}
+	else
+	{
+		Font::StrDraw(L"ランキング", 310.0f, 450.0f, 32.0f, m_fColor);
+	}
 }
