@@ -118,6 +118,12 @@
     <ClCompile Include="SceneStageSelect.cpp">
       <Filter>Source\メニュー</Filter>
     </ClCompile>
+    <ClCompile Include="SceneRanking.cpp">
+      <Filter>Source\メニュー</Filter>
+    </ClCompile>
+    <ClCompile Include="Ranking.cpp">
+      <Filter>Source\メニュー</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\DirectXDevice.h">
@@ -238,6 +244,12 @@
       <Filter>Source\メニュー</Filter>
     </ClInclude>
     <ClInclude Include="SceneStageSelect.h">
+      <Filter>Source\メニュー</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneRanking.h">
+      <Filter>Source\メニュー</Filter>
+    </ClInclude>
+    <ClInclude Include="Ranking.h">
       <Filter>Source\メニュー</Filter>
     </ClInclude>
   </ItemGroup>
