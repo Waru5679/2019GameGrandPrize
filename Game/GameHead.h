@@ -22,11 +22,13 @@ enum OBJ_NAME
 	OBJ_SCORE,			//スコア
 	OBJ_TITLE,			//タイトル
 	OBJ_GAME_OVER,		//ゲームオーバー
-	OBJ_GAME_CLEAR,
+	OBJ_GAME_CLEAR,		//クリア
 	OBJ_HOLE_CENTER,	//穴の中心
 	OBJ_GOAL,			//ゴール
 	OBJ_CLEAR,			//クリア
 	OBJ_STAGE_SELECT,	//ステージセレクト
+	OBJ_RANKING,		//ランキング
+	OBJ_NAME_INPUT,
 };
 //------------------------------------------------
 
@@ -43,15 +45,6 @@ enum HIT_ELEMENTS
 	ELEMENT_DEATH,			//死亡判定
 };
 //------------------------------------------------
-
-//------------------------------------------------
-//セーブ＆ロードとシーン間のやり取りするデータ
-struct UserData
-{
-	int m_iScore;	//スコア
-};
-//------------------------------------------------
-
 
 //ゲーム内で使用されるグローバル変数・定数・列挙--
 
@@ -70,6 +63,20 @@ struct UserData
 
 //最大アイテム数
 #define MAX_ITEM 256
+
+//最大ランキング数
+#define MAX_RANKING 11
+
+//------------------------------------------------
+//セーブ＆ロードとシーン間のやり取りするデータ
+struct UserData
+{
+	int m_iScore;					//スコア
+	int m_iRanking[MAX_RANKING];	//ランキング
+	char m_cName;					//名前
+	int m_iNamePos[MAX_RANKING-1];	//名前配置用
+};
+//------------------------------------------------
 
 //マップ数値
 enum MAP_NUM
@@ -142,6 +149,8 @@ enum ITEM_NUM
 #include "StageSelect.h"
 #include "Goal.h"
 #include "EnemyUpDown.h"
+#include "Ranking.h"
+#include "NameInput.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
@@ -150,9 +159,11 @@ enum ITEM_NUM
 #include "SceneGameOver.h"
 #include "SceneGameClear.h"
 #include "SceneStageSelect.h"
+#include "SceneRanking.h"
+#include "SceneNameInput.h"
 //-----------------------------------------------
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START CSceneMain
+#define SET_GAME_START CSceneRanking
 //-----------------------------------------------

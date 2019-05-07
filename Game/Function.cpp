@@ -85,3 +85,27 @@ bool UnitVec(float* vx, float* vy)
 	//計算成功
 	return true;
 }
+
+//ランキングソートメソッド
+//引数1 int[11] :ランキング用配列
+//数値が高い順でバブルソートする
+void RankingSort(int rank[11])
+{
+	//値交換用変数
+	int change;
+
+	//バブルソート
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = i + 1; j < 11; j++)
+		{
+			if (rank[i] < rank[j])
+			{
+				//値の交換
+				change = rank[i];
+				rank[i] = rank[j];
+				rank[j] = change;
+			}
+		}
+	}
+}

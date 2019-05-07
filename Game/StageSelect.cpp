@@ -3,6 +3,7 @@
 #include "GameL/WinInputs.h"
 #include "GameL/DrawFont.h"
 #include "GameL/SceneManager.h"
+#include "GameL/UserData.h"
 #include "GameHead.h"
 
 #define STAGE_1 1
@@ -21,6 +22,26 @@ void CStageSelect::Init()
 
 	//セレクト用数値
 	SelectNum = 1;
+
+	//ゲームを実行して1回のみ
+	static bool m_sbInit_Point = false;
+	if (m_sbInit_Point == false)
+	{
+		//ランキング初期化
+		for (int i = 0; i < MAX_RANKING; i++)
+		{
+			((UserData*)Save::GetData())->m_iRanking[i] = 0;
+
+		}
+		//点数を0にする
+		((UserData*)Save::GetData())->m_iScore = 0;
+
+		m_sbInit_Point = true;
+	}
+
+	//得点が高い順に並び替えをする
+	RankingSort(((UserData*)Save::GetData())->m_iRanking, ((UserData*)Save::GetData())->m_cName);
+
 }
 
 //更新
@@ -94,6 +115,7 @@ void CStageSelect::Action()
 		if (Input::GetTrrigerKey(VK_RETURN) == true)
 		{
 			//ランキング表示
+			Scene::SetScene(new CSceneRanking);
 		}
 		//左キーを押すとStage2にする
 		if (Input::GetTrrigerKey(VK_UP) == true)
@@ -134,7 +156,7 @@ void CStageSelect::Draw()
 	}
 	if (SelectNum == RANKING)
 	{
-		Font::StrDraw(L"ランキング", 270.0f, 450.0f, 48.0f, m_fColor);
+		Font::StrDraw(L"ランキング", 280.0f, 450.0f, 48.0f, m_fColor);
 	}
 	else
 	{

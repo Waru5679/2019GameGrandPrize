@@ -155,6 +155,7 @@
     <ClInclude Include="Goal.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="NameInput.h" />
     <ClInclude Include="ObjCollectionItemBig.h" />
     <ClInclude Include="ObjCollectionItemSmall.h" />
     <ClInclude Include="ObjMainChara.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="SceneGameClear.h" />
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneMain.h" />
+    <ClInclude Include="SceneNameInput.h" />
     <ClInclude Include="SceneRanking.h" />
     <ClInclude Include="SceneStageSelect.h" />
     <ClInclude Include="SceneTitle.h">
@@ -184,10 +186,12 @@
     <ClCompile Include="GameClear.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Goal.cpp" />
+    <ClCompile Include="NameInput.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="SceneGameClear.cpp" />
     <ClCompile Include="SceneGameOver.cpp" />
+    <ClCompile Include="SceneNameInput.cpp" />
     <ClCompile Include="SceneRanking.cpp" />
     <ClCompile Include="SceneStageSelect.cpp" />
     <ClCompile Include="SceneTitle.cpp">

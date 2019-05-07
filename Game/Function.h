@@ -20,3 +20,6 @@ float GetAtan2Angle(float w, float h);
 
 //ベクトルの正規化を行う関数
 bool UnitVec(float* vx, float* vy);
+
+//ランキングソートメソッド
+void RankingSort(int rank[11]);

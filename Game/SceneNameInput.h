@@ -5,10 +5,10 @@
 
 using namespace GameL;
 
-//ランキングシーン
-class CSceneRanking :public CScene
+//名前入力シーン
+class CSceneNameInput :public CScene
 {
 public:
 	void InitScene();	//初期化
-	void Scene() {};	//実行中
+	void Scene();		//実行中
 };

@@ -3,6 +3,7 @@
 #include "GameL/WinInputs.h"
 #include "GameL/DrawFont.h"
 #include "GameL/SceneManager.h"
+#include "GameL/UserData.h"
 #include "GameHead.h"
 
 //‰Šú‰»
@@ -13,6 +14,7 @@ void CTitle::Init()
 
 	//F
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
+
 }
 
 //XV

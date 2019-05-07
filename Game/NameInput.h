@@ -4,15 +4,14 @@
 
 using namespace GameL;
 
-//ランキングクラス
-class CRanking :public CObj
+//名前入力クラス
+class CNameInput :public CObj
 {
 public:
-	CRanking() {};
+	CNameInput() {};
 	void Init();	//初期化
 	void Action();	//更新
-	void Draw();
+	void Draw();	//描画
 private:
-	//描画色
 	float m_fColor[4];
 };
