@@ -40,8 +40,7 @@ void CStageSelect::Init()
 	}
 
 	//“¾“_‚ª‚‚¢‡‚É•À‚Ñ‘Ö‚¦‚ğ‚·‚é
-	RankingSort(((UserData*)Save::GetData())->m_iRanking, ((UserData*)Save::GetData())->m_cName);
-
+	RankingSort(((UserData*)Save::GetData())->m_iRanking);
 }
 
 //XV

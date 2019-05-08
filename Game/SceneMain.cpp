@@ -23,7 +23,7 @@ void CSceneMain::InitScene()
 	m_Count = 0;
 
 	//スクロール方向
-	m_bScroll = !SIDE;
+	m_bScroll = SIDE;
 
 	//背景オブジェクト1
 	m_pBack1 = new CBackGround(0.0f, 0.0f, SIDE);
@@ -45,9 +45,9 @@ void CSceneMain::InitScene()
 	CScore* pScore = new CScore();
 	Objs::InsertObj(pScore, OBJ_SCORE, 10);
 
-	////Debug用　スクロールチェンジ
-	//CScrollChange* pScroll = new CScrollChange(0, 0,VARTICAL);
-	//Objs::InsertObj(pScroll, OBJ_SCROLL_CHANGE, 10);
+	//Debug用　スクロールチェンジ
+	CScrollChange* pScroll = new CScrollChange(0, 0,VARTICAL);
+	Objs::InsertObj(pScroll, OBJ_SCROLL_CHANGE, 10);
 
 	//ボリューム調整
 	Audio::Volume(-0.8f, 0);

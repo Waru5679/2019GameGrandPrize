@@ -52,7 +52,7 @@ enum HIT_ELEMENTS
 //スクロール
 #define SIDE true			//横
 #define VARTICAL false		//縦
-#define SCROLL_SPEED 2.0f	//スクロール速度
+#define SCROLL_SPEED 1.0f	//スクロール速度
 
 //マップ
 #define SIDE_MAX_X 76
@@ -165,5 +165,5 @@ enum ITEM_NUM
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START CSceneRanking
+#define SET_GAME_START CSceneTitle
 //-----------------------------------------------

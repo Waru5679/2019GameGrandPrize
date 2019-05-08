@@ -38,6 +38,10 @@ void CScrollChange::Init()
 //更新
 void CScrollChange::Action()
 {
+	//スクロールの状態取得
+	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+	m_bScroll = m_pScene->GetScroll();
+
 	///スクロールが横の時左へ動く
 	if (m_bScroll == SIDE)
 	{
