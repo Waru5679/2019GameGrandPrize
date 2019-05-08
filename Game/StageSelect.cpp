@@ -30,8 +30,15 @@ void CStageSelect::Init()
 		//ランキング初期化
 		for (int i = 0; i < MAX_RANKING; i++)
 		{
-			((UserData*)Save::GetData())->m_iRanking[i] = 0;
-
+			((UserData*)Save::GetData())->m_iRanking_st1[i] = 0;
+		}
+		for (int i = 0; i < MAX_RANKING; i++)
+		{
+			((UserData*)Save::GetData())->m_iRanking_st2[i] = 0;
+		}
+		for (int i = 0; i < MAX_RANKING; i++)
+		{
+			((UserData*)Save::GetData())->m_iRanking_st3[i] = 0;
 		}
 		//点数を0にする
 		((UserData*)Save::GetData())->m_iScore = 0;
@@ -40,20 +47,26 @@ void CStageSelect::Init()
 	}
 
 	//得点が高い順に並び替えをする
-	RankingSort(((UserData*)Save::GetData())->m_iRanking);
+	//ステージ1
+	RankingSort(((UserData*)Save::GetData())->m_iRanking_st1);
+	//ステージ2
+	RankingSort(((UserData*)Save::GetData())->m_iRanking_st2);
+	//ステージ3
+	RankingSort(((UserData*)Save::GetData())->m_iRanking_st3);
 }
 
 //更新
 void CStageSelect::Action()
 {
 	//ステージやランキングの上に来た場合文字の表示をでかくする数値を追加する
-
 	if (SelectNum == STAGE_1)
 	{
 		if (Input::GetTrrigerKey(VK_RETURN) == true)
 		{
 			//ステージ１の難易度選択シーンへ移動
+			((UserData*)Save::GetData())->m_iStageNum = STAGE_1;
 			Scene::SetScene(new CSceneMain);
+			this->SetStatus(false);
 		}
 		//右キーを押すとStage2にする
 		if (Input::GetTrrigerKey(VK_RIGHT) == true)
@@ -72,7 +85,10 @@ void CStageSelect::Action()
 	{
 		if (Input::GetTrrigerKey(VK_RETURN) == true)
 		{
+			((UserData*)Save::GetData())->m_iStageNum = STAGE_2;
 			//ステージ2の難易度選択シーンへ移動
+			Scene::SetScene(new CSceneMain2);
+			this->SetStatus(false);
 		}
 		//左キーを押すとStage1にする
 		if (Input::GetTrrigerKey(VK_LEFT) == true)
@@ -95,7 +111,10 @@ void CStageSelect::Action()
 	{
 		if (Input::GetTrrigerKey(VK_RETURN) == true)
 		{
+			((UserData*)Save::GetData())->m_iStageNum = STAGE_3;
 			//ステージ3の難易度選択シーンへ移動
+			Scene::SetScene(new CSceneMain3);
+			this->SetStatus(false);
 		}
 		//左キーを押すとStage2にする
 		if (Input::GetTrrigerKey(VK_LEFT) == true)
@@ -115,6 +134,7 @@ void CStageSelect::Action()
 		{
 			//ランキング表示
 			Scene::SetScene(new CSceneRanking);
+			this->SetStatus(false);
 		}
 		//左キーを押すとStage2にする
 		if (Input::GetTrrigerKey(VK_UP) == true)

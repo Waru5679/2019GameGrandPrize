@@ -130,6 +130,12 @@
     <ClCompile Include="NameInput.cpp">
       <Filter>Source\ゲームオーバー</Filter>
     </ClCompile>
+    <ClCompile Include="SceneMain2.cpp">
+      <Filter>Source\メイン</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMain3.cpp">
+      <Filter>Source\メイン</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\DirectXDevice.h">
@@ -263,6 +269,12 @@
     </ClInclude>
     <ClInclude Include="NameInput.h">
       <Filter>Source\ゲームオーバー</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMain2.h">
+      <Filter>Source\メイン</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMain3.h">
+      <Filter>Source\メイン</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

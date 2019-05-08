@@ -23,30 +23,89 @@ void CGameOver::Action()
 	//Enterでタイトルへ
 	if (Input::GetTrrigerKey(VK_RETURN) == true)
 	{
-		//得点情報をランキング最下位に登録
-		((UserData*)Save::GetData())->m_iRanking[MAX_RANKING] = ((UserData*)Save::GetData())->m_iScore;
+		if (((UserData*)Save::GetData())->m_iStageNum == STAGE_1)
+		{
+			//得点情報をランキング最下位に登録
+			((UserData*)Save::GetData())->m_iRanking_st1[MAX_RANKING] = ((UserData*)Save::GetData())->m_iScore;
 
-		//得点が高い順に並び替えをする
-		RankingSort(((UserData*)Save::GetData())->m_iRanking);
+			//得点が高い順に並び替えをする
+			RankingSort(((UserData*)Save::GetData())->m_iRanking_st1);
 
-		//for (int i = 0; i < MAX_RANKING; i++)
-		//{
-			//ランキングの位置探索
-			//if (((UserData*)Save::GetData())->m_iRanking[i] == ((UserData*)Save::GetData())->m_iScore)
+			//for (int i = 0; i < MAX_RANKING; i++)
 			//{
-				////スコアの位置が10位以上なら名前入力画面へ
-				//if (((UserData*)Save::GetData())->m_iRanking[i] < MAX_RANKING)
+				//ランキングの位置探索
+				//if (((UserData*)Save::GetData())->m_iRanking[i] == ((UserData*)Save::GetData())->m_iScore)
 				//{
-				//	//Scene::SetScene(new);
-				//	this->SetStatus(false);
-				//}
-				//else
-				//{
-					Scene::SetScene(new CSceneTitle());
-					this->SetStatus(false);
+					////スコアの位置が10位以上なら名前入力画面へ
+					//if (((UserData*)Save::GetData())->m_iRanking[i] < MAX_RANKING)
+					//{
+					//	//Scene::SetScene(new);
+					//	this->SetStatus(false);
+					//}
+					//else
+					//{
+			Scene::SetScene(new CSceneTitle());
+			this->SetStatus(false);
 			//	}
 			//}
 		//}
+		}
+
+		if (((UserData*)Save::GetData())->m_iStageNum == STAGE_2)
+		{
+			//得点情報をランキング最下位に登録
+			((UserData*)Save::GetData())->m_iRanking_st2[MAX_RANKING] = ((UserData*)Save::GetData())->m_iScore;
+
+			//得点が高い順に並び替えをする
+			RankingSort(((UserData*)Save::GetData())->m_iRanking_st2);
+
+			//for (int i = 0; i < MAX_RANKING; i++)
+			//{
+				//ランキングの位置探索
+				//if (((UserData*)Save::GetData())->m_iRanking[i] == ((UserData*)Save::GetData())->m_iScore)
+				//{
+					////スコアの位置が10位以上なら名前入力画面へ
+					//if (((UserData*)Save::GetData())->m_iRanking[i] < MAX_RANKING)
+					//{
+					//	//Scene::SetScene(new);
+					//	this->SetStatus(false);
+					//}
+					//else
+					//{
+			Scene::SetScene(new CSceneTitle());
+			this->SetStatus(false);
+			//	}
+			//}
+		//}
+		}
+
+		if (((UserData*)Save::GetData())->m_iStageNum == STAGE_3)
+		{
+			//得点情報をランキング最下位に登録
+			((UserData*)Save::GetData())->m_iRanking_st3[MAX_RANKING] = ((UserData*)Save::GetData())->m_iScore;
+
+			//得点が高い順に並び替えをする
+			RankingSort(((UserData*)Save::GetData())->m_iRanking_st3);
+
+			//for (int i = 0; i < MAX_RANKING; i++)
+			//{
+				//ランキングの位置探索
+				//if (((UserData*)Save::GetData())->m_iRanking[i] == ((UserData*)Save::GetData())->m_iScore)
+				//{
+					////スコアの位置が10位以上なら名前入力画面へ
+					//if (((UserData*)Save::GetData())->m_iRanking[i] < MAX_RANKING)
+					//{
+					//	//Scene::SetScene(new);
+					//	this->SetStatus(false);
+					//}
+					//else
+					//{
+			Scene::SetScene(new CSceneTitle());
+			this->SetStatus(false);
+			//	}
+			//}
+		//}
+		}
 		
 	}
 }

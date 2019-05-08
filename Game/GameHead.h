@@ -52,7 +52,7 @@ enum HIT_ELEMENTS
 //スクロール
 #define SIDE true			//横
 #define VARTICAL false		//縦
-#define SCROLL_SPEED 1.0f	//スクロール速度
+#define SCROLL_SPEED 2.0f	//スクロール速度
 
 //マップ
 #define SIDE_MAX_X 76
@@ -71,10 +71,15 @@ enum HIT_ELEMENTS
 //セーブ＆ロードとシーン間のやり取りするデータ
 struct UserData
 {
-	int m_iScore;					//スコア
-	int m_iRanking[MAX_RANKING];	//ランキング
-	char m_cName;					//名前
-	int m_iNamePos[MAX_RANKING-1];	//名前配置用
+	int m_iScore;						//スコア
+	int m_iRanking_st1[MAX_RANKING];	//ランキング(ステージ1)
+	int m_iRanking_st2[MAX_RANKING];	//ランキング(ステージ2)
+	int m_iRanking_st3[MAX_RANKING];	//ランキング(ステージ3)
+	int m_iStageNum;					//ステージ選択用番号
+	char m_cName_1;						//名前
+	char m_cName_2;						//名前
+
+	
 };
 //------------------------------------------------
 
@@ -122,6 +127,11 @@ enum ITEM_NUM
 #define PLANE_WIDTH	OBJ_SIZE
 #define PLANE_HEIGHT 6.0f
 
+//ステージ
+#define STAGE_1 1
+#define STAGE_2 2
+#define STAGE_3 3
+
 //------------------------------------------------
 //ゲーム内で使用するクラスヘッダ------------------
 
@@ -155,6 +165,8 @@ enum ITEM_NUM
 
 //ゲームシーンクラスヘッダ------------------------
 #include "SceneMain.h"
+#include "SceneMain2.h"
+#include "SceneMain3.h"
 #include "SceneTitle.h"
 #include "SceneGameOver.h"
 #include "SceneGameClear.h"
@@ -165,5 +177,5 @@ enum ITEM_NUM
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START CSceneTitle
+#define SET_GAME_START CSceneStageSelect
 //-----------------------------------------------

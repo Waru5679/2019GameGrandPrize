@@ -1,4 +1,4 @@
-#include "SceneMain.h"
+#include "SceneMain3.h"
 #include "GameL/DrawTexture.h"
 #include "GameHead.h"
 #include "main.h"
@@ -7,7 +7,7 @@
 #include "GameL/Audio.h"
 
 //初期化
-void CSceneMain::InitScene()
+void CSceneMain3::InitScene()
 {
 	//テクスチャ読み込み
 	LoadTexture();
@@ -16,12 +16,11 @@ void CSceneMain::InitScene()
 	LoadAudio();
 
 	//マップ情報読み込み
-	m_pSideMap=CCsv::LoadCsv("Map/Stage1/Side.csv",SIDE_MAX_X,SIDE_MAX_Y);
-	m_pVarticalMap = CCsv::LoadCsv("Map/Stage1/Vartical.csv", VARTICAL_MAX_X, VARTICAL_MAX_Y);
+	m_pSideMap = CCsv::LoadCsv("Map/Stage3/Side.csv", SIDE_MAX_X, SIDE_MAX_Y);
+	m_pVarticalMap = CCsv::LoadCsv("Map/Stage3/Vartical.csv", VARTICAL_MAX_X, VARTICAL_MAX_Y);
 
 	//カウンタ初期化
 	m_Count = 0;
-
 
 	//スクロール方向
 	m_bScroll = SIDE;
@@ -35,7 +34,7 @@ void CSceneMain::InitScene()
 	Objs::InsertObj(m_pBack2, OBJ_BACK_GROUND, 1);
 
 	//マップオブジェクト
-	CMap* pMap = new CMap(m_pSideMap,m_pVarticalMap);
+	CMap* pMap = new CMap(m_pSideMap, m_pVarticalMap);
 	Objs::InsertObj(pMap, OBJ_MAP, 100);
 
 	//キャラクターオブジェクト
@@ -52,21 +51,21 @@ void CSceneMain::InitScene()
 
 	//ボリューム調整
 	Audio::Volume(-0.8f, 0);
-	
+
 	//スタート
 	Audio::Start(0);
 
 }
 
 //実行中
-void CSceneMain::Scene()
+void CSceneMain3::Scene()
 {
-	
+
 }
 
 
 //スクロール切り替え
-void CSceneMain::ScrollChange()
+void CSceneMain3::ScrollChange()
 {
 	//スクロール方向の切り替え
 	m_bScroll = !(m_bScroll);
@@ -88,7 +87,7 @@ void CSceneMain::ScrollChange()
 }
 
 //テクスチャ読み込み
-void CSceneMain::LoadTexture()
+void CSceneMain3::LoadTexture()
 {
 	//背景
 	Draw::LoadImageW(L"Texture/BackGround.png", OBJ_BACK_GROUND, TEX_SIZE_512);
@@ -97,7 +96,7 @@ void CSceneMain::LoadTexture()
 	Draw::LoadImageW(L"Texture/BlackHole.png", OBJ_BLACK_HOLE, TEX_SIZE_128);
 
 	//主人公
-	Draw::LoadImageW(L"Texture/MainCharacter.png",OBJ_CHARA, TEX_SIZE_128);
+	Draw::LoadImageW(L"Texture/MainCharacter.png", OBJ_CHARA, TEX_SIZE_128);
 	//敵
 	Draw::LoadImageW(L"Texture/Enemy.png", OBJ_ENEMY, TEX_SIZE_256);
 
@@ -129,7 +128,7 @@ void CSceneMain::LoadTexture()
 }
 
 //音楽読み込み
-void CSceneMain::LoadAudio()
+void CSceneMain3::LoadAudio()
 {
 	//BGMtest
 	Audio::LoadAudio(0, L"Audio/Test2.wav", BACK_MUSIC);
