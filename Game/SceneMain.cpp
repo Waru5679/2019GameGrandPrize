@@ -46,8 +46,8 @@ void CSceneMain::InitScene()
 	Objs::InsertObj(pScore, OBJ_SCORE, 10);
 
 	//Debug用　スクロールチェンジ
-	CScrollChange* pScroll = new CScrollChange(0, 0,VARTICAL);
-	Objs::InsertObj(pScroll, OBJ_SCROLL_CHANGE, 10);
+	//CScrollChange* pScroll = new CScrollChange(0, 0,VARTICAL);
+	//Objs::InsertObj(pScroll, OBJ_SCROLL_CHANGE, 10);
 
 	//ボリューム調整
 	Audio::Volume(-0.8f, 0);
