@@ -109,7 +109,7 @@ enum ITEM_NUM
 //オブジェクトサイズ
 #define OBJ_SIZE		64.0f
 #define BLACK_HOLE_SIZE	128.0f
-#define HOLE_DEATH_SIZE 32.0f
+#define HOLE_DEATH_SIZE 16.0f
 #define ENEMY_SIZE		64.0f
 #define BULLET_SIZE		32.0f
 #define CHARA_SIZE		64.0f
