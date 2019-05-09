@@ -10,9 +10,6 @@
 //初期化
 void CGameOver::Init()
 {
-	//フォントセット
-	Font::SetStrTex(L"ゲームオーバー");
-
 	//色
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 }
@@ -113,5 +110,16 @@ void CGameOver::Action()
 //描画
 void CGameOver::Draw()
 {
-	Font::StrDraw(L"ゲームオーバー", 100.0f, 100.0f, 32.0f, m_fColor);
+
+	RECT_F Dst, Src;
+
+	//切り取り位置
+	RectSet(&Src,0.0f, 0.0f, 800.0f, 600.0f);
+
+	//描画位置
+	RectSet(&Dst, 0.0f, 0.0f, WINDOW_SIZE_W, WINDOW_SIZE_H);
+
+	//描画
+	Draw::Draw(OBJ_BACK_GROUND, &Src, &Dst, m_fColor, 0.0f);
+
 }
