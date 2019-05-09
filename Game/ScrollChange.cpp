@@ -2,6 +2,7 @@
 #include "GameHead.h"
 #include "Function.h"
 #include "GameL/HitBoxManager.h"
+#include "GameL/UserData.h"
 
 //コンストラクタ
 CScrollChange::CScrollChange(int x, int y,bool bScroll)
@@ -38,9 +39,24 @@ void CScrollChange::Init()
 //更新
 void CScrollChange::Action()
 {
-	//スクロールの状態取得
-	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
-	m_bScroll = m_pScene->GetScroll();
+	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_1)
+	{
+		//スクロールの状態取得
+		CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+		m_bScroll = m_pScene->GetScroll();
+	}
+	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_2)
+	{
+		//スクロールの状態取得
+		CSceneMain2* m_pScene = dynamic_cast<CSceneMain2*>(Scene::GetScene());
+		m_bScroll = m_pScene->GetScroll();
+	}
+	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_3)
+	{
+		//スクロールの状態取得
+		CSceneMain3* m_pScene = dynamic_cast<CSceneMain3*>(Scene::GetScene());
+		m_bScroll = m_pScene->GetScroll();
+	}
 
 	///スクロールが横の時左へ動く
 	if (m_bScroll == SIDE)
@@ -61,8 +77,21 @@ void CScrollChange::Action()
 	if (hit->CheckObjNameHit(OBJ_CHARA) != nullptr)
 	{
 		//スクロールの変更
-		CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
-		m_pScene->ScrollChange();
+		if (((UserData*)Save::GetData())->m_iStageNum == STAGE_1)
+		{
+			CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+			m_pScene->ScrollChange();
+		}
+		if (((UserData*)Save::GetData())->m_iStageNum == STAGE_2)
+		{
+			CSceneMain2* m_pScene = dynamic_cast<CSceneMain2*>(Scene::GetScene());
+			m_pScene->ScrollChange();
+		}
+		if (((UserData*)Save::GetData())->m_iStageNum == STAGE_3)
+		{
+			CSceneMain3* m_pScene = dynamic_cast<CSceneMain3*>(Scene::GetScene());
+			m_pScene->ScrollChange();
+		}
 
 		//自身削除
 		this->SetStatus(false);

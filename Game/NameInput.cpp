@@ -19,7 +19,7 @@ void CNameInput::Init()
 //XV
 void CNameInput::Action()
 {
-
+	
 }
 
 //•`‰æ

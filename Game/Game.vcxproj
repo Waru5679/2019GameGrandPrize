@@ -167,6 +167,8 @@
     <ClInclude Include="SceneGameClear.h" />
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneMain.h" />
+    <ClInclude Include="SceneMain2.h" />
+    <ClInclude Include="SceneMain3.h" />
     <ClInclude Include="SceneNameInput.h" />
     <ClInclude Include="SceneRanking.h" />
     <ClInclude Include="SceneStageSelect.h" />
@@ -191,6 +193,8 @@
     <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="SceneGameClear.cpp" />
     <ClCompile Include="SceneGameOver.cpp" />
+    <ClCompile Include="SceneMain2.cpp" />
+    <ClCompile Include="SceneMain3.cpp" />
     <ClCompile Include="SceneNameInput.cpp" />
     <ClCompile Include="SceneRanking.cpp" />
     <ClCompile Include="SceneStageSelect.cpp" />

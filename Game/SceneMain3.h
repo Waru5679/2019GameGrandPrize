@@ -6,7 +6,7 @@
 using namespace GameL;
 
 //ƒƒCƒ“ƒV[ƒ“
-class CSceneMain:public CScene
+class CSceneMain3 :public CScene
 {
 public:
 	void InitScene();	//‰Šú‰»

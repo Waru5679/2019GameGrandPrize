@@ -2,6 +2,7 @@
 #include "Function.h"
 #include "main.h"
 #include "GameHead.h"
+#include "GameL/UserData.h"
 
 //コンストラクタ
 CMap::CMap(int* pSideMap,int* pVarticalMap)
@@ -29,9 +30,24 @@ void CMap::Init()
 //更新
 void CMap::Action()
 {
-	//スクロールの状態取得
-	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
-	m_bScroll = m_pScene->GetScroll();
+	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_1)
+	{
+		//スクロールの状態取得
+		CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+		m_bScroll = m_pScene->GetScroll();
+	}
+	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_2)
+	{
+		//スクロールの状態取得
+		CSceneMain2* m_pScene = dynamic_cast<CSceneMain2*>(Scene::GetScene());
+		m_bScroll = m_pScene->GetScroll();
+	}
+	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_3)
+	{
+		//スクロールの状態取得
+		CSceneMain3* m_pScene = dynamic_cast<CSceneMain3*>(Scene::GetScene());
+		m_bScroll = m_pScene->GetScroll();
+	}
 
 	//縦
 	if (m_bScroll == SIDE)

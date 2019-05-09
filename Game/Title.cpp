@@ -23,7 +23,7 @@ void CTitle::Action()
 	//Enter‚ÅƒƒCƒ“‚Ö
 	if (Input::GetTrrigerKey(VK_RETURN) == true)
 	{
-		Scene::SetScene(new CSceneMain());
+		Scene::SetScene(new CSceneStageSelect());
 		this->SetStatus(false);
 	}
 }
