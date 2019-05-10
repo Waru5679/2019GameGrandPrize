@@ -17,7 +17,7 @@ void CSceneMain2::InitScene()
 
 	//マップ情報読み込み
 	m_pSideMap = CCsv::LoadCsv("Map/Stage2/Side.csv", SIDE_MAX_X, SIDE_MAX_Y);
-	m_pVarticalMap = CCsv::LoadCsv("Map/Stage2/Vartical.csv", VARTICAL_MAX_X, VARTICAL_MAX_Y);
+	m_pVarticalMap = CCsv::LoadCsv("Map/Stage2/Vartical.csv", VARTICAL_MAX_X,VARTICAL_MAX_Y);
 
 	//カウンタ初期化
 	m_Count = 0;
@@ -45,9 +45,6 @@ void CSceneMain2::InitScene()
 	CScore* pScore = new CScore();
 	Objs::InsertObj(pScore, OBJ_SCORE, 10);
 
-	//Debug用　スクロールチェンジ
-	CScrollChange* pScroll = new CScrollChange(0, 0,VARTICAL);
-	Objs::InsertObj(pScroll, OBJ_SCROLL_CHANGE, 10);
 
 	//ボリューム調整
 	Audio::Volume(-0.8f, 0);
