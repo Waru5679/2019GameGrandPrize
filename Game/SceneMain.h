@@ -9,6 +9,7 @@ using namespace GameL;
 class CSceneMain:public CScene
 {
 public:
+	CSceneMain(int iStageNum);
 	void InitScene();	//初期化
 	void Scene();		//実行中
 
@@ -35,4 +36,7 @@ private:
 
 	//縦方向の初回読み込み判定
 	bool m_bFirstVertical;
+
+	//ステージ番号読み取り
+	int m_iStageNum;
 };

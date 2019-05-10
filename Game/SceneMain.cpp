@@ -6,6 +6,16 @@
 #include "Csv.h"
 #include "GameL/Audio.h"
 
+#define STAGE_1 1
+#define STAGE_2 2
+#define STAGE_3 3
+
+//コンストラクタ
+CSceneMain::CSceneMain(int iStageNum)
+{
+	m_iStageNum = iStageNum;
+}
+
 //初期化
 void CSceneMain::InitScene()
 {
@@ -16,8 +26,21 @@ void CSceneMain::InitScene()
 	LoadAudio();
 
 	//マップ情報読み込み
-	m_pSideMap=CCsv::LoadCsv("Map/Stage1/Side.csv",SIDE_MAX_X,SIDE_MAX_Y);
-	m_pVarticalMap = CCsv::LoadCsv("Map/Stage1/Vartical.csv", VARTICAL_MAX_X, VARTICAL_MAX_Y);
+	if (m_iStageNum == STAGE_1)
+	{
+		m_pSideMap = CCsv::LoadCsv("Map/Stage1/Side.csv", SIDE_MAX_X, SIDE_MAX_Y);
+		m_pVarticalMap = CCsv::LoadCsv("Map/Stage1/Vartical.csv", VARTICAL_MAX_X, VARTICAL_MAX_Y);
+	}
+	else if (m_iStageNum == STAGE_2)
+	{
+		m_pSideMap = CCsv::LoadCsv("Map/Stage2/Side.csv", SIDE_MAX_X, SIDE_MAX_Y);
+		m_pVarticalMap = CCsv::LoadCsv("Map/Stage2/Vartical.csv", VARTICAL_MAX_X, VARTICAL_MAX_Y);
+	}
+	else if (m_iStageNum == STAGE_3)
+	{
+		m_pSideMap = CCsv::LoadCsv("Map/Stage3/Side.csv", SIDE_MAX_X, SIDE_MAX_Y);
+		m_pVarticalMap = CCsv::LoadCsv("Map/Stage3/Vartical.csv", VARTICAL_MAX_X, VARTICAL_MAX_Y);
+	}
 
 	//カウンタ初期化
 	m_Count = 0;

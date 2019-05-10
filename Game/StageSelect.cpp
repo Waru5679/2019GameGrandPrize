@@ -63,9 +63,9 @@ void CStageSelect::Action()
 	{
 		if (Input::GetTrrigerKey(VK_RETURN) == true)
 		{
-			//ステージ１の難易度選択シーンへ移動
+			//ステージ１へ移動
 			((UserData*)Save::GetData())->m_iStageNum = STAGE_1;
-			Scene::SetScene(new CSceneMain);
+			Scene::SetScene(new CSceneMain(STAGE_1));
 			this->SetStatus(false);
 		}
 		//右キーを押すとStage2にする
@@ -85,9 +85,9 @@ void CStageSelect::Action()
 	{
 		if (Input::GetTrrigerKey(VK_RETURN) == true)
 		{
-			((UserData*)Save::GetData())->m_iStageNum = STAGE_2;
-			//ステージ2の難易度選択シーンへ移動
-			Scene::SetScene(new CSceneMain2);
+			//ステージ2へ移動
+			((UserData*)Save::GetData())->m_iStageNum = STAGE_1;
+			Scene::SetScene(new CSceneMain(STAGE_2));
 			this->SetStatus(false);
 		}
 		//左キーを押すとStage1にする
@@ -111,9 +111,9 @@ void CStageSelect::Action()
 	{
 		if (Input::GetTrrigerKey(VK_RETURN) == true)
 		{
-			((UserData*)Save::GetData())->m_iStageNum = STAGE_3;
-			//ステージ3の難易度選択シーンへ移動
-			Scene::SetScene(new CSceneMain3);
+			//ステージ3へ移動
+			((UserData*)Save::GetData())->m_iStageNum = STAGE_1;
+			Scene::SetScene(new CSceneMain(STAGE_3));
 			this->SetStatus(false);
 		}
 		//左キーを押すとStage2にする
