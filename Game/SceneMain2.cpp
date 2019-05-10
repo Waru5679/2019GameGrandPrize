@@ -83,6 +83,7 @@ void CSceneMain2::ScrollChange()
 	{
 		m_pBack1->SetScroll(0.0f, 0.0f, SIDE);
 		m_pBack2->SetScroll(WINDOW_SIZE_W, 0.0f, SIDE);
+
 	}
 }
 

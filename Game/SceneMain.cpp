@@ -22,9 +22,11 @@ void CSceneMain::InitScene()
 	//カウンタ初期化
 	m_Count = 0;
 
-
 	//スクロール方向
 	m_bScroll = SIDE;
+
+	//縦方向読み込み初期化
+	m_bFirstVertical = true;
 
 	//背景オブジェクト1
 	m_pBack1 = new CBackGround(0.0f, 0.0f, SIDE);
@@ -55,7 +57,6 @@ void CSceneMain::InitScene()
 	
 	//スタート
 	Audio::Start(0);
-
 }
 
 //実行中
@@ -71,6 +72,9 @@ void CSceneMain::ScrollChange()
 	//スクロール方向の切り替え
 	m_bScroll = !(m_bScroll);
 
+	//マップオブジェクト
+	CMap* pMap = dynamic_cast<CMap*>(Objs::GetObj(OBJ_MAP));
+
 	//背景の位置とスクロール方向の変更
 
 	//横→縦に変更
@@ -78,12 +82,23 @@ void CSceneMain::ScrollChange()
 	{
 		m_pBack1->SetScroll(0.0f, 0.0f, VARTICAL);
 		m_pBack2->SetScroll(0.0f, WINDOW_SIZE_H, VARTICAL);
+
+		if (m_bFirstVertical == true)
+		{
+			pMap->CreateVerticalFirst();
+		}
+		else
+		{
+			pMap->CreateVerticalSecond();
+		}
 	}
 	//縦→横に変更
 	else
 	{
 		m_pBack1->SetScroll(0.0f, 0.0f, SIDE);
 		m_pBack2->SetScroll(WINDOW_SIZE_W, 0.0f, SIDE);
+
+		pMap->CreateSideSecond();
 	}
 }
 

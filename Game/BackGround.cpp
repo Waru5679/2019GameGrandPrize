@@ -36,6 +36,8 @@ void CBackGround::Action()
 		//背景の右端が画面左に行くと戻す
 		if (m_fPos_x + WINDOW_SIZE_W < 0.0f)
 			m_fPos_x = WINDOW_SIZE_W-5.0f;
+
+		
 	}
 
 	//縦スクロール

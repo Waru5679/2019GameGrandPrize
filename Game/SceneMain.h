@@ -32,4 +32,7 @@ private:
 
 	//ƒXƒNƒ[ƒ‹•ûŒü
 	bool m_bScroll;
+
+	//c•ûŒü‚Ì‰‰ñ“Ç‚İ‚İ”»’è
+	bool m_bFirstVertical;
 };

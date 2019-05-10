@@ -31,60 +31,13 @@ void CMap::Init()
 	//スクロールチェンジをオフにする
 	m_bScrollChangeIs = false;
 
+	CreateSideFirst();
+
 }
 
 //更新
 void CMap::Action()
 {
-	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_1)
-	{
-		//スクロールの状態取得
-		CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
-		m_bScroll = m_pScene->GetScroll();
-	}
-	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_2)
-	{
-		//スクロールの状態取得
-		CSceneMain2* m_pScene = dynamic_cast<CSceneMain2*>(Scene::GetScene());
-		m_bScroll = m_pScene->GetScroll();
-	}
-	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_3)
-	{
-		//スクロールの状態取得
-		CSceneMain3* m_pScene = dynamic_cast<CSceneMain3*>(Scene::GetScene());
-		m_bScroll = m_pScene->GetScroll();
-	}
-
-	//縦
-	if (m_bScroll == SIDE)
-	{
-		//if (m_bFirstTimeSide == true)
-		//{
-		//	//オブジェクト生成(横)
-		//	CreateSideFirst();
-		//}
-		//else
-		//{
-		//	CreateSideSecond();
-		//}
-
-		CreateSideFirst();
-
-	}
-	else
-	{
-		//if (m_bFirstTimeVertical == true)
-		//{
-		//	//オブジェクト生成(縦)
-		//	CreateVerticalFirst();
-		//}
-		//else
-		//{
-		//	CreateVerticalSecond();
-		//}
-
-		CreateVerticalFirst();
-	}
 
 }
 
@@ -186,8 +139,8 @@ void CMap::CreateSideFirst()
 					m_SideMap[y][x] = MAP_NONE;
 
 					//生成場所を記憶
-					/*((UserData*)Save::GetData())->m_iMap_x = x;
-					m_bScrollChangeIs = true;*/
+					((UserData*)Save::GetData())->m_iMap_x = x;
+					m_bScrollChangeIs = true;
 					break;
 						
 				}
@@ -205,13 +158,13 @@ void CMap::CreateSideFirst()
 			}
 
 		}
-		//if (m_bScrollChangeIs == true)
-		//{
-		//	//初回生成をオフにする
-		//	m_bFirstTimeSide = false;
-		//	break;
-		//}
-		//
+		if (m_bScrollChangeIs == true)
+		{
+			//初回生成をオフにする
+			m_bFirstTimeSide = false;
+			break;
+		}
+		
 	}
 	
 }
@@ -310,8 +263,8 @@ void CMap::CreateSideSecond()
 				m_SideMap[y][x] = MAP_NONE;
 
 				//生成場所を記憶
-				/*((UserData*)Save::GetData())->m_iMap_x = x;
-				m_bScrollChangeIs = true;*/
+				((UserData*)Save::GetData())->m_iMap_x = x;
+				m_bScrollChangeIs = true;
 				break;
 
 			}
@@ -329,12 +282,12 @@ void CMap::CreateSideSecond()
 			}
 
 		}
-		//if (m_bScrollChangeIs == true)
-		//{
-		//	//初回生成をオフにする
-		//	m_bFirstTimeSide = false;
-		//	break;
-		//}
+		if (m_bScrollChangeIs == true)
+		{
+			//初回生成をオフにする
+			m_bFirstTimeSide = false;
+			break;
+		}
 
 	}
 }
@@ -422,8 +375,8 @@ void CMap::CreateVerticalFirst()
 					//生成が終われば空白に
 					m_VarticalMap[y][x] = MAP_NONE;
 
-					/*((UserData*)Save::GetData())->m_iMap_y = y;
-					m_bScrollChangeIs = true;*/
+					((UserData*)Save::GetData())->m_iMap_y = y;
+					m_bScrollChangeIs = true;
 					break;
 				}
 				//上下移動敵
@@ -443,8 +396,8 @@ void CMap::CreateVerticalFirst()
 		if (m_bScrollChangeIs == true)
 		{
 			//初回生成をオフにする
-			/*m_bFirstTimeSide = false;
-			break;*/
+			m_bFirstTimeSide = false;
+			break;
 		}
 	}
 }
@@ -457,7 +410,7 @@ void CMap::CreateVerticalSecond()
 		{
 			switch (m_VarticalMap[y][x])
 			{
-				//ブラックホール
+			//ブラックホール
 			case MAP_BLACK_HOLE:
 			{
 				CBlackHole* pBlackHole = new CBlackHole(x, y - VARTICAL_MAX_Y);
@@ -529,8 +482,8 @@ void CMap::CreateVerticalSecond()
 				//生成が終われば空白に
 				m_VarticalMap[y][x] = MAP_NONE;
 
-				/*((UserData*)Save::GetData())->m_iMap_y = y;
-				m_bScrollChangeIs = true;*/
+				((UserData*)Save::GetData())->m_iMap_y = y;
+				m_bScrollChangeIs = true;
 				break;
 			}
 			//上下移動敵
@@ -546,11 +499,11 @@ void CMap::CreateVerticalSecond()
 			}
 
 		}
-		//if (m_bScrollChangeIs == true)
-		//{
-		//	//初回生成をオフにする
-		//	m_bFirstTimeSide = false;
-		//	break;
-		//}
+		if (m_bScrollChangeIs == true)
+		{
+			//初回生成をオフにする
+			m_bFirstTimeSide = false;
+			break;
+		}
 	}
 }
