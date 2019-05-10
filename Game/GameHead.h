@@ -163,8 +163,6 @@ enum ITEM_NUM
 
 //ゲームシーンクラスヘッダ------------------------
 #include "SceneMain.h"
-#include "SceneMain2.h"
-#include "SceneMain3.h"
 #include "SceneTitle.h"
 #include "SceneGameOver.h"
 #include "SceneGameClear.h"

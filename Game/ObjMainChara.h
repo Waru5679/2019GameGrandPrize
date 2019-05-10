@@ -42,6 +42,7 @@ private:
 	bool m_bScroll;			//スクロールの向き
 	bool m_bHitGround;
 	bool m_bBullet_FireIs;	//弾丸制御
+	float m_fBulletFireRate;//弾丸発射感覚制御
 
 	bool m_bIsHitBlackHole;//ブラックホールヒット判定
 	Vector m_vBlackHolePos;//ブラックホールの位置

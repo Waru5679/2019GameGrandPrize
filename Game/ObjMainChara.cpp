@@ -25,6 +25,7 @@ void CObjMainChara::Init()
 	m_bDirection = false;
 	m_bHitGround = false;
 	m_bBullet_FireIs = true;
+	m_fBulletFireRate = 0;
 
 	m_fGravity = 0.98f;
 
@@ -41,24 +42,9 @@ void CObjMainChara::Init()
 //アクション
 void CObjMainChara::Action()
 {
-	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_1)
-	{
-		//スクロールの状態取得
-		CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
-		m_bScroll = m_pScene->GetScroll();
-	}
-	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_2)
-	{
-		//スクロールの状態取得
-		CSceneMain2* m_pScene = dynamic_cast<CSceneMain2*>(Scene::GetScene());
-		m_bScroll = m_pScene->GetScroll();
-	}
-	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_3)
-	{
-		//スクロールの状態取得
-		CSceneMain3* m_pScene = dynamic_cast<CSceneMain3*>(Scene::GetScene());
-		m_bScroll = m_pScene->GetScroll();
-	}
+	//スクロールの状態取得
+	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+	m_bScroll = m_pScene->GetScroll();
 	
 	//移動範囲制御------------------------------
 	//画面右端
@@ -205,6 +191,13 @@ void CObjMainChara::VarticalMove()
 	m_vMove.x = 0.0f;
 	m_vMove.y = 0.0f;
 
+	//弾丸発射時間初期化
+	if (m_bBullet_FireIs = false)
+	{
+		//m_fBulletFireRate++;
+
+	}
+
 	//当たり判定の更新
 	m_pBody->SetPos(m_vPos.x, m_vPos.y);
 	m_pLeg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE - 5.0f);
@@ -294,11 +287,8 @@ void CObjMainChara::VarticalInput()
 			Objs::InsertObj(pBullet, OBJ_CHARA_BULLET, 50);
 
 			m_bBullet_FireIs = false;
+
 		}
-	}
-	else
-	{
-		m_bBullet_FireIs = true;
 	}
 }
 
