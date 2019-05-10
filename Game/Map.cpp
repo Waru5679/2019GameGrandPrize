@@ -31,6 +31,11 @@ void CMap::Init()
 	//スクロールチェンジをオフにする
 	m_bScrollChangeIs = false;
 
+	//マップの読み込み量
+	((UserData*)Save::GetData())->m_iMap_x = 0;
+	((UserData*)Save::GetData())->m_iMap_y = 0;
+
+	//横マップ作製
 	CreateSideFirst();
 
 }
@@ -173,8 +178,7 @@ void CMap::CreateSideSecond()
 {
 	m_bScrollChangeIs = false;
 
-	//for (int x = ((UserData*)Save::GetData)->m_iMap_x; x < SIDE_MAX_X; x++)
-	for (int x = 0; x < SIDE_MAX_X; x++)
+	for (int x = ((UserData*)Save::GetData())->m_iMap_x; x < SIDE_MAX_X; x++)
 	{
 		for (int y = 0; y < SIDE_MAX_Y; y++)
 		{
