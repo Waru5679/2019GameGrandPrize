@@ -269,10 +269,13 @@ void CObjMainChara::VarticalInput()
 		m_vMove.y += 3.0f;
 	}
 
+	//弾の発射がオフの時
 	if (m_bBullet_FireIs == false)
 	{
+		//カウントを進める
 		m_fBulletFireRate++;
 
+		//カウントが0.5秒以上なら弾を撃てるようにする
 		if (m_fBulletFireRate >= 30.0f)
 		{
 			m_bBullet_FireIs = true;
@@ -288,7 +291,7 @@ void CObjMainChara::VarticalInput()
 			//弾生成
 			CCharaBullet* pBullet = new CCharaBullet(m_vPos, CVector::Create(0.0f, -3.0f));
 			Objs::InsertObj(pBullet, OBJ_CHARA_BULLET, 50);
-
+			//発射をオフにする
 			m_bBullet_FireIs = false;
 		}
 	}
