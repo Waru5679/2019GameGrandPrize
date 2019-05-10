@@ -30,4 +30,8 @@ private:
 	bool m_bFirstTimeSide;		//生成横
 	bool m_bFirstTimeVertical;	//生成縦
 	bool m_bScrollChangeIs;		//スクロールチェンジ判定
+	float m_fMovePos_x;			//スクロールした移動量保存用変数
+	float m_fMovePos_y;
+	float m_fMoveAddPos_x;		//2回目以降生成位置調整用変数
+	float m_fMoveAddPos_y;
 };

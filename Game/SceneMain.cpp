@@ -86,6 +86,7 @@ void CSceneMain::ScrollChange()
 		if (m_bFirstVertical == true)
 		{
 			pMap->CreateVerticalFirst();
+			m_bFirstVertical = false;
 		}
 		else
 		{

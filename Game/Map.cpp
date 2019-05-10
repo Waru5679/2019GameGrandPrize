@@ -43,7 +43,18 @@ void CMap::Init()
 //更新
 void CMap::Action()
 {
+	//スクロールの状態取得
+	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
+	m_bScroll = m_pScene->GetScroll();
 
+	if (m_bScroll == SIDE)
+	{
+		m_fMovePos_x += SCROLL_SPEED;
+	}
+	else
+	{
+		m_fMovePos_y -= SCROLL_SPEED;
+	}
 }
 
 //描画
@@ -182,12 +193,15 @@ void CMap::CreateSideSecond()
 	{
 		for (int y = 0; y < SIDE_MAX_Y; y++)
 		{
+			//スクロールの位置調整用数値（画面左端に移動させる）
+			m_fMoveAddPos_x = ((UserData*)Save::GetData())->m_iMap_x;
+
 			switch (m_SideMap[y][x])
 			{
 				//地面
 			case MAP_PLANE:
 			{
-				CPlane* pPlane = new CPlane(x, y);
+				CPlane* pPlane = new CPlane(x - m_fMoveAddPos_x, y);
 				Objs::InsertObj(pPlane, OBJ_PLANE, 10);
 
 				//生成が終われば空白に
@@ -197,7 +211,7 @@ void CMap::CreateSideSecond()
 			//ブラックホール
 			case MAP_BLACK_HOLE:
 			{
-				CBlackHole* pBlackHole = new CBlackHole(x, y);
+				CBlackHole* pBlackHole = new CBlackHole(x - m_fMoveAddPos_x, y);
 				Objs::InsertObj(pBlackHole, OBJ_BLACK_HOLE, 10);
 
 				//生成が終われば空白に
@@ -207,7 +221,7 @@ void CMap::CreateSideSecond()
 			//敵
 			case MAP_ENEMY:
 			{
-				CEnemy* pEnemy = new CEnemy(x, y);
+				CEnemy* pEnemy = new CEnemy(x - m_fMoveAddPos_x, y);
 				Objs::InsertObj(pEnemy, OBJ_ENEMY, 10);
 
 				//生成が終われば空白に
@@ -217,7 +231,7 @@ void CMap::CreateSideSecond()
 			//星
 			case MAP_STAR:
 			{
-				CStar* pStar = new CStar(x, y);
+				CStar* pStar = new CStar(x - m_fMoveAddPos_x, y);
 				Objs::InsertObj(pStar, OBJ_STAR, 10);
 
 				//生成が終われば空白に
@@ -228,7 +242,7 @@ void CMap::CreateSideSecond()
 			//アイテム(大)
 			case MAP_ITEM_BIG:
 			{
-				CCollectionItemBig* pCollection_big = new  CCollectionItemBig(x, y, m_iMapLoop);
+				CCollectionItemBig* pCollection_big = new  CCollectionItemBig(x - m_fMoveAddPos_x, y, m_iMapLoop);
 				Objs::InsertObj(pCollection_big, OBJ_ITEM_BIG, 10);
 
 				//生成が終われば空白に
@@ -244,7 +258,7 @@ void CMap::CreateSideSecond()
 			//アイテム(小)
 			case MAP_ITEM_SMALL:
 			{
-				CCollectionItemSmall* pCollection_small = new  CCollectionItemSmall(x, y, m_iMapLoop);
+				CCollectionItemSmall* pCollection_small = new  CCollectionItemSmall(x - m_fMoveAddPos_x, y, m_iMapLoop);
 				Objs::InsertObj(pCollection_small, OBJ_ITEM_SMALL, 10);
 
 				//生成が終われば空白に
@@ -260,7 +274,7 @@ void CMap::CreateSideSecond()
 			//スクロールチェンジ
 			case MAP_SCROLL_CHANGE:
 			{
-				CScrollChange* pScrollChange = new  CScrollChange(x, y, SIDE);
+				CScrollChange* pScrollChange = new  CScrollChange(x - m_fMoveAddPos_x, y, SIDE);
 				Objs::InsertObj(pScrollChange, OBJ_SCROLL_CHANGE, 10);
 
 				//生成が終われば空白に
@@ -275,7 +289,7 @@ void CMap::CreateSideSecond()
 			//ゴール
 			case MAP_GOAL:
 			{
-				CGoal* pClear = new CGoal(x, y);
+				CGoal* pClear = new CGoal(x - m_fMoveAddPos_x, y);
 				Objs::InsertObj(pClear, OBJ_GAME_CLEAR, 10);
 
 				//生成が終われば空白に
@@ -301,7 +315,7 @@ void CMap::CreateVerticalFirst()
 {
 	m_bScrollChangeIs = false;
 
-	for (int y = VARTICAL_MAX_Y - 1; y > 0; y--)
+	for (int y = VARTICAL_MAX_Y; y > 0; y--)
 	{
 		for (int x = 0; x < VARTICAL_MAX_X; x++)
 		{
@@ -406,12 +420,17 @@ void CMap::CreateVerticalFirst()
 	}
 }
 
+//縦生成（2回目以降）
 void CMap::CreateVerticalSecond()
 {
-	for (int y = VARTICAL_MAX_Y - 1; y > 0; y--)
+	m_bScrollChangeIs = false;
+
+	for (int y = ((UserData*)Save::GetData())->m_iMap_y - 1; y > 0; y--)
 	{
 		for (int x = 0; x < VARTICAL_MAX_X; x++)
 		{
+			m_fMoveAddPos_y = ((UserData*)Save::GetData())->m_iMap_y;
+
 			switch (m_VarticalMap[y][x])
 			{
 			//ブラックホール
