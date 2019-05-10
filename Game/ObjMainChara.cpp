@@ -25,7 +25,6 @@ void CObjMainChara::Init()
 	m_bDirection = false;
 	m_bHitGround = false;
 	m_bBullet_FireIs = true;
-	m_fBulletFireRate = 0;
 
 	m_fGravity = 0.98f;
 
@@ -191,13 +190,6 @@ void CObjMainChara::VarticalMove()
 	m_vMove.x = 0.0f;
 	m_vMove.y = 0.0f;
 
-	//弾丸発射時間初期化
-	if (m_bBullet_FireIs = false)
-	{
-		//m_fBulletFireRate++;
-
-	}
-
 	//当たり判定の更新
 	m_pBody->SetPos(m_vPos.x, m_vPos.y);
 	m_pLeg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE - 5.0f);
@@ -276,6 +268,17 @@ void CObjMainChara::VarticalInput()
 	{
 		m_vMove.y += 3.0f;
 	}
+
+	if (m_bBullet_FireIs == false)
+	{
+		m_fBulletFireRate++;
+
+		if (m_fBulletFireRate >= 30.0f)
+		{
+			m_bBullet_FireIs = true;
+			m_fBulletFireRate = 0.0f;
+		}
+	}
 	
 	//攻撃
 	if (Input::GetVKey('X') == true)
@@ -287,9 +290,9 @@ void CObjMainChara::VarticalInput()
 			Objs::InsertObj(pBullet, OBJ_CHARA_BULLET, 50);
 
 			m_bBullet_FireIs = false;
-
 		}
 	}
+
 }
 
 //ブラックホールとのヒット処理

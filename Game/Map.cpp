@@ -429,6 +429,7 @@ void CMap::CreateVerticalSecond()
 	{
 		for (int x = 0; x < VARTICAL_MAX_X; x++)
 		{
+
 			m_fMoveAddPos_y = ((UserData*)Save::GetData())->m_iMap_y;
 
 			switch (m_VarticalMap[y][x])
@@ -436,7 +437,7 @@ void CMap::CreateVerticalSecond()
 			//ブラックホール
 			case MAP_BLACK_HOLE:
 			{
-				CBlackHole* pBlackHole = new CBlackHole(x, y - VARTICAL_MAX_Y);
+				CBlackHole* pBlackHole = new CBlackHole(x, ((y - VARTICAL_MAX_Y) + m_fMoveAddPos_y ));
 				Objs::InsertObj(pBlackHole, OBJ_BLACK_HOLE, 10);
 
 				//生成が終われば空白に
@@ -446,7 +447,7 @@ void CMap::CreateVerticalSecond()
 			//敵
 			case MAP_ENEMY:
 			{
-				CEnemy* pEnemy = new CEnemy(x, y - VARTICAL_MAX_Y);
+				CEnemy* pEnemy = new CEnemy(x, ((y - VARTICAL_MAX_Y) + m_fMoveAddPos_y));
 				Objs::InsertObj(pEnemy, OBJ_ENEMY, 10);
 
 				//生成が終われば空白に
@@ -456,7 +457,7 @@ void CMap::CreateVerticalSecond()
 			//星
 			case MAP_STAR:
 			{
-				CStar* pStar = new CStar(x, y - VARTICAL_MAX_Y);
+				CStar* pStar = new CStar(x, y - ((y - VARTICAL_MAX_Y) + m_fMoveAddPos_y));
 				Objs::InsertObj(pStar, OBJ_STAR, 10);
 
 				//生成が終われば空白に
@@ -467,7 +468,7 @@ void CMap::CreateVerticalSecond()
 			//アイテム(大)
 			case MAP_ITEM_BIG:
 			{
-				CCollectionItemBig* pCollection_big = new  CCollectionItemBig(x, y - VARTICAL_MAX_Y, m_iMapLoop);
+				CCollectionItemBig* pCollection_big = new  CCollectionItemBig(x, ((y - VARTICAL_MAX_Y) + m_fMoveAddPos_y), m_iMapLoop);
 				Objs::InsertObj(pCollection_big, OBJ_ITEM_BIG, 10);
 
 				//生成が終われば空白に
@@ -483,7 +484,7 @@ void CMap::CreateVerticalSecond()
 			//アイテム(小)
 			case MAP_ITEM_SMALL:
 			{
-				CCollectionItemSmall* pCollection_small = new  CCollectionItemSmall(x, y - VARTICAL_MAX_Y, m_iMapLoop);
+				CCollectionItemSmall* pCollection_small = new  CCollectionItemSmall(x, ((y - VARTICAL_MAX_Y) + m_fMoveAddPos_y), m_iMapLoop);
 				Objs::InsertObj(pCollection_small, OBJ_ITEM_SMALL, 10);
 
 				//生成が終われば空白に
@@ -499,7 +500,7 @@ void CMap::CreateVerticalSecond()
 			//スクロールチェンジ
 			case MAP_SCROLL_CHANGE:
 			{
-				CScrollChange* pScrollChange = new  CScrollChange(x, y - VARTICAL_MAX_Y, VARTICAL);
+				CScrollChange* pScrollChange = new  CScrollChange(x, ((y - VARTICAL_MAX_Y) + m_fMoveAddPos_y), VARTICAL);
 				Objs::InsertObj(pScrollChange, OBJ_SCROLL_CHANGE, 10);
 
 				//生成が終われば空白に
@@ -512,7 +513,7 @@ void CMap::CreateVerticalSecond()
 			//上下移動敵
 			case MAP_ENEMY_UPDOWN:
 			{
-				CEnemyUpDown* pEnemyUpDown = new CEnemyUpDown(x, y - VARTICAL_MAX_Y);
+				CEnemyUpDown* pEnemyUpDown = new CEnemyUpDown(x, ((y - VARTICAL_MAX_Y) + m_fMoveAddPos_y));
 				Objs::InsertObj(pEnemyUpDown, OBJ_ENEMY_UPDOWN, 10);
 
 				//生成が終われば空白に
