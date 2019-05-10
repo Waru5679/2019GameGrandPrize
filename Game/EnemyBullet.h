@@ -18,6 +18,4 @@ private:
 	Vector m_vBulletDir;//’e‚ÌŒü‚«
 	float m_fRot;		//‰ñ“]
 	bool m_bInWindow;	//‰æ–Ê“à‚©‚Ç‚¤‚©
-	bool m_bShot;		//”­ËŠÇ—
-	float m_fShotTime;	
 };

@@ -27,9 +27,6 @@ void CEnemyBullet::Init()
 	//画面外
 	m_bInWindow=true;
 
-	m_bShot = true;
-	m_fShotTime = 0.0f;
-
 	//当たり判定用HitBox作成
 	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, BULLET_SIZE, BULLET_SIZE, ELEMENT_ENEMY, OBJ_ENEMY_BULLET, 1);
 }
@@ -37,12 +34,6 @@ void CEnemyBullet::Init()
 //更新
 void CEnemyBullet::Action()
 {
-	if (m_bShot == true)
-	{
-			
-		m_bShot = false;
-
-	}
 
 	m_vMove.x = m_vMove.x * 1.01;
 	m_vMove.y = m_vMove.y * 1.01f;

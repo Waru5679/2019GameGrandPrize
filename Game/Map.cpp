@@ -445,7 +445,7 @@ void CMap::CreateVerticalSecond()
 				break;
 			}
 			//ìG
-			case MAP_ENEMY:
+			case MAP_ENEMY: 
 			{
 				CEnemy* pEnemy = new CEnemy(x, ((y - VARTICAL_MAX_Y) + m_fMoveAddPos_y));
 				Objs::InsertObj(pEnemy, OBJ_ENEMY, 10);
@@ -457,7 +457,7 @@ void CMap::CreateVerticalSecond()
 			//êØ
 			case MAP_STAR:
 			{
-				CStar* pStar = new CStar(x, y - ((y - VARTICAL_MAX_Y) + m_fMoveAddPos_y));
+				CStar* pStar = new CStar(x,((y - VARTICAL_MAX_Y) + m_fMoveAddPos_y));
 				Objs::InsertObj(pStar, OBJ_STAR, 10);
 
 				//ê∂ê¨Ç™èIÇÌÇÍÇŒãÛîíÇ…

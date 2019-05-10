@@ -87,7 +87,9 @@ void CEnemy::Action()
 		{
 			Vector vCharaPos = pChara->GetPos();
 
+			//ƒLƒƒƒ‰‚ÌŠp“x‚ğæ“¾
 			Vector vBulletDir = CVector::Sub(vCharaPos, m_vPos);
+			//Šp“x‚ğ³‹K‰»‚·‚é
 			vBulletDir = CVector::Normalize(vBulletDir);
 
 			//’e¶¬

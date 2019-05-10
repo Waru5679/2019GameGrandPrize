@@ -26,6 +26,9 @@ void CEnemyUpDown::Init()
 	m_fvx = 0.0f;
 	m_fvy = SCROLL_SPEED;
 
+	m_vBulletMove.x = 0.0f;
+	m_vBulletMove.y = SCROLL_SPEED;
+
 	//当たり判定用HitBox作成
 	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, ENEMY_SIZE, ENEMY_SIZE, ELEMENT_ENEMY,OBJ_ENEMY_UPDOWN, 1);
 }
@@ -52,6 +55,20 @@ void CEnemyUpDown::Action()
 	//位置の更新
 	m_vPos.x += m_fvx;
 	m_vPos.y += m_fvy;
+
+	//カウンタ更新
+	m_iBulletCount++;
+	if (m_iBulletCount > 10000)
+		m_iBulletCount = 0;
+
+	if (m_iBulletCount % SHOT_TIME == 0)
+	{
+		//弾生成
+		CEnemyBullet* pBullet = new CEnemyBullet(m_vPos, m_vBulletMove);
+		Objs::InsertObj(pBullet, OBJ_ENEMY_BULLET, 10);
+		
+	}
+
 
 	//HitBox更新
 	CHitBox* hit_b = Hits::GetHitBox(this);
