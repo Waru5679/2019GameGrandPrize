@@ -192,9 +192,9 @@ void CObjMainChara::VarticalMove()
 	m_vMove.y = 0.0f;
 
 	//íeä€î≠éÀéûä‘èâä˙âª
-	if (m_bBullet_FireIs = false)
+	if (m_bBullet_FireIs == false)
 	{
-		//m_fBulletFireRate++;
+		m_fBulletFireRate++;
 
 	}
 
@@ -287,8 +287,11 @@ void CObjMainChara::VarticalInput()
 			Objs::InsertObj(pBullet, OBJ_CHARA_BULLET, 50);
 
 			m_bBullet_FireIs = false;
-
 		}
+	}
+	else
+	{
+		m_bBullet_FireIs = true;
 	}
 }
 

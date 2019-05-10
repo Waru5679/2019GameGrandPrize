@@ -45,11 +45,11 @@ void CBackGround::Action()
 	{
 		//à íu
 		m_fPos_x += 0.0f;
-		m_fPos_y += -5.0f;
+		m_fPos_y += 5.0f;
 
 		//îwåiÇÃâ∫í[Ç™âÊñ è„Ç…çsÇ≠Ç∆ñﬂÇ∑
-		if (m_fPos_y + WINDOW_SIZE_H < 0.0f )
-			m_fPos_y = WINDOW_SIZE_H -5.0f;
+		if (m_fPos_y > WINDOW_SIZE_H  )
+			m_fPos_y = -WINDOW_SIZE_H + 5.0f;
 	}
 }
 
