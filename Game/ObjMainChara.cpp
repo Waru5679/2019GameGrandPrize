@@ -20,7 +20,7 @@ void CObjMainChara::Init()
 
 	m_vPos.x = 0.0f;	//位置
 	m_vPos.y = //WINDOW_SIZE_H - CHARA_SIZE;
-		m_vMove.x = 20.0f;	//移動ベクトル
+	m_vMove.x =20.0f;	//移動ベクトル
 	m_vMove.y = 0.0f;
 	m_bDirection = false;
 	m_bHitGround = false;
@@ -282,7 +282,7 @@ void CObjMainChara::VarticalInput()
 			m_fBulletFireRate = 0.0f;
 		}
 	}
-
+	
 	//攻撃
 	if (Input::GetVKey('X') == true)
 	{

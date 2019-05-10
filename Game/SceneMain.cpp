@@ -71,10 +71,6 @@ void CSceneMain::InitScene()
 	CScore* pScore = new CScore();
 	Objs::InsertObj(pScore, OBJ_SCORE, 10);
 
-	//Debug用　スクロールチェンジ
-	//CScrollChange* pScroll = new CScrollChange(0, 0,VARTICAL);
-	//Objs::InsertObj(pScroll, OBJ_SCROLL_CHANGE, 10);
-
 	//ボリューム調整
 	Audio::Volume(-0.8f, 0);
 	
@@ -106,11 +102,14 @@ void CSceneMain::ScrollChange()
 		m_pBack1->SetScroll(0.0f, 0.0f, VARTICAL);
 		m_pBack2->SetScroll(0.0f, WINDOW_SIZE_H, VARTICAL);
 
+		//縦の初回生成がオンなら縦の初回を生成する
 		if (m_bFirstVertical == true)
 		{
 			pMap->CreateVerticalFirst();
+			//初回生成をオフにする
 			m_bFirstVertical = false;
 		}
+		//オフなら2回目以降の生成をする
 		else
 		{
 			pMap->CreateVerticalSecond();
@@ -122,6 +121,7 @@ void CSceneMain::ScrollChange()
 		m_pBack1->SetScroll(0.0f, 0.0f, SIDE);
 		m_pBack2->SetScroll(WINDOW_SIZE_W, 0.0f, SIDE);
 
+		//2回目以降の生成をする
 		pMap->CreateSideSecond();
 	}
 
