@@ -55,11 +55,11 @@ enum HIT_ELEMENTS
 #define SCROLL_SPEED 2.0f	//スクロール速度
 
 //マップ
-#define SIDE_MAX_X 76
+#define SIDE_MAX_X 141
 #define SIDE_MAX_Y 10
 
 #define VARTICAL_MAX_X 12
-#define VARTICAL_MAX_Y 70
+#define VARTICAL_MAX_Y 138
 
 //最大アイテム数
 #define MAX_ITEM 256
@@ -84,16 +84,16 @@ struct UserData
 //マップ数値
 enum MAP_NUM
 {
-	MAP_NONE,		//何もない
-	MAP_PLANE,		//地面
-	MAP_BLACK_HOLE,	//ブラックホール
-	MAP_STAR,		//星
-	MAP_ENEMY,		//敵
-	MAP_ITEM_SMALL,	//収集アイテム(大)
-	MAP_ITEM_BIG,	//収集アイテム(小)
-	MAP_ENEMY_UPDOWN,//上下移動敵
-	MAP_SCROLL_CHANGE,//スクロールの切り替え
-	MAP_GOAL,		//クリアアイテム
+	MAP_NONE,			//0何もない			
+	MAP_PLANE,			//1地面
+	MAP_BLACK_HOLE,		//2ブラックホール
+	MAP_STAR,			//3星
+	MAP_ENEMY,			//4敵
+	MAP_ITEM_SMALL,		//5収集アイテム(小)
+	MAP_ITEM_BIG,		//6収集アイテム(大)
+	MAP_ENEMY_UPDOWN,	//7上下移動敵
+	MAP_SCROLL_CHANGE,	//8スクロールの切り替え
+	MAP_GOAL,			//9クリアアイテム
 };
 
 //アイテム用数値
@@ -175,5 +175,5 @@ enum ITEM_NUM
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START CSceneGameClear
+#define SET_GAME_START CSceneTitle
 //-----------------------------------------------
