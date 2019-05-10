@@ -1,5 +1,6 @@
 #include "SceneGameClear.h"
 #include "GameClear.h"
+#include "GameL/DrawTexture.h"
 
 //初期化
 void CSceneGameClear::InitScene()
@@ -18,7 +19,7 @@ void CSceneGameClear::InitScene()
 //テクスチャ読み込み
 void CSceneGameClear::LoadTexture()
 {
-
+	Draw::LoadImageW(L"Texture/GameClear.png", OBJ_BACK_GROUND, TEX_SIZE_1024);
 }
 
 //音楽読み込み
