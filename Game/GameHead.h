@@ -76,10 +76,8 @@ struct UserData
 	int m_iRanking_st2[MAX_RANKING];	//ランキング(ステージ2)
 	int m_iRanking_st3[MAX_RANKING];	//ランキング(ステージ3)
 	int m_iStageNum;					//ステージ選択用番号
-	char m_cName_1;						//名前
-	char m_cName_2;						//名前
-
-	
+	int m_iMap_x;						//マップ再読み込み用数値保存
+	int m_iMap_y;
 };
 //------------------------------------------------
 

@@ -291,7 +291,7 @@ void CObjMainChara::VarticalInput()
 		{
 			//íeê∂ê¨
 			CCharaBullet* pBullet = new CCharaBullet(m_vPos, CVector::Create(0.0f, -3.0f));
-			Objs::InsertObj(pBullet, OBJ_CHARA_BULLET, 10);
+			Objs::InsertObj(pBullet, OBJ_CHARA_BULLET, 50);
 
 			m_bBullet_FireIs = false;
 		}
