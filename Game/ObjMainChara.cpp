@@ -20,22 +20,21 @@ void CObjMainChara::Init()
 
 	m_vPos.x = 0.0f;	//位置
 	m_vPos.y = //WINDOW_SIZE_H - CHARA_SIZE;
-	m_vMove.x =20.0f;	//移動ベクトル
+		m_vMove.x = 20.0f;	//移動ベクトル
 	m_vMove.y = 0.0f;
 	m_bDirection = false;
 	m_bHitGround = false;
 	m_bBullet_FireIs = true;
-	m_fBulletFireRate = 0;
 
 	m_fGravity = 0.98f;
 
 	//ブラックホール当たっていない
 	m_bIsHitBlackHole = false;
-	
+
 	//当たり判定用HitBox作成
 	m_pBody = Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CHARA_SIZE, CHARA_SIZE - 5.0f, ELEMENT_CHARA, OBJ_CHARA, 1);
 	//地面との当たり判定用HitBox作成
-	m_pLeg =  Hits::SetHitBox(this, m_vPos.x, m_vPos.y + (CHARA_SIZE - 5.0f), CHARA_SIZE, 5.0f, ELEMENT_CHARA, OBJ_CHARA, 1);
+	m_pLeg = Hits::SetHitBox(this, m_vPos.x, m_vPos.y + (CHARA_SIZE - 5.0f), CHARA_SIZE, 5.0f, ELEMENT_CHARA, OBJ_CHARA, 1);
 
 }
 
@@ -45,7 +44,7 @@ void CObjMainChara::Action()
 	//スクロールの状態取得
 	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
 	m_bScroll = m_pScene->GetScroll();
-	
+
 	//移動範囲制御------------------------------
 	//画面右端
 	if (m_vPos.x > WINDOW_SIZE_W - CHARA_SIZE)
@@ -117,9 +116,9 @@ void CObjMainChara::Draw()
 	else
 	{
 		dst.m_left = 64.0f + m_vPos.x;
-		dst.m_right =m_vPos.x;
+		dst.m_right = m_vPos.x;
 	}
-	dst.m_bottom =m_vPos.y + CHARA_SIZE;
+	dst.m_bottom = m_vPos.y + CHARA_SIZE;
 
 	//描画
 	Draw::Draw(OBJ_CHARA, &src, &dst, m_fColor, 0.0f);
@@ -133,7 +132,7 @@ void CObjMainChara::SideMove()
 	SideInput();
 
 	//ブラックホールに当たっているとき
-	if(m_bIsHitBlackHole==true)
+	if (m_bIsHitBlackHole == true)
 	{
 
 		//位置の更新
@@ -150,7 +149,7 @@ void CObjMainChara::SideMove()
 
 		//ブラックホールとの当たり判定解除
 		m_bIsHitBlackHole = false;
-  		m_bHitGround = true;
+		m_bHitGround = true;
 	}
 	//ブラックホールに当たっていないとき
 	else
@@ -170,7 +169,7 @@ void CObjMainChara::SideMove()
 		m_vMove.x = 0.0f;
 
 		//HitBox更新
-		m_pBody->SetPos(m_vPos.x, m_vPos.y);		
+		m_pBody->SetPos(m_vPos.x, m_vPos.y);
 		m_pLeg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE - 5.0f);
 	}
 
@@ -190,13 +189,6 @@ void CObjMainChara::VarticalMove()
 	//移動初期化
 	m_vMove.x = 0.0f;
 	m_vMove.y = 0.0f;
-
-	//弾丸発射時間初期化
-	if (m_bBullet_FireIs == false)
-	{
-		m_fBulletFireRate++;
-
-	}
 
 	//当たり判定の更新
 	m_pBody->SetPos(m_vPos.x, m_vPos.y);
@@ -252,7 +244,7 @@ void CObjMainChara::SideInput()
 //縦の入力
 void CObjMainChara::VarticalInput()
 {
-	
+
 	//キー入力　右
 	if (Input::GetVKey(VK_RIGHT) == true)
 	{
@@ -276,7 +268,21 @@ void CObjMainChara::VarticalInput()
 	{
 		m_vMove.y += 3.0f;
 	}
-	
+
+	//弾の発射がオフの時
+	if (m_bBullet_FireIs == false)
+	{
+		//カウントを進める
+		m_fBulletFireRate++;
+
+		//カウントが0.5秒以上なら弾を撃てるようにする
+		if (m_fBulletFireRate >= 30.0f)
+		{
+			m_bBullet_FireIs = true;
+			m_fBulletFireRate = 0.0f;
+		}
+	}
+
 	//攻撃
 	if (Input::GetVKey('X') == true)
 	{
@@ -285,14 +291,11 @@ void CObjMainChara::VarticalInput()
 			//弾生成
 			CCharaBullet* pBullet = new CCharaBullet(m_vPos, CVector::Create(0.0f, -3.0f));
 			Objs::InsertObj(pBullet, OBJ_CHARA_BULLET, 50);
-
+			//発射をオフにする
 			m_bBullet_FireIs = false;
 		}
 	}
-	else
-	{
-		m_bBullet_FireIs = true;
-	}
+
 }
 
 //ブラックホールとのヒット処理
