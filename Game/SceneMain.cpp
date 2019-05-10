@@ -100,6 +100,8 @@ void CSceneMain::ScrollChange()
 
 		pMap->CreateSideSecond();
 	}
+
+
 }
 
 //テクスチャ読み込み
