@@ -30,11 +30,11 @@ void CObjMainChara::Init()
 
 	//ブラックホール当たっていない
 	m_bIsHitBlackHole = false;
-	
+
 	//当たり判定用HitBox作成
 	m_pBody = Hits::SetHitBox(this, m_vPos.x, m_vPos.y, CHARA_SIZE, CHARA_SIZE - 5.0f, ELEMENT_CHARA, OBJ_CHARA, 1);
 	//地面との当たり判定用HitBox作成
-	m_pLeg =  Hits::SetHitBox(this, m_vPos.x, m_vPos.y + (CHARA_SIZE - 5.0f), CHARA_SIZE, 5.0f, ELEMENT_CHARA, OBJ_CHARA, 1);
+	m_pLeg = Hits::SetHitBox(this, m_vPos.x, m_vPos.y + (CHARA_SIZE - 5.0f), CHARA_SIZE, 5.0f, ELEMENT_CHARA, OBJ_CHARA, 1);
 
 }
 
@@ -44,7 +44,7 @@ void CObjMainChara::Action()
 	//スクロールの状態取得
 	CSceneMain* m_pScene = dynamic_cast<CSceneMain*>(Scene::GetScene());
 	m_bScroll = m_pScene->GetScroll();
-	
+
 	//移動範囲制御------------------------------
 	//画面右端
 	if (m_vPos.x > WINDOW_SIZE_W - CHARA_SIZE)
@@ -116,9 +116,9 @@ void CObjMainChara::Draw()
 	else
 	{
 		dst.m_left = 64.0f + m_vPos.x;
-		dst.m_right =m_vPos.x;
+		dst.m_right = m_vPos.x;
 	}
-	dst.m_bottom =m_vPos.y + CHARA_SIZE;
+	dst.m_bottom = m_vPos.y + CHARA_SIZE;
 
 	//描画
 	Draw::Draw(OBJ_CHARA, &src, &dst, m_fColor, 0.0f);
@@ -132,7 +132,7 @@ void CObjMainChara::SideMove()
 	SideInput();
 
 	//ブラックホールに当たっているとき
-	if(m_bIsHitBlackHole==true)
+	if (m_bIsHitBlackHole == true)
 	{
 
 		//位置の更新
@@ -149,7 +149,7 @@ void CObjMainChara::SideMove()
 
 		//ブラックホールとの当たり判定解除
 		m_bIsHitBlackHole = false;
-  		m_bHitGround = true;
+		m_bHitGround = true;
 	}
 	//ブラックホールに当たっていないとき
 	else
@@ -169,7 +169,7 @@ void CObjMainChara::SideMove()
 		m_vMove.x = 0.0f;
 
 		//HitBox更新
-		m_pBody->SetPos(m_vPos.x, m_vPos.y);		
+		m_pBody->SetPos(m_vPos.x, m_vPos.y);
 		m_pLeg->SetPos(m_vPos.x, m_vPos.y + CHARA_SIZE - 5.0f);
 	}
 
@@ -244,7 +244,7 @@ void CObjMainChara::SideInput()
 //縦の入力
 void CObjMainChara::VarticalInput()
 {
-	
+
 	//キー入力　右
 	if (Input::GetVKey(VK_RIGHT) == true)
 	{
