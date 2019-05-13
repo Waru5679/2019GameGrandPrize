@@ -12,6 +12,7 @@ public:
 	void Init();	//‰Šú‰»
 	void Action();	//XV
 	void Draw();	//•`‰æ
+
 private:
 	//•`‰æF
 	float m_fColor[4];

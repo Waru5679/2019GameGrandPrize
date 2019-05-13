@@ -22,37 +22,6 @@ void CStageSelect::Init()
 
 	//セレクト用数値
 	SelectNum = 1;
-
-	//ゲームを実行して1回のみ
-	static bool m_sbInit_Point = false;
-	if (m_sbInit_Point == false)
-	{
-		//ランキング初期化
-		for (int i = 0; i < MAX_RANKING; i++)
-		{
-			((UserData*)Save::GetData())->m_iRanking_st1[i] = 0;
-		}
-		for (int i = 0; i < MAX_RANKING; i++)
-		{
-			((UserData*)Save::GetData())->m_iRanking_st2[i] = 0;
-		}
-		for (int i = 0; i < MAX_RANKING; i++)
-		{
-			((UserData*)Save::GetData())->m_iRanking_st3[i] = 0;
-		}
-		//点数を0にする
-		((UserData*)Save::GetData())->m_iScore = 0;
-
-		m_sbInit_Point = true;
-	}
-
-	//得点が高い順に並び替えをする
-	//ステージ1
-	RankingSort(((UserData*)Save::GetData())->m_iRanking_st1);
-	//ステージ2
-	RankingSort(((UserData*)Save::GetData())->m_iRanking_st2);
-	//ステージ3
-	RankingSort(((UserData*)Save::GetData())->m_iRanking_st3);
 }
 
 //更新
@@ -86,7 +55,7 @@ void CStageSelect::Action()
 		if (Input::GetTrrigerKey(VK_RETURN) == true)
 		{
 			//ステージ2へ移動
-			((UserData*)Save::GetData())->m_iStageNum = STAGE_1;
+			((UserData*)Save::GetData())->m_iStageNum = STAGE_2;
 			Scene::SetScene(new CSceneMain(STAGE_2));
 			this->SetStatus(false);
 		}
@@ -112,7 +81,7 @@ void CStageSelect::Action()
 		if (Input::GetTrrigerKey(VK_RETURN) == true)
 		{
 			//ステージ3へ移動
-			((UserData*)Save::GetData())->m_iStageNum = STAGE_1;
+			((UserData*)Save::GetData())->m_iStageNum = STAGE_3;
 			Scene::SetScene(new CSceneMain(STAGE_3));
 			this->SetStatus(false);
 		}

@@ -65,7 +65,7 @@ void CSceneMain::InitScene()
 
 	//キャラクターオブジェクト
 	CObjMainChara* pChara = new CObjMainChara();
-	Objs::InsertObj(pChara, OBJ_CHARA, 10);
+	Objs::InsertObj(pChara, OBJ_CHARA, 50);
 
 	//スコア表示オブジェクト
 	CScore* pScore = new CScore();

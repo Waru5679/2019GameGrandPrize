@@ -15,6 +15,39 @@ void CTitle::Init()
 	//色
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 
+	//ゲームを実行して1回のみ作動する
+	static bool m_sbInit_Point = true;
+	if (m_sbInit_Point == true)
+	{
+		//ランキング初期化
+		for (int i = 0; i < MAX_RANKING; i++)
+		{
+			((UserData*)Save::GetData())->m_iRanking_st1[i] = 0;
+		}
+		for (int i = 0; i < MAX_RANKING; i++)
+		{
+			((UserData*)Save::GetData())->m_iRanking_st2[i] = 0;
+		}
+		for (int i = 0; i < MAX_RANKING; i++)
+		{
+			((UserData*)Save::GetData())->m_iRanking_st3[i] = 0;
+		}
+
+		//ロード
+		Save::Open();
+
+		//点数を0にする
+		((UserData*)Save::GetData())->m_iScore = 0;
+
+		m_sbInit_Point = false;
+	}
+	
+	//ゲーム実行2回目以降ランキングセーブ
+	if (m_sbInit_Point == false)
+	{
+		Save::Seve();
+	}
+
 }
 
 //更新
@@ -25,6 +58,17 @@ void CTitle::Action()
 	{
 		Scene::SetScene(new CSceneStageSelect());
 		this->SetStatus(false);
+	}
+
+	if (Input::GetTrrigerKey(VK_BACK) == true)
+	{
+		//ランキング初期化
+		for (int i = 0; i < MAX_RANKING; i++)
+		{
+			((UserData*)Save::GetData())->m_iRanking_st1[i] = 0;
+			((UserData*)Save::GetData())->m_iRanking_st2[i] = 0;
+			((UserData*)Save::GetData())->m_iRanking_st3[i] = 0;
+		}
 	}
 }
 
