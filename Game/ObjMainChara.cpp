@@ -281,14 +281,14 @@ void CObjMainChara::VarticalInput()
 			m_bBullet_FireIs = true;
 			m_fBulletFireRate = 0.0f;
 		}
-	}
-	
+ 	}
+	 
 	//çUåÇ
-	if (Input::GetVKey('X') == true)
-	{
-		if (m_bBullet_FireIs == true)
-		{
-			//íeê∂ê¨
+	if (Input::GetVKey(VK_SPACE)  == true)
+	{   
+   		if (m_bBullet_FireIs == true)
+	 	{                   
+  		  	//íeê∂ê¨             
 			CCharaBullet* pBullet = new CCharaBullet(m_vPos, CVector::Create(0.0f, -3.0f));
 			Objs::InsertObj(pBullet, OBJ_CHARA_BULLET, 50);
 			//î≠éÀÇÉIÉtÇ…Ç∑ÇÈ

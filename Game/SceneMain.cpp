@@ -162,7 +162,7 @@ void CSceneMain::LoadTexture()
 	Draw::LoadImageW(L"Texture/Plane.png", OBJ_PLANE, TEX_SIZE_128);
 
 	//クリアアイテム読み込み
-	Draw::LoadImageW(L"Texture/Clear.png", OBJ_GAME_CLEAR, TEX_SIZE_128);
+	Draw::LoadImageW(L"Texture/Clear.png", OBJ_GOAL, TEX_SIZE_128);
 
 	//上下移動する敵読み込み
 	Draw::LoadImageW(L"Texture/Enemy2.png", OBJ_ENEMY_UPDOWN, TEX_SIZE_256);

@@ -41,6 +41,8 @@ void CGoal::Action()
 
 	//主人公との当たり判定
 	CHitBox* hit_b = Hits::GetHitBox(this);
+	hit_b->SetPos(m_vPos.x, m_vPos.y);
+
 	//主人公と当たればゲームクリアへ
 	if (hit_b->CheckObjNameHit(OBJ_CHARA) != nullptr)
 	{

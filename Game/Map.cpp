@@ -34,10 +34,9 @@ void CMap::Init()
 	//マップの読み込み量
 	((UserData*)Save::GetData())->m_iMap_x = 0;
 	((UserData*)Save::GetData())->m_iMap_y = 0;
-
+	
 	//横マップ作製
 	CreateSideFirst();
-
 }
 
 //更新
@@ -164,7 +163,7 @@ void CMap::CreateSideFirst()
 				case MAP_GOAL:
 				{
 					CGoal* pClear = new CGoal(x, y);
-					Objs::InsertObj(pClear, OBJ_GAME_CLEAR, 10);
+					Objs::InsertObj(pClear, OBJ_GOAL, 10);
 
 					//生成が終われば空白に
 					m_SideMap[y][x] = MAP_NONE;
@@ -290,7 +289,7 @@ void CMap::CreateSideSecond()
 			case MAP_GOAL:
 			{
 				CGoal* pClear = new CGoal(x - m_fMoveAddPos_x, y);
-				Objs::InsertObj(pClear, OBJ_GAME_CLEAR, 10);
+				Objs::InsertObj(pClear, OBJ_GOAL, 10);
 
 				//生成が終われば空白に
 				m_SideMap[y][x] = MAP_NONE;

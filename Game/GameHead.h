@@ -22,10 +22,9 @@ enum OBJ_NAME
 	OBJ_SCORE,			//スコア
 	OBJ_TITLE,			//タイトル
 	OBJ_GAME_OVER,		//ゲームオーバー
-	OBJ_GAME_CLEAR,		//クリア
 	OBJ_HOLE_CENTER,	//穴の中心
 	OBJ_GOAL,			//ゴール
-	OBJ_CLEAR,			//クリア
+	OBJ_GAME_CLEAR,		//クリア
 	OBJ_STAGE_SELECT,	//ステージセレクト
 	OBJ_RANKING,		//ランキング
 	OBJ_NAME_INPUT,
