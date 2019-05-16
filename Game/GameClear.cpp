@@ -65,17 +65,20 @@ void CGameClear::Draw()
 	//描画
 	Draw::Draw(OBJ_BACK_GROUND, &Src, &Dst, m_fColor, 0.0f);
 
+	//ゲームクリア文字表示
+	Font::StrDraw(L"Game Clear", 250.0f, 10.0f, 64.0f, m_fColorS);
+
 	//ランキング表示
 	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_1)
 	{
-		Font::StrDraw(L"ステージ1", 340.0f, 100.0f, 32.0f, m_fColorS);
+		Font::StrDraw(L"ステージ1", 340.0f, 100.0f, 30.0f, m_fColorS);
 
 		//ランキング表示
 		for (int i = 0; i < MAX_RANKING - 1; i++)
 		{
 			wchar_t str[256];
 			swprintf_s(str, L"%2d位           %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st1[i]);
-			Font::StrDraw(str, 250, 150 + (30 * i), 20, m_fColorS);
+			Font::StrDraw(str, 150, 150 + (43 * i), 30, m_fColorS);
 
 			//自分の順位確認用矢印「←」を表示
 			//探索用for文（同じ数値が2個以上並んだ時に抜けれる用）
@@ -88,7 +91,7 @@ void CGameClear::Draw()
 					if (((UserData*)Save::GetData())->m_iRanking_st1[j] == ((UserData*)Save::GetData())->m_iScore)
 					{
 						swprintf_s(str, L"← あなた");
-						Font::StrDraw(str, 550, 150 + (30 * j), 20, m_fColorS);
+						Font::StrDraw(str, 620, 150 + (43 * j), 30, m_fColorS);
 
 						break;
 					}
@@ -105,7 +108,7 @@ void CGameClear::Draw()
 		{
 			wchar_t str[256];
 			swprintf_s(str, L"%2d位           %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st2[i]);
-			Font::StrDraw(str, 250, 150 + (30 * i), 20, m_fColor);
+			Font::StrDraw(str, 250, 150 + (43 * i), 30, m_fColor);
 
 			//自分の順位確認用矢印「←」を表示
 			//探索用for文（同じ数値が2個以上並んだ時に抜けれる用）
@@ -118,7 +121,7 @@ void CGameClear::Draw()
 					if (((UserData*)Save::GetData())->m_iRanking_st2[j] == ((UserData*)Save::GetData())->m_iScore)
 					{
 						swprintf_s(str, L"← あなた");
-						Font::StrDraw(str, 550, 150 + (30 * j), 20, m_fColor);
+						Font::StrDraw(str, 620, 150 + (43 * j), 30, m_fColor);
 
 						break;
 					}
@@ -128,14 +131,14 @@ void CGameClear::Draw()
 	}
 	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_3)
 	{
-		Font::StrDraw(L"ステージ3", 140.0f, 100.0f, 32.0f, m_fColor);
+		Font::StrDraw(L"ステージ3", 140.0f, 100.0f, 30.0f, m_fColor);
 
 		//ランキング表示
 		for (int i = 0; i < MAX_RANKING - 1; i++)
 		{
 			wchar_t str[256];
 			swprintf_s(str, L"%2d位           %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st3[i]);
-			Font::StrDraw(str, 250, 150 + (30 * i), 20, m_fColor);
+			Font::StrDraw(str, 250, 150 + (43 * i), 30, m_fColor);
 
 			//自分の順位確認用矢印「←」を表示
 			//探索用for文（同じ数値が2個以上並んだ時に抜けれる用）
@@ -148,7 +151,7 @@ void CGameClear::Draw()
 					if (((UserData*)Save::GetData())->m_iRanking_st3[j] == ((UserData*)Save::GetData())->m_iScore)
 					{
 						swprintf_s(str, L"← あなた");
-						Font::StrDraw(str, 550, 150 + (30 * j), 20, m_fColor);
+						Font::StrDraw(str, 620, 150 + (43 * j), 30, m_fColor);
 
 						break;
 					}

@@ -188,7 +188,7 @@ void CMap::CreateSideSecond()
 {
 	m_bScrollChangeIs = false;
 
-	for (int x = ((UserData*)Save::GetData())->m_iMap_x; x < SIDE_MAX_X; x++)
+	for (int x = ((UserData*)Save::GetData())->m_iMap_x; x <= SIDE_MAX_X; x++)
 	{
 		for (int y = 0; y < SIDE_MAX_Y; y++)
 		{
@@ -314,7 +314,7 @@ void CMap::CreateVerticalFirst()
 {
 	m_bScrollChangeIs = false;
 
-	for (int y = VARTICAL_MAX_Y; y > 0; y--)
+	for (int y = VARTICAL_MAX_Y; y >= 0; y--)
 	{
 		for (int x = 0; x< VARTICAL_MAX_X; x++)
 		{
@@ -434,7 +434,7 @@ void CMap::CreateVerticalSecond()
 {
 	m_bScrollChangeIs = false;
 
-	for (int y = ((UserData*)Save::GetData())->m_iMap_y - 1; y > 0; y--)
+	for (int y = ((UserData*)Save::GetData())->m_iMap_y - 1; y >= 0; y--)
 	{
 		for (int x = 0; x < VARTICAL_MAX_X; x++)
 		{
@@ -532,7 +532,7 @@ void CMap::CreateVerticalSecond()
 				//ƒS[ƒ‹
 				case MAP_GOAL:
 				{
-					CGoal* pClear = new CGoal(x, y - VARTICAL_MAX_Y);
+					CGoal* pClear = new CGoal(x, ((y - VARTICAL_MAX_Y) + m_fMoveAddPos_y));
 					Objs::InsertObj(pClear, OBJ_GOAL, 10);
 
 					//¶¬‚ªI‚í‚ê‚Î‹ó”’‚É
