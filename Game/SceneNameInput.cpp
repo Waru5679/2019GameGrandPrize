@@ -1,5 +1,7 @@
 #include "SceneNameInput.h"
 #include "NameInput.h"
+#include "GameHead.h"
+#include "GameL/UserData.h"
 
 //‰Šú‰»
 void CSceneNameInput::InitScene()
