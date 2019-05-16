@@ -65,7 +65,7 @@ void CEnemyUpDown::Action()
 	{
 		//íeê∂ê¨
 		CEnemyBullet* pBullet = new CEnemyBullet(m_vPos, m_vBulletMove);
-		Objs::InsertObj(pBullet, OBJ_ENEMY_BULLET, 10);
+		Objs::InsertObj(pBullet, OBJ_ENEMY_BULLET, 50);
 		
 	}
 

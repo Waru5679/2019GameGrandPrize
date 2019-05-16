@@ -94,7 +94,7 @@ void CEnemy::Action()
 
 			//íeê∂ê¨
 			CEnemyBullet* pBullet = new CEnemyBullet(m_vPos, vBulletDir);
-			Objs::InsertObj(pBullet, OBJ_ENEMY_BULLET, 10);
+			Objs::InsertObj(pBullet, OBJ_ENEMY_BULLET, 40);
 		}
 	}
 	//---------------------------------------------------------------

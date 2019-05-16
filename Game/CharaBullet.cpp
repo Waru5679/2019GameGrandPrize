@@ -46,7 +46,7 @@ void CCharaBullet::Action()
 	hit_b->SetPos(m_vPos.x+15.0f, m_vPos.y);
 
 	//“G‚É“–‚½‚é‚ÆÁ–Å
-	if (hit_b->CheckElementHit(ELEMENT_ENEMY) == true)
+	if (hit_b->CheckObjNameHit(OBJ_ENEMY) != nullptr || hit_b->CheckObjNameHit(OBJ_STAR) != nullptr)
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
