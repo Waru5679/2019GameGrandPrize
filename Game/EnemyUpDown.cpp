@@ -30,7 +30,7 @@ void CEnemyUpDown::Init()
 	m_vBulletMove.y = SCROLL_SPEED;
 
 	//ìñÇΩÇËîªíËópHitBoxçÏê¨
-	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, ENEMY_SIZE, ENEMY_SIZE, ELEMENT_ENEMY,OBJ_ENEMY_UPDOWN, 1);
+	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, ENEMY_SIZE, ENEMY_SIZE, ELEMENT_ENEMY,OBJ_ENEMY, 1);
 }
 
 //çXêV
