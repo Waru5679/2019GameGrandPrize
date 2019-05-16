@@ -60,10 +60,10 @@ void CGoal::Draw()
 	RECT_F src, dst;
 
 	//êÿÇËéÊÇËà íu
-	RectSet(&src, 0.0f, 0.0f, 128.0f, 128.0f);
+	RectSet(&src, 0.0f, 0.0f, 800.0f, 64.0f);
 
 	//ï`âÊà íu
-	RectSet(&dst, m_vPos.y, m_vPos.x, GOAL_SIZE, GOAL_SIZE);
+	RectSet(&dst, m_vPos.y, m_vPos.x, 800.0f, 64.0f);
 
 	//ï`âÊ
 	Draw::Draw(OBJ_GOAL, &src, &dst, m_fColor, 0.0f);

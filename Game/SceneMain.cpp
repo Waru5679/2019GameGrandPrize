@@ -10,6 +10,7 @@
 #define STAGE_2 2
 #define STAGE_3 3
 
+
 //コンストラクタ
 CSceneMain::CSceneMain(int iStageNum)
 {
@@ -162,12 +163,13 @@ void CSceneMain::LoadTexture()
 	Draw::LoadImageW(L"Texture/Plane.png", OBJ_PLANE, TEX_SIZE_128);
 
 	//クリアアイテム読み込み
-	Draw::LoadImageW(L"Texture/Clear.png", OBJ_GOAL, TEX_SIZE_128);
+	Draw::LoadImageW(L"Texture/Goal.png", OBJ_GOAL, TEX_SIZE_1024);
 
 	//上下移動する敵読み込み
 	Draw::LoadImageW(L"Texture/Enemy2.png", OBJ_ENEMY_UPDOWN, TEX_SIZE_256);
 
 }
+
 
 //音楽読み込み
 void CSceneMain::LoadAudio()
