@@ -91,7 +91,7 @@ void CMap::CreateSideFirst()
 					m_SideMap[y][x] = MAP_NONE;
 					break;
  				}
-						//敵
+				//敵
 				case MAP_ENEMY:
  				{
 					CEnemy* pEnemy = new CEnemy(x, y);
@@ -386,15 +386,15 @@ void CMap::CreateVerticalFirst()
 				//スクロールチェンジ
 				case MAP_SCROLL_CHANGE:
 				{
-					//CScrollChange* pScrollChange = new  CScrollChange(x, y - VARTICAL_MAX_Y,VARTICAL);
-					//Objs::InsertObj(pScrollChange, OBJ_SCROLL_CHANGE, 10);
+					CScrollChange* pScrollChange = new  CScrollChange(x, y - VARTICAL_MAX_Y,VARTICAL);
+					Objs::InsertObj(pScrollChange, OBJ_SCROLL_CHANGE, 10);
 
-					////生成が終われば空白に
-					//m_VarticalMap[y][x] = MAP_NONE;
+					//生成が終われば空白に
+					m_VarticalMap[y][x] = MAP_NONE;
 
-					//((UserData*)Save::GetData())->m_iMap_y = y;
-					//m_bScrollChangeIs = true;
-					//break;
+					((UserData*)Save::GetData())->m_iMap_y = y;
+					m_bScrollChangeIs = true;
+					break;
 				}
 				//上下移動敵
 				case MAP_ENEMY_UPDOWN:
@@ -409,23 +409,23 @@ void CMap::CreateVerticalFirst()
 				//ゴール
 				case MAP_GOAL:
 				{
-					//CGoal* pClear = new CGoal(x, y - VARTICAL_MAX_Y);
-					//Objs::InsertObj(pClear, OBJ_GOAL, 10);
+					CGoal* pClear = new CGoal(x, y - VARTICAL_MAX_Y);
+					Objs::InsertObj(pClear, OBJ_GOAL, 10);
 
-					////生成が終われば空白に
-					//m_SideMap[y][x] = MAP_NONE;
-					//break;
+					//生成が終われば空白に
+					m_SideMap[y][x] = MAP_NONE;
+					break;
 				}
 			}
 
 		}
 
-		//if (m_bScrollChangeIs == true)
-		//{
-		//	//初回生成をオフにする
-		//	m_bFirstTimeSide = false;
-		//	break;
-		//}
+		if (m_bScrollChangeIs == true)
+		{
+			//初回生成をオフにする
+			m_bFirstTimeSide = false;
+			break;
+		}
 	}
 }
 
