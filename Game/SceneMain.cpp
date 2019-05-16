@@ -28,7 +28,7 @@ void CSceneMain::InitScene()
 	//マップ情報読み込み
 	if (m_iStageNum == STAGE_1)
 	{
-		m_pSideMap = CCsv::LoadCsv("Map/Stage1/SideCopy.csv", SIDE_MAX_X, SIDE_MAX_Y);
+		m_pSideMap = CCsv::LoadCsv("Map/Stage1/Side.csv", SIDE_MAX_X, SIDE_MAX_Y);
 		m_pVarticalMap = CCsv::LoadCsv("Map/Stage1/Vartical.csv", VARTICAL_MAX_X, VARTICAL_MAX_Y);
 	}
 	else if (m_iStageNum == STAGE_2)
@@ -75,7 +75,7 @@ void CSceneMain::InitScene()
 	Audio::Volume(-0.8f, 0);
 	
 	//スタート
-	Audio::Start(0);
+	//Audio::Start(0);
 }
 
 //実行中
