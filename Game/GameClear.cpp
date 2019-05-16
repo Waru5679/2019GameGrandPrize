@@ -12,7 +12,7 @@ void CGameClear::Init()
 {
 	//F
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
-	ColorSet(1.0f, 1.0f, 1.0f, 2.0f, m_fColorS);
+	ColorSet(1.0f, 1.0f, 0.0f, 1.0f, m_fColorS);
 
 	int iRankPosition = MAX_RANKING - 1;//11-1 -> 10
 
