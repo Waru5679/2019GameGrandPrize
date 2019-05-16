@@ -75,7 +75,7 @@ void CSceneMain::InitScene()
 	Audio::Volume(-0.8f, 0);
 	
 	//スタート
-	Audio::Start(0);
+	//Audio::Start(0);
 }
 
 //実行中

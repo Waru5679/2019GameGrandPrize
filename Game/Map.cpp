@@ -65,7 +65,7 @@ void CMap::Draw()
 //¶¬‰‰ñ(‰¡)
 void CMap::CreateSideFirst()
 {
-	for (int x = 0; x < SIDE_MAX_X; x++)
+	for (int x =0; x < SIDE_MAX_X; x++)
 	{
 		for (int y = 0; y < SIDE_MAX_Y; y++)
 		{
@@ -91,7 +91,7 @@ void CMap::CreateSideFirst()
 					m_SideMap[y][x] = MAP_NONE;
 					break;
  				}
-						//“G
+				//“G
 				case MAP_ENEMY:
  				{
 					CEnemy* pEnemy = new CEnemy(x, y);
@@ -316,7 +316,7 @@ void CMap::CreateVerticalFirst()
 
 	for (int y = VARTICAL_MAX_Y; y >= 0; y--)
 	{
-		for (int x = 0; x < VARTICAL_MAX_X; x++)
+		for (int x = 0; x< VARTICAL_MAX_X; x++)
 		{
 			switch (m_VarticalMap[y][x])
 			{
