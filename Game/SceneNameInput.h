@@ -10,5 +10,5 @@ class CSceneNameInput :public CScene
 {
 public:
 	void InitScene();	//‰Šú‰»
-	void Scene();		//Às’†
+	void Scene() {};		//Às’†
 };

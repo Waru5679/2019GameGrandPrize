@@ -66,6 +66,13 @@ enum HIT_ELEMENTS
 //最大ランキング数
 #define MAX_RANKING 11
 
+//ランキング関連の初期値
+#define SET_NAME "+++++"
+#define SET_SCORE 0
+
+//ゲームクリア後の名前未入力状態に仮でセットする
+#define NO_NAME "-----"
+
 //------------------------------------------------
 //セーブ＆ロードとシーン間のやり取りするデータ
 struct UserData
@@ -74,6 +81,10 @@ struct UserData
 	int m_iRanking_st1[MAX_RANKING];	//ランキング(ステージ1)
 	int m_iRanking_st2[MAX_RANKING];	//ランキング(ステージ2)
 	int m_iRanking_st3[MAX_RANKING];	//ランキング(ステージ3)
+	char m_RankingName_st1[MAX_RANKING][6];	//名前入力用データ
+	char m_RankingName_st2[MAX_RANKING][6];
+	char m_RankingName_st3[MAX_RANKING][6];
+	int m_RankingPos;					//ランキング順位保存用データ
 	int m_iStageNum;					//ステージ選択用番号
 	int m_iMap_x;						//マップ再読み込み用数値保存
 	int m_iMap_y;

@@ -16,4 +16,5 @@ private:
 
 	//•`‰æF
 	float m_fColor[4];
+	char m_cName[6];
 };

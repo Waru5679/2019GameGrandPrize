@@ -15,6 +15,12 @@ void CTitle::Init()
 	//色
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 
+	//名前用配列の初期化
+	for (int i = 0; i <= 6; i++)
+	{
+		m_cName[i] = ' ';//半角空白で初期化
+	}
+
 	//ゲームを実行して1回のみ作動する
 	static bool m_sbInit_Point = true;
 	if (m_sbInit_Point == true)
@@ -63,11 +69,14 @@ void CTitle::Action()
 	if (Input::GetTrrigerKey(VK_BACK) == true)
 	{
 		//ランキング初期化
-		for (int i = 0; i < MAX_RANKING; i++)
+		for (int i = 0; i < MAX_RANKING - 1; i++)
 		{
 			((UserData*)Save::GetData())->m_iRanking_st1[i] = 0;
 			((UserData*)Save::GetData())->m_iRanking_st2[i] = 0;
 			((UserData*)Save::GetData())->m_iRanking_st3[i] = 0;
+
+
+			strcpy_s(((UserData*)Save::GetData())->m_RankingName_st1[i],"+++++");
 		}
 	}
 }

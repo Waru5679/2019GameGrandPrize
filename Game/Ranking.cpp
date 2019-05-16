@@ -92,8 +92,33 @@ void CRanking::Draw()
 		for (int i = 0; i < MAX_RANKING - 1; i++)
 		{
 			wchar_t str[256];
-			swprintf_s(str, L"%2d位           %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st1[i]);
-			Font::StrDraw(str, 150, 150 + (45 * i), 32, m_fColor);
+			swprintf_s(str, L"%2d位 %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st1[i]);
+			Font::StrDraw(str, 150.0f, 150.0f + (45.0f * i), 32.0f, m_fColor);
+
+			//名前表示
+			wchar_t str_name[256];
+			char name[6];
+			strcpy_s(name,((UserData*)Save::GetData())->m_RankingName_st1[i]);
+
+			//charからwchar_tに指定したサイズ分コピー
+			size_t* size = nullptr;
+			mbstowcs_s(size, str_name, 12, name, 12);
+
+			//ネームに初期文字が入ってる場合の1位
+			if (((UserData*)Save::GetData())->m_RankingName_st1[0] == SET_NAME && i == 0)
+			{
+				Font::StrDraw(str_name, 600.0f, 150.0f + (45.0f * i), 32.0f, m_fColor);
+			}
+			//入ってないときの1位
+			else if (i == 0 && ((UserData*)Save::GetData())->m_iRanking_st1[0] != SET_SCORE)
+			{
+				Font::StrDraw(str_name, 600.0f, 150.0f + (45.0f * i), 32.0f, m_fColor);
+			}
+			//それ以外の順位
+			else
+			{
+				Font::StrDraw(str_name, 600.0f, 150.0f + (45.0f * i), 32.0f, m_fColor);
+			}
 		}
 	}
 	if (m_iRankChenge == Page_2)
@@ -104,7 +129,7 @@ void CRanking::Draw()
 		for (int i = 0; i < MAX_RANKING - 1; i++)
 		{
 			wchar_t str[256];
-			swprintf_s(str, L"%2d位           %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st2[i]);
+			swprintf_s(str, L"%2d位 %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st2[i]);
 			Font::StrDraw(str, 150, 150 + (45 * i), 32, m_fColor);
 		}
 	}
@@ -116,7 +141,7 @@ void CRanking::Draw()
 		for (int i = 0; i < MAX_RANKING - 1; i++)
 		{
 			wchar_t str[256];
-			swprintf_s(str, L"%2d位           %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st3[i]);
+			swprintf_s(str, L"%2d位 %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st3[i]);
 			Font::StrDraw(str, 150, 150 + (45 * i), 32, m_fColor);
 		}
 	}
