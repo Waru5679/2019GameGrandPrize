@@ -41,14 +41,6 @@ void CPlane::Action()
 	CHitBox* hit_b = Hits::GetHitBox(this);
 	hit_b->SetPos(m_vPos.x, m_vPos.y);
 
-	 //床が画面外へ出ると削除
-	//画面下端
-	if (m_vPos.x + PLANE_WIDTH < 0)
-	{
-		this->SetStatus(false);
-		Hits::DeleteHitBox(this);
-	}
-
 	//キャラクターとのヒット判定
 	if (hit_b->CheckObjNameHit(OBJ_CHARA) != nullptr)
 	{
@@ -57,6 +49,15 @@ void CPlane::Action()
 		pChara->PlaneHit(m_vPos);
 
 	}
+	
+	//床が画面外へ出ると削除
+	//画面下端
+	if (m_vPos.x + PLANE_WIDTH < 0)
+	{
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
+	}
+
 }
 
 //描画
