@@ -18,8 +18,12 @@ private:
 
 	//描画色
 	float m_fColor[4];
+	//描画色(黄色)
+	float m_fColor_Yellow[4];
 	//描画色(赤)
 	float m_fColor_Red[4];
 	//順位を保存する用
 	int m_iRanking;
+	//ループ用
+	int m_iLoop;
 };

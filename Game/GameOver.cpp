@@ -13,7 +13,12 @@ void CGameOver::Init()
 	//色
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 	//色(赤)
-	ColorSet(1.0f, 0.0f, 0.0f, 1.0f, m_fColor_Red);
+	ColorSet(0.8f, 0.0f, 0.0f, 1.0f, m_fColor_Red);
+	//色(黄色)
+	ColorSet(1.0f, 1.0f, 0.0f, 1.0f, m_fColor_Yellow);
+
+	//ループ初期化
+	m_iLoop = 0;
 
 	//2019-05-13  
 	int iRankPosition = MAX_RANKING - 1;//11-1 -> 10
@@ -159,33 +164,50 @@ void CGameOver::Draw()
 
 	Font::StrDraw(L"GAME OVER", 200.0f, 30.0f, 90.0f, m_fColor_Red);
 
+
+	//画面右に自分の得点表示
+	wchar_t str_score[256];
+	Font::StrDraw(L"Your Score", 460.0f, 200.0f, 40.0f, m_fColor_Yellow);
+
+	swprintf_s(str_score, L"%12d点", ((UserData*)Save::GetData())->m_iScore);
+	Font::StrDraw(str_score, 400.0f, 250.0f, 32.0f, m_fColor_Yellow);
+
 	//ランキング表示
 	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_1)
 	{
 		//ランキング表示
 		for (int i = 0; i < MAX_RANKING - 1; i++)
 		{
+
+			//自分の順位を持ってきてそれをifでとって表示する
 			wchar_t str[256];
-			swprintf_s(str, L"%2d位           %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st1[i]);
-			Font::StrDraw(str, 50, 150 + (30 * i), 20, m_fColor);
-
-			//自分の順位確認用矢印「←」を表示
-			//探索用for文（同じ数値が2個以上並んだ時に抜けれる用）
-			for (int j = 0; j < MAX_RANKING - 1; j++)
+			for (int j = i; j < MAX_RANKING - 1; j++)
 			{
-				//スコアが0じゃないとき
-				if (((UserData*)Save::GetData())->m_iScore != 0)
+				if (((UserData*)Save::GetData())->m_iRanking_st1[i] == ((UserData*)Save::GetData())->m_iScore)
 				{
-					//スコアがランキング内のスコアと一緒の時
-					if (((UserData*)Save::GetData())->m_iRanking_st1[j] == ((UserData*)Save::GetData())->m_iScore)
-					{
-						swprintf_s(str, L"← あなた");
-						Font::StrDraw(str, 350, 150 + (30 * j), 20, m_fColor);
-
-						break;
-					}
+					swprintf_s(str, L"%2d位%12d点", j + 1, ((UserData*)Save::GetData())->m_iRanking_st1[j]);
+					Font::StrDraw(str, 10, 150 + (45 * j), 32, m_fColor_Yellow);
+					break;
 				}
 			}
+			if (((UserData*)Save::GetData())->m_iRanking_st1[i] != ((UserData*)Save::GetData())->m_iScore)
+			{
+				swprintf_s(str, L"%2d位%12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st1[i]);
+				Font::StrDraw(str, 10, 150 + (45 * i), 32, m_fColor);
+			}
+	
+
+			//名前表示
+			wchar_t str_name[256];
+			char name[6];
+			strcpy_s(name, ((UserData*)Save::GetData())->m_RankingName_st1[i]);
+
+			//charからwchar_tに指定したサイズ分コピー
+			size_t* size = nullptr;
+			mbstowcs_s(size, str_name, 12, name, 12);
+
+			Font::StrDraw(str_name, 100.0f, 150.0f + (45.0f * i), 32.0f, m_fColor);
+
 		}
 	}
 	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_2)

@@ -103,7 +103,7 @@ int RankingSort(int rank[11],char name[][6])
 	{
 		for (int j = i + 1; j < 11; j++)
 		{
-			if (rank[i] < rank[j])
+			if (rank[i] <= rank[j])
 			{
 				//’l‚ÌŒðŠ·
 				change = rank[i];

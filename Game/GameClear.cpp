@@ -10,9 +10,10 @@
 //初期化
 void CGameClear::Init()
 {
-	//色
+	//色(白)
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
-	ColorSet(1.0f, 1.0f, 0.0f, 1.0f, m_fColorS);
+	//色(黄色)
+	ColorSet(1.0f, 1.0f, 0.0f, 1.0f, m_fColor_Yellow);
 
 	int iRankPosition = MAX_RANKING - 1;//11-1 -> 10
 
@@ -154,19 +155,19 @@ void CGameClear::Draw()
 	Draw::Draw(OBJ_BACK_GROUND, &Src, &Dst, m_fColor, 0.0f);
 
 	//ゲームクリア文字表示
-	Font::StrDraw(L"Game Clear", 250.0f, 10.0f, 64.0f, m_fColorS);
+	Font::StrDraw(L"Game Clear", 250.0f, 10.0f, 64.0f, m_fColor_Yellow);
 
 	//ランキング表示
 	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_1)
 	{
-		Font::StrDraw(L"ステージ1", 340.0f, 100.0f, 30.0f, m_fColorS);
+		Font::StrDraw(L"ステージ1", 340.0f, 100.0f, 30.0f, m_fColor_Yellow);
 
 		//ランキング表示
 		for (int i = 0; i < MAX_RANKING - 1; i++)
 		{
 			wchar_t str[256];
 			swprintf_s(str, L"%2d位           %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st1[i]);
-			Font::StrDraw(str, 150, 150 + (43 * i), 30, m_fColorS);
+			Font::StrDraw(str, 150, 150 + (43 * i), 30, m_fColor_Yellow);
 
 			//自分の順位確認用矢印「←」を表示
 			//探索用for文（同じ数値が2個以上並んだ時に抜けれる用）
@@ -179,7 +180,7 @@ void CGameClear::Draw()
 					if (((UserData*)Save::GetData())->m_iRanking_st1[j] == ((UserData*)Save::GetData())->m_iScore)
 					{
 						swprintf_s(str, L"← あなた");
-						Font::StrDraw(str, 620, 150 + (43 * j), 30, m_fColorS);
+						Font::StrDraw(str, 620, 150 + (43 * j), 30, m_fColor_Yellow);
 
 						break;
 					}

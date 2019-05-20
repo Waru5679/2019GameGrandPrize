@@ -92,8 +92,8 @@ void CRanking::Draw()
 		for (int i = 0; i < MAX_RANKING - 1; i++)
 		{
 			wchar_t str[256];
-			swprintf_s(str, L"%2d位 %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st1[i]);
-			Font::StrDraw(str, 150.0f, 150.0f + (45.0f * i), 32.0f, m_fColor);
+			swprintf_s(str, L"%2d位                 %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st1[i]);
+			Font::StrDraw(str, 100.0f, 150.0f + (45.0f * i), 32.0f, m_fColor);
 
 			//名前表示
 			wchar_t str_name[256];
@@ -104,7 +104,7 @@ void CRanking::Draw()
 			size_t* size = nullptr;
 			mbstowcs_s(size, str_name, 12, name, 12);
 
-			Font::StrDraw(str_name, 600.0f, 150.0f + (45.0f * i), 32.0f, m_fColor);
+			Font::StrDraw(str_name, 350.0f, 150.0f + (45.0f * i), 32.0f, m_fColor);
 
 		}
 	}
