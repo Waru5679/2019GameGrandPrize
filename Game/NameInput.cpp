@@ -103,13 +103,9 @@ void CNameInput::Action()
 			//ステージ1なら
 			if (((UserData*)Save::GetData())->m_iStageNum == STAGE_1)
 			{
-				if (((UserData*)Save::GetData())->m_RankingName_st1[((UserData*)Save::GetData())->m_RankingPos] == "+++++")
-				{
-					strcpy_s(((UserData*)Save::GetData())->m_RankingName_st1[((UserData*)Save::GetData())->m_RankingPos + 1], m_cName);
-					//名前をユーザーデータにコピー
-					strcpy_s(((UserData*)Save::GetData())->m_RankingName_st1[((UserData*)Save::GetData())->m_RankingPos], m_cName);//名前
-				}
-
+				//名前をユーザーデータにコピー
+				strcpy_s(((UserData*)Save::GetData())->m_RankingName_st1[((UserData*)Save::GetData())->m_RankingPos], m_cName);//名前
+		
 			}
 			//ステージ2なら
 			else if (((UserData*)Save::GetData())->m_iStageNum == STAGE_2)

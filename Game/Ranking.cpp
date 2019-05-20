@@ -118,6 +118,17 @@ void CRanking::Draw()
 			wchar_t str[256];
 			swprintf_s(str, L"%2d位 %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st2[i]);
 			Font::StrDraw(str, 150, 150 + (45 * i), 32, m_fColor);
+
+			//名前表示
+			wchar_t str_name[256];
+			char name[6];
+			strcpy_s(name, ((UserData*)Save::GetData())->m_RankingName_st2[i]);
+
+			//charからwchar_tに指定したサイズ分コピー
+			size_t* size = nullptr;
+			mbstowcs_s(size, str_name, 12, name, 12);
+
+			Font::StrDraw(str_name, 600.0f, 150.0f + (45.0f * i), 32.0f, m_fColor);
 		}
 	}
 	if (m_iRankChenge == Page_3)
@@ -130,6 +141,17 @@ void CRanking::Draw()
 			wchar_t str[256];
 			swprintf_s(str, L"%2d位 %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st3[i]);
 			Font::StrDraw(str, 150, 150 + (45 * i), 32, m_fColor);
+
+			//名前表示
+			wchar_t str_name[256];
+			char name[6];
+			strcpy_s(name, ((UserData*)Save::GetData())->m_RankingName_st3[i]);
+
+			//charからwchar_tに指定したサイズ分コピー
+			size_t* size = nullptr;
+			mbstowcs_s(size, str_name, 12, name, 12);
+
+			Font::StrDraw(str_name, 600.0f, 150.0f + (45.0f * i), 32.0f, m_fColor);
 		}
 	}
 }

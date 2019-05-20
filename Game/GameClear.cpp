@@ -36,13 +36,6 @@ void CGameClear::Init()
 //更新
 void CGameClear::Action()
 {
-	//ステージ1の得点を高い順に並び替えをする
-	RankingSort(((UserData*)Save::GetData())->m_iRanking_st1);
-	//ステージ2の得点を高い順に並び替えをする
-	RankingSort(((UserData*)Save::GetData())->m_iRanking_st2);
-	//ステージ3の得点を高い順に並び替えをする
-	RankingSort(((UserData*)Save::GetData())->m_iRanking_st3);
-
 	//Enterでタイトルか名前入力へ移る
 	if (Input::GetTrrigerKey(VK_RETURN) == true)
 	{

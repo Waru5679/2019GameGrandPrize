@@ -89,10 +89,14 @@ bool UnitVec(float* vx, float* vy)
 //ランキングソートメソッド
 //引数1 int[11] :ランキング用配列
 //数値が高い順でバブルソートする
-void RankingSort(int rank[11])
+int RankingSort(int rank[11],char name[][6])
 {
 	//値交換用変数
 	int change;
+	//順位保存用
+	int ranking;
+	//名前交換用配列
+	char RankingName[6];
 
 	//バブルソート
 	for (int i = 0; i < 10; i++)
@@ -105,7 +109,25 @@ void RankingSort(int rank[11])
 				change = rank[i];
 				rank[i] = rank[j];
 				rank[j] = change;
+
+				//名前の交換
+				strcpy_s(RankingName, name[i]);
+				strcpy_s(name[i], name[j]);
+				strcpy_s(name[j], RankingName);
 			}
 		}
 	}
+
+	//未入力の名前個所を探して順位を調べる
+	for (int i = 0; i < 11; i++)
+	{
+		//名前が未入力なら
+		if (strcmp(name[i], NO_NAME) == 0)
+		{
+			//順位の保存
+			ranking = i + 1;
+			break;
+		}
+	}
+	return ranking;
 }

@@ -27,6 +27,7 @@ private:
 	float m_fColor_Red[4];
 
 	char m_cName[6];		//入力された名前の保存用
+	char m_cNameChange[6];	//名前入れ替え用
 	char m_cCopy_Name[11];	//wchar_tに変換する用の配列
 	bool m_bFirst_Flag;		//最初の1回だけ処理しないようにするためのフラグ
 	bool m_bKey_Flag;		//キー入力可能な状態かどうかを表すフラグ

@@ -77,6 +77,8 @@ void CTitle::Action()
 
 
 			strcpy_s(((UserData*)Save::GetData())->m_RankingName_st1[i],"+++++");
+			strcpy_s(((UserData*)Save::GetData())->m_RankingName_st2[i], "+++++");
+			strcpy_s(((UserData*)Save::GetData())->m_RankingName_st3[i], "+++++");
 		}
 	}
 }

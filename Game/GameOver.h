@@ -20,4 +20,6 @@ private:
 	float m_fColor[4];
 	//•`‰æF(Ô)
 	float m_fColor_Red[4];
+	//‡ˆÊ‚ğ•Û‘¶‚·‚é—p
+	int m_iRanking;
 };

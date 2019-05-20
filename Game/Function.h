@@ -22,4 +22,4 @@ float GetAtan2Angle(float w, float h);
 bool UnitVec(float* vx, float* vy);
 
 //ランキングソートメソッド
-void RankingSort(int rank[11]);
+int RankingSort(int rank[11],char name[][6]);
