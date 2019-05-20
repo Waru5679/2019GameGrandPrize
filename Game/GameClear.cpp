@@ -20,16 +20,28 @@ void CGameClear::Init()
 	{
 		//得点情報をステージ1のランキング最下位に登録			
 		((UserData*)Save::GetData())->m_iRanking_st1[iRankPosition] = ((UserData*)Save::GetData())->m_iScore;
+		strcpy_s(((UserData*)Save::GetData())->m_RankingName_st1[10], NO_NAME);
+
+		//ランキングソートして順位を調べる
+		m_iRanking = RankingSort(((UserData*)Save::GetData())->m_iRanking_st1, ((UserData*)Save::GetData())->m_RankingName_st1);
 	}
 	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_2)
 	{
 		//得点情報をステージ2のランキング最下位に登録
 		((UserData*)Save::GetData())->m_iRanking_st2[iRankPosition] = ((UserData*)Save::GetData())->m_iScore;
+		strcpy_s(((UserData*)Save::GetData())->m_RankingName_st2[10], NO_NAME);
+
+		//ランキングソートして順位を調べる
+		m_iRanking = RankingSort(((UserData*)Save::GetData())->m_iRanking_st2, ((UserData*)Save::GetData())->m_RankingName_st2);
 	}
 	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_3)
 	{
 		//得点情報をステージ3のランキング最下位に登録
 		((UserData*)Save::GetData())->m_iRanking_st3[iRankPosition] = ((UserData*)Save::GetData())->m_iScore;
+		strcpy_s(((UserData*)Save::GetData())->m_RankingName_st3[10], NO_NAME);
+
+		//ランキングソートして順位を調べる
+		m_iRanking = RankingSort(((UserData*)Save::GetData())->m_iRanking_st3, ((UserData*)Save::GetData())->m_RankingName_st3);
 	}
 }
 
@@ -39,7 +51,7 @@ void CGameClear::Action()
 	//Enterでタイトルか名前入力へ移る
 	if (Input::GetTrrigerKey(VK_RETURN) == true)
 	{
-		//ステージ情報取得
+		//ステージ情報取得 ステージ1なら
 		if (((UserData*)Save::GetData())->m_iStageNum == STAGE_1)
 		{
 			//ランキングの上位から探索
@@ -54,7 +66,63 @@ void CGameClear::Action()
 					((UserData*)Save::GetData())->m_RankingPos = i;
 
 					//スコアが10位以内だった場合
-					if (i < 10)
+					if (i < 10 && ((UserData*)Save::GetData())->m_iScore != 0)
+					{
+						Scene::SetScene(new CSceneNameInput());
+						this->SetStatus(false);
+					}
+					else
+					{
+						Scene::SetScene(new CSceneTitle());
+						this->SetStatus(false);
+					}
+				}
+			}
+		}
+		//ステージ情報取得 ステージ2なら
+		if (((UserData*)Save::GetData())->m_iStageNum == STAGE_2)
+		{
+			//ランキングの上位から探索
+			for (int i = 0; i < MAX_RANKING - 1; i++)
+			{
+
+				//スコアとランキング内のスコア探索
+				if (((UserData*)Save::GetData())->m_iScore == ((UserData*)Save::GetData())->m_iRanking_st2[i])
+				{
+
+					//ランキング順位保存
+					((UserData*)Save::GetData())->m_RankingPos = i;
+
+					//スコアが10位以内だった場合
+					if (i < 10 && ((UserData*)Save::GetData())->m_iScore != 0)
+					{
+						Scene::SetScene(new CSceneNameInput());
+						this->SetStatus(false);
+					}
+					else
+					{
+						Scene::SetScene(new CSceneTitle());
+						this->SetStatus(false);
+					}
+				}
+			}
+		}
+		//ステージ情報取得 ステージ3なら
+		if (((UserData*)Save::GetData())->m_iStageNum == STAGE_3)
+		{
+			//ランキングの上位から探索
+			for (int i = 0; i < MAX_RANKING - 1; i++)
+			{
+
+				//スコアとランキング内のスコア探索
+				if (((UserData*)Save::GetData())->m_iScore == ((UserData*)Save::GetData())->m_iRanking_st3[i])
+				{
+
+					//ランキング順位保存
+					((UserData*)Save::GetData())->m_RankingPos = i;
+
+					//スコアが10位以内だった場合
+					if (i < 10 && ((UserData*)Save::GetData())->m_iScore != 0)
 					{
 						Scene::SetScene(new CSceneNameInput());
 						this->SetStatus(false);

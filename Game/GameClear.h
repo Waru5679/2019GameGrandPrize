@@ -17,4 +17,7 @@ private:
 	//•`‰æF
 	float m_fColor[4];
 	float m_fColorS[4];
+
+	//‡ˆÊ‚ğ•Û‘¶‚·‚é—p
+	int m_iRanking;
 };
