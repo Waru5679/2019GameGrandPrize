@@ -12,6 +12,8 @@ void CGameOver::Init()
 {
 	//色
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
+	//色(赤)
+	ColorSet(1.0f, 0.0f, 0.0f, 1.0f, m_fColor_Red);
 
 	//2019-05-13  
 	int iRankPosition = MAX_RANKING - 1;//11-1 -> 10
@@ -93,11 +95,11 @@ void CGameOver::Draw()
 	//描画
 	Draw::Draw(OBJ_BACK_GROUND, &Src, &Dst, m_fColor, 0.0f);
 
+	Font::StrDraw(L"GAME OVER", 200.0f, 30.0f, 90.0f, m_fColor_Red);
+
 	//ランキング表示
 	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_1)
 	{
-		Font::StrDraw(L"ステージ1", 140.0f, 100.0f, 32.0f, m_fColor);
-
 		//ランキング表示
 		for (int i = 0; i < MAX_RANKING - 1; i++)
 		{
@@ -126,8 +128,6 @@ void CGameOver::Draw()
 	}
 	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_2)
 	{
-		Font::StrDraw(L"ステージ2", 140.0f, 100.0f, 32.0f, m_fColor);
-
 		//ランキング表示
 		for (int i = 0; i < MAX_RANKING - 1; i++)
 		{
@@ -156,8 +156,6 @@ void CGameOver::Draw()
 	}
 	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_3)
 	{
-		Font::StrDraw(L"ステージ3", 140.0f, 100.0f, 32.0f, m_fColor);
-
 		//ランキング表示
 		for (int i = 0; i < MAX_RANKING - 1; i++)
 		{

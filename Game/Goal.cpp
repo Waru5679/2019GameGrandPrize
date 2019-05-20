@@ -18,7 +18,7 @@ void CGoal::Init()
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 
 	//ìñÇΩÇËîªíË
-	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, GOAL_SIZE, GOAL_SIZE, ELEMENT_STAGE, OBJ_GOAL, 1);
+	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, 800.0f, GOAL_SIZE, ELEMENT_STAGE, OBJ_GOAL, 1);
 }
 
 //çXêV

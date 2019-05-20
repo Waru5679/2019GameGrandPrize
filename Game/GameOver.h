@@ -18,5 +18,6 @@ private:
 
 	//描画色
 	float m_fColor[4];
-	//ランキング探索用(1回のみ)
+	//描画色(赤)
+	float m_fColor_Red[4];
 };
