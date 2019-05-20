@@ -34,8 +34,6 @@ void CMap::Init()
 	//マップの読み込み量
 	((UserData*)Save::GetData())->m_iMap_x = 0;
 	((UserData*)Save::GetData())->m_iMap_y = 0;
-	
-	m_SideMap[0][10] = MAP_GOAL;
 
 	//横マップ作製
 	CreateSideFirst();
