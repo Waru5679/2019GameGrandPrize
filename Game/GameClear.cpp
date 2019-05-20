@@ -43,11 +43,38 @@ void CGameClear::Action()
 	//ステージ3の得点を高い順に並び替えをする
 	RankingSort(((UserData*)Save::GetData())->m_iRanking_st3);
 
-	//エンターでタイトルへ
+	//Enterでタイトルか名前入力へ移る
 	if (Input::GetTrrigerKey(VK_RETURN) == true)
 	{
-		Scene::SetScene(new CSceneTitle());
-		this->SetStatus(false);
+		//ステージ情報取得
+		if (((UserData*)Save::GetData())->m_iStageNum == STAGE_1)
+		{
+			//ランキングの上位から探索
+			for (int i = 0; i < MAX_RANKING - 1; i++)
+			{
+
+				//スコアとランキング内のスコア探索
+				if (((UserData*)Save::GetData())->m_iScore == ((UserData*)Save::GetData())->m_iRanking_st1[i])
+				{
+
+					//ランキング順位保存
+					((UserData*)Save::GetData())->m_RankingPos = i;
+
+					//スコアが10位以内だった場合
+					if (i < 10)
+					{
+						Scene::SetScene(new CSceneNameInput());
+						this->SetStatus(false);
+					}
+					else
+					{
+						Scene::SetScene(new CSceneTitle());
+						this->SetStatus(false);
+					}
+				}
+			}
+		}
+
 	}
 }
 

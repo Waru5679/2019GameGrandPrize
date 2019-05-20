@@ -103,20 +103,25 @@ void CNameInput::Action()
 			//ステージ1なら
 			if (((UserData*)Save::GetData())->m_iStageNum == STAGE_1)
 			{
-				//名前をユーザーデータにコピー
-				strcpy_s(((UserData*)Save::GetData())->m_RankingName_st1[((UserData*)Save::GetData())->m_RankingPos - 1], m_cName);//名前
+				if (((UserData*)Save::GetData())->m_RankingName_st1[((UserData*)Save::GetData())->m_RankingPos] == "+++++")
+				{
+					strcpy_s(((UserData*)Save::GetData())->m_RankingName_st1[((UserData*)Save::GetData())->m_RankingPos + 1], m_cName);
+					//名前をユーザーデータにコピー
+					strcpy_s(((UserData*)Save::GetData())->m_RankingName_st1[((UserData*)Save::GetData())->m_RankingPos], m_cName);//名前
+				}
+
 			}
 			//ステージ2なら
 			else if (((UserData*)Save::GetData())->m_iStageNum == STAGE_2)
 			{
 				//名前をユーザーデータにコピー
-				strcpy_s(((UserData*)Save::GetData())->m_RankingName_st2[((UserData*)Save::GetData())->m_RankingPos - 1], m_cName);//名前
+				strcpy_s(((UserData*)Save::GetData())->m_RankingName_st2[((UserData*)Save::GetData())->m_RankingPos], m_cName);//名前
 			}
 			//ステージ3なら
 			else if (((UserData*)Save::GetData())->m_iStageNum == STAGE_3)
 			{
 				//名前をユーザーデータにコピー
-				strcpy_s(((UserData*)Save::GetData())->m_RankingName_st3[((UserData*)Save::GetData())->m_RankingPos - 1], m_cName);//名前
+				strcpy_s(((UserData*)Save::GetData())->m_RankingName_st3[((UserData*)Save::GetData())->m_RankingPos], m_cName);//名前
 			}
 
 			//UserDataの作成(セーブ)する

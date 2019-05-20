@@ -104,21 +104,8 @@ void CRanking::Draw()
 			size_t* size = nullptr;
 			mbstowcs_s(size, str_name, 12, name, 12);
 
-			//ÉlÅ[ÉÄÇ…èâä˙ï∂éöÇ™ì¸Ç¡ÇƒÇÈèÍçáÇÃ1à 
-			if (((UserData*)Save::GetData())->m_RankingName_st1[0] == SET_NAME && i == 0)
-			{
-				Font::StrDraw(str_name, 600.0f, 150.0f + (45.0f * i), 32.0f, m_fColor);
-			}
-			//ì¸Ç¡ÇƒÇ»Ç¢Ç∆Ç´ÇÃ1à 
-			else if (i == 0 && ((UserData*)Save::GetData())->m_iRanking_st1[0] != SET_SCORE)
-			{
-				Font::StrDraw(str_name, 600.0f, 150.0f + (45.0f * i), 32.0f, m_fColor);
-			}
-			//ÇªÇÍà»äOÇÃèáà 
-			else
-			{
-				Font::StrDraw(str_name, 600.0f, 150.0f + (45.0f * i), 32.0f, m_fColor);
-			}
+			Font::StrDraw(str_name, 600.0f, 150.0f + (45.0f * i), 32.0f, m_fColor);
+
 		}
 	}
 	if (m_iRankChenge == Page_2)

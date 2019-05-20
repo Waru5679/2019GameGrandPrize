@@ -63,7 +63,7 @@ void CGameOver::Action()
 					((UserData*)Save::GetData())->m_RankingPos = i;
 
 					//ƒXƒRƒA‚ª10ˆÊˆÈ“à‚¾‚Á‚½ê‡
-					if (i < 10)
+					if (i < 10 && ((UserData*)Save::GetData())->m_iScore != 0)
 					{
 						Scene::SetScene(new CSceneNameInput());
 						this->SetStatus(false);
