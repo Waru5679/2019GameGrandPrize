@@ -20,6 +20,7 @@ void CGameOver::Init()
 	//ループ初期化
 	m_iLoop = 0;
 
+
 	//2019-05-13  
 	int iRankPosition = MAX_RANKING - 1;//11-1 -> 10
 
@@ -56,23 +57,23 @@ void CGameOver::Init()
 void CGameOver::Action()
 {
 
-	//Enterでタイトルか名前入力へ移る
-	if (Input::GetTrrigerKey(VK_RETURN) == true)
+	
+	//ステージ情報取得 ステージ1なら
+	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_1)
 	{
-		//ステージ情報取得 ステージ1なら
-		if (((UserData*)Save::GetData())->m_iStageNum == STAGE_1)
+		//ランキングの上位から探索
+		for (int i = 0; i < MAX_RANKING - 1; i++)
 		{
-			//ランキングの上位から探索
-			for (int i = 0; i < MAX_RANKING - 1; i++)
+
+			//スコアとランキング内のスコア探索
+			if (((UserData*)Save::GetData())->m_iScore == ((UserData*)Save::GetData())->m_iRanking_st1[i])
 			{
+				//ランキング順位保存
+				((UserData*)Save::GetData())->m_RankingPos = i;
 
-				//スコアとランキング内のスコア探索
-				if (((UserData*)Save::GetData())->m_iScore == ((UserData*)Save::GetData())->m_iRanking_st1[i])
+				//Enterでタイトルか名前入力へ移る
+				if (Input::GetTrrigerKey(VK_RETURN) == true)
 				{
-
-					//ランキング順位保存
-					((UserData*)Save::GetData())->m_RankingPos = i;
-
 					//スコアが10位以内だった場合
 					if (i < 10 && ((UserData*)Save::GetData())->m_iScore != 0)
 					{
@@ -87,64 +88,72 @@ void CGameOver::Action()
 				}
 			}
 		}
-		//ステージ情報取得 ステージ2なら
-		if (((UserData*)Save::GetData())->m_iStageNum == STAGE_2)
-		{
-			//ランキングの上位から探索
-			for (int i = 0; i < MAX_RANKING - 1; i++)
-			{
-
-				//スコアとランキング内のスコア探索
-				if (((UserData*)Save::GetData())->m_iScore == ((UserData*)Save::GetData())->m_iRanking_st2[i])
-				{
-
-					//ランキング順位保存
-					((UserData*)Save::GetData())->m_RankingPos = i;
-
-					//スコアが10位以内だった場合
-					if (i < 10 && ((UserData*)Save::GetData())->m_iScore != 0)
-					{
-						Scene::SetScene(new CSceneNameInput());
-						this->SetStatus(false);
-					}
-					else
-					{
-						Scene::SetScene(new CSceneTitle());
-						this->SetStatus(false);
-					}
-				}
-			}
-		}
-		//ステージ情報取得 ステージ3なら
-		if (((UserData*)Save::GetData())->m_iStageNum == STAGE_3)
-		{
-			//ランキングの上位から探索
-			for (int i = 0; i < MAX_RANKING - 1; i++)
-			{
-
-				//スコアとランキング内のスコア探索
-				if (((UserData*)Save::GetData())->m_iScore == ((UserData*)Save::GetData())->m_iRanking_st3[i])
-				{
-
-					//ランキング順位保存
-					((UserData*)Save::GetData())->m_RankingPos = i;
-
-					//スコアが10位以内だった場合
-					if (i < 10 && ((UserData*)Save::GetData())->m_iScore != 0)
-					{
-						Scene::SetScene(new CSceneNameInput());
-						this->SetStatus(false);
-					}
-					else
-					{
-						Scene::SetScene(new CSceneTitle());
-						this->SetStatus(false);
-					}
-				}
-			}
-		}
-		
 	}
+	//ステージ情報取得 ステージ2なら
+	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_2)
+	{
+		//ランキングの上位から探索
+		for (int i = 0; i < MAX_RANKING - 1; i++)
+		{
+
+			//スコアとランキング内のスコア探索
+			if (((UserData*)Save::GetData())->m_iScore == ((UserData*)Save::GetData())->m_iRanking_st2[i])
+			{
+
+				//ランキング順位保存
+				((UserData*)Save::GetData())->m_RankingPos = i;
+
+				//Enterでタイトルか名前入力へ移る
+				if (Input::GetTrrigerKey(VK_RETURN) == true)
+				{
+					//スコアが10位以内だった場合
+					if (i < 10 && ((UserData*)Save::GetData())->m_iScore != 0)
+					{
+						Scene::SetScene(new CSceneNameInput());
+						this->SetStatus(false);
+					}
+					else
+					{
+						Scene::SetScene(new CSceneTitle());
+						this->SetStatus(false);
+					}
+				}
+			}
+		}
+	}
+	//ステージ情報取得 ステージ3なら
+	if (((UserData*)Save::GetData())->m_iStageNum == STAGE_3)
+	{
+		//ランキングの上位から探索
+		for (int i = 0; i < MAX_RANKING - 1; i++)
+		{
+
+			//スコアとランキング内のスコア探索
+			if (((UserData*)Save::GetData())->m_iScore == ((UserData*)Save::GetData())->m_iRanking_st3[i])
+			{
+
+				//ランキング順位保存
+				((UserData*)Save::GetData())->m_RankingPos = i;
+
+				//Enterでタイトルか名前入力へ移る
+				if (Input::GetTrrigerKey(VK_RETURN) == true)
+				{
+					//スコアが10位以内だった場合
+					if (i < 10 && ((UserData*)Save::GetData())->m_iScore != 0)
+					{
+						Scene::SetScene(new CSceneNameInput());
+						this->SetStatus(false);
+					}
+					else
+					{
+						Scene::SetScene(new CSceneTitle());
+						this->SetStatus(false);
+					}
+				}
+			}
+		}
+	}
+
 }
 
 //描画
@@ -181,22 +190,32 @@ void CGameOver::Draw()
 
 			//自分の順位を持ってきてそれをifでとって表示する
 			wchar_t str[256];
-			for (int j = i; j < MAX_RANKING - 1; j++)
+
+			//自分の順位探索
+			if (((UserData*)Save::GetData())->m_RankingPos == i)
 			{
-				if (((UserData*)Save::GetData())->m_iRanking_st1[i] == ((UserData*)Save::GetData())->m_iScore)
+				//同じスコアが並んでない場合
+				if (((UserData*)Save::GetData())->m_iRanking_st1[i] != ((UserData*)Save::GetData())->m_iRanking_st1[i - 1])
 				{
-					swprintf_s(str, L"%2d位%12d点", j + 1, ((UserData*)Save::GetData())->m_iRanking_st1[j]);
-					Font::StrDraw(str, 10, 150 + (45 * j), 32, m_fColor_Yellow);
-					break;
+					swprintf_s(str, L"%2d位%12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st1[i]);
+					Font::StrDraw(str, 10, 150 + (45 * i), 32, m_fColor_Yellow);
+				}
+				//同じスコアが並んでいる場合
+				else
+				{
+					swprintf_s(str, L"%2d位%12d点", i, ((UserData*)Save::GetData())->m_iRanking_st1[i]);
+					Font::StrDraw(str, 10, 150 + (45 * (i-1)), 32, m_fColor_Yellow);
+
+					swprintf_s(str, L"%2d位%12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st1[i]);
+					Font::StrDraw(str, 10, 150 + (45 * i), 32, m_fColor);
 				}
 			}
-			if (((UserData*)Save::GetData())->m_iRanking_st1[i] != ((UserData*)Save::GetData())->m_iScore)
+			else
 			{
 				swprintf_s(str, L"%2d位%12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st1[i]);
 				Font::StrDraw(str, 10, 150 + (45 * i), 32, m_fColor);
 			}
-	
-
+			
 			//名前表示
 			wchar_t str_name[256];
 			char name[6];
@@ -219,22 +238,29 @@ void CGameOver::Draw()
 			swprintf_s(str, L"%2d位           %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st2[i]);
 			Font::StrDraw(str, 50, 150 + (30 * i), 20, m_fColor);
 
-			//自分の順位確認用矢印「←」を表示
-			//探索用for文（同じ数値が2個以上並んだ時に抜けれる用）
-			for (int j = 0; j < MAX_RANKING - 1; j++)
+			//自分の順位探索
+			if (((UserData*)Save::GetData())->m_RankingPos == i)
 			{
-				//スコアが0じゃないとき
-				if (((UserData*)Save::GetData())->m_iScore != 0)
+				//同じスコアが並んでない場合
+				if (((UserData*)Save::GetData())->m_iRanking_st2[i] != ((UserData*)Save::GetData())->m_iRanking_st2[i - 1])
 				{
-					//スコアがランキング内のスコアと一緒の時
-					if (((UserData*)Save::GetData())->m_iRanking_st2[j] == ((UserData*)Save::GetData())->m_iScore)
-					{
-						swprintf_s(str, L"← あなた");
-						Font::StrDraw(str, 350, 150 + (30 * j), 20, m_fColor);
-
-						break;
-					}
+					swprintf_s(str, L"%2d位%12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st2[i]);
+					Font::StrDraw(str, 10, 150 + (45 * i), 32, m_fColor_Yellow);
 				}
+				//同じスコアが並んでいる場合
+				else
+				{
+					swprintf_s(str, L"%2d位%12d点", i, ((UserData*)Save::GetData())->m_iRanking_st2[i]);
+					Font::StrDraw(str, 10, 150 + (45 * (i - 1)), 32, m_fColor_Yellow);
+
+					swprintf_s(str, L"%2d位%12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st2[i]);
+					Font::StrDraw(str, 10, 150 + (45 * i), 32, m_fColor);
+				}
+			}
+			else
+			{
+				swprintf_s(str, L"%2d位%12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st2[i]);
+				Font::StrDraw(str, 10, 150 + (45 * i), 32, m_fColor);
 			}
 		}
 	}
@@ -247,22 +273,29 @@ void CGameOver::Draw()
 			swprintf_s(str, L"%2d位           %12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st3[i]);
 			Font::StrDraw(str, 50, 150 + (30 * i), 20, m_fColor);
 
-			//自分の順位確認用矢印「←」を表示
-			//探索用for文（同じ数値が2個以上並んだ時に抜けれる用）
-			for (int j = 0; j < MAX_RANKING - 1; j++)
+			//自分の順位探索
+			if (((UserData*)Save::GetData())->m_RankingPos == i)
 			{
-				//スコアが0じゃないとき
-				if (((UserData*)Save::GetData())->m_iScore != 0)
+				//同じスコアが並んでない場合
+				if (((UserData*)Save::GetData())->m_iRanking_st3[i] != ((UserData*)Save::GetData())->m_iRanking_st3[i - 1])
 				{
-					//スコアがランキング内のスコアと一緒の時
-					if (((UserData*)Save::GetData())->m_iRanking_st3[j] == ((UserData*)Save::GetData())->m_iScore)
-					{
-						swprintf_s(str, L"← あなた");
-						Font::StrDraw(str, 350, 150 + (30 * j), 20, m_fColor);
-
-						break;
-					}
+					swprintf_s(str, L"%2d位%12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st3[i]);
+					Font::StrDraw(str, 10, 150 + (45 * i), 32, m_fColor_Yellow);
 				}
+				//同じスコアが並んでいる場合
+				else
+				{
+					swprintf_s(str, L"%2d位%12d点", i, ((UserData*)Save::GetData())->m_iRanking_st3[i]);
+					Font::StrDraw(str, 10, 150 + (45 * (i - 1)), 32, m_fColor_Yellow);
+
+					swprintf_s(str, L"%2d位%12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st3[i]);
+					Font::StrDraw(str, 10, 150 + (45 * i), 32, m_fColor);
+				}
+			}
+			else
+			{
+				swprintf_s(str, L"%2d位%12d点", i + 1, ((UserData*)Save::GetData())->m_iRanking_st3[i]);
+				Font::StrDraw(str, 10, 150 + (45 * i), 32, m_fColor);
 			}
 		}
 	}
