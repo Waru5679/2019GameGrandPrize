@@ -20,4 +20,8 @@ private:
 
 	//順位を保存する用
 	int m_iRanking;
+
+	//名前入力シーンへ移行するかタイトルへ行くか判断用
+	//true: 名前入力　false: タイトル
+	bool m_bGoTitleorName;
 };

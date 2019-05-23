@@ -26,4 +26,8 @@ private:
 	int m_iRanking;
 	//ループ用
 	int m_iLoop;
+
+	//名前入力シーンへ移行するかタイトルへ行くか判断用
+	//true: 名前入力　false: タイトル
+	bool m_bGoTitleorName;
 };
