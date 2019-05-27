@@ -35,7 +35,7 @@ void CEnemyBullet::Init()
 void CEnemyBullet::Action()
 {
 
-	m_vMove.x = m_vMove.x * 1.01;
+	m_vMove.x = m_vMove.x * 1.01f;
 	m_vMove.y = m_vMove.y * 1.01f;
 
 	m_vPos = CVector::Add(m_vPos, m_vMove);	

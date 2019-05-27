@@ -50,7 +50,7 @@ Vector CVector::Create(float x, float y)
 Vector CVector::Normalize(Vector Vec)
 {
 	Vector vOut;
-	
+
 	float Size = 0.0f;
 	Size = fabs(Vec.x) + fabs(Vec.y);
 

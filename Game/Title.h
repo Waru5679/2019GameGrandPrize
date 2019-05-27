@@ -14,7 +14,10 @@ public:
 	void Draw();	//•`‰æ
 private:
 
-	//•`‰æF
+	//•`‰æF(”’)
 	float m_fColor[4];
+	//•`‰æF(‰©F)
+	float m_fColor_Yellow[4];
+
 	char m_cName[6];
 };
