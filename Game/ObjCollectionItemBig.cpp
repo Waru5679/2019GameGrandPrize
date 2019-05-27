@@ -1,6 +1,7 @@
 #include "GameL/DrawTexture.h"
 #include "GameL/HitBoxManager.h"
 #include "GameL/UserData.h"
+#include "GameL/Audio.h"
 
 #include "ObjCollectionItemBig.h"
 #include "GameHead.h"
@@ -54,6 +55,9 @@ void CCollectionItemBig::Action()
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
+
+		//アイテム取得音再生
+		Audio::Start(4);
 
 		//スコアに+1000加算する
 		((UserData*)Save::GetData())->m_iScore += SCORE_BIG;

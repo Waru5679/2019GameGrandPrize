@@ -185,4 +185,7 @@ void CSceneMain::LoadAudio()
 
 	//敵が消えるときの音
 	Audio::LoadAudio(3,L"Audio/Enemy_Out.wav",EFFECT);
+
+	//アイテムゲットした時の音
+	Audio::LoadAudio(4, L"Audio/ItemGet.wav", EFFECT);
 }
