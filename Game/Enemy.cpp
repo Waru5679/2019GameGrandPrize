@@ -42,7 +42,8 @@ void CEnemy::Init()
 	//“–‚½‚è”»’è—pHitBoxì¬
 	Hits::SetHitBox(this, m_vPos.x, m_vPos.y, ENEMY_SIZE, ENEMY_SIZE, ELEMENT_ENEMY, OBJ_ENEMY, 1);
 
-	//
+	
+	
 }
 
 //XV
