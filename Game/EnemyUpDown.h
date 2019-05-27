@@ -21,4 +21,7 @@ private:
 	float m_fvy;		
 	int m_Count;		//カウンタ
 	int m_iBulletCount;	//バレットカウンタ
+
+	bool m_bInWindow; //画面内かどうか調べる用
+
 };

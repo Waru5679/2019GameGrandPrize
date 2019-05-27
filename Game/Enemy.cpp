@@ -1,5 +1,6 @@
 #include "GameL/HitBoxManager.h"
 #include "GameL/SceneManager.h"
+#include "GameL/Audio.h"
 
 #include "Enemy.h"
 #include "Function.h"
@@ -30,6 +31,9 @@ void CEnemy::Init()
 	m_fSpeed.y = 1.5f;
 
 	m_bMoveSwitch = true;
+
+	//SE用変数初期化
+	m_bSound_Out = false;
 
 	//主人公の位置取得
 	CObjMainChara* obj_pChara = new CObjMainChara();
@@ -77,6 +81,9 @@ void CEnemy::Action()
 	if (m_Count > 10000)
 		m_Count = 0;
 
+	//画面内か調べる
+	m_bInWindow = WindowInCheck(m_vPos, CVector::Create(BULLET_SIZE, BULLET_SIZE));
+
 	if (m_Count % SHOT_TIME == 0)
 	{
 		//キャラクタのポインタ
@@ -85,16 +92,22 @@ void CEnemy::Action()
 		//キャラクタの位置を取得
 		if (pChara != nullptr)
 		{
-			Vector vCharaPos = pChara->GetPos();
+			if (m_bInWindow == true)
+			{
+				Vector vCharaPos = pChara->GetPos();
 
-			//キャラの角度を取得
-			Vector vBulletDir = CVector::Sub(vCharaPos, m_vPos);
-			//角度を正規化する
-			vBulletDir = CVector::Normalize(vBulletDir);
+				//キャラの角度を取得
+				Vector vBulletDir = CVector::Sub(vCharaPos, m_vPos);
+				//角度を正規化する
+				vBulletDir = CVector::Normalize(vBulletDir);
 
-			//弾生成
-			CEnemyBullet* pBullet = new CEnemyBullet(m_vPos, vBulletDir);
-			Objs::InsertObj(pBullet, OBJ_ENEMY_BULLET, 40);
+				//弾生成
+				CEnemyBullet* pBullet = new CEnemyBullet(m_vPos, vBulletDir);
+				Objs::InsertObj(pBullet, OBJ_ENEMY_BULLET, 40);
+
+				//敵弾丸発射SE再生
+				Audio::Start(2);
+			}
 		}
 	}
 	//---------------------------------------------------------------
@@ -110,8 +123,18 @@ void CEnemy::Action()
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
+		Audio::Start(3);
+
+		//サウンド再生する変数をtrueにする
+		m_bSound_Out = true;
 	}
 	//--------------------------------------------------------------
+
+	if (m_bSound_Out == true)
+	{
+		
+		m_bSound_Out = false;
+	}
 
 	//敵が画面端へ出ると削除
 	//右移動の時画面右端

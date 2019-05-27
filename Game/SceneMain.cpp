@@ -76,7 +76,7 @@ void CSceneMain::InitScene()
 	Audio::Volume(-0.8f, 0);
 	
 	//スタート
-	//Audio::Start(0);
+	Audio::Start(0);
 }
 
 //実行中
@@ -176,4 +176,13 @@ void CSceneMain::LoadAudio()
 {
 	//BGMtest
 	Audio::LoadAudio(0, L"Audio/Test2.wav", BACK_MUSIC);
+
+	//主人公射撃
+	Audio::LoadAudio(1, L"Audio/Player_Shot.wav", EFFECT);
+
+	//敵射撃
+	Audio::LoadAudio(2, L"Audio/Enemy_Shot.wav", EFFECT);
+
+	//敵が消えるときの音
+	Audio::LoadAudio(3,L"Audio/Enemy_Out.wav",EFFECT);
 }

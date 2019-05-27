@@ -1,5 +1,6 @@
 #include "GameL/HitBoxManager.h"
 #include "GameL/SceneManager.h"
+#include "GameL/Audio.h"
 
 #include "EnemyUpDown.h"
 #include "Function.h"
@@ -61,12 +62,21 @@ void CEnemyUpDown::Action()
 	if (m_iBulletCount > 10000)
 		m_iBulletCount = 0;
 
+	//‰æ–Ê“à‚©’²‚×‚é
+	m_bInWindow = WindowInCheck(m_vPos, CVector::Create(BULLET_SIZE, BULLET_SIZE));
+
 	if (m_iBulletCount % SHOT_TIME == 0)
 	{
-		//’e¶¬
-		CEnemyBullet* pBullet = new CEnemyBullet(m_vPos, m_vBulletMove);
-		Objs::InsertObj(pBullet, OBJ_ENEMY_BULLET, 50);
-		
+		//‰æ–Ê“à‚©‚Ç‚¤‚©’²‚×‚é
+		if (m_bInWindow == true)
+		{
+			//’e¶¬
+			CEnemyBullet* pBullet = new CEnemyBullet(m_vPos, m_vBulletMove);
+			Objs::InsertObj(pBullet, OBJ_ENEMY_BULLET, 50);
+
+			//“G’eŠÛ”­ËSEÄ¶
+			Audio::Start(2);
+		}
 	}
 
 
@@ -79,6 +89,9 @@ void CEnemyUpDown::Action()
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
+
+		//“G‚ªÁ‚¦‚é‚Æ‚«‚ÌSEÄ¶
+		Audio::Start(3);
 	}
 
 	//ƒJƒEƒ“ƒg‚ª3•bˆÈã‚Å‰æ–ÊŠO‚Éo‚½‚çíœ

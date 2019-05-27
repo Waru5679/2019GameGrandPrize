@@ -23,4 +23,5 @@ private:
 	Vector m_fChara;	//キャラの位置取得用
 	Vector m_fSpeed;	//速度
 	bool m_bInWindow;	//画面内かどうか
+	bool m_bSound_Out;	//サウンド再生用
 };

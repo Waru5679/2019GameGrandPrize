@@ -4,6 +4,7 @@
 #include "GameL/SceneManager.h"
 #include "GameL/HitBoxManager.h"
 #include "GameL/UserData.h"
+#include "GameL/Audio.h"
 
 #include "GameHead.h"
 #include "ObjMainChara.h"
@@ -291,6 +292,10 @@ void CObjMainChara::VarticalInput()
   		  	//íeê∂ê¨             
 			CCharaBullet* pBullet = new CCharaBullet(m_vPos, CVector::Create(0.0f, -3.0f));
 			Objs::InsertObj(pBullet, OBJ_CHARA_BULLET, 50);
+
+			//íeä€î≠éÀSEçƒê∂
+			Audio::Start(1);
+
 			//î≠éÀÇÉIÉtÇ…Ç∑ÇÈ
 			m_bBullet_FireIs = false;
 		}
