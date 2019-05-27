@@ -15,7 +15,7 @@ void CTitle::Init()
 	//色(白)
 	ColorSet(1.0f, 1.0f, 1.0f, 1.0f, m_fColor);
 	//色(黄色)
-	ColorSet(1.0f, 1.0f, 0.0f, 1.0f, m_fColor_Yellow);
+	ColorSet(1.0f, 0.0f, 1.0f, 1.0f, m_fColor_Yellow);
 
 	//名前用配列の初期化
 	for (int i = 0; i <= 6; i++)
@@ -100,6 +100,6 @@ void CTitle::Draw()
 	Draw::Draw(OBJ_BACK_GROUND, &Src, &Dst, m_fColor, 0.0f);
 
 	//次画面案内表示
-	Font::StrDraw(L"Push Enter", 270.0f, 510.0f, 32.0f, m_fColor_Yellow);
+	Font::StrDraw(L"Push Enter", 240.0f, 520.0f, 50.0f, m_fColor_Yellow);
 
 }

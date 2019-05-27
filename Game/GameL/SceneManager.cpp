@@ -53,12 +53,6 @@ void CSceneManager::GameLoop()
 
 	//60fpsの場合
 	Sleep(16-(m_Time/1000));//カッコ内の時間まで処理をとめる
-
-	if(m_Time >=1000)
-	{
-		swprintf_s(c,L"%3d",m_TimeCount);
-		m_TimeCount=0;
-	}
 		
 	CDrawFont::StrDraw(c,0,0,16,cl);
 	CDirectXDeviec::ViewFlip();		//スワップ
