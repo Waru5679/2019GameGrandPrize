@@ -17,6 +17,11 @@ void CTitle::Init()
 	//色(黄色)
 	ColorSet(1.0f, 0.0f, 1.0f, 1.0f, m_fColor_Yellow);
 
+	//点滅用タイムの初期化
+	m_iTime = 0;
+	//点滅用フラグの初期化
+	m_bTime_Flag = true;
+
 	//名前用配列の初期化
 	for (int i = 0; i <= 6; i++)
 	{
@@ -61,6 +66,20 @@ void CTitle::Init()
 //更新
 void CTitle::Action()
 {
+	//点滅用タイムを増やす
+	m_iTime++;
+
+	//10000超えそうになったら0に戻す
+	if (m_iTime >= 10000)
+	{
+		m_iTime = 0;
+	}
+	//40フレームごとにフラグを入れ替える
+	if (m_iTime % 40 == 0)
+	{
+		m_bTime_Flag = !(m_bTime_Flag);
+	}
+
 	//Enterでメインへ
 	if (Input::GetTrrigerKey(VK_RETURN) == true)
 	{
@@ -96,10 +115,19 @@ void CTitle::Draw()
 	//描画位置
 	RectSet(&Dst, 0.0f, 0.0f, WINDOW_SIZE_W, WINDOW_SIZE_H);
 
+	
 	//描画
 	Draw::Draw(OBJ_BACK_GROUND, &Src, &Dst, m_fColor, 0.0f);
+	
 
-	//次画面案内表示
-	Font::StrDraw(L"Push Enter", 240.0f, 520.0f, 50.0f, m_fColor_Yellow);
-
+	//点滅用フラグがオフなら次画面案内を非表示
+	if (m_bTime_Flag == false)
+	{
+		
+	}
+	else
+	{
+		//次画面案内表示
+		Font::StrDraw(L"Push Enter", 240.0f, 520.0f, 50.0f, m_fColor_Yellow);
+	}
 }
