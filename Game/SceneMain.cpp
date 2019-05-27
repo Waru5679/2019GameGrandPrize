@@ -73,7 +73,8 @@ void CSceneMain::InitScene()
 	Objs::InsertObj(pScore, OBJ_SCORE, 10);
 
 	//ボリューム調整
-	Audio::Volume(-0.8f, 0);
+	Audio::Volume(-0.8f, 0); //BGM
+	Audio::Volume(-0.6f, 2); //敵の弾発射音
 	
 	//スタート
 	Audio::Start(0);
